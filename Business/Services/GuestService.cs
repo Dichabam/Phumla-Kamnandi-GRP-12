@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Phumla_Kamnandi_GRP_12.Business.Services
 {
-    public class GuestService : IGuestService
+    public class GuestService : GuestServiceInterface
     {
         private readonly GuestRepositoryInterface _guestRepository;
         private readonly BookingRepositoryInterface _bookingRepository;

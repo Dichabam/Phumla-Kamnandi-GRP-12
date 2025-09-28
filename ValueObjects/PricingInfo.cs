@@ -2,7 +2,6 @@
 using System;
 
 namespace Phumla_Kamnandi_GRP_12.Business.ValueObjects
-
 {
     public class PricingInfo
     {

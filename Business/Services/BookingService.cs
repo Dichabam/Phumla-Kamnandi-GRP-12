@@ -1,5 +1,4 @@
-﻿// Services/BookingService.cs
-using Phumla_Kamnandi_GRP_12.Business.Entities;
+﻿using Phumla_Kamnandi_GRP_12.Business.Entities;
 using Phumla_Kamnandi_GRP_12.Business.Enums;
 using Phumla_Kamnandi_GRP_12.Business.Interfaces;
 using System;
@@ -7,17 +6,16 @@ using System.Collections.Generic;
 using System.Linq;
 
 namespace Phumla_Kamnandi_GRP_12.Business.Services
-
 {
-    public class BookingService : IBookingService
+    public class BookingService : BookingServiceInterface
     {
         private readonly BookingRepositoryInterface _bookingRepository;
         private readonly GuestRepositoryInterface _guestRepository;
         private readonly RoomRepositoryInterface _roomRepository;
-        private readonly IPricingService _pricingService;
+        private readonly PricingServiceInterface _pricingService;
 
         public BookingService(BookingRepositoryInterface bookingRepo, GuestRepositoryInterface guestRepo,
-                            RoomRepositoryInterface roomRepo, IPricingService pricingService)
+                            RoomRepositoryInterface roomRepo, PricingServiceInterface pricingService)
         {
             _bookingRepository = bookingRepo;
             _guestRepository = guestRepo;
@@ -156,23 +154,4 @@ namespace Phumla_Kamnandi_GRP_12.Business.Services
         }
     }
 
-    public interface IBookingService
-    {
-        BookingResult MakeBooking(string guestId, DateTime checkIn, DateTime checkOut,
-            int adults, int children, bool singleOccupancy, string specialRequests = null);
-        bool ChangeBooking(string bookingRef, DateTime newCheckIn, DateTime newCheckOut);
-        bool CancelBooking(string bookingRef);
-        Booking GetBookingDetails(string bookingRef);
-        bool ConfirmBookingWithDeposit(string bookingRef, decimal depositAmount);
-        List<Room> GetAvailableRooms(DateTime checkIn, DateTime checkOut);
-    }
-
-    public class BookingResult
-    {
-        public bool Success { get; set; }
-        public string Message { get; set; }
-        public string BookingReference { get; set; }
-        public decimal TotalAmount { get; set; }
-        public decimal DepositRequired { get; set; }
-    }
 }

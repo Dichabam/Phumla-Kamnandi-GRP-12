@@ -5,7 +5,7 @@ using System;
 
 namespace Phumla_Kamnandi_GRP_12.Business.Services
 {
-    public class PricingService : IPricingService
+    public class PricingService : PricingServiceInterface
     {
         private const decimal LOW_SEASON_RATE = 550m;
         private const decimal MID_SEASON_RATE = 750m;

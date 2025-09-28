@@ -1,13 +1,10 @@
 ﻿using Phumla_Kamnandi_GRP_12.Business.Entities;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Phumla_Kamnandi_GRP_12.Business.Interfaces
 {
-    public interface IGuestService
+    public interface GuestServiceInterface
     {
         Guest RegisterNewGuest(string firstName, string lastName, string email, string phone, string address);
         Guest GetGuestById(string guestId);

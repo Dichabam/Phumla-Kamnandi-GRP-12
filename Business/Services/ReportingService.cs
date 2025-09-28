@@ -1,5 +1,4 @@
-﻿// Services/ReportingService.cs
-using Phumla_Kamnandi_GRP_12.Business.Entities;
+﻿using Phumla_Kamnandi_GRP_12.Business.Entities;
 using Phumla_Kamnandi_GRP_12.Business.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -7,7 +6,7 @@ using System.Linq;
 
 namespace Phumla_Kamnandi_GRP_12.Business.Services
 {
-    public class ReportingService : IReportingService
+    public class ReportingService : ReportingServiceInterface
     {
         private readonly BookingRepositoryInterface _bookingRepository;
         private readonly RoomRepositoryInterface _roomRepository;
@@ -74,9 +73,4 @@ namespace Phumla_Kamnandi_GRP_12.Business.Services
         }
     }
 
-    public interface IReportingService
-    {
-        OccupancyReport GenerateOccupancyReport(DateTime startDate, DateTime endDate);
-        RevenueReport GenerateRevenueReport(DateTime startDate, DateTime endDate);
-    }
 }
