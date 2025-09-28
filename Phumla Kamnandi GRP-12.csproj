@@ -46,16 +46,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Business\Test1.cs" />
+    <Compile Include="Business\Entities\Booking.cs" />
+    <Compile Include="Business\Entities\DailyOccupancy.cs" />
+    <Compile Include="Business\Entities\Guest.cs" />
+    <Compile Include="Business\Entities\OccupancyReport.cs" />
+    <Compile Include="Business\Entities\RevenueReport.cs" />
+    <Compile Include="Business\Entities\Room.cs" />
+    <Compile Include="Business\Enums\BookingStatus.cs" />
+    <Compile Include="Business\Enums\PaymentStatus.cs" />
+    <Compile Include="Business\Enums\Season.cs" />
+    <Compile Include="Business\Interfaces\BookingRepositoryInterface.cs" />
+    <Compile Include="Business\Interfaces\GuestRepositoryInterface.cs" />
+    <Compile Include="Business\Interfaces\IGuestService.cs" />
+    <Compile Include="Business\Interfaces\IPricingService.cs" />
+    <Compile Include="Business\Interfaces\RoomRepositoryInterface.cs" />
+    <Compile Include="Business\Services\BookingService.cs" />
+    <Compile Include="Business\Services\GuestService.cs" />
+    <Compile Include="Business\Services\PricingService.cs" />
+    <Compile Include="Business\Services\ReportingService.cs" />
+    <Compile Include="Business\MockBookingRepository.cs" />
+    <Compile Include="Business\ValueObjects\PricingInfo.cs" />
     <Compile Include="Database\Test2.cs" />
-    <Compile Include="Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
     <Compile Include="Presentation\Test3.cs" />
-    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
