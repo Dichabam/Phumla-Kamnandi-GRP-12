@@ -11,7 +11,7 @@ namespace Phumla_Kamnandi_GRP_12.Business.Interfaces
         bool ChangeBooking(string bookingRef, DateTime newCheckIn, DateTime newCheckOut);
         bool CancelBooking(string bookingRef);
         Booking GetBookingDetails(string bookingRef);
-        bool ConfirmBookingWithDeposit(string bookingRef, decimal depositAmount);
+        bool ConfirmBookingWithDeposit(string bookingRef, decimal depositAmount, string creditCardNumber = null);
         List<Room> GetAvailableRooms(DateTime checkIn, DateTime checkOut);
     }
 }

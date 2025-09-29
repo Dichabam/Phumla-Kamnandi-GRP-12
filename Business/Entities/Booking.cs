@@ -22,6 +22,8 @@ namespace Phumla_Kamnandi_GRP_12.Business.Entities
         public string SpecialRequests { get; set; }
         public bool IsSingleOccupancy { get; private set; }
 
+        public string CreditCardLastFour { get; set; }
+
         public Booking(string guestId, DateTime checkIn, DateTime checkOut,
                       int adults, int children, bool singleOccupancy = false)
         {
@@ -82,6 +84,17 @@ namespace Phumla_Kamnandi_GRP_12.Business.Entities
         {
             NumberOfAdults = adults;
             NumberOfChildren = children;
+        }
+
+        public void SetCreditCardInfo(string lastFourDigits)
+        {
+            CreditCardLastFour = lastFourDigits;
+        }
+
+        // Add validation method
+        public bool HasValidCreditCard()
+        {
+            return !string.IsNullOrEmpty(CreditCardLastFour) && CreditCardLastFour.Length == 4;
         }
     }
 }

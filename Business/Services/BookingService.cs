@@ -138,7 +138,7 @@ namespace Phumla_Kamnandi_GRP_12.Business.Services
             return _bookingRepository.GetByReference(bookingRef);
         }
 
-        public bool ConfirmBookingWithDeposit(string bookingRef, decimal depositAmount)
+        public bool ConfirmBookingWithDeposit(string bookingRef, decimal depositAmount, string creditCardNumber = null)
         {
             var booking = _bookingRepository.GetByReference(bookingRef);
             if (booking == null)
@@ -148,9 +148,30 @@ namespace Phumla_Kamnandi_GRP_12.Business.Services
             if (depositAmount < booking.DepositAmount)
                 return false;
 
-            booking.ConfirmBooking(depositAmount);
-            _bookingRepository.Update(booking);
-            return true;
+            // Store credit card details if provided
+            if (!string.IsNullOrEmpty(creditCardNumber) && creditCardNumber.Length >= 4)
+            {
+                var guest = _guestRepository.GetById(booking.GuestId);
+                if (guest != null)
+                {
+                    // Store last 4 digits only for security
+                    string lastFourDigits = creditCardNumber.Substring(creditCardNumber.Length - 4);
+                    guest.UpdateCreditCard(lastFourDigits);
+                    _guestRepository.Update(guest);
+                }
+            }
+
+            // Simulate payment verification (as per use case step 11)
+            bool paymentVerified = SimulatePaymentVerification(creditCardNumber, depositAmount);
+
+            if (paymentVerified)
+            {
+                booking.ConfirmBooking(depositAmount);
+                _bookingRepository.Update(booking);
+                return true;
+            }
+
+            return false;
         }
 
         public List<Room> GetAvailableRooms(DateTime checkIn, DateTime checkOut)
@@ -174,5 +195,24 @@ namespace Phumla_Kamnandi_GRP_12.Business.Services
             var availableRooms = GetAvailableRooms(checkIn, checkOut);
             return availableRooms.FirstOrDefault();
         }
+
+        // Simulate payment verification as mentioned in use case
+        private bool SimulatePaymentVerification(string creditCardNumber, decimal amount)
+        {
+            // As per project requirements: "assume all payments are authorised"
+            // This simulates the verification step mentioned in the use case
+
+            if (string.IsNullOrEmpty(creditCardNumber) || creditCardNumber.Length < 13)
+                return false;
+
+            // Simple validation checks (not real verification)
+            if (amount <= 0)
+                return false;
+
+            // Simulate successful verification (as required by project scope)
+            return true;
+        }
+
+        
     }
 }

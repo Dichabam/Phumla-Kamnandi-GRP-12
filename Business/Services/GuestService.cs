@@ -43,7 +43,15 @@ namespace Phumla_Kamnandi_GRP_12.Business.Services
             var guest = _guestRepository.GetById(guestId);
             if (guest == null) return false;
 
-            guest.UpdateCreditCard(lastFourDigits);
+            // Validate that we have at least some digits
+            if (string.IsNullOrEmpty(lastFourDigits)) return false;
+
+            // If more than 4 digits provided, take the last 4
+            string digitsToStore = lastFourDigits.Length > 4
+                ? lastFourDigits.Substring(lastFourDigits.Length - 4)
+                : lastFourDigits;
+
+            guest.UpdateCreditCard(digitsToStore);
             _guestRepository.Update(guest);
             return true;
         }
@@ -63,5 +71,4 @@ namespace Phumla_Kamnandi_GRP_12.Business.Services
             return true;
         }
     }
-
 }
