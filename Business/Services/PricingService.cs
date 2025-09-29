@@ -63,15 +63,7 @@ namespace Phumla_Kamnandi_GRP_12.Business.Services
                 // Add single supplement if applicable
                 if (singleOccupancy)
                 {
-                    nightTotal += baseRate * SINGLE_SUPPLEMENT_PERCENT;
-                }
-
-                // Children over 5 pay half (children under 5 are free)
-                if (childrenOver5 > 0 && !singleOccupancy)
-                {
-                    // Only charge for children if it's not single occupancy
-                    decimal childRate = baseRate * CHILD_DISCOUNT_PERCENT;
-                    nightTotal += childRate * childrenOver5 / adults; // Distribute child cost
+                    nightTotal += baseRate * (1 + SINGLE_SUPPLEMENT_PERCENT);
                 }
 
                 total += nightTotal;

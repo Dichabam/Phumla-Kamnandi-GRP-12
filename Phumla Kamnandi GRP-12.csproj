@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Business\BusinessLayerTests.cs" />
     <Compile Include="Business\Entities\Booking.cs" />
     <Compile Include="Business\Entities\BookingResult.cs" />
     <Compile Include="Business\Entities\DailyOccupancy.cs" />
@@ -63,6 +64,8 @@
     <Compile Include="Business\Interfaces\ReportingServiceInterface.cs" />
     <Compile Include="Business\Interfaces\PricingServiceInterface.cs" />
     <Compile Include="Business\Interfaces\RoomRepositoryInterface.cs" />
+    <Compile Include="Business\MockGuestRepository.cs" />
+    <Compile Include="Business\MockRoomRepository.cs" />
     <Compile Include="Business\Services\BookingService.cs" />
     <Compile Include="Business\Services\GuestService.cs" />
     <Compile Include="Business\Services\PricingService.cs" />
