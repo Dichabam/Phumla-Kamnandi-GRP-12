@@ -138,6 +138,32 @@ namespace Phumla_Kamnandi_GRP_12.Business.Services
             return _bookingRepository.GetByReference(bookingRef);
         }
 
+       
+
+        public List<Room> GetAvailableRooms(DateTime checkIn, DateTime checkOut)
+        {
+            var allRooms = _roomRepository.GetAll();
+            var availableRooms = new List<Room>();
+
+            foreach (var room in allRooms)
+            {
+                if (_bookingRepository.RoomAvailableForDates(room.RoomNumber, checkIn, checkOut))
+                {
+                    availableRooms.Add(room);
+                }
+            }
+
+            return availableRooms;
+        }
+
+        private Room FindAvailableRoom(DateTime checkIn, DateTime checkOut)
+        {
+            var availableRooms = GetAvailableRooms(checkIn, checkOut);
+            return availableRooms.FirstOrDefault();
+        }
+
+        // Simulate payment verification as mentioned in use case
+
         public bool ConfirmBookingWithDeposit(string bookingRef, decimal depositAmount, string creditCardNumber = null)
         {
             var booking = _bookingRepository.GetByReference(bookingRef);
@@ -174,45 +200,28 @@ namespace Phumla_Kamnandi_GRP_12.Business.Services
             return false;
         }
 
-        public List<Room> GetAvailableRooms(DateTime checkIn, DateTime checkOut)
-        {
-            var allRooms = _roomRepository.GetAll();
-            var availableRooms = new List<Room>();
-
-            foreach (var room in allRooms)
-            {
-                if (_bookingRepository.RoomAvailableForDates(room.RoomNumber, checkIn, checkOut))
-                {
-                    availableRooms.Add(room);
-                }
-            }
-
-            return availableRooms;
-        }
-
-        private Room FindAvailableRoom(DateTime checkIn, DateTime checkOut)
-        {
-            var availableRooms = GetAvailableRooms(checkIn, checkOut);
-            return availableRooms.FirstOrDefault();
-        }
-
         // Simulate payment verification as mentioned in use case
         private bool SimulatePaymentVerification(string creditCardNumber, decimal amount)
         {
             // As per project requirements: "assume all payments are authorised"
             // This simulates the verification step mentioned in the use case
 
-            if (string.IsNullOrEmpty(creditCardNumber) || creditCardNumber.Length < 13)
-                return false;
-
-            // Simple validation checks (not real verification)
+            // Basic amount validation
             if (amount <= 0)
                 return false;
 
+            // If credit card is provided, do basic validation
+            if (!string.IsNullOrEmpty(creditCardNumber))
+            {
+                if (creditCardNumber.Length < 13)
+                    return false;
+            }
+
+            // For deposits without credit card (cash/bank transfer), accept if amount is valid
             // Simulate successful verification (as required by project scope)
             return true;
         }
 
-        
+
     }
 }

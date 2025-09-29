@@ -116,8 +116,9 @@ namespace Phumla_Kamnandi_GRP_12.Business
                 new DateTime(2025, 12, 28));
             AssertTrue(changed, "Booking date change should succeed");
 
-            // Test confirming booking with deposit
-            bool confirmed = bookingService.ConfirmBookingWithDeposit(result1.BookingReference, 100m);
+            // Test confirming booking with deposit - PROVIDE CREDIT CARD NUMBER
+            bool confirmed = bookingService.ConfirmBookingWithDeposit(
+                result1.BookingReference, 100m, "1234567890123456");
             AssertTrue(confirmed, "Booking confirmation should succeed with sufficient deposit");
 
             // Test booking cancellation
