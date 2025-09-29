@@ -63,7 +63,7 @@ namespace Phumla_Kamnandi_GRP_12.Business.Services
                 // Add single supplement if applicable
                 if (singleOccupancy)
                 {
-                    nightTotal += baseRate * (1 + SINGLE_SUPPLEMENT_PERCENT);
+                    nightTotal += baseRate * SINGLE_SUPPLEMENT_PERCENT;
                 }
 
                 total += nightTotal;

@@ -26,49 +26,51 @@ namespace Phumla_Kamnandi_GRP_12.Business.Services
         public BookingResult MakeBooking(string guestId, DateTime checkIn, DateTime checkOut,
             int adults, int children, bool singleOccupancy, string specialRequests = null)
         {
-            // Validate guest exists
+            // 1: Validate guest exists and is in good standing
             var guest = _guestRepository.GetById(guestId);
             if (guest == null)
                 return new BookingResult { Success = false, Message = "Guest not found" };
 
-            // Check if guest is in good standing
             if (!guest.IsInGoodStanding)
                 return new BookingResult { Success = false, Message = "Guest account has outstanding issues" };
 
-            // Validate dates
+            // 2: Validate dates according to business rules
             if (checkIn >= checkOut)
                 return new BookingResult { Success = false, Message = "Check-out must be after check-in" };
 
             if (checkIn < DateTime.Today)
                 return new BookingResult { Success = false, Message = "Cannot book dates in the past" };
 
-            // Validate occupancy
+            // 3: Validate occupancy (max 4 people per room as per regulations)
             int totalGuests = adults + children;
             if (totalGuests > 4)
                 return new BookingResult { Success = false, Message = "Maximum 4 guests per room" };
 
-            // Find available room
+            if (adults == 0)
+                return new BookingResult { Success = false, Message = "At least one adult required" };
+
+            // 4: Check room availability and find available room
             var availableRoom = FindAvailableRoom(checkIn, checkOut);
             if (availableRoom == null)
                 return new BookingResult { Success = false, Message = "No rooms available for selected dates" };
 
-            // Create booking
+            // 5: Create booking with generated reference number
             var booking = new Booking(guestId, checkIn, checkOut, adults, children, singleOccupancy);
             booking.RoomNumber = availableRoom.RoomNumber;
             booking.SpecialRequests = specialRequests;
 
-            // Calculate pricing (simplified - assuming all children are over 5 for this example)
+            // 6: Calculate total amount based on pricing rules
             decimal totalAmount = _pricingService.CalculateTotalAmount(checkIn, checkOut,
                 adults, 0, children, singleOccupancy);
             booking.SetTotalAmount(totalAmount);
 
-            // Save booking
+            // 7: Save booking to repository
             _bookingRepository.Add(booking);
 
             return new BookingResult
             {
                 Success = true,
-                Message = "Booking created successfully",
+                Message = "Booking created successfully. Deposit must be paid within 14 days of arrival.",
                 BookingReference = booking.BookingReference,
                 TotalAmount = totalAmount,
                 DepositRequired = booking.DepositAmount
@@ -81,24 +83,40 @@ namespace Phumla_Kamnandi_GRP_12.Business.Services
             if (booking == null || booking.Status == BookingStatus.Cancelled)
                 return false;
 
-            // Check if new dates are available for the same room
-            bool available = _bookingRepository.RoomAvailableForDates(
+            // Validate new dates
+            if (newCheckIn >= newCheckOut || newCheckIn < DateTime.Today)
+                return false;
+
+            // Check if current room is available for new dates
+            bool currentRoomAvailable = _bookingRepository.RoomAvailableForDates(
                 booking.RoomNumber, newCheckIn, newCheckOut, bookingRef);
 
-            if (!available)
+            if (!currentRoomAvailable)
             {
-                // Try to find another room
+                // Try to find alternative room for new dates
                 var newRoom = FindAvailableRoom(newCheckIn, newCheckOut);
                 if (newRoom == null) return false;
                 booking.RoomNumber = newRoom.RoomNumber;
             }
 
+            // Update booking with new dates
             booking.UpdateDates(newCheckIn, newCheckOut);
 
-            // Recalculate pricing
+            // Recalculate pricing for new dates
             decimal newAmount = _pricingService.CalculateTotalAmount(newCheckIn, newCheckOut,
                 booking.NumberOfAdults, 0, booking.NumberOfChildren, booking.IsSingleOccupancy);
             booking.SetTotalAmount(newAmount);
+
+            // Handle deposit adjustment if amount changed
+            if (booking.Status == BookingStatus.Confirmed && newAmount != booking.TotalAmount)
+            {
+                // May need additional deposit if new amount is higher
+                decimal newDepositRequired = newAmount * 0.10m;
+                if (newDepositRequired > booking.DepositPaid)
+                {
+                    booking.Status = BookingStatus.Unconfirmed; // Requires additional payment
+                }
+            }
 
             _bookingRepository.Update(booking);
             return true;
@@ -123,7 +141,11 @@ namespace Phumla_Kamnandi_GRP_12.Business.Services
         public bool ConfirmBookingWithDeposit(string bookingRef, decimal depositAmount)
         {
             var booking = _bookingRepository.GetByReference(bookingRef);
-            if (booking == null || booking.Status != BookingStatus.Unconfirmed)
+            if (booking == null)
+                return false;
+
+            // Check if deposit is sufficient (minimum 10% of total)
+            if (depositAmount < booking.DepositAmount)
                 return false;
 
             booking.ConfirmBooking(depositAmount);
@@ -153,5 +175,4 @@ namespace Phumla_Kamnandi_GRP_12.Business.Services
             return availableRooms.FirstOrDefault();
         }
     }
-
 }
