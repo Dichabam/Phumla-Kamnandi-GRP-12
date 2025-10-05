@@ -36,7 +36,7 @@
             this.EmailTextbox = new Guna.UI2.WinForms.Guna2TextBox();
             this.PasswordTextbox = new Guna.UI2.WinForms.Guna2TextBox();
             this.SubmitButton = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.LoginLabel = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.forgotpasswordLink = new System.Windows.Forms.LinkLabel();
             this.intro_panel_login.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.logo)).BeginInit();
@@ -152,17 +152,17 @@
             this.SubmitButton.Text = "SUBMIT";
             this.SubmitButton.Click += new System.EventHandler(this.guna2Button1_Click);
             // 
-            // guna2HtmlLabel1
+            // LoginLabel
             // 
-            this.guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel1.Font = new System.Drawing.Font("Segoe UI Black", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel1.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.guna2HtmlLabel1.Location = new System.Drawing.Point(514, 39);
-            this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
-            this.guna2HtmlLabel1.Size = new System.Drawing.Size(162, 69);
-            this.guna2HtmlLabel1.TabIndex = 4;
-            this.guna2HtmlLabel1.Text = "LOGIN";
-            this.guna2HtmlLabel1.Click += new System.EventHandler(this.guna2HtmlLabel1_Click);
+            this.LoginLabel.BackColor = System.Drawing.Color.Transparent;
+            this.LoginLabel.Font = new System.Drawing.Font("Segoe UI Black", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LoginLabel.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.LoginLabel.Location = new System.Drawing.Point(514, 39);
+            this.LoginLabel.Name = "LoginLabel";
+            this.LoginLabel.Size = new System.Drawing.Size(162, 69);
+            this.LoginLabel.TabIndex = 4;
+            this.LoginLabel.Text = "LOGIN";
+            this.LoginLabel.Click += new System.EventHandler(this.guna2HtmlLabel1_Click);
             // 
             // forgotpasswordLink
             // 
@@ -183,7 +183,7 @@
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.forgotpasswordLink);
-            this.Controls.Add(this.guna2HtmlLabel1);
+            this.Controls.Add(this.LoginLabel);
             this.Controls.Add(this.SubmitButton);
             this.Controls.Add(this.PasswordTextbox);
             this.Controls.Add(this.EmailTextbox);
@@ -208,7 +208,7 @@
         private Guna.UI2.WinForms.Guna2TextBox PasswordTextbox;
         private Guna.UI2.WinForms.Guna2HtmlLabel welcome;
         private Guna.UI2.WinForms.Guna2Button SubmitButton;
-        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel1;
+        private Guna.UI2.WinForms.Guna2HtmlLabel LoginLabel;
         private Guna.UI2.WinForms.Guna2HtmlLabel welcome_2;
         private System.Windows.Forms.LinkLabel forgotpasswordLink;
     }
