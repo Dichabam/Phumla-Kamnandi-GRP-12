@@ -58,9 +58,9 @@
             // logo
             // 
             this.logo.Image = ((System.Drawing.Image)(resources.GetObject("logo.Image")));
-            this.logo.Location = new System.Drawing.Point(88, 31);
+            this.logo.Location = new System.Drawing.Point(97, 12);
             this.logo.Name = "logo";
-            this.logo.Size = new System.Drawing.Size(194, 206);
+            this.logo.Size = new System.Drawing.Size(194, 173);
             this.logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.logo.TabIndex = 0;
             this.logo.TabStop = false;
@@ -155,7 +155,7 @@
             this.welcome_2.BackColor = System.Drawing.Color.Transparent;
             this.welcome_2.Font = new System.Drawing.Font("Segoe UI Black", 40F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.welcome_2.ForeColor = System.Drawing.SystemColors.Control;
-            this.welcome_2.Location = new System.Drawing.Point(25, 286);
+            this.welcome_2.Location = new System.Drawing.Point(26, 269);
             this.welcome_2.Name = "welcome_2";
             this.welcome_2.Size = new System.Drawing.Size(355, 91);
             this.welcome_2.TabIndex = 2;
