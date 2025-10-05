@@ -36,5 +36,15 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
         {
 
         }
+
+        private void welcome_2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void welcome_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

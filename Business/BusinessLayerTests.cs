@@ -264,19 +264,19 @@ namespace Phumla_Kamnandi_GRP_12.Business
             }
         }
 
-        public static void Main()
-        {
-            try
-            {
-                RunTests();
-                Console.WriteLine("\n✓✓✓ ALL TESTS PASSED SUCCESSFULLY ✓✓✓");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"\n✗✗✗ TEST FAILURE: {ex.Message} ✗✗✗");
-            }
+        //public static void Main()
+        //{
+        //    try
+        //    {
+        //        RunTests();
+        //        Console.WriteLine("\n✓✓✓ ALL TESTS PASSED SUCCESSFULLY ✓✓✓");
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Console.WriteLine($"\n✗✗✗ TEST FAILURE: {ex.Message} ✗✗✗");
+        //    }
 
-            Console.ReadLine();
-        }
+        //    Console.ReadLine();
+        //}
     }
 }
