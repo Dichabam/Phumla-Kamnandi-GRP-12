@@ -33,6 +33,7 @@
             this.EmailTextboxFP = new Guna.UI2.WinForms.Guna2TextBox();
             this.SubmitButtonFP = new Guna.UI2.WinForms.Guna2Button();
             this.logo = new System.Windows.Forms.PictureBox();
+            this.CloseButtonFP = new Guna.UI2.WinForms.Guna2Button();
             this.SidePanelFP.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.logo)).BeginInit();
             this.SuspendLayout();
@@ -40,6 +41,7 @@
             // SidePanelFP
             // 
             this.SidePanelFP.BackColor = System.Drawing.Color.Transparent;
+            this.SidePanelFP.Controls.Add(this.CloseButtonFP);
             this.SidePanelFP.Controls.Add(this.SubmitButtonFP);
             this.SidePanelFP.Controls.Add(this.EmailTextboxFP);
             this.SidePanelFP.Controls.Add(this.ForgotLabel);
@@ -120,6 +122,25 @@
             this.logo.TabIndex = 0;
             this.logo.TabStop = false;
             // 
+            // CloseButtonFP
+            // 
+            this.CloseButtonFP.Animated = true;
+            this.CloseButtonFP.AutoRoundedCorners = true;
+            this.CloseButtonFP.BorderColor = System.Drawing.Color.Transparent;
+            this.CloseButtonFP.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.CloseButtonFP.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.CloseButtonFP.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.CloseButtonFP.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.CloseButtonFP.FillColor = System.Drawing.Color.Transparent;
+            this.CloseButtonFP.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.CloseButtonFP.ForeColor = System.Drawing.Color.White;
+            this.CloseButtonFP.Image = global::Phumla_Kamnandi_GRP_12.Properties.Resources.close_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24;
+            this.CloseButtonFP.Location = new System.Drawing.Point(743, 3);
+            this.CloseButtonFP.Name = "CloseButtonFP";
+            this.CloseButtonFP.Size = new System.Drawing.Size(57, 30);
+            this.CloseButtonFP.TabIndex = 11;
+            this.CloseButtonFP.UseTransparentBackground = true;
+            // 
             // ForgotPassword
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -144,5 +165,6 @@
         private System.Windows.Forms.Label ForgotLabel;
         private Guna.UI2.WinForms.Guna2TextBox EmailTextboxFP;
         private Guna.UI2.WinForms.Guna2Button SubmitButtonFP;
+        private Guna.UI2.WinForms.Guna2Button CloseButtonFP;
     }
 }

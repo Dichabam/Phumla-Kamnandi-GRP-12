@@ -129,5 +129,25 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
         {
             SettingsButton.BackColor = Color.FromArgb(24, 30, 54);
         }
+
+        private void LogoutButton_Click(object sender, EventArgs e)
+        {
+            // Confirm logout
+            DialogResult result = MessageBox.Show(
+                "Are you sure you want to logout?",
+                "Confirm Logout",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                // TODO: Add any cleanup logic here (clear session, etc.)
+
+                // Close dashboard and show login
+                Login loginForm = new Login();
+                loginForm.Show();
+                this.Close();
+            }
+        }
     }
 }

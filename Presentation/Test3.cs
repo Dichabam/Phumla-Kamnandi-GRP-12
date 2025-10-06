@@ -25,14 +25,14 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                 Application.Run(loginForm);
             }
 
-            // After Login form closes, show Dashboard
-            Console.WriteLine("Opening Dashboard form...");
-            using (Dashbaord dashboardForm = new Dashbaord())
-            {
-                Application.Run(dashboardForm);
-            }
+            //// After Login form closes, show Dashboard
+            //Console.WriteLine("Opening Dashboard form...");
+            //using (Dashbaord dashboardForm = new Dashbaord())
+            //{
+            //    Application.Run(dashboardForm);
+            //}
 
-            Console.WriteLine("All forms closed. Program ending.");
+            //Console.WriteLine("All forms closed. Program ending.");
         }
     }
 }

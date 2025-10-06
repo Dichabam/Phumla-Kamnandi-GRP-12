@@ -31,21 +31,21 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dashbaord));
             this.PnlNav = new System.Windows.Forms.Panel();
             this.SidePanel2 = new System.Windows.Forms.Panel();
-            this.SidePanelDSHB = new System.Windows.Forms.Panel();
-            this.WelcomLabel = new System.Windows.Forms.Label();
-            this.guna2Separator1 = new Guna.UI2.WinForms.Guna2Separator();
             this.guna2Separator2 = new Guna.UI2.WinForms.Guna2Separator();
+            this.guna2Separator1 = new Guna.UI2.WinForms.Guna2Separator();
+            this.WelcomLabel = new System.Windows.Forms.Label();
+            this.CompanyLogo = new System.Windows.Forms.PictureBox();
+            this.SidePanelDSHB = new System.Windows.Forms.Panel();
+            this.LogoutButton = new Guna.UI2.WinForms.Guna2Button();
             this.SettingsButton = new System.Windows.Forms.Button();
             this.RoomsButton = new System.Windows.Forms.Button();
             this.ReportsButton = new System.Windows.Forms.Button();
             this.GuestButton = new System.Windows.Forms.Button();
             this.BookingButton = new System.Windows.Forms.Button();
             this.HomeButton = new System.Windows.Forms.Button();
-            this.CompanyLogo = new System.Windows.Forms.PictureBox();
-            this.LogoutButton = new Guna.UI2.WinForms.Guna2Button();
             this.SidePanel2.SuspendLayout();
-            this.SidePanelDSHB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CompanyLogo)).BeginInit();
+            this.SidePanelDSHB.SuspendLayout();
             this.SuspendLayout();
             // 
             // PnlNav
@@ -71,6 +71,42 @@
             this.SidePanel2.Size = new System.Drawing.Size(297, 201);
             this.SidePanel2.TabIndex = 0;
             // 
+            // guna2Separator2
+            // 
+            this.guna2Separator2.Location = new System.Drawing.Point(51, 150);
+            this.guna2Separator2.Name = "guna2Separator2";
+            this.guna2Separator2.Size = new System.Drawing.Size(200, 10);
+            this.guna2Separator2.TabIndex = 5;
+            // 
+            // guna2Separator1
+            // 
+            this.guna2Separator1.Location = new System.Drawing.Point(51, 185);
+            this.guna2Separator1.Name = "guna2Separator1";
+            this.guna2Separator1.Size = new System.Drawing.Size(200, 10);
+            this.guna2Separator1.TabIndex = 4;
+            // 
+            // WelcomLabel
+            // 
+            this.WelcomLabel.AutoSize = true;
+            this.WelcomLabel.Font = new System.Drawing.Font("Nirmala UI", 8.25F, System.Drawing.FontStyle.Bold);
+            this.WelcomLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
+            this.WelcomLabel.Location = new System.Drawing.Point(66, 163);
+            this.WelcomLabel.Name = "WelcomLabel";
+            this.WelcomLabel.Size = new System.Drawing.Size(168, 19);
+            this.WelcomLabel.TabIndex = 1;
+            this.WelcomLabel.Text = "WELCOME BACK USER 1";
+            // 
+            // CompanyLogo
+            // 
+            this.CompanyLogo.Dock = System.Windows.Forms.DockStyle.Top;
+            this.CompanyLogo.Image = global::Phumla_Kamnandi_GRP_12.Properties.Resources.PHUMLA_KAMNANDI_Photoroom;
+            this.CompanyLogo.Location = new System.Drawing.Point(0, 0);
+            this.CompanyLogo.Name = "CompanyLogo";
+            this.CompanyLogo.Size = new System.Drawing.Size(297, 198);
+            this.CompanyLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.CompanyLogo.TabIndex = 0;
+            this.CompanyLogo.TabStop = false;
+            // 
             // SidePanelDSHB
             // 
             this.SidePanelDSHB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
@@ -89,30 +125,25 @@
             this.SidePanelDSHB.Size = new System.Drawing.Size(297, 777);
             this.SidePanelDSHB.TabIndex = 0;
             // 
-            // WelcomLabel
+            // LogoutButton
             // 
-            this.WelcomLabel.AutoSize = true;
-            this.WelcomLabel.Font = new System.Drawing.Font("Nirmala UI", 8.25F, System.Drawing.FontStyle.Bold);
-            this.WelcomLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
-            this.WelcomLabel.Location = new System.Drawing.Point(66, 163);
-            this.WelcomLabel.Name = "WelcomLabel";
-            this.WelcomLabel.Size = new System.Drawing.Size(168, 19);
-            this.WelcomLabel.TabIndex = 1;
-            this.WelcomLabel.Text = "WELCOME BACK USER 1";
-            // 
-            // guna2Separator1
-            // 
-            this.guna2Separator1.Location = new System.Drawing.Point(51, 185);
-            this.guna2Separator1.Name = "guna2Separator1";
-            this.guna2Separator1.Size = new System.Drawing.Size(200, 10);
-            this.guna2Separator1.TabIndex = 4;
-            // 
-            // guna2Separator2
-            // 
-            this.guna2Separator2.Location = new System.Drawing.Point(51, 150);
-            this.guna2Separator2.Name = "guna2Separator2";
-            this.guna2Separator2.Size = new System.Drawing.Size(200, 10);
-            this.guna2Separator2.TabIndex = 5;
+            this.LogoutButton.Animated = true;
+            this.LogoutButton.AutoRoundedCorners = true;
+            this.LogoutButton.BackColor = System.Drawing.Color.Transparent;
+            this.LogoutButton.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.LogoutButton.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.LogoutButton.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.LogoutButton.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.LogoutButton.Font = new System.Drawing.Font("Nirmala UI", 10.2F, System.Drawing.FontStyle.Bold);
+            this.LogoutButton.ForeColor = System.Drawing.Color.White;
+            this.LogoutButton.Image = global::Phumla_Kamnandi_GRP_12.Properties.Resources.logout_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24;
+            this.LogoutButton.Location = new System.Drawing.Point(54, 625);
+            this.LogoutButton.Name = "LogoutButton";
+            this.LogoutButton.Size = new System.Drawing.Size(180, 45);
+            this.LogoutButton.TabIndex = 2;
+            this.LogoutButton.Text = "Logout";
+            this.LogoutButton.UseTransparentBackground = true;
+            this.LogoutButton.Click += new System.EventHandler(this.LogoutButton_Click);
             // 
             // SettingsButton
             // 
@@ -230,36 +261,6 @@
             this.HomeButton.Click += new System.EventHandler(this.HomeButton_Click);
             this.HomeButton.Leave += new System.EventHandler(this.HomeButton_Leave);
             // 
-            // CompanyLogo
-            // 
-            this.CompanyLogo.Dock = System.Windows.Forms.DockStyle.Top;
-            this.CompanyLogo.Image = global::Phumla_Kamnandi_GRP_12.Properties.Resources.PHUMLA_KAMNANDI_Photoroom;
-            this.CompanyLogo.Location = new System.Drawing.Point(0, 0);
-            this.CompanyLogo.Name = "CompanyLogo";
-            this.CompanyLogo.Size = new System.Drawing.Size(297, 198);
-            this.CompanyLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.CompanyLogo.TabIndex = 0;
-            this.CompanyLogo.TabStop = false;
-            // 
-            // LogoutButton
-            // 
-            this.LogoutButton.Animated = true;
-            this.LogoutButton.AutoRoundedCorners = true;
-            this.LogoutButton.BackColor = System.Drawing.Color.Transparent;
-            this.LogoutButton.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.LogoutButton.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.LogoutButton.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.LogoutButton.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.LogoutButton.Font = new System.Drawing.Font("Nirmala UI", 10.2F, System.Drawing.FontStyle.Bold);
-            this.LogoutButton.ForeColor = System.Drawing.Color.White;
-            this.LogoutButton.Image = global::Phumla_Kamnandi_GRP_12.Properties.Resources.logout_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24;
-            this.LogoutButton.Location = new System.Drawing.Point(54, 625);
-            this.LogoutButton.Name = "LogoutButton";
-            this.LogoutButton.Size = new System.Drawing.Size(180, 45);
-            this.LogoutButton.TabIndex = 2;
-            this.LogoutButton.Text = "Logout";
-            this.LogoutButton.UseTransparentBackground = true;
-            // 
             // Dashbaord
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -275,8 +276,8 @@
             this.Text = "-";
             this.SidePanel2.ResumeLayout(false);
             this.SidePanel2.PerformLayout();
-            this.SidePanelDSHB.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.CompanyLogo)).EndInit();
+            this.SidePanelDSHB.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
