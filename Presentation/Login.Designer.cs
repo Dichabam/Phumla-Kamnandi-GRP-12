@@ -109,7 +109,7 @@
             this.SubmitButton.Size = new System.Drawing.Size(180, 45);
             this.SubmitButton.TabIndex = 3;
             this.SubmitButton.Text = "SUBMIT";
-            this.SubmitButton.Click += new System.EventHandler(this.guna2Button1_Click);
+            this.SubmitButton.Click += new System.EventHandler(this.guna2Button1_ClickAsync);
             // 
             // forgotpasswordLink
             // 

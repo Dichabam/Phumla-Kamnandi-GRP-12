@@ -34,19 +34,20 @@
             this.guna2Separator2 = new Guna.UI2.WinForms.Guna2Separator();
             this.guna2Separator1 = new Guna.UI2.WinForms.Guna2Separator();
             this.WelcomLabel = new System.Windows.Forms.Label();
-            this.CompanyLogo = new System.Windows.Forms.PictureBox();
             this.SidePanelDSHB = new System.Windows.Forms.Panel();
+            this.CloseButtonDSHB = new Guna.UI2.WinForms.Guna2Button();
             this.LogoutButton = new Guna.UI2.WinForms.Guna2Button();
             this.SettingsButton = new System.Windows.Forms.Button();
+            this.EmployeesButton = new System.Windows.Forms.Button();
             this.RoomsButton = new System.Windows.Forms.Button();
             this.ReportsButton = new System.Windows.Forms.Button();
             this.GuestButton = new System.Windows.Forms.Button();
             this.BookingButton = new System.Windows.Forms.Button();
             this.HomeButton = new System.Windows.Forms.Button();
-            this.CloseButtonDSHB = new Guna.UI2.WinForms.Guna2Button();
+            this.CompanyLogo = new System.Windows.Forms.PictureBox();
             this.SidePanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.CompanyLogo)).BeginInit();
             this.SidePanelDSHB.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CompanyLogo)).BeginInit();
             this.SuspendLayout();
             // 
             // PnlNav
@@ -97,23 +98,13 @@
             this.WelcomLabel.TabIndex = 1;
             this.WelcomLabel.Text = "WELCOME BACK USER 1";
             // 
-            // CompanyLogo
-            // 
-            this.CompanyLogo.Dock = System.Windows.Forms.DockStyle.Top;
-            this.CompanyLogo.Image = global::Phumla_Kamnandi_GRP_12.Properties.Resources.PHUMLA_KAMNANDI_Photoroom;
-            this.CompanyLogo.Location = new System.Drawing.Point(0, 0);
-            this.CompanyLogo.Name = "CompanyLogo";
-            this.CompanyLogo.Size = new System.Drawing.Size(297, 198);
-            this.CompanyLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.CompanyLogo.TabIndex = 0;
-            this.CompanyLogo.TabStop = false;
-            // 
             // SidePanelDSHB
             // 
             this.SidePanelDSHB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
             this.SidePanelDSHB.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.SidePanelDSHB.Controls.Add(this.LogoutButton);
             this.SidePanelDSHB.Controls.Add(this.SettingsButton);
+            this.SidePanelDSHB.Controls.Add(this.EmployeesButton);
             this.SidePanelDSHB.Controls.Add(this.RoomsButton);
             this.SidePanelDSHB.Controls.Add(this.ReportsButton);
             this.SidePanelDSHB.Controls.Add(this.GuestButton);
@@ -125,6 +116,27 @@
             this.SidePanelDSHB.Name = "SidePanelDSHB";
             this.SidePanelDSHB.Size = new System.Drawing.Size(297, 777);
             this.SidePanelDSHB.TabIndex = 0;
+            // 
+            // CloseButtonDSHB
+            // 
+            this.CloseButtonDSHB.Animated = true;
+            this.CloseButtonDSHB.AutoRoundedCorners = true;
+            this.CloseButtonDSHB.BackColor = System.Drawing.Color.Transparent;
+            this.CloseButtonDSHB.BorderColor = System.Drawing.Color.Transparent;
+            this.CloseButtonDSHB.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.CloseButtonDSHB.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.CloseButtonDSHB.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.CloseButtonDSHB.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.CloseButtonDSHB.FillColor = System.Drawing.Color.Transparent;
+            this.CloseButtonDSHB.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.CloseButtonDSHB.ForeColor = System.Drawing.Color.White;
+            this.CloseButtonDSHB.Image = global::Phumla_Kamnandi_GRP_12.Properties.Resources.close_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24;
+            this.CloseButtonDSHB.Location = new System.Drawing.Point(1194, 0);
+            this.CloseButtonDSHB.Name = "CloseButtonDSHB";
+            this.CloseButtonDSHB.Size = new System.Drawing.Size(57, 30);
+            this.CloseButtonDSHB.TabIndex = 12;
+            this.CloseButtonDSHB.UseTransparentBackground = true;
+            this.CloseButtonDSHB.Click += new System.EventHandler(this.CloseButtonDSHB_Click);
             // 
             // LogoutButton
             // 
@@ -138,7 +150,7 @@
             this.LogoutButton.Font = new System.Drawing.Font("Nirmala UI", 10.2F, System.Drawing.FontStyle.Bold);
             this.LogoutButton.ForeColor = System.Drawing.Color.White;
             this.LogoutButton.Image = global::Phumla_Kamnandi_GRP_12.Properties.Resources.logout_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24;
-            this.LogoutButton.Location = new System.Drawing.Point(54, 625);
+            this.LogoutButton.Location = new System.Drawing.Point(54, 646);
             this.LogoutButton.Name = "LogoutButton";
             this.LogoutButton.Size = new System.Drawing.Size(180, 45);
             this.LogoutButton.TabIndex = 2;
@@ -164,6 +176,25 @@
             this.SettingsButton.UseVisualStyleBackColor = false;
             this.SettingsButton.Click += new System.EventHandler(this.SettingsButton_Click);
             this.SettingsButton.Leave += new System.EventHandler(this.SettingsButton_Leave);
+            // 
+            // EmployeesButton
+            // 
+            this.EmployeesButton.BackColor = System.Drawing.Color.Transparent;
+            this.EmployeesButton.Dock = System.Windows.Forms.DockStyle.Top;
+            this.EmployeesButton.FlatAppearance.BorderSize = 0;
+            this.EmployeesButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.EmployeesButton.Font = new System.Drawing.Font("Nirmala UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EmployeesButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
+            this.EmployeesButton.Image = global::Phumla_Kamnandi_GRP_12.Properties.Resources.groups_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24;
+            this.EmployeesButton.Location = new System.Drawing.Point(0, 536);
+            this.EmployeesButton.Name = "EmployeesButton";
+            this.EmployeesButton.Size = new System.Drawing.Size(297, 67);
+            this.EmployeesButton.TabIndex = 2;
+            this.EmployeesButton.Text = "Employees";
+            this.EmployeesButton.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.EmployeesButton.UseVisualStyleBackColor = false;
+            this.EmployeesButton.Click += new System.EventHandler(this.RoomsButton_Click);
+            this.EmployeesButton.Leave += new System.EventHandler(this.RoomsButton_Leave);
             // 
             // RoomsButton
             // 
@@ -262,26 +293,16 @@
             this.HomeButton.Click += new System.EventHandler(this.HomeButton_Click);
             this.HomeButton.Leave += new System.EventHandler(this.HomeButton_Leave);
             // 
-            // CloseButtonDSHB
+            // CompanyLogo
             // 
-            this.CloseButtonDSHB.Animated = true;
-            this.CloseButtonDSHB.AutoRoundedCorners = true;
-            this.CloseButtonDSHB.BackColor = System.Drawing.Color.Transparent;
-            this.CloseButtonDSHB.BorderColor = System.Drawing.Color.Transparent;
-            this.CloseButtonDSHB.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.CloseButtonDSHB.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.CloseButtonDSHB.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.CloseButtonDSHB.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.CloseButtonDSHB.FillColor = System.Drawing.Color.Transparent;
-            this.CloseButtonDSHB.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.CloseButtonDSHB.ForeColor = System.Drawing.Color.White;
-            this.CloseButtonDSHB.Image = global::Phumla_Kamnandi_GRP_12.Properties.Resources.close_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24;
-            this.CloseButtonDSHB.Location = new System.Drawing.Point(1194, 0);
-            this.CloseButtonDSHB.Name = "CloseButtonDSHB";
-            this.CloseButtonDSHB.Size = new System.Drawing.Size(57, 30);
-            this.CloseButtonDSHB.TabIndex = 12;
-            this.CloseButtonDSHB.UseTransparentBackground = true;
-            this.CloseButtonDSHB.Click += new System.EventHandler(this.CloseButtonDSHB_Click);
+            this.CompanyLogo.Dock = System.Windows.Forms.DockStyle.Top;
+            this.CompanyLogo.Image = global::Phumla_Kamnandi_GRP_12.Properties.Resources.PHUMLA_KAMNANDI_Photoroom;
+            this.CompanyLogo.Location = new System.Drawing.Point(0, 0);
+            this.CompanyLogo.Name = "CompanyLogo";
+            this.CompanyLogo.Size = new System.Drawing.Size(297, 198);
+            this.CompanyLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.CompanyLogo.TabIndex = 0;
+            this.CompanyLogo.TabStop = false;
             // 
             // Dashbaord
             // 
@@ -299,8 +320,8 @@
             this.Text = "-";
             this.SidePanel2.ResumeLayout(false);
             this.SidePanel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.CompanyLogo)).EndInit();
             this.SidePanelDSHB.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.CompanyLogo)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -321,5 +342,6 @@
         private Guna.UI2.WinForms.Guna2Separator guna2Separator1;
         private Guna.UI2.WinForms.Guna2Button LogoutButton;
         private Guna.UI2.WinForms.Guna2Button CloseButtonDSHB;
+        private System.Windows.Forms.Button EmployeesButton;
     }
 }
