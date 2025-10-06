@@ -34,9 +34,10 @@
             this.SubmitButton = new Guna.UI2.WinForms.Guna2Button();
             this.forgotpasswordLink = new System.Windows.Forms.LinkLabel();
             this.SidePanel = new Guna.UI2.WinForms.Guna2GradientPanel();
-            this.logo = new System.Windows.Forms.PictureBox();
             this.LoginLabel = new System.Windows.Forms.Label();
             this.ErrorLoginLabel = new System.Windows.Forms.Label();
+            this.CreateAccountLink = new System.Windows.Forms.LinkLabel();
+            this.logo = new System.Windows.Forms.PictureBox();
             this.SidePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.logo)).BeginInit();
             this.SuspendLayout();
@@ -102,7 +103,7 @@
             this.SubmitButton.FillColor = System.Drawing.Color.Transparent;
             this.SubmitButton.Font = new System.Drawing.Font("Century Gothic", 9F);
             this.SubmitButton.ForeColor = System.Drawing.Color.White;
-            this.SubmitButton.Location = new System.Drawing.Point(496, 346);
+            this.SubmitButton.Location = new System.Drawing.Point(504, 325);
             this.SubmitButton.Name = "SubmitButton";
             this.SubmitButton.Size = new System.Drawing.Size(180, 45);
             this.SubmitButton.TabIndex = 3;
@@ -134,18 +135,6 @@
             this.SidePanel.Size = new System.Drawing.Size(393, 450);
             this.SidePanel.TabIndex = 6;
             // 
-            // logo
-            // 
-            this.logo.BackColor = System.Drawing.Color.Transparent;
-            this.logo.Dock = System.Windows.Forms.DockStyle.Left;
-            this.logo.Image = global::Phumla_Kamnandi_GRP_12.Properties.Resources.PHUMLA_KAMNANDI_Photoroom;
-            this.logo.Location = new System.Drawing.Point(0, 0);
-            this.logo.Name = "logo";
-            this.logo.Size = new System.Drawing.Size(411, 450);
-            this.logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.logo.TabIndex = 0;
-            this.logo.TabStop = false;
-            // 
             // LoginLabel
             // 
             this.LoginLabel.AutoSize = true;
@@ -170,6 +159,31 @@
             this.ErrorLoginLabel.Text = "Email/Password is incorrect. Try again";
             this.ErrorLoginLabel.Click += new System.EventHandler(this.ErrorLoginLabel_Click);
             // 
+            // CreateAccountLink
+            // 
+            this.CreateAccountLink.AutoSize = true;
+            this.CreateAccountLink.Font = new System.Drawing.Font("Century Gothic", 7.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CreateAccountLink.LinkColor = System.Drawing.Color.SteelBlue;
+            this.CreateAccountLink.Location = new System.Drawing.Point(538, 392);
+            this.CreateAccountLink.Name = "CreateAccountLink";
+            this.CreateAccountLink.Size = new System.Drawing.Size(109, 16);
+            this.CreateAccountLink.TabIndex = 5;
+            this.CreateAccountLink.TabStop = true;
+            this.CreateAccountLink.Text = "Create Account";
+            this.CreateAccountLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.forgotpasswordLink_LinkClicked);
+            // 
+            // logo
+            // 
+            this.logo.BackColor = System.Drawing.Color.Transparent;
+            this.logo.Dock = System.Windows.Forms.DockStyle.Left;
+            this.logo.Image = global::Phumla_Kamnandi_GRP_12.Properties.Resources.PHUMLA_KAMNANDI_Photoroom;
+            this.logo.Location = new System.Drawing.Point(0, 0);
+            this.logo.Name = "logo";
+            this.logo.Size = new System.Drawing.Size(411, 450);
+            this.logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.logo.TabIndex = 0;
+            this.logo.TabStop = false;
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -180,6 +194,7 @@
             this.Controls.Add(this.ErrorLoginLabel);
             this.Controls.Add(this.LoginLabel);
             this.Controls.Add(this.SidePanel);
+            this.Controls.Add(this.CreateAccountLink);
             this.Controls.Add(this.forgotpasswordLink);
             this.Controls.Add(this.SubmitButton);
             this.Controls.Add(this.PasswordTextbox);
@@ -205,5 +220,6 @@
         private Guna.UI2.WinForms.Guna2GradientPanel SidePanel;
         private System.Windows.Forms.Label LoginLabel;
         private System.Windows.Forms.Label ErrorLoginLabel;
+        private System.Windows.Forms.LinkLabel CreateAccountLink;
     }
 }

@@ -85,19 +85,37 @@
     <Compile Include="Presentation\Dashbaord.Designer.cs">
       <DependentUpon>Dashbaord.cs</DependentUpon>
     </Compile>
+    <Compile Include="Presentation\ForgotPassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation\ForgotPassword.Designer.cs">
+      <DependentUpon>ForgotPassword.cs</DependentUpon>
+    </Compile>
     <Compile Include="Presentation\Login.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Presentation\Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
+    <Compile Include="Presentation\NewAccount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation\NewAccount.Designer.cs">
+      <DependentUpon>NewAccount.cs</DependentUpon>
+    </Compile>
     <Compile Include="Presentation\Test3.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Presentation\Dashbaord.resx">
       <DependentUpon>Dashbaord.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Presentation\ForgotPassword.resx">
+      <DependentUpon>ForgotPassword.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Presentation\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentation\NewAccount.resx">
+      <DependentUpon>NewAccount.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -149,6 +167,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resourses\PHUMLA KAMNANDI-Photoroom.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resourses\Icons\logout_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resourses\9385195.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resourses\skyscraper-9226515.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
