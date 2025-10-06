@@ -51,5 +51,15 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
         {
 
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ErrorLoginLabel_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -38,7 +38,9 @@
             this.RoomsButton = new System.Windows.Forms.Button();
             this.SettingsButton = new System.Windows.Forms.Button();
             this.SidePanel = new System.Windows.Forms.Panel();
-            this.employeeLabel = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.WelcomLabel = new System.Windows.Forms.Label();
+            this.guna2Separator1 = new Guna.UI2.WinForms.Guna2Separator();
+            this.guna2Separator2 = new Guna.UI2.WinForms.Guna2Separator();
             this.SidePanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CompanyLogo)).BeginInit();
             this.SidePanel.SuspendLayout();
@@ -47,7 +49,7 @@
             // PnlNav
             // 
             this.PnlNav.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
-            this.PnlNav.Location = new System.Drawing.Point(0, 193);
+            this.PnlNav.Location = new System.Drawing.Point(0, 570);
             this.PnlNav.Name = "PnlNav";
             this.PnlNav.Size = new System.Drawing.Size(3, 100);
             this.PnlNav.TabIndex = 1;
@@ -57,7 +59,9 @@
             // 
             this.SidePanel2.BackColor = System.Drawing.Color.Transparent;
             this.SidePanel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.SidePanel2.Controls.Add(this.employeeLabel);
+            this.SidePanel2.Controls.Add(this.guna2Separator2);
+            this.SidePanel2.Controls.Add(this.guna2Separator1);
+            this.SidePanel2.Controls.Add(this.WelcomLabel);
             this.SidePanel2.Controls.Add(this.CompanyLogo);
             this.SidePanel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.SidePanel2.Location = new System.Drawing.Point(0, 0);
@@ -67,10 +71,11 @@
             // 
             // CompanyLogo
             // 
+            this.CompanyLogo.Dock = System.Windows.Forms.DockStyle.Top;
             this.CompanyLogo.Image = global::Phumla_Kamnandi_GRP_12.Properties.Resources.PHUMLA_KAMNANDI_Photoroom;
-            this.CompanyLogo.Location = new System.Drawing.Point(3, 0);
+            this.CompanyLogo.Location = new System.Drawing.Point(0, 0);
             this.CompanyLogo.Name = "CompanyLogo";
-            this.CompanyLogo.Size = new System.Drawing.Size(297, 201);
+            this.CompanyLogo.Size = new System.Drawing.Size(297, 198);
             this.CompanyLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.CompanyLogo.TabIndex = 0;
             this.CompanyLogo.TabStop = false;
@@ -206,17 +211,30 @@
             this.SidePanel.Size = new System.Drawing.Size(297, 777);
             this.SidePanel.TabIndex = 0;
             // 
-            // employeeLabel
+            // WelcomLabel
             // 
-            this.employeeLabel.BackColor = System.Drawing.Color.Transparent;
-            this.employeeLabel.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.employeeLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
-            this.employeeLabel.Location = new System.Drawing.Point(79, 158);
-            this.employeeLabel.Name = "employeeLabel";
-            this.employeeLabel.Size = new System.Drawing.Size(143, 21);
-            this.employeeLabel.TabIndex = 1;
-            this.employeeLabel.Text = "WELCOME USER 1";
-            this.employeeLabel.Click += new System.EventHandler(this.guna2HtmlLabel2_Click);
+            this.WelcomLabel.AutoSize = true;
+            this.WelcomLabel.Font = new System.Drawing.Font("Nirmala UI", 8.25F, System.Drawing.FontStyle.Bold);
+            this.WelcomLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
+            this.WelcomLabel.Location = new System.Drawing.Point(66, 163);
+            this.WelcomLabel.Name = "WelcomLabel";
+            this.WelcomLabel.Size = new System.Drawing.Size(168, 19);
+            this.WelcomLabel.TabIndex = 1;
+            this.WelcomLabel.Text = "WELCOME BACK USER 1";
+            // 
+            // guna2Separator1
+            // 
+            this.guna2Separator1.Location = new System.Drawing.Point(51, 185);
+            this.guna2Separator1.Name = "guna2Separator1";
+            this.guna2Separator1.Size = new System.Drawing.Size(200, 10);
+            this.guna2Separator1.TabIndex = 4;
+            // 
+            // guna2Separator2
+            // 
+            this.guna2Separator2.Location = new System.Drawing.Point(51, 150);
+            this.guna2Separator2.Name = "guna2Separator2";
+            this.guna2Separator2.Size = new System.Drawing.Size(200, 10);
+            this.guna2Separator2.TabIndex = 5;
             // 
             // Dashbaord
             // 
@@ -241,7 +259,6 @@
         #endregion
         private System.Windows.Forms.Panel PnlNav;
         private System.Windows.Forms.Panel SidePanel2;
-        private Guna.UI2.WinForms.Guna2HtmlLabel employeeLabel;
         private System.Windows.Forms.PictureBox CompanyLogo;
         private System.Windows.Forms.Button HomeButton;
         private System.Windows.Forms.Button BookingButton;
@@ -250,5 +267,8 @@
         private System.Windows.Forms.Button RoomsButton;
         private System.Windows.Forms.Button SettingsButton;
         private System.Windows.Forms.Panel SidePanel;
+        private System.Windows.Forms.Label WelcomLabel;
+        private Guna.UI2.WinForms.Guna2Separator guna2Separator2;
+        private Guna.UI2.WinForms.Guna2Separator guna2Separator1;
     }
 }
