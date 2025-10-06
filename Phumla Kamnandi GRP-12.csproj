@@ -33,8 +33,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Guna.UI2, Version=2.0.4.7, Culture=neutral, PublicKeyToken=8b9d14aa5142e261, processorArchitecture=MSIL">
+      <HintPath>packages\Guna.UI2.WinForms.2.0.4.7\lib\net48\Guna.UI2.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -73,16 +79,43 @@
     <Compile Include="Business\MockBookingRepository.cs" />
     <Compile Include="Business\ValueObjects\PricingInfo.cs" />
     <Compile Include="Database\Test2.cs" />
-    <Compile Include="Presentation\EmployeeLogin.cs">
+    <Compile Include="Presentation\Dashbaord.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Presentation\EmployeeLogin.Designer.cs">
-      <DependentUpon>EmployeeLogin.cs</DependentUpon>
+    <Compile Include="Presentation\Dashbaord.Designer.cs">
+      <DependentUpon>Dashbaord.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\ForgotPassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation\ForgotPassword.Designer.cs">
+      <DependentUpon>ForgotPassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation\Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\NewAccount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation\NewAccount.Designer.cs">
+      <DependentUpon>NewAccount.cs</DependentUpon>
     </Compile>
     <Compile Include="Presentation\Test3.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Presentation\EmployeeLogin.resx">
-      <DependentUpon>EmployeeLogin.cs</DependentUpon>
+    <EmbeddedResource Include="Presentation\Dashbaord.resx">
+      <DependentUpon>Dashbaord.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentation\ForgotPassword.resx">
+      <DependentUpon>ForgotPassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentation\Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentation\NewAccount.resx">
+      <DependentUpon>NewAccount.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -94,6 +127,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -110,6 +144,48 @@
   <ItemGroup>
     <Folder Include="Resources\" />
     <Folder Include="valueobjects\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resourses\ok-Photoroom.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resourses\Icons\home_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resourses\Icons\event_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resourses\Icons\settings_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resourses\Icons\person_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resourses\Icons\bar_chart_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resourses\milad-fakurian-iFu2HILEng8-unsplash.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resourses\PHUMLA KAMNANDI-Photoroom.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resourses\Icons\logout_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resourses\9385195.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resourses\skyscraper-9226515.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resourses\Icons\close_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resourses\Icons\expand_content_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resourses\Icons\minimize_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
