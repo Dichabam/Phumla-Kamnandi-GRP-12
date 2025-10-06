@@ -17,6 +17,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             InitializeComponent();
             this.KeyPreview = true;
             this.KeyDown += ForgotPassword_KeyDown;
+            ErrorEmailLabel.Visible = false;
         }
 
         private void LoginLabel_Click(object sender, EventArgs e)
