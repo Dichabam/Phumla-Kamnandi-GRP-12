@@ -46,5 +46,10 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
         {
 
         }
+
+        private void forgotpasswordLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+
+        }
     }
 }

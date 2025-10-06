@@ -147,5 +147,8 @@
   <ItemGroup>
     <None Include="Resourses\milad-fakurian-iFu2HILEng8-unsplash.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resourses\PHUMLA KAMNANDI-Photoroom.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
