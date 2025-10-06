@@ -73,8 +73,17 @@
     <Compile Include="Business\MockBookingRepository.cs" />
     <Compile Include="Business\ValueObjects\PricingInfo.cs" />
     <Compile Include="Database\Test2.cs" />
+    <Compile Include="Presentation\EmployeeLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation\EmployeeLogin.Designer.cs">
+      <DependentUpon>EmployeeLogin.cs</DependentUpon>
+    </Compile>
     <Compile Include="Presentation\Test3.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Presentation\EmployeeLogin.resx">
+      <DependentUpon>EmployeeLogin.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -83,6 +92,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -98,6 +108,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Resources\" />
     <Folder Include="valueobjects\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

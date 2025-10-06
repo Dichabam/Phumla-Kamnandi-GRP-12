@@ -1,0 +1,71 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace Phumla_Kamnandi_GRP_12.Presentation
+{
+    public partial class EmployeeLogin : Form
+    {
+        public EmployeeLogin()
+        {
+            InitializeComponent();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void PasswordtextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void NameLabel_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void EmpIDLabel_Click(object sender, EventArgs e)
+        {
+            int empID = int.Parse(EmployeetextBox.Text);
+        }
+
+        private void submitButton_Click(object sender, EventArgs e)
+        {
+            String empIDInput = EmployeetextBox.Text;
+            string passwordInput = PasswordtextBox.Text;
+            string nameInput = NametextBox.Text;
+            String confirm ="";
+           
+
+            if (!(empIDInput.Equals(confirm))&& !( passwordInput.Equals(confirm)) &&  ! (nameInput.Equals(confirm)))
+            {
+                // Successful login
+                MessageBox.Show("Login successful!");
+                
+            }
+            else
+            {
+                // Failed login
+                MessageBox.Show("Invalid Employee ID, Name, or Password. Please try again.");
+            }
+        }
+    }
+}
