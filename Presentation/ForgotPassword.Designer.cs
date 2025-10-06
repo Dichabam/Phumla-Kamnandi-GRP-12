@@ -33,8 +33,9 @@
             this.SubmitButtonFP = new Guna.UI2.WinForms.Guna2Button();
             this.EmailTextboxFP = new Guna.UI2.WinForms.Guna2TextBox();
             this.ForgotLabel = new System.Windows.Forms.Label();
-            this.logo = new System.Windows.Forms.PictureBox();
             this.CloseButtonFP = new Guna.UI2.WinForms.Guna2Button();
+            this.logo = new System.Windows.Forms.PictureBox();
+            this.ErrorEmailLabel = new System.Windows.Forms.Label();
             this.SidePanelFP.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.logo)).BeginInit();
             this.SuspendLayout();
@@ -42,6 +43,7 @@
             // SidePanelFP
             // 
             this.SidePanelFP.BackColor = System.Drawing.Color.Transparent;
+            this.SidePanelFP.Controls.Add(this.ErrorEmailLabel);
             this.SidePanelFP.Controls.Add(this.CloseButtonFP);
             this.SidePanelFP.Controls.Add(this.SubmitButtonFP);
             this.SidePanelFP.Controls.Add(this.EmailTextboxFP);
@@ -111,18 +113,6 @@
             this.ForgotLabel.Text = "FORGOT PASSWORD?";
             this.ForgotLabel.Click += new System.EventHandler(this.LoginLabel_Click);
             // 
-            // logo
-            // 
-            this.logo.BackColor = System.Drawing.Color.Transparent;
-            this.logo.Dock = System.Windows.Forms.DockStyle.Left;
-            this.logo.Image = global::Phumla_Kamnandi_GRP_12.Properties.Resources.PHUMLA_KAMNANDI_Photoroom;
-            this.logo.Location = new System.Drawing.Point(0, 0);
-            this.logo.Name = "logo";
-            this.logo.Size = new System.Drawing.Size(332, 450);
-            this.logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.logo.TabIndex = 0;
-            this.logo.TabStop = false;
-            // 
             // CloseButtonFP
             // 
             this.CloseButtonFP.Animated = true;
@@ -141,6 +131,30 @@
             this.CloseButtonFP.Size = new System.Drawing.Size(57, 30);
             this.CloseButtonFP.TabIndex = 11;
             this.CloseButtonFP.UseTransparentBackground = true;
+            this.CloseButtonFP.Click += new System.EventHandler(this.CloseButtonFP_Click);
+            // 
+            // logo
+            // 
+            this.logo.BackColor = System.Drawing.Color.Transparent;
+            this.logo.Dock = System.Windows.Forms.DockStyle.Left;
+            this.logo.Image = global::Phumla_Kamnandi_GRP_12.Properties.Resources.PHUMLA_KAMNANDI_Photoroom;
+            this.logo.Location = new System.Drawing.Point(0, 0);
+            this.logo.Name = "logo";
+            this.logo.Size = new System.Drawing.Size(332, 450);
+            this.logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.logo.TabIndex = 0;
+            this.logo.TabStop = false;
+            // 
+            // ErrorEmailLabel
+            // 
+            this.ErrorEmailLabel.AutoSize = true;
+            this.ErrorEmailLabel.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Bold);
+            this.ErrorEmailLabel.ForeColor = System.Drawing.Color.Red;
+            this.ErrorEmailLabel.Location = new System.Drawing.Point(454, 132);
+            this.ErrorEmailLabel.Name = "ErrorEmailLabel";
+            this.ErrorEmailLabel.Size = new System.Drawing.Size(135, 16);
+            this.ErrorEmailLabel.TabIndex = 12;
+            this.ErrorEmailLabel.Text = "Email does not exist";
             // 
             // ForgotPassword
             // 
@@ -168,5 +182,6 @@
         private Guna.UI2.WinForms.Guna2TextBox EmailTextboxFP;
         private Guna.UI2.WinForms.Guna2Button SubmitButtonFP;
         private Guna.UI2.WinForms.Guna2Button CloseButtonFP;
+        private System.Windows.Forms.Label ErrorEmailLabel;
     }
 }

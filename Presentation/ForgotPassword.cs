@@ -82,5 +82,12 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                 return false;
             }
         }
+
+        private void CloseButtonFP_Click(object sender, EventArgs e)
+        {
+            Login loginForm = new Login();
+            loginForm.Show();
+            this.Hide();
+        }
     }
 }

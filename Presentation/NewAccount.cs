@@ -76,5 +76,27 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
         {
 
         }
+
+        private void CloseButtonCAEMP_Click(object sender, EventArgs e)
+        {
+            Login loginForm = new Login();
+            loginForm.Show();
+            this.Hide();
+        }
+
+        private void CellLabelCAEMP_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void EmailLabelCAEMP_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void NextButtonCAEMP_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
