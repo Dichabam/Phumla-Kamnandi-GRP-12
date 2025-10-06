@@ -342,10 +342,10 @@
             this.exitButton.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.exitButton.ForeColor = System.Drawing.Color.DarkGray;
             this.exitButton.Image = global::Phumla_Kamnandi_GRP_12.Properties.Resources.close_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24;
-            this.exitButton.Location = new System.Drawing.Point(1194, 17);
+            this.exitButton.Location = new System.Drawing.Point(1164, 12);
             this.exitButton.Name = "exitButton";
             this.exitButton.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            this.exitButton.Size = new System.Drawing.Size(45, 40);
+            this.exitButton.Size = new System.Drawing.Size(75, 49);
             this.exitButton.TabIndex = 15;
             this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
             // 

@@ -36,7 +36,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             PnlNav.Top = HomeButton.Top;
             PnlNav.Left = HomeButton.Left;
             HomeButton.BackColor = Color.FromArgb(46, 51, 73);
-            lblTitle.Text = "Home";
+            lblTitle.Text = "HOME";
             this.PnlFormLoader.Controls.Clear();
             FrmHome frmHome = new FrmHome() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
             frmHome.FormBorderStyle = FormBorderStyle.None;

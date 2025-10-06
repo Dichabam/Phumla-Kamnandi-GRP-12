@@ -15,24 +15,24 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            Console.WriteLine("Phumla Kamnandi - Group 12");
-            Console.WriteLine("Form Display Test\n");
+            //Console.WriteLine("Phumla Kamnandi - Group 12");
+            //Console.WriteLine("Form Display Test\n");
 
-            // Show Login form first
-            Console.WriteLine("Opening Login form...");
-            using (Login loginForm = new Login())
-            {
-                Application.Run(loginForm);
-            }
-
-            //// After Login form closes, show Dashboard
-            //Console.WriteLine("Opening Dashboard form...");
-            //using (Dashbaord dashboardForm = new Dashbaord())
+            //// Show Login form first
+            //Console.WriteLine("Opening Login form...");
+            //using (Login loginForm = new Login())
             //{
-            //    Application.Run(dashboardForm);
+            //    Application.Run(loginForm);
             //}
 
-            //Console.WriteLine("All forms closed. Program ending.");
+            // After Login form closes, show Dashboard
+            Console.WriteLine("Opening Dashboard form...");
+            using (Dashbaord dashboardForm = new Dashbaord())
+            {
+                Application.Run(dashboardForm);
+            }
+
+            Console.WriteLine("All forms closed. Program ending.");
         }
     }
 }
