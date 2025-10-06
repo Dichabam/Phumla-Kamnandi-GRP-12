@@ -36,6 +36,12 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             PnlNav.Top = HomeButton.Top;
             PnlNav.Left = HomeButton.Left;
             HomeButton.BackColor = Color.FromArgb(46, 51, 73);
+            lblTitle.Text = "Home";
+            this.PnlFormLoader.Controls.Clear();
+            FrmHome frmHome = new FrmHome() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
+            frmHome.FormBorderStyle = FormBorderStyle.None;
+            this.PnlFormLoader.Controls.Add(frmHome);
+            frmHome.Show();
         }
 
         private void PnlNav_Paint(object sender, PaintEventArgs e)
@@ -49,6 +55,13 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             PnlNav.Top = HomeButton.Top;
             PnlNav.Left = HomeButton.Left;
             HomeButton.BackColor = Color.FromArgb(46, 51, 73);
+
+            lblTitle.Text = "HOME";
+            this.PnlFormLoader.Controls.Clear();
+            FrmHome frmHome = new FrmHome() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
+            frmHome.FormBorderStyle = FormBorderStyle.None;
+            this.PnlFormLoader.Controls.Add(frmHome);
+            frmHome.Show();
         }
 
         private void BookingButton_Click(object sender, EventArgs e)
@@ -57,6 +70,13 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             PnlNav.Top = BookingButton.Top;
   
             BookingButton.BackColor = Color.FromArgb(46, 51, 73);
+
+            lblTitle.Text = "BOOKINGS";
+            this.PnlFormLoader.Controls.Clear();
+            FrmBookings frmBook = new FrmBookings() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
+            frmBook.FormBorderStyle = FormBorderStyle.None;
+            this.PnlFormLoader.Controls.Add(frmBook);
+            frmBook.Show();
         }
 
         private void GuestButton_Click(object sender, EventArgs e)
@@ -65,6 +85,13 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             PnlNav.Top = GuestButton.Top;
 
             GuestButton.BackColor = Color.FromArgb(46, 51, 73);
+
+            lblTitle.Text = "GUESTS";
+            this.PnlFormLoader.Controls.Clear();
+            FrmGuests frmGuest = new FrmGuests() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
+            frmGuest.FormBorderStyle = FormBorderStyle.None;
+            this.PnlFormLoader.Controls.Add(frmGuest);
+            frmGuest.Show();
         }
 
         private void ReportsButton_Click(object sender, EventArgs e)
@@ -73,6 +100,13 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             PnlNav.Top = ReportsButton.Top;
 
             ReportsButton.BackColor = Color.FromArgb(46, 51, 73);
+
+            lblTitle.Text = "REPORTS";
+            this.PnlFormLoader.Controls.Clear();
+            FrmReports frmReport = new FrmReports() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
+            frmReport.FormBorderStyle = FormBorderStyle.None;
+            this.PnlFormLoader.Controls.Add(frmReport);
+            frmReport.Show();
         }
 
         private void RoomsButton_Click(object sender, EventArgs e)
@@ -81,6 +115,13 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             PnlNav.Top = RoomsButton.Top;
 
             RoomsButton.BackColor = Color.FromArgb(46, 51, 73);
+
+            lblTitle.Text = "ROOMS";
+            this.PnlFormLoader.Controls.Clear();
+            FrmRooms frmRoom = new FrmRooms() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
+            frmRoom.FormBorderStyle = FormBorderStyle.None;
+            this.PnlFormLoader.Controls.Add(frmRoom);
+            frmRoom.Show();
         }
 
         private void SettingsButton_Click(object sender, EventArgs e)
@@ -89,6 +130,13 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             PnlNav.Top = SettingsButton.Top;
 
             SettingsButton.BackColor = Color.FromArgb(46, 51, 73);
+
+            lblTitle.Text = "SETTINGS";
+            this.PnlFormLoader.Controls.Clear();
+            FrmSettings frmSet = new FrmSettings() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
+            frmSet.FormBorderStyle = FormBorderStyle.None;
+            this.PnlFormLoader.Controls.Add(frmSet);
+            frmSet.Show();
         }
 
         private void HomeButton_Leave(object sender, EventArgs e)
@@ -157,6 +205,31 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
         private void WelcomLabel_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void lblTitle_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void EmployeesButton_Click(object sender, EventArgs e)
+        {
+            PnlNav.Height = EmployeesButton.Height;
+            PnlNav.Top = EmployeesButton.Top;
+
+            EmployeesButton.BackColor = Color.FromArgb(46, 51, 73);
+
+            lblTitle.Text = "EMPLOYEES";
+            this.PnlFormLoader.Controls.Clear();
+            FrmEmployees frmEmp = new FrmEmployees() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
+            frmEmp.FormBorderStyle = FormBorderStyle.None;
+            this.PnlFormLoader.Controls.Add(frmEmp);
+            frmEmp.Show();
+        }
+
+        private void EmployeesButton_Leave(object sender, EventArgs e)
+        {
+            EmployeesButton.BackColor = Color.FromArgb(24, 30, 54);
         }
     }
 }

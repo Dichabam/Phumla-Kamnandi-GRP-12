@@ -34,7 +34,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             ErrorLoginLabel.Visible = false;
         }
 
-        private async void guna2Button1_ClickAsync(object sender, EventArgs e)
+        private void guna2Button1_ClickAsync(object sender, EventArgs e)
         {
             // TODO: Add actual authentication logic here
             // For now, this is a placeholder that checks if fields are not empty
@@ -68,7 +68,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
 
                 // Open Dashboard
                 Dashbaord dashboard = new Dashbaord();
-                await FadeOutAndOpen(this, dashboard);
+                
                 dashboard.FormClosed += (s, args) => this.Close(); // Close login when dashboard closes
                 dashboard.Show();
             }
@@ -198,34 +198,5 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                 return false;
             }
         }
-
-        #region from transitioning between forms
-        private async void FadeIn(Form form)
-        {
-            form.Opacity = 0;
-            form.Show();
-
-            for (double i = 0; i <= 1; i += 0.05)
-            {
-                form.Opacity = i;
-                await Task.Delay(10);
-            }
-        }
-
-        private async Task FadeOutAndOpen(Form current, Form next)
-        {
-            for (double i = 1; i >= 0; i -= 0.05)
-            {
-                current.Opacity = i;
-                await Task.Delay(10);
-            }
-
-            current.Hide();
-            next.Show();
-        }
-
-        #endregion
-
-
     }
 }
