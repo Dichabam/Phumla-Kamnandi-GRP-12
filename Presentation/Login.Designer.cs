@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             this.EmailTextbox = new Guna.UI2.WinForms.Guna2TextBox();
             this.PasswordTextbox = new Guna.UI2.WinForms.Guna2TextBox();
             this.SubmitButton = new Guna.UI2.WinForms.Guna2Button();
@@ -184,6 +185,7 @@
             this.Controls.Add(this.PasswordTextbox);
             this.Controls.Add(this.EmailTextbox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
