@@ -28,10 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ForgotPassword));
             this.SidePanelFP = new Guna.UI2.WinForms.Guna2GradientPanel();
-            this.ForgotLabel = new System.Windows.Forms.Label();
-            this.EmailTextboxFP = new Guna.UI2.WinForms.Guna2TextBox();
             this.SubmitButtonFP = new Guna.UI2.WinForms.Guna2Button();
+            this.EmailTextboxFP = new Guna.UI2.WinForms.Guna2TextBox();
+            this.ForgotLabel = new System.Windows.Forms.Label();
             this.logo = new System.Windows.Forms.PictureBox();
             this.CloseButtonFP = new Guna.UI2.WinForms.Guna2Button();
             this.SidePanelFP.SuspendLayout();
@@ -55,17 +56,25 @@
             this.SidePanelFP.Size = new System.Drawing.Size(800, 450);
             this.SidePanelFP.TabIndex = 7;
             // 
-            // ForgotLabel
+            // SubmitButtonFP
             // 
-            this.ForgotLabel.AutoSize = true;
-            this.ForgotLabel.Font = new System.Drawing.Font("Century Gothic", 20F, System.Drawing.FontStyle.Bold);
-            this.ForgotLabel.ForeColor = System.Drawing.Color.White;
-            this.ForgotLabel.Location = new System.Drawing.Point(338, 72);
-            this.ForgotLabel.Name = "ForgotLabel";
-            this.ForgotLabel.Size = new System.Drawing.Size(367, 40);
-            this.ForgotLabel.TabIndex = 8;
-            this.ForgotLabel.Text = "FORGOT PASSWORD?";
-            this.ForgotLabel.Click += new System.EventHandler(this.LoginLabel_Click);
+            this.SubmitButtonFP.Animated = true;
+            this.SubmitButtonFP.AutoRoundedCorners = true;
+            this.SubmitButtonFP.BackColor = System.Drawing.Color.Transparent;
+            this.SubmitButtonFP.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.SubmitButtonFP.BorderThickness = 2;
+            this.SubmitButtonFP.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.SubmitButtonFP.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.SubmitButtonFP.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.SubmitButtonFP.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.SubmitButtonFP.FillColor = System.Drawing.Color.Transparent;
+            this.SubmitButtonFP.Font = new System.Drawing.Font("Century Gothic", 9F);
+            this.SubmitButtonFP.ForeColor = System.Drawing.Color.White;
+            this.SubmitButtonFP.Location = new System.Drawing.Point(425, 272);
+            this.SubmitButtonFP.Name = "SubmitButtonFP";
+            this.SubmitButtonFP.Size = new System.Drawing.Size(180, 45);
+            this.SubmitButtonFP.TabIndex = 10;
+            this.SubmitButtonFP.Text = "SUBMIT";
             // 
             // EmailTextboxFP
             // 
@@ -90,25 +99,17 @@
             this.EmailTextboxFP.Size = new System.Drawing.Size(357, 48);
             this.EmailTextboxFP.TabIndex = 9;
             // 
-            // SubmitButtonFP
+            // ForgotLabel
             // 
-            this.SubmitButtonFP.Animated = true;
-            this.SubmitButtonFP.AutoRoundedCorners = true;
-            this.SubmitButtonFP.BackColor = System.Drawing.Color.Transparent;
-            this.SubmitButtonFP.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.SubmitButtonFP.BorderThickness = 2;
-            this.SubmitButtonFP.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.SubmitButtonFP.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.SubmitButtonFP.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.SubmitButtonFP.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.SubmitButtonFP.FillColor = System.Drawing.Color.Transparent;
-            this.SubmitButtonFP.Font = new System.Drawing.Font("Century Gothic", 9F);
-            this.SubmitButtonFP.ForeColor = System.Drawing.Color.White;
-            this.SubmitButtonFP.Location = new System.Drawing.Point(425, 272);
-            this.SubmitButtonFP.Name = "SubmitButtonFP";
-            this.SubmitButtonFP.Size = new System.Drawing.Size(180, 45);
-            this.SubmitButtonFP.TabIndex = 10;
-            this.SubmitButtonFP.Text = "SUBMIT";
+            this.ForgotLabel.AutoSize = true;
+            this.ForgotLabel.Font = new System.Drawing.Font("Century Gothic", 20F, System.Drawing.FontStyle.Bold);
+            this.ForgotLabel.ForeColor = System.Drawing.Color.White;
+            this.ForgotLabel.Location = new System.Drawing.Point(338, 72);
+            this.ForgotLabel.Name = "ForgotLabel";
+            this.ForgotLabel.Size = new System.Drawing.Size(367, 40);
+            this.ForgotLabel.TabIndex = 8;
+            this.ForgotLabel.Text = "FORGOT PASSWORD?";
+            this.ForgotLabel.Click += new System.EventHandler(this.LoginLabel_Click);
             // 
             // logo
             // 
@@ -148,6 +149,7 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.SidePanelFP);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ForgotPassword";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ForgotPassword";

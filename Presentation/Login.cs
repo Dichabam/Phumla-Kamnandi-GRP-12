@@ -130,5 +130,10 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             // Show login form when new account form closes
             this.Show();
         }
+
+        private void CloseButtonLogin_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

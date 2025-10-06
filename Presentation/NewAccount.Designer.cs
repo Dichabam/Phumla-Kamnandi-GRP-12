@@ -28,21 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NewAccount));
             this.CreateNewAccountLabel = new System.Windows.Forms.Label();
             this.NameTextboxCA = new Guna.UI2.WinForms.Guna2TextBox();
             this.SurnameTextboxCA = new Guna.UI2.WinForms.Guna2TextBox();
             this.CellTextboxCAEMP = new Guna.UI2.WinForms.Guna2TextBox();
-            this.guna2TextBox3 = new Guna.UI2.WinForms.Guna2TextBox();
-            this.NextButtonCA = new Guna.UI2.WinForms.Guna2Button();
+            this.EmailTextboxCAEMP = new Guna.UI2.WinForms.Guna2TextBox();
+            this.NextButtonCAEMP = new Guna.UI2.WinForms.Guna2Button();
             this.SidePanelFP = new Guna.UI2.WinForms.Guna2GradientPanel();
-            this.NameLabelCAEMP = new System.Windows.Forms.Label();
-            this.SurnameLabelCAEMP = new System.Windows.Forms.Label();
-            this.CellLabelCAEMP = new System.Windows.Forms.Label();
             this.EmailLabelCAEMP = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.CellLabelCAEMP = new System.Windows.Forms.Label();
+            this.SurnameLabelCAEMP = new System.Windows.Forms.Label();
+            this.NameLabelCAEMP = new System.Windows.Forms.Label();
+            this.SkyScrpaerPic = new System.Windows.Forms.PictureBox();
             this.logo = new System.Windows.Forms.PictureBox();
+            this.CloseButtonCAEMP = new Guna.UI2.WinForms.Guna2Button();
             this.SidePanelFP.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SkyScrpaerPic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.logo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -51,7 +53,7 @@
             this.CreateNewAccountLabel.AutoSize = true;
             this.CreateNewAccountLabel.Font = new System.Drawing.Font("Century Gothic", 30F, System.Drawing.FontStyle.Bold);
             this.CreateNewAccountLabel.ForeColor = System.Drawing.Color.White;
-            this.CreateNewAccountLabel.Location = new System.Drawing.Point(85, 166);
+            this.CreateNewAccountLabel.Location = new System.Drawing.Point(53, 166);
             this.CreateNewAccountLabel.Name = "CreateNewAccountLabel";
             this.CreateNewAccountLabel.Size = new System.Drawing.Size(537, 59);
             this.CreateNewAccountLabel.TabIndex = 8;
@@ -126,63 +128,64 @@
             this.CellTextboxCAEMP.Size = new System.Drawing.Size(566, 48);
             this.CellTextboxCAEMP.TabIndex = 9;
             // 
-            // guna2TextBox3
+            // EmailTextboxCAEMP
             // 
-            this.guna2TextBox3.Animated = true;
-            this.guna2TextBox3.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
-            this.guna2TextBox3.BorderRadius = 15;
-            this.guna2TextBox3.BorderThickness = 2;
-            this.guna2TextBox3.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.guna2TextBox3.DefaultText = "";
-            this.guna2TextBox3.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.guna2TextBox3.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.guna2TextBox3.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.guna2TextBox3.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.guna2TextBox3.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2TextBox3.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold);
-            this.guna2TextBox3.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2TextBox3.Location = new System.Drawing.Point(37, 658);
-            this.guna2TextBox3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.guna2TextBox3.Name = "guna2TextBox3";
-            this.guna2TextBox3.PlaceholderText = "";
-            this.guna2TextBox3.SelectedText = "";
-            this.guna2TextBox3.Size = new System.Drawing.Size(566, 48);
-            this.guna2TextBox3.TabIndex = 9;
+            this.EmailTextboxCAEMP.Animated = true;
+            this.EmailTextboxCAEMP.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
+            this.EmailTextboxCAEMP.BorderRadius = 15;
+            this.EmailTextboxCAEMP.BorderThickness = 2;
+            this.EmailTextboxCAEMP.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.EmailTextboxCAEMP.DefaultText = "";
+            this.EmailTextboxCAEMP.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.EmailTextboxCAEMP.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.EmailTextboxCAEMP.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.EmailTextboxCAEMP.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.EmailTextboxCAEMP.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.EmailTextboxCAEMP.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Bold);
+            this.EmailTextboxCAEMP.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.EmailTextboxCAEMP.Location = new System.Drawing.Point(37, 658);
+            this.EmailTextboxCAEMP.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.EmailTextboxCAEMP.Name = "EmailTextboxCAEMP";
+            this.EmailTextboxCAEMP.PlaceholderText = "";
+            this.EmailTextboxCAEMP.SelectedText = "";
+            this.EmailTextboxCAEMP.Size = new System.Drawing.Size(566, 48);
+            this.EmailTextboxCAEMP.TabIndex = 9;
             // 
-            // NextButtonCA
+            // NextButtonCAEMP
             // 
-            this.NextButtonCA.Animated = true;
-            this.NextButtonCA.AutoRoundedCorners = true;
-            this.NextButtonCA.BackColor = System.Drawing.Color.Transparent;
-            this.NextButtonCA.BorderColor = System.Drawing.Color.DarkSeaGreen;
-            this.NextButtonCA.BorderThickness = 2;
-            this.NextButtonCA.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.NextButtonCA.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.NextButtonCA.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.NextButtonCA.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.NextButtonCA.FillColor = System.Drawing.Color.Transparent;
-            this.NextButtonCA.Font = new System.Drawing.Font("Century Gothic", 9F);
-            this.NextButtonCA.ForeColor = System.Drawing.Color.White;
-            this.NextButtonCA.Location = new System.Drawing.Point(242, 763);
-            this.NextButtonCA.Name = "NextButtonCA";
-            this.NextButtonCA.Size = new System.Drawing.Size(180, 45);
-            this.NextButtonCA.TabIndex = 10;
-            this.NextButtonCA.Text = "NEXT";
+            this.NextButtonCAEMP.Animated = true;
+            this.NextButtonCAEMP.AutoRoundedCorners = true;
+            this.NextButtonCAEMP.BackColor = System.Drawing.Color.Transparent;
+            this.NextButtonCAEMP.BorderColor = System.Drawing.Color.DarkSeaGreen;
+            this.NextButtonCAEMP.BorderThickness = 2;
+            this.NextButtonCAEMP.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.NextButtonCAEMP.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.NextButtonCAEMP.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.NextButtonCAEMP.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.NextButtonCAEMP.FillColor = System.Drawing.Color.Transparent;
+            this.NextButtonCAEMP.Font = new System.Drawing.Font("Century Gothic", 9F);
+            this.NextButtonCAEMP.ForeColor = System.Drawing.Color.White;
+            this.NextButtonCAEMP.Location = new System.Drawing.Point(242, 763);
+            this.NextButtonCAEMP.Name = "NextButtonCAEMP";
+            this.NextButtonCAEMP.Size = new System.Drawing.Size(180, 45);
+            this.NextButtonCAEMP.TabIndex = 10;
+            this.NextButtonCAEMP.Text = "NEXT";
             // 
             // SidePanelFP
             // 
             this.SidePanelFP.BackColor = System.Drawing.Color.Transparent;
+            this.SidePanelFP.Controls.Add(this.CloseButtonCAEMP);
             this.SidePanelFP.Controls.Add(this.EmailLabelCAEMP);
             this.SidePanelFP.Controls.Add(this.CellLabelCAEMP);
             this.SidePanelFP.Controls.Add(this.SurnameLabelCAEMP);
             this.SidePanelFP.Controls.Add(this.NameLabelCAEMP);
-            this.SidePanelFP.Controls.Add(this.NextButtonCA);
-            this.SidePanelFP.Controls.Add(this.guna2TextBox3);
+            this.SidePanelFP.Controls.Add(this.NextButtonCAEMP);
+            this.SidePanelFP.Controls.Add(this.EmailTextboxCAEMP);
             this.SidePanelFP.Controls.Add(this.CellTextboxCAEMP);
             this.SidePanelFP.Controls.Add(this.SurnameTextboxCA);
             this.SidePanelFP.Controls.Add(this.NameTextboxCA);
             this.SidePanelFP.Controls.Add(this.CreateNewAccountLabel);
-            this.SidePanelFP.Controls.Add(this.pictureBox1);
+            this.SidePanelFP.Controls.Add(this.SkyScrpaerPic);
             this.SidePanelFP.Controls.Add(this.logo);
             this.SidePanelFP.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SidePanelFP.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
@@ -192,39 +195,6 @@
             this.SidePanelFP.Name = "SidePanelFP";
             this.SidePanelFP.Size = new System.Drawing.Size(1200, 850);
             this.SidePanelFP.TabIndex = 8;
-            // 
-            // NameLabelCAEMP
-            // 
-            this.NameLabelCAEMP.AutoSize = true;
-            this.NameLabelCAEMP.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NameLabelCAEMP.ForeColor = System.Drawing.Color.White;
-            this.NameLabelCAEMP.Location = new System.Drawing.Point(45, 243);
-            this.NameLabelCAEMP.Name = "NameLabelCAEMP";
-            this.NameLabelCAEMP.Size = new System.Drawing.Size(60, 19);
-            this.NameLabelCAEMP.TabIndex = 11;
-            this.NameLabelCAEMP.Text = "Name";
-            // 
-            // SurnameLabelCAEMP
-            // 
-            this.SurnameLabelCAEMP.AutoSize = true;
-            this.SurnameLabelCAEMP.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SurnameLabelCAEMP.ForeColor = System.Drawing.Color.White;
-            this.SurnameLabelCAEMP.Location = new System.Drawing.Point(45, 367);
-            this.SurnameLabelCAEMP.Name = "SurnameLabelCAEMP";
-            this.SurnameLabelCAEMP.Size = new System.Drawing.Size(81, 19);
-            this.SurnameLabelCAEMP.TabIndex = 11;
-            this.SurnameLabelCAEMP.Text = "Surname";
-            // 
-            // CellLabelCAEMP
-            // 
-            this.CellLabelCAEMP.AutoSize = true;
-            this.CellLabelCAEMP.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CellLabelCAEMP.ForeColor = System.Drawing.Color.White;
-            this.CellLabelCAEMP.Location = new System.Drawing.Point(45, 496);
-            this.CellLabelCAEMP.Name = "CellLabelCAEMP";
-            this.CellLabelCAEMP.Size = new System.Drawing.Size(132, 19);
-            this.CellLabelCAEMP.TabIndex = 11;
-            this.CellLabelCAEMP.Text = "Phone Number";
             // 
             // EmailLabelCAEMP
             // 
@@ -237,28 +207,80 @@
             this.EmailLabelCAEMP.TabIndex = 11;
             this.EmailLabelCAEMP.Text = "Email Address";
             // 
-            // pictureBox1
+            // CellLabelCAEMP
             // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pictureBox1.Image = global::Phumla_Kamnandi_GRP_12.Properties.Resources.skyscraper_9226515;
-            this.pictureBox1.Location = new System.Drawing.Point(703, 0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(497, 850);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
+            this.CellLabelCAEMP.AutoSize = true;
+            this.CellLabelCAEMP.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CellLabelCAEMP.ForeColor = System.Drawing.Color.White;
+            this.CellLabelCAEMP.Location = new System.Drawing.Point(45, 496);
+            this.CellLabelCAEMP.Name = "CellLabelCAEMP";
+            this.CellLabelCAEMP.Size = new System.Drawing.Size(132, 19);
+            this.CellLabelCAEMP.TabIndex = 11;
+            this.CellLabelCAEMP.Text = "Phone Number";
+            // 
+            // SurnameLabelCAEMP
+            // 
+            this.SurnameLabelCAEMP.AutoSize = true;
+            this.SurnameLabelCAEMP.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SurnameLabelCAEMP.ForeColor = System.Drawing.Color.White;
+            this.SurnameLabelCAEMP.Location = new System.Drawing.Point(45, 367);
+            this.SurnameLabelCAEMP.Name = "SurnameLabelCAEMP";
+            this.SurnameLabelCAEMP.Size = new System.Drawing.Size(81, 19);
+            this.SurnameLabelCAEMP.TabIndex = 11;
+            this.SurnameLabelCAEMP.Text = "Surname";
+            // 
+            // NameLabelCAEMP
+            // 
+            this.NameLabelCAEMP.AutoSize = true;
+            this.NameLabelCAEMP.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NameLabelCAEMP.ForeColor = System.Drawing.Color.White;
+            this.NameLabelCAEMP.Location = new System.Drawing.Point(45, 243);
+            this.NameLabelCAEMP.Name = "NameLabelCAEMP";
+            this.NameLabelCAEMP.Size = new System.Drawing.Size(60, 19);
+            this.NameLabelCAEMP.TabIndex = 11;
+            this.NameLabelCAEMP.Text = "Name";
+            // 
+            // SkyScrpaerPic
+            // 
+            this.SkyScrpaerPic.BackColor = System.Drawing.Color.Transparent;
+            this.SkyScrpaerPic.Dock = System.Windows.Forms.DockStyle.Right;
+            this.SkyScrpaerPic.Image = global::Phumla_Kamnandi_GRP_12.Properties.Resources.skyscraper_9226515;
+            this.SkyScrpaerPic.Location = new System.Drawing.Point(703, 0);
+            this.SkyScrpaerPic.Name = "SkyScrpaerPic";
+            this.SkyScrpaerPic.Size = new System.Drawing.Size(497, 850);
+            this.SkyScrpaerPic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.SkyScrpaerPic.TabIndex = 0;
+            this.SkyScrpaerPic.TabStop = false;
             // 
             // logo
             // 
             this.logo.BackColor = System.Drawing.Color.Transparent;
             this.logo.Image = global::Phumla_Kamnandi_GRP_12.Properties.Resources.PHUMLA_KAMNANDI_Photoroom;
-            this.logo.Location = new System.Drawing.Point(257, 12);
+            this.logo.Location = new System.Drawing.Point(205, -9);
             this.logo.Name = "logo";
-            this.logo.Size = new System.Drawing.Size(165, 137);
+            this.logo.Size = new System.Drawing.Size(217, 172);
             this.logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.logo.TabIndex = 0;
             this.logo.TabStop = false;
+            // 
+            // CloseButtonCAEMP
+            // 
+            this.CloseButtonCAEMP.Animated = true;
+            this.CloseButtonCAEMP.AutoRoundedCorners = true;
+            this.CloseButtonCAEMP.BorderColor = System.Drawing.Color.Transparent;
+            this.CloseButtonCAEMP.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.CloseButtonCAEMP.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.CloseButtonCAEMP.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.CloseButtonCAEMP.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.CloseButtonCAEMP.FillColor = System.Drawing.Color.Transparent;
+            this.CloseButtonCAEMP.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.CloseButtonCAEMP.ForeColor = System.Drawing.Color.White;
+            this.CloseButtonCAEMP.Image = global::Phumla_Kamnandi_GRP_12.Properties.Resources.close_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24;
+            this.CloseButtonCAEMP.Location = new System.Drawing.Point(1143, 0);
+            this.CloseButtonCAEMP.Name = "CloseButtonCAEMP";
+            this.CloseButtonCAEMP.Size = new System.Drawing.Size(57, 30);
+            this.CloseButtonCAEMP.TabIndex = 12;
+            this.CloseButtonCAEMP.UseTransparentBackground = true;
             // 
             // NewAccount
             // 
@@ -267,11 +289,13 @@
             this.ClientSize = new System.Drawing.Size(1200, 850);
             this.Controls.Add(this.SidePanelFP);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "NewAccount";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "NewAccount";
             this.SidePanelFP.ResumeLayout(false);
             this.SidePanelFP.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SkyScrpaerPic)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.logo)).EndInit();
             this.ResumeLayout(false);
 
@@ -284,13 +308,14 @@
         private Guna.UI2.WinForms.Guna2TextBox NameTextboxCA;
         private Guna.UI2.WinForms.Guna2TextBox SurnameTextboxCA;
         private Guna.UI2.WinForms.Guna2TextBox CellTextboxCAEMP;
-        private Guna.UI2.WinForms.Guna2TextBox guna2TextBox3;
-        private Guna.UI2.WinForms.Guna2Button NextButtonCA;
+        private Guna.UI2.WinForms.Guna2TextBox EmailTextboxCAEMP;
+        private Guna.UI2.WinForms.Guna2Button NextButtonCAEMP;
         private Guna.UI2.WinForms.Guna2GradientPanel SidePanelFP;
         private System.Windows.Forms.Label SurnameLabelCAEMP;
         private System.Windows.Forms.Label NameLabelCAEMP;
         private System.Windows.Forms.Label EmailLabelCAEMP;
         private System.Windows.Forms.Label CellLabelCAEMP;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox SkyScrpaerPic;
+        private Guna.UI2.WinForms.Guna2Button CloseButtonCAEMP;
     }
 }

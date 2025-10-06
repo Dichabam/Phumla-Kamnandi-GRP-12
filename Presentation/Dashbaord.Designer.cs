@@ -43,6 +43,7 @@
             this.GuestButton = new System.Windows.Forms.Button();
             this.BookingButton = new System.Windows.Forms.Button();
             this.HomeButton = new System.Windows.Forms.Button();
+            this.CloseButtonDSHB = new Guna.UI2.WinForms.Guna2Button();
             this.SidePanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CompanyLogo)).BeginInit();
             this.SidePanelDSHB.SuspendLayout();
@@ -261,12 +262,34 @@
             this.HomeButton.Click += new System.EventHandler(this.HomeButton_Click);
             this.HomeButton.Leave += new System.EventHandler(this.HomeButton_Leave);
             // 
+            // CloseButtonDSHB
+            // 
+            this.CloseButtonDSHB.Animated = true;
+            this.CloseButtonDSHB.AutoRoundedCorners = true;
+            this.CloseButtonDSHB.BackColor = System.Drawing.Color.Transparent;
+            this.CloseButtonDSHB.BorderColor = System.Drawing.Color.Transparent;
+            this.CloseButtonDSHB.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.CloseButtonDSHB.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.CloseButtonDSHB.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.CloseButtonDSHB.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.CloseButtonDSHB.FillColor = System.Drawing.Color.Transparent;
+            this.CloseButtonDSHB.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.CloseButtonDSHB.ForeColor = System.Drawing.Color.White;
+            this.CloseButtonDSHB.Image = global::Phumla_Kamnandi_GRP_12.Properties.Resources.close_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24;
+            this.CloseButtonDSHB.Location = new System.Drawing.Point(1194, 0);
+            this.CloseButtonDSHB.Name = "CloseButtonDSHB";
+            this.CloseButtonDSHB.Size = new System.Drawing.Size(57, 30);
+            this.CloseButtonDSHB.TabIndex = 12;
+            this.CloseButtonDSHB.UseTransparentBackground = true;
+            this.CloseButtonDSHB.Click += new System.EventHandler(this.CloseButtonDSHB_Click);
+            // 
             // Dashbaord
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
             this.ClientSize = new System.Drawing.Size(1251, 777);
+            this.Controls.Add(this.CloseButtonDSHB);
             this.Controls.Add(this.PnlNav);
             this.Controls.Add(this.SidePanelDSHB);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -297,5 +320,6 @@
         private Guna.UI2.WinForms.Guna2Separator guna2Separator2;
         private Guna.UI2.WinForms.Guna2Separator guna2Separator1;
         private Guna.UI2.WinForms.Guna2Button LogoutButton;
+        private Guna.UI2.WinForms.Guna2Button CloseButtonDSHB;
     }
 }

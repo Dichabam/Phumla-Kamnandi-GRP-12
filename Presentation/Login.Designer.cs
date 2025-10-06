@@ -204,6 +204,7 @@
             this.CloseButtonLogin.Size = new System.Drawing.Size(57, 30);
             this.CloseButtonLogin.TabIndex = 12;
             this.CloseButtonLogin.UseTransparentBackground = true;
+            this.CloseButtonLogin.Click += new System.EventHandler(this.CloseButtonLogin_Click);
             // 
             // Login
             // 

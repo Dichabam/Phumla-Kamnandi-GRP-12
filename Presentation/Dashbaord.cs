@@ -15,6 +15,8 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
     {
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
 
+
+
         private static extern IntPtr CreateRountRectRgn
         (
             int nLeftRect,
@@ -24,6 +26,8 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             int nWidthEllipse,
             int nHeightEllipse
         );
+
+        private bool isFullScreen = false;
         public Dashbaord()
         {
             InitializeComponent();
@@ -146,8 +150,18 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                 // Close dashboard and show login
                 Login loginForm = new Login();
                 loginForm.Show();
-                this.Close();
+                this.Hide();
+                
+                
             }
+           
         }
+
+        private void CloseButtonDSHB_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+        
+     
     }
 }
