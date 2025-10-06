@@ -38,18 +38,6 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             HomeButton.BackColor = Color.FromArgb(46, 51, 73);
         }
 
-        
-
-        private void guna2HtmlLabel1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void guna2HtmlLabel2_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void PnlNav_Paint(object sender, PaintEventArgs e)
         {
 
@@ -157,11 +145,18 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
            
         }
 
-        private void CloseButtonDSHB_Click(object sender, EventArgs e)
+        
+
+        private void exitButton_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
+
         
-     
+
+        private void WelcomLabel_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
