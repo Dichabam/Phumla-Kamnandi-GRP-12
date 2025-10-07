@@ -101,7 +101,7 @@ namespace Phumla_Kamnandi_GRP_12
 
         private void InitializeServices()
         {
-            // Initialize repositories with mock implementations
+            // Initialize repositories with mock implementations change this to sql 
             BookingRepository = new MockBookingRepository();
             GuestRepository = new MockGuestRepository();
             RoomRepository = new MockRoomRepository();
