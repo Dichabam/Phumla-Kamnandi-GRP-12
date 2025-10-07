@@ -60,7 +60,6 @@
             this.PnlNav.Name = "PnlNav";
             this.PnlNav.Size = new System.Drawing.Size(3, 100);
             this.PnlNav.TabIndex = 1;
-            this.PnlNav.Paint += new System.Windows.Forms.PaintEventHandler(this.PnlNav_Paint);
             // 
             // SidePanel2
             // 

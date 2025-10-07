@@ -53,31 +53,31 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Business\BusinessLayerTests.cs" />
     <Compile Include="Business\Entities\Booking.cs" />
     <Compile Include="Business\Entities\BookingResult.cs" />
     <Compile Include="Business\Entities\DailyOccupancy.cs" />
+    <Compile Include="Business\Entities\Employee.cs" />
     <Compile Include="Business\Entities\Guest.cs" />
     <Compile Include="Business\Entities\OccupancyReport.cs" />
     <Compile Include="Business\Entities\RevenueReport.cs" />
     <Compile Include="Business\Entities\Room.cs" />
     <Compile Include="Business\Enums\BookingStatus.cs" />
+    <Compile Include="Business\Enums\EmployeeRole.cs" />
     <Compile Include="Business\Enums\PaymentStatus.cs" />
     <Compile Include="Business\Enums\Season.cs" />
     <Compile Include="Business\Interfaces\BookingRepositoryInterface.cs" />
+    <Compile Include="Business\Interfaces\EmployeeRepositoryInterface.cs" />
+    <Compile Include="Business\Interfaces\EmployeeServiceInterface.cs" />
     <Compile Include="Business\Interfaces\GuestRepositoryInterface.cs" />
     <Compile Include="Business\Interfaces\GuestServiceInterface.cs" />
     <Compile Include="Business\Interfaces\BookingServiceInterface.cs" />
     <Compile Include="Business\Interfaces\ReportingServiceInterface.cs" />
     <Compile Include="Business\Interfaces\PricingServiceInterface.cs" />
     <Compile Include="Business\Interfaces\RoomRepositoryInterface.cs" />
-    <Compile Include="Business\MockGuestRepository.cs" />
-    <Compile Include="Business\MockRoomRepository.cs" />
     <Compile Include="Business\Services\BookingService.cs" />
     <Compile Include="Business\Services\GuestService.cs" />
     <Compile Include="Business\Services\PricingService.cs" />
     <Compile Include="Business\Services\ReportingService.cs" />
-    <Compile Include="Business\MockBookingRepository.cs" />
     <Compile Include="Business\ValueObjects\PricingInfo.cs" />
     <Compile Include="Database\Test2.cs" />
     <Compile Include="Presentation\Dashbaord.cs">
@@ -260,6 +260,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resourses\Icons\hotel_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resourses\Icons\for_you_1000dp_E3E3E3_FILL0_wght400_GRAD0_opsz48.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

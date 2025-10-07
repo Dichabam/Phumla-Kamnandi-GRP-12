@@ -34,50 +34,6 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             ErrorLoginLabel.Visible = false;
         }
 
-        private void guna2Button1_ClickAsync(object sender, EventArgs e)
-        {
-            // TODO: Add actual authentication logic here
-            // For now, this is a placeholder that checks if fields are not empty
-
-            string email = EmailTextbox.Text.Trim();
-            string password = PasswordTextbox.Text.Trim();
-
-            // Basic validation
-            if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
-            {
-                ErrorLoginLabel.Text = "Please enter both email and password";
-                ErrorLoginLabel.Visible = true;
-                return;
-            }
-
-            if (!IsValidEmail(email))
-            {
-                ErrorLoginLabel.Text = "Please enter a valid email address";
-                ErrorLoginLabel.Visible = true;
-                return;
-            }
-
-            // TODO: Replace this with actual authentication against database
-            // For now, just check if something was entered
-            bool loginSuccessful = ValidateLogin(email, password);
-
-            if (loginSuccessful)
-            {
-                // Hide current form
-                this.Hide();
-
-                // Open Dashboard
-                Dashbaord dashboard = new Dashbaord();
-                
-                dashboard.FormClosed += (s, args) => this.Close(); // Close login when dashboard closes
-                dashboard.Show();
-            }
-            else
-            {
-                ErrorLoginLabel.Text = "Email/Password is incorrect. Try again";
-                ErrorLoginLabel.Visible = true;
-            }
-        }
 
         private void guna2HtmlLabel1_Click(object sender, EventArgs e)
         {
@@ -105,14 +61,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                 this.Hide();
                 forgotPasswordForm.Show();
             }
-            else if (sender == CreateAccountLink)
-            {
-                // Open Create Account form
-                NewAccount newAccountForm = new NewAccount();
-                newAccountForm.FormClosed += NewAccount_FormClosed;
-                this.Hide();
-                newAccountForm.Show();
-            }
+           
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -196,6 +145,59 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             catch
             {
                 return false;
+            }
+        }
+
+        private void CreateAccountButton_Click(object sender, EventArgs e)
+        {
+            NewAccount newAccountForm = new NewAccount();
+            newAccountForm.FormClosed += NewAccount_FormClosed;
+            this.Hide();
+            newAccountForm.Show();
+        }
+
+        private void SubmitButton_Click(object sender, EventArgs e)
+        {
+            // TODO: Add actual authentication logic here
+            // For now, this is a placeholder that checks if fields are not empty
+
+            string email = EmailTextbox.Text.Trim();
+            string password = PasswordTextbox.Text.Trim();
+
+            // Basic validation
+            if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
+            {
+                ErrorLoginLabel.Text = "Please enter both email and password";
+                ErrorLoginLabel.Visible = true;
+                return;
+            }
+
+            if (!IsValidEmail(email))
+            {
+                ErrorLoginLabel.Text = "Please enter a valid email address";
+                ErrorLoginLabel.Visible = true;
+                return;
+            }
+
+            // TODO: Replace this with actual authentication against database
+            // For now, just check if something was entered
+            bool loginSuccessful = ValidateLogin(email, password);
+
+            if (loginSuccessful)
+            {
+                // Hide current form
+                this.Hide();
+
+                // Open Dashboard
+                Dashbaord dashboard = new Dashbaord();
+
+                dashboard.FormClosed += (s, args) => this.Close(); // Close login when dashboard closes
+                dashboard.Show();
+            }
+            else
+            {
+                ErrorLoginLabel.Text = "Email/Password is incorrect. Try again";
+                ErrorLoginLabel.Visible = true;
             }
         }
     }

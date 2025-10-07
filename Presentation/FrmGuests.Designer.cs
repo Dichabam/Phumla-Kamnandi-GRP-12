@@ -46,7 +46,7 @@
             // 
             // pictureBox3
             // 
-            this.pictureBox3.Image = global::Phumla_Kamnandi_GRP_12.Properties.Resources.person_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz241;
+            this.pictureBox3.Image = global::Phumla_Kamnandi_GRP_12.Properties.Resources.for_you_1000dp_E3E3E3_FILL0_wght400_GRAD0_opsz48;
             this.pictureBox3.Location = new System.Drawing.Point(250, 249);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(454, 263);
