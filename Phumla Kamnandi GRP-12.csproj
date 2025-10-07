@@ -75,10 +75,15 @@
     <Compile Include="Business\Interfaces\PricingServiceInterface.cs" />
     <Compile Include="Business\Interfaces\RoomRepositoryInterface.cs" />
     <Compile Include="Business\Services\BookingService.cs" />
+    <Compile Include="Business\Services\EmployeeService.cs" />
     <Compile Include="Business\Services\GuestService.cs" />
     <Compile Include="Business\Services\PricingService.cs" />
     <Compile Include="Business\Services\ReportingService.cs" />
     <Compile Include="Business\ValueObjects\PricingInfo.cs" />
+    <Compile Include="Database\MockBookingRepository.cs" />
+    <Compile Include="Database\MockEmployeeRepository.cs" />
+    <Compile Include="Database\MockGuestRepository.cs" />
+    <Compile Include="Database\MockRoomRepository.cs" />
     <Compile Include="Database\Test2.cs" />
     <Compile Include="Presentation\Dashbaord.cs">
       <SubType>Form</SubType>

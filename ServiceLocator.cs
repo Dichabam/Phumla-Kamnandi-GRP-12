@@ -1,7 +1,7 @@
-﻿using Phumla_Kamnandi_GRP_12.Business;
-using Phumla_Kamnandi_GRP_12.Business.Entities;
+﻿using Phumla_Kamnandi_GRP_12.Business.Entities;
 using Phumla_Kamnandi_GRP_12.Business.Interfaces;
 using Phumla_Kamnandi_GRP_12.Business.Services;
+using Phumla_Kamnandi_GRP_12.Database;
 
 namespace Phumla_Kamnandi_GRP_12
 {
@@ -31,6 +31,7 @@ namespace Phumla_Kamnandi_GRP_12
         private string _currentUserEmail;
         private string _currentUserName;
         private string _currentUserId;
+        private string _currentGuestId;
         private bool _isEmployee;
         private Employee _currentEmployee;
 
@@ -50,6 +51,12 @@ namespace Phumla_Kamnandi_GRP_12
         {
             get => _currentUserId;
             set => _currentUserId = value;
+        }
+
+        public string CurrentGuestId
+        {
+            get => _currentGuestId;
+            set => _currentGuestId = value;
         }
 
         public bool IsEmployee
@@ -94,11 +101,11 @@ namespace Phumla_Kamnandi_GRP_12
 
         private void InitializeServices()
         {
-            // Initialize repositories (using mock implementations)
-            BookingRepository = new BookingRepositoryInterface();
-            GuestRepository = new GuestRepositoryInterface();
-            RoomRepository = new RoomRepositoryInterface();
-            EmployeeRepository = new EmployeeRepositoryInterface();
+            // Initialize repositories with mock implementations
+            BookingRepository = new MockBookingRepository();
+            GuestRepository = new MockGuestRepository();
+            RoomRepository = new MockRoomRepository();
+            EmployeeRepository = new MockEmployeeRepository();
 
             // Initialize services with dependencies
             PricingService = new PricingService();
@@ -115,7 +122,16 @@ namespace Phumla_Kamnandi_GRP_12
             CurrentUserName = employee.FullName;
             CurrentUserId = employee.EmployeeId;
             IsEmployee = true;
-            IsAdmin = employee.IsAdmin();
+        }
+
+        public void SetGuestSession(Guest guest)
+        {
+            CurrentUserEmail = guest.Email;
+            CurrentUserName = guest.FullName;
+            CurrentGuestId = guest.GuestId;
+            CurrentUserId = guest.GuestId;
+            IsEmployee = false;
+            CurrentEmployee = null;
         }
 
         public void ClearSession()
@@ -123,8 +139,8 @@ namespace Phumla_Kamnandi_GRP_12
             CurrentUserEmail = null;
             CurrentUserName = null;
             CurrentUserId = null;
+            CurrentGuestId = null;
             IsEmployee = false;
-            IsAdmin = false;
             CurrentEmployee = null;
         }
     }

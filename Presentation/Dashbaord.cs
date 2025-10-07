@@ -1,41 +1,29 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using System.Windows.Forms;
 
 namespace Phumla_Kamnandi_GRP_12.Presentation
 {
     public partial class Dashbaord : Form
     {
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
-
-
-
-        private static extern IntPtr CreateRountRectRgn
-        (
-            int nLeftRect,
-            int nTopRect,
-            int nRightRect,
-            int nBottomRect,
-            int nWidthEllipse,
-            int nHeightEllipse
+        private static extern IntPtr CreateRountRectRgn(
+            int nLeftRect, int nTopRect, int nRightRect, int nBottomRect,
+            int nWidthEllipse, int nHeightEllipse
         );
 
-        
-
         private ServiceLocator _services;
+
         public Dashbaord()
         {
             InitializeComponent();
             _services = ServiceLocator.Instance;
             Region = System.Drawing.Region.FromHrgn(CreateRountRectRgn(0, 0, Width, Height, 25, 25));
-            
+
+            // Setup user interface based on logged in user
+            SetupUserInterface();
+
             PnlNav.Height = HomeButton.Height;
             PnlNav.Top = HomeButton.Top;
             PnlNav.Left = HomeButton.Left;
@@ -45,14 +33,35 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             LoadForm(new FrmHome());
         }
 
-        #region Buttons click
+        private void SetupUserInterface()
+        {
+            // Update welcome label with current user's name
+            if (!string.IsNullOrEmpty(_services.CurrentUserName))
+            {
+                WelcomLabel.Text = $"WELCOME BACK, {_services.CurrentUserName.ToUpper()}";
+            }
+            else
+            {
+                WelcomLabel.Text = "WELCOME BACK, USER";
+            }
+
+            // Hide Employees button if user is not admin
+            if (!_services.IsAdmin)
+            {
+                EmployeesButton.Visible = false;
+                EmployeesButton.Enabled = false;
+            }
+            else
+            {
+                EmployeesButton.Visible = true;
+                EmployeesButton.Enabled = true;
+            }
+        }
+
+        #region Button Clicks
         private void HomeButton_Click(object sender, EventArgs e)
         {
-            PnlNav.Height = HomeButton.Height;
-            PnlNav.Top = HomeButton.Top;
-            PnlNav.Left = HomeButton.Left;
-            HomeButton.BackColor = Color.FromArgb(46, 51, 73);
-
+            UpdateNavigationPanel(HomeButton);
             lblTitle.Text = "HOME";
             LoadForm(new FrmHome());
         }
@@ -60,7 +69,6 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
         private void BookingButton_Click(object sender, EventArgs e)
         {
             UpdateNavigationPanel(BookingButton);
-
             lblTitle.Text = "BOOKINGS";
             LoadForm(new FrmBookings());
         }
@@ -68,7 +76,6 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
         private void GuestButton_Click(object sender, EventArgs e)
         {
             UpdateNavigationPanel(GuestButton);
-
             lblTitle.Text = "GUESTS";
             LoadForm(new FrmGuests());
         }
@@ -76,7 +83,6 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
         private void ReportsButton_Click(object sender, EventArgs e)
         {
             UpdateNavigationPanel(ReportsButton);
-
             lblTitle.Text = "REPORTS";
             LoadForm(new FrmReports());
         }
@@ -84,7 +90,6 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
         private void RoomsButton_Click(object sender, EventArgs e)
         {
             UpdateNavigationPanel(RoomsButton);
-
             lblTitle.Text = "ROOMS";
             LoadForm(new FrmRooms());
         }
@@ -92,14 +97,12 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
         private void SettingsButton_Click(object sender, EventArgs e)
         {
             UpdateNavigationPanel(SettingsButton);
-
             lblTitle.Text = "SETTINGS";
             LoadForm(new FrmSettings());
         }
 
         private void LogoutButton_Click(object sender, EventArgs e)
         {
-            // Confirm logout
             DialogResult result = MessageBox.Show(
                 "Are you sure you want to logout?",
                 "Confirm Logout",
@@ -108,16 +111,11 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
 
             if (result == DialogResult.Yes)
             {
-                // TODO: Add any cleanup logic here (clear session, etc.)
                 _services.ClearSession();
-                // Close dashboard and show login
                 Login loginForm = new Login();
                 loginForm.Show();
-                this.Hide();
-
-
+                this.Close();
             }
-
         }
 
         private void EmployeesButton_Click(object sender, EventArgs e)
@@ -130,13 +128,8 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             }
 
             UpdateNavigationPanel(EmployeesButton);
-
             lblTitle.Text = "EMPLOYEES";
-            this.PnlFormLoader.Controls.Clear();
-            FrmEmployees frmEmp = new FrmEmployees() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
-            frmEmp.FormBorderStyle = FormBorderStyle.None;
-            this.PnlFormLoader.Controls.Add(frmEmp);
-            frmEmp.Show();
+            LoadForm(new FrmEmployees());
         }
 
         private void exitButton_Click(object sender, EventArgs e)
@@ -145,11 +138,10 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
         }
         #endregion
 
-        #region Button leave
+        #region Button Leave Events
         private void HomeButton_Leave(object sender, EventArgs e)
         {
             HomeButton.BackColor = Color.FromArgb(24, 30, 54);
-
         }
 
         private void BookingButton_Leave(object sender, EventArgs e)
@@ -181,43 +173,14 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
         {
             EmployeesButton.BackColor = Color.FromArgb(24, 30, 54);
         }
-
         #endregion
 
-
-
-        #region Label click
+        #region Label Clicks
         private void WelcomLabel_Click(object sender, EventArgs e) { }
-
         private void lblTitle_Click(object sender, EventArgs e) { }
-
         #endregion
 
-        private void SetupUserInterface()
-        {
-            // Update welcome label with current user's name
-            if (!string.IsNullOrEmpty(_services.CurrentUserName))
-            {
-                WelcomLabel.Text = $"WELCOME BACK, {_services.CurrentUserName.ToUpper()}";
-            }
-            else
-            {
-                WelcomLabel.Text = "WELCOME BACK, USER";
-            }
-
-            // Hide Employees button if user is not admin
-            if (!_services.IsAdmin)
-            {
-                EmployeesButton.Visible = false;
-                EmployeesButton.Enabled = false;
-            }
-            else
-            {
-                EmployeesButton.Visible = true;
-                EmployeesButton.Enabled = true;
-            }
-        }
-
+        #region Helper Methods
         private void LoadForm(Form form)
         {
             this.PnlFormLoader.Controls.Clear();
@@ -235,7 +198,6 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             PnlNav.Top = button.Top;
             button.BackColor = Color.FromArgb(46, 51, 73);
         }
-
-
+        #endregion
     }
 }
