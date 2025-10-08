@@ -72,7 +72,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             this.SidePanelPass.Name = "SidePanelPass";
             this.SidePanelPass.Size = new System.Drawing.Size(642, 803);
             this.SidePanelPass.TabIndex = 9;
-            this.SidePanelPass.Paint += new System.Windows.Forms.PaintEventHandler(this.SidePanelPass_Paint);
+            
             // 
             // viewConfirmPasswordButton
             // 

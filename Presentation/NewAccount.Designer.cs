@@ -196,7 +196,6 @@
             this.SidePanelFP.Name = "SidePanelFP";
             this.SidePanelFP.Size = new System.Drawing.Size(660, 850);
             this.SidePanelFP.TabIndex = 8;
-            this.SidePanelFP.Paint += new System.Windows.Forms.PaintEventHandler(this.SidePanelFP_Paint_1);
             // 
             // justLabel
             // 
