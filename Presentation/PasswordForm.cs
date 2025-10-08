@@ -29,8 +29,8 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             _personalEmail = personalEmail;
             _isPasswordReset = isPasswordReset;
 
-            NewPasswordTextbox.PasswordChar = '•';
-            ConfirmPasswordTextbox.PasswordChar = '•';
+            NewPasswordTextbox.UseSystemPasswordChar = true;
+            ConfirmPasswordTextbox.UseSystemPasswordChar = true;
 
            
             SucessLabelPass.Visible = false;  
@@ -221,6 +221,34 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
         private void EmailTextboxPass_TextChanged(object sender, EventArgs e)
         {
             
+        }
+
+        private void viewNewPasswordButton_Click(object sender, EventArgs e)
+        {
+            if (NewPasswordTextbox.UseSystemPasswordChar)
+            {
+                NewPasswordTextbox.UseSystemPasswordChar = false;
+                viewNewPasswordButton.Image = Properties.Resources.visibility_off_50dp_000000_FILL0_wght400_GRAD0_opsz48;
+            }
+            else
+            {
+                NewPasswordTextbox.UseSystemPasswordChar = true;
+                viewNewPasswordButton.Image = Properties.Resources.visibility_50dp_000000_FILL0_wght400_GRAD0_opsz48;
+            }
+        }
+
+        private void viewConfirmPasswordButton_Click(object sender, EventArgs e)
+        {
+            if (ConfirmPasswordTextbox.UseSystemPasswordChar)
+            {
+                ConfirmPasswordTextbox.UseSystemPasswordChar = false;
+                viewConfirmPasswordButton.Image = Properties.Resources.visibility_off_50dp_000000_FILL0_wght400_GRAD0_opsz48;
+            }
+            else
+            {
+                ConfirmPasswordTextbox.UseSystemPasswordChar = true;
+                viewConfirmPasswordButton.Image = Properties.Resources.visibility_50dp_000000_FILL0_wght400_GRAD0_opsz48;
+            }
         }
     }
 }

@@ -34,11 +34,12 @@
             this.SubmitButton = new Guna.UI2.WinForms.Guna2Button();
             this.forgotpasswordLink = new System.Windows.Forms.LinkLabel();
             this.SidePanel = new Guna.UI2.WinForms.Guna2GradientPanel();
-            this.logo = new System.Windows.Forms.PictureBox();
             this.LoginLabel = new System.Windows.Forms.Label();
             this.ErrorLoginLabel = new System.Windows.Forms.Label();
-            this.CloseButtonLogin = new Guna.UI2.WinForms.Guna2Button();
             this.CreateAccountButton = new Guna.UI2.WinForms.Guna2Button();
+            this.viewPasswordButton = new Guna.UI2.WinForms.Guna2Button();
+            this.CloseButtonLogin = new Guna.UI2.WinForms.Guna2Button();
+            this.logo = new System.Windows.Forms.PictureBox();
             this.SidePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.logo)).BeginInit();
             this.SuspendLayout();
@@ -135,18 +136,6 @@
             this.SidePanel.Size = new System.Drawing.Size(393, 450);
             this.SidePanel.TabIndex = 6;
             // 
-            // logo
-            // 
-            this.logo.BackColor = System.Drawing.Color.Transparent;
-            this.logo.Dock = System.Windows.Forms.DockStyle.Left;
-            this.logo.Image = global::Phumla_Kamnandi_GRP_12.Properties.Resources.PHUMLA_KAMNANDI_Photoroom;
-            this.logo.Location = new System.Drawing.Point(0, 0);
-            this.logo.Name = "logo";
-            this.logo.Size = new System.Drawing.Size(411, 450);
-            this.logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.logo.TabIndex = 0;
-            this.logo.TabStop = false;
-            // 
             // LoginLabel
             // 
             this.LoginLabel.AutoSize = true;
@@ -171,27 +160,6 @@
             this.ErrorLoginLabel.Text = "Email/Password is incorrect. Try again";
             this.ErrorLoginLabel.Click += new System.EventHandler(this.ErrorLoginLabel_Click);
             // 
-            // CloseButtonLogin
-            // 
-            this.CloseButtonLogin.Animated = true;
-            this.CloseButtonLogin.AutoRoundedCorners = true;
-            this.CloseButtonLogin.BackColor = System.Drawing.Color.Transparent;
-            this.CloseButtonLogin.BorderColor = System.Drawing.Color.Transparent;
-            this.CloseButtonLogin.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.CloseButtonLogin.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.CloseButtonLogin.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.CloseButtonLogin.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.CloseButtonLogin.FillColor = System.Drawing.Color.Transparent;
-            this.CloseButtonLogin.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.CloseButtonLogin.ForeColor = System.Drawing.Color.White;
-            this.CloseButtonLogin.Image = global::Phumla_Kamnandi_GRP_12.Properties.Resources.close_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24;
-            this.CloseButtonLogin.Location = new System.Drawing.Point(742, 0);
-            this.CloseButtonLogin.Name = "CloseButtonLogin";
-            this.CloseButtonLogin.Size = new System.Drawing.Size(57, 30);
-            this.CloseButtonLogin.TabIndex = 12;
-            this.CloseButtonLogin.UseTransparentBackground = true;
-            this.CloseButtonLogin.Click += new System.EventHandler(this.CloseButtonLogin_Click);
-            // 
             // CreateAccountButton
             // 
             this.CreateAccountButton.Animated = true;
@@ -213,6 +181,56 @@
             this.CreateAccountButton.Text = "Create Account";
             this.CreateAccountButton.Click += new System.EventHandler(this.CreateAccountButton_Click);
             // 
+            // viewPasswordButton
+            // 
+            this.viewPasswordButton.BackColor = System.Drawing.Color.Transparent;
+            this.viewPasswordButton.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.viewPasswordButton.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.viewPasswordButton.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.viewPasswordButton.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.viewPasswordButton.FillColor = System.Drawing.Color.White;
+            this.viewPasswordButton.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.viewPasswordButton.ForeColor = System.Drawing.Color.White;
+            this.viewPasswordButton.Image = global::Phumla_Kamnandi_GRP_12.Properties.Resources.visibility_50dp_000000_FILL0_wght400_GRAD0_opsz48;
+            this.viewPasswordButton.Location = new System.Drawing.Point(707, 232);
+            this.viewPasswordButton.Name = "viewPasswordButton";
+            this.viewPasswordButton.Size = new System.Drawing.Size(56, 30);
+            this.viewPasswordButton.TabIndex = 13;
+            this.viewPasswordButton.Click += new System.EventHandler(this.viewPasswordButton_Click);
+            // 
+            // CloseButtonLogin
+            // 
+            this.CloseButtonLogin.Animated = true;
+            this.CloseButtonLogin.AutoRoundedCorners = true;
+            this.CloseButtonLogin.BackColor = System.Drawing.Color.Transparent;
+            this.CloseButtonLogin.BorderColor = System.Drawing.Color.Transparent;
+            this.CloseButtonLogin.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.CloseButtonLogin.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.CloseButtonLogin.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.CloseButtonLogin.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.CloseButtonLogin.FillColor = System.Drawing.Color.Transparent;
+            this.CloseButtonLogin.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.CloseButtonLogin.ForeColor = System.Drawing.Color.White;
+            this.CloseButtonLogin.Image = global::Phumla_Kamnandi_GRP_12.Properties.Resources.close_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24;
+            this.CloseButtonLogin.Location = new System.Drawing.Point(742, 0);
+            this.CloseButtonLogin.Name = "CloseButtonLogin";
+            this.CloseButtonLogin.Size = new System.Drawing.Size(57, 30);
+            this.CloseButtonLogin.TabIndex = 12;
+            this.CloseButtonLogin.UseTransparentBackground = true;
+            this.CloseButtonLogin.Click += new System.EventHandler(this.CloseButtonLogin_Click);
+            // 
+            // logo
+            // 
+            this.logo.BackColor = System.Drawing.Color.Transparent;
+            this.logo.Dock = System.Windows.Forms.DockStyle.Left;
+            this.logo.Image = global::Phumla_Kamnandi_GRP_12.Properties.Resources.PHUMLA_KAMNANDI_Photoroom;
+            this.logo.Location = new System.Drawing.Point(0, 0);
+            this.logo.Name = "logo";
+            this.logo.Size = new System.Drawing.Size(411, 450);
+            this.logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.logo.TabIndex = 0;
+            this.logo.TabStop = false;
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -220,6 +238,7 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(56)))), ((int)(((byte)(73)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.viewPasswordButton);
             this.Controls.Add(this.CloseButtonLogin);
             this.Controls.Add(this.ErrorLoginLabel);
             this.Controls.Add(this.LoginLabel);
@@ -252,5 +271,6 @@
         private System.Windows.Forms.Label ErrorLoginLabel;
         private Guna.UI2.WinForms.Guna2Button CloseButtonLogin;
         private Guna.UI2.WinForms.Guna2Button CreateAccountButton;
+        private Guna.UI2.WinForms.Guna2Button viewPasswordButton;
     }
 }

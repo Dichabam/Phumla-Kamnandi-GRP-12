@@ -13,7 +13,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             InitializeComponent();
             ErrorLoginLabel.Visible = false;
             _services = ServiceLocator.Instance;
-            PasswordTextbox.PasswordChar = '•';
+            PasswordTextbox.UseSystemPasswordChar = true;
         }
 
         private void Email_TextChanged(object sender, EventArgs e)
@@ -118,5 +118,19 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
 
         private void label1_Click(object sender, EventArgs e) { }
         private void ErrorLoginLabel_Click(object sender, EventArgs e) { }
+
+        private void viewPasswordButton_Click(object sender, EventArgs e)
+        {
+            if (PasswordTextbox.UseSystemPasswordChar)
+            {
+                PasswordTextbox.UseSystemPasswordChar = false;
+                viewPasswordButton.Image = Properties.Resources.visibility_off_50dp_000000_FILL0_wght400_GRAD0_opsz48;
+            }
+            else
+            {
+                PasswordTextbox.UseSystemPasswordChar = true;
+                viewPasswordButton.Image = Properties.Resources.visibility_50dp_000000_FILL0_wght400_GRAD0_opsz48;
+            }
+        }
     }
 }
