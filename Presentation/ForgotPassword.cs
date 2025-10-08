@@ -12,9 +12,11 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
 {
     public partial class ForgotPassword : Form
     {
+        private ServiceLocator _services;
         public ForgotPassword()
         {
             InitializeComponent();
+            _services = ServiceLocator.Instance;
             this.KeyPreview = true;
             this.KeyDown += ForgotPassword_KeyDown;
             ErrorEmailLabel.Visible = false;
@@ -103,12 +105,50 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
 
         private void SubmitButtonFP_Click_1(object sender, EventArgs e)
         {
+            string email = EmailTextboxFP.Text.Trim();
 
+            if (string.IsNullOrEmpty(email))
+            {
+                ErrorEmailLabel.Text = "Please enter your work email";
+                ErrorEmailLabel.Visible = true;
+                return;
+            }
+
+            // Validate email format
+            if (!IsValidEmail(email))
+            {
+                ErrorEmailLabel.Text = "Please enter a valid email address";
+                ErrorEmailLabel.Visible = true;
+                return;
+            }
+
+            // Check if it's a work email
+            if (!email.EndsWith("@pkhotel.com"))
+            {
+                ErrorEmailLabel.Text = "Please use your work email (@pkhotel.com)";
+                ErrorEmailLabel.Visible = true;
+                return;
+            }
+
+            // Check if email exists in system
+            var employee = _services.EmployeeService.GetEmployeeByEmail(email);
+            if (employee == null)
+            {
+                ErrorEmailLabel.Text = "Email does not exist in system";
+                ErrorEmailLabel.Visible = true;
+                return;
+            }
+
+            // Email exists, proceed to admin code verification for password reset
+            AdminCode adminForm = new AdminCode(email, true); // true indicates password reset
+            adminForm.FormClosed += (s, args) => this.Close();
+            adminForm.Show();
+            this.Hide();
         }
 
         private void EmailTextboxFP_TextChanged(object sender, EventArgs e)
         {
-
+            ErrorEmailLabel.Visible = false;
         }
 
         private void SidePanelFP_Paint(object sender, PaintEventArgs e)

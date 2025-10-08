@@ -104,43 +104,19 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                 return;
             }
 
-            try
-            {
-                // Register new guest using the service
-                Guest newGuest = _services.GuestService.RegisterNewGuest(
-                    NameTextboxCA.Text.Trim(),
-                    SurnameTextboxCA.Text.Trim(),
-                    EmailTextboxCAEMP.Text.Trim(),
-                    CellTextboxCAEMP.Text.Trim(),
-                    GenerateDefaultAddress() // Address can be updated later
-                );
-
-                if (newGuest != null)
-                {
-                    MessageBox.Show($"Account created successfully!\n\n" +
-                        $"Your Employee ID: {newGuest.GuestId}\n" +
-                        $"Name: {newGuest.FullName}\n" +
-                        $"Email: {newGuest.Email}\n\n" +
-                        $"Please remember your Employee ID.",
-                        "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                    // Return to login
-                    Login loginForm = new Login();
-                    loginForm.Show();
-                    this.Close();
-                }
-                else
-                {
-                    MessageBox.Show("Failed to create account. Please try again.",
-                        "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"An error occurred: {ex.Message}",
-                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            // Store the details temporarily and move to password form
+            var passwordForm = new PasswordForm(
+                NameTextboxCA.Text.Trim(),
+                SurnameTextboxCA.Text.Trim(),
+                CellTextboxCAEMP.Text.Trim(),
+                EmailTextboxCAEMP.Text.Trim(),
+                false // isPasswordReset = false
+            );
+            passwordForm.FormClosed += (s, args) => this.Close();
+            passwordForm.Show();
+            this.Hide();
         }
+        
 
         private bool ValidateInputs()
         {

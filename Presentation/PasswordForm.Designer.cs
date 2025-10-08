@@ -1,4 +1,6 @@
-﻿namespace Phumla_Kamnandi_GRP_12.Presentation
+﻿using System.Windows.Forms;
+
+namespace Phumla_Kamnandi_GRP_12.Presentation
 {
     partial class PasswordForm
     {
@@ -30,6 +32,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PasswordForm));
             this.SidePanelPass = new Guna.UI2.WinForms.Guna2GradientPanel();
+            this.SucessLabelPass = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.justLabel = new System.Windows.Forms.Label();
             this.CloseButtonPass = new Guna.UI2.WinForms.Guna2Button();
             this.NextButtonPass = new Guna.UI2.WinForms.Guna2Button();
@@ -38,7 +42,6 @@
             this.VerifyPasswordLabel = new System.Windows.Forms.Label();
             this.NewPasswordLabel = new System.Windows.Forms.Label();
             this.logo = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.SidePanelPass.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.logo)).BeginInit();
             this.SuspendLayout();
@@ -46,6 +49,7 @@
             // SidePanelPass
             // 
             this.SidePanelPass.BackColor = System.Drawing.Color.Transparent;
+            this.SidePanelPass.Controls.Add(this.SucessLabelPass);
             this.SidePanelPass.Controls.Add(this.label1);
             this.SidePanelPass.Controls.Add(this.justLabel);
             this.SidePanelPass.Controls.Add(this.CloseButtonPass);
@@ -64,6 +68,28 @@
             this.SidePanelPass.Name = "SidePanelPass";
             this.SidePanelPass.Size = new System.Drawing.Size(642, 803);
             this.SidePanelPass.TabIndex = 9;
+            // 
+            // SucessLabelPass
+            // 
+            this.SucessLabelPass.AutoSize = true;
+            this.SucessLabelPass.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SucessLabelPass.ForeColor = System.Drawing.Color.Lime;
+            this.SucessLabelPass.Location = new System.Drawing.Point(179, 191);
+            this.SucessLabelPass.Name = "SucessLabelPass";
+            this.SucessLabelPass.Size = new System.Drawing.Size(298, 28);
+            this.SucessLabelPass.TabIndex = 15;
+            this.SucessLabelPass.Text = "Password Created successfully";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 6F);
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(212, 779);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(203, 15);
+            this.label1.TabIndex = 14;
+            this.label1.Text = "Phumla Kamnandi Hotel Grout Pty(Ltd)";
             // 
             // justLabel
             // 
@@ -195,17 +221,6 @@
             this.logo.TabIndex = 0;
             this.logo.TabStop = false;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 6F);
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(212, 779);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(203, 15);
-            this.label1.TabIndex = 14;
-            this.label1.Text = "Phumla Kamnandi Hotel Grout Pty(Ltd)";
-            // 
             // PasswordForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -215,6 +230,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "PasswordForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PasswordForm";
             this.SidePanelPass.ResumeLayout(false);
             this.SidePanelPass.PerformLayout();
@@ -235,5 +251,8 @@
         private System.Windows.Forms.PictureBox logo;
         private System.Windows.Forms.Label VerifyPasswordLabel;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label SucessLabelPass;
+
+       
     }
 }

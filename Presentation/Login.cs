@@ -85,8 +85,8 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                 return;
             }
 
-            // Try employee login first (check if email is from company domain)
-            if (email.EndsWith("@phumlakamnandi.co.za"))
+            // Check if it's a work email (employee login)
+            if (email.EndsWith("@pkhotel.com"))
             {
                 Employee employee = _services.EmployeeService.AuthenticateEmployee(email, password);
 
@@ -103,24 +103,12 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                     return;
                 }
             }
-
-            // Try guest login
-            Guest guest = _services.GuestService.GetGuestByEmail(email);
-            if (guest != null && guest.IsInGoodStanding)
+            else
             {
-                // For demo: accept any password for guests (in production, verify password hash)
-                if (password.Length >= 4)
-                {
-                    // Set guest session
-                    _services.SetGuestSession(guest);
-
-                    // Open Dashboard
-                    this.Hide();
-                    Dashbaord dashboard = new Dashbaord();
-                    dashboard.FormClosed += (s, args) => this.Close();
-                    dashboard.Show();
-                    return;
-                }
+                // Not a work email - inform user
+                ErrorLoginLabel.Text = "Please use your work email (@pkhotel.com)";
+                ErrorLoginLabel.Visible = true;
+                return;
             }
 
             // Login failed
