@@ -32,14 +32,14 @@
             this.GuestDataView = new System.Windows.Forms.DataGridView();
             this.phumlaKamnandiDBDataSet = new Phumla_Kamnandi_GRP_12.PhumlaKamnandiDBDataSet();
             this.phumlaKamnandiDBDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.UpdateGuestButton = new Guna.UI2.WinForms.Guna2Button();
-            this.AddGuestButton = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
-            this.GuestStandingButton = new Guna.UI2.WinForms.Guna2Button();
             this.emailConfirmtextbox = new Guna.UI2.WinForms.Guna2TextBox();
             this.enterEmailTextbox = new System.Windows.Forms.Label();
-            this.submitButtonVBH = new Guna.UI2.WinForms.Guna2Button();
+            this.ConfirmButtonVBH = new Guna.UI2.WinForms.Guna2Button();
             this.ErrorLableVBH = new System.Windows.Forms.Label();
+            this.guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
+            this.GuestStandingButton = new Guna.UI2.WinForms.Guna2Button();
+            this.AddGuestButton = new Guna.UI2.WinForms.Guna2Button();
+            this.UpdateGuestButton = new Guna.UI2.WinForms.Guna2Button();
             ((System.ComponentModel.ISupportInitialize)(this.GuestDataView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.phumlaKamnandiDBDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.phumlaKamnandiDBDataSetBindingSource)).BeginInit();
@@ -68,73 +68,11 @@
             this.phumlaKamnandiDBDataSetBindingSource.DataSource = this.phumlaKamnandiDBDataSet;
             this.phumlaKamnandiDBDataSetBindingSource.Position = 0;
             // 
-            // UpdateGuestButton
-            // 
-            this.UpdateGuestButton.AutoRoundedCorners = true;
-            this.UpdateGuestButton.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.UpdateGuestButton.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.UpdateGuestButton.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.UpdateGuestButton.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.UpdateGuestButton.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.UpdateGuestButton.ForeColor = System.Drawing.Color.White;
-            this.UpdateGuestButton.Location = new System.Drawing.Point(63, 349);
-            this.UpdateGuestButton.Name = "UpdateGuestButton";
-            this.UpdateGuestButton.Size = new System.Drawing.Size(180, 45);
-            this.UpdateGuestButton.TabIndex = 26;
-            this.UpdateGuestButton.Text = "Update Guest";
-            this.UpdateGuestButton.Click += new System.EventHandler(this.UpdateGuestButton_Click);
-            // 
-            // AddGuestButton
-            // 
-            this.AddGuestButton.AutoRoundedCorners = true;
-            this.AddGuestButton.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.AddGuestButton.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.AddGuestButton.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.AddGuestButton.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.AddGuestButton.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AddGuestButton.ForeColor = System.Drawing.Color.White;
-            this.AddGuestButton.Location = new System.Drawing.Point(285, 349);
-            this.AddGuestButton.Name = "AddGuestButton";
-            this.AddGuestButton.Size = new System.Drawing.Size(180, 45);
-            this.AddGuestButton.TabIndex = 26;
-            this.AddGuestButton.Text = "Add Guest";
-            this.AddGuestButton.Click += new System.EventHandler(this.UpdateGuestButton_Click);
-            // 
-            // guna2Button2
-            // 
-            this.guna2Button2.AutoRoundedCorners = true;
-            this.guna2Button2.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button2.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button2.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2Button2.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button2.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2Button2.ForeColor = System.Drawing.Color.White;
-            this.guna2Button2.Location = new System.Drawing.Point(502, 349);
-            this.guna2Button2.Name = "guna2Button2";
-            this.guna2Button2.Size = new System.Drawing.Size(180, 45);
-            this.guna2Button2.TabIndex = 26;
-            this.guna2Button2.Text = "View Booking History";
-            this.guna2Button2.Click += new System.EventHandler(this.UpdateGuestButton_Click);
-            // 
-            // GuestStandingButton
-            // 
-            this.GuestStandingButton.AutoRoundedCorners = true;
-            this.GuestStandingButton.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.GuestStandingButton.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.GuestStandingButton.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.GuestStandingButton.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.GuestStandingButton.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.GuestStandingButton.ForeColor = System.Drawing.Color.White;
-            this.GuestStandingButton.Location = new System.Drawing.Point(713, 349);
-            this.GuestStandingButton.Name = "GuestStandingButton";
-            this.GuestStandingButton.Size = new System.Drawing.Size(180, 45);
-            this.GuestStandingButton.TabIndex = 26;
-            this.GuestStandingButton.Text = "Guest standing";
-            this.GuestStandingButton.Click += new System.EventHandler(this.UpdateGuestButton_Click);
-            // 
             // emailConfirmtextbox
             // 
             this.emailConfirmtextbox.AutoRoundedCorners = true;
+            this.emailConfirmtextbox.BorderColor = System.Drawing.Color.SlateGray;
+            this.emailConfirmtextbox.BorderThickness = 2;
             this.emailConfirmtextbox.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.emailConfirmtextbox.DefaultText = "";
             this.emailConfirmtextbox.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
@@ -163,22 +101,22 @@
             this.enterEmailTextbox.TabIndex = 28;
             this.enterEmailTextbox.Text = "Enter Guest Email";
             // 
-            // submitButtonVBH
+            // ConfirmButtonVBH
             // 
-            this.submitButtonVBH.AutoRoundedCorners = true;
-            this.submitButtonVBH.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.submitButtonVBH.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.submitButtonVBH.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.submitButtonVBH.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.submitButtonVBH.FillColor = System.Drawing.Color.LimeGreen;
-            this.submitButtonVBH.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold);
-            this.submitButtonVBH.ForeColor = System.Drawing.Color.White;
-            this.submitButtonVBH.Location = new System.Drawing.Point(713, 454);
-            this.submitButtonVBH.Name = "submitButtonVBH";
-            this.submitButtonVBH.Size = new System.Drawing.Size(180, 45);
-            this.submitButtonVBH.TabIndex = 26;
-            this.submitButtonVBH.Text = "Confirm";
-            this.submitButtonVBH.Click += new System.EventHandler(this.UpdateGuestButton_Click);
+            this.ConfirmButtonVBH.AutoRoundedCorners = true;
+            this.ConfirmButtonVBH.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.ConfirmButtonVBH.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.ConfirmButtonVBH.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.ConfirmButtonVBH.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.ConfirmButtonVBH.FillColor = System.Drawing.Color.LimeGreen;
+            this.ConfirmButtonVBH.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold);
+            this.ConfirmButtonVBH.ForeColor = System.Drawing.Color.White;
+            this.ConfirmButtonVBH.Location = new System.Drawing.Point(713, 454);
+            this.ConfirmButtonVBH.Name = "ConfirmButtonVBH";
+            this.ConfirmButtonVBH.Size = new System.Drawing.Size(180, 45);
+            this.ConfirmButtonVBH.TabIndex = 26;
+            this.ConfirmButtonVBH.Text = "Confirm";
+            this.ConfirmButtonVBH.Click += new System.EventHandler(this.UpdateGuestButton_Click);
             // 
             // ErrorLableVBH
             // 
@@ -191,6 +129,73 @@
             this.ErrorLableVBH.TabIndex = 28;
             this.ErrorLableVBH.Text = "Guest not found";
             // 
+            // guna2Button2
+            // 
+            this.guna2Button2.AutoRoundedCorners = true;
+            this.guna2Button2.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button2.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button2.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.guna2Button2.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.guna2Button2.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2Button2.ForeColor = System.Drawing.Color.White;
+            this.guna2Button2.Location = new System.Drawing.Point(502, 349);
+            this.guna2Button2.Name = "guna2Button2";
+            this.guna2Button2.Size = new System.Drawing.Size(180, 45);
+            this.guna2Button2.TabIndex = 26;
+            this.guna2Button2.Text = "View Booking History";
+            this.guna2Button2.Click += new System.EventHandler(this.UpdateGuestButton_Click);
+            // 
+            // GuestStandingButton
+            // 
+            this.GuestStandingButton.AutoRoundedCorners = true;
+            this.GuestStandingButton.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.GuestStandingButton.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.GuestStandingButton.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.GuestStandingButton.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.GuestStandingButton.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.GuestStandingButton.ForeColor = System.Drawing.Color.White;
+            this.GuestStandingButton.Image = global::Phumla_Kamnandi_GRP_12.Properties.Resources.man_4_50dp_FFFFFF_FILL0_wght400_GRAD0_opsz48;
+            this.GuestStandingButton.Location = new System.Drawing.Point(713, 349);
+            this.GuestStandingButton.Name = "GuestStandingButton";
+            this.GuestStandingButton.Size = new System.Drawing.Size(180, 45);
+            this.GuestStandingButton.TabIndex = 26;
+            this.GuestStandingButton.Text = "Guest standing";
+            this.GuestStandingButton.Click += new System.EventHandler(this.UpdateGuestButton_Click);
+            // 
+            // AddGuestButton
+            // 
+            this.AddGuestButton.AutoRoundedCorners = true;
+            this.AddGuestButton.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.AddGuestButton.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.AddGuestButton.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.AddGuestButton.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.AddGuestButton.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AddGuestButton.ForeColor = System.Drawing.Color.White;
+            this.AddGuestButton.Image = global::Phumla_Kamnandi_GRP_12.Properties.Resources.add_50dp_FFFFFF_FILL0_wght400_GRAD0_opsz48;
+            this.AddGuestButton.Location = new System.Drawing.Point(285, 349);
+            this.AddGuestButton.Name = "AddGuestButton";
+            this.AddGuestButton.Size = new System.Drawing.Size(180, 45);
+            this.AddGuestButton.TabIndex = 26;
+            this.AddGuestButton.Text = "Add Guest";
+            this.AddGuestButton.Click += new System.EventHandler(this.UpdateGuestButton_Click);
+            // 
+            // UpdateGuestButton
+            // 
+            this.UpdateGuestButton.AutoRoundedCorners = true;
+            this.UpdateGuestButton.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.UpdateGuestButton.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.UpdateGuestButton.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.UpdateGuestButton.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.UpdateGuestButton.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UpdateGuestButton.ForeColor = System.Drawing.Color.White;
+            this.UpdateGuestButton.Image = global::Phumla_Kamnandi_GRP_12.Properties.Resources.update_50dp_FFFFFF_FILL0_wght400_GRAD0_opsz48;
+            this.UpdateGuestButton.Location = new System.Drawing.Point(63, 349);
+            this.UpdateGuestButton.Name = "UpdateGuestButton";
+            this.UpdateGuestButton.Size = new System.Drawing.Size(180, 45);
+            this.UpdateGuestButton.TabIndex = 26;
+            this.UpdateGuestButton.Text = "Update Guest";
+            this.UpdateGuestButton.Click += new System.EventHandler(this.UpdateGuestButton_Click);
+            // 
             // FrmGuests
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -201,7 +206,7 @@
             this.Controls.Add(this.enterEmailTextbox);
             this.Controls.Add(this.emailConfirmtextbox);
             this.Controls.Add(this.GuestStandingButton);
-            this.Controls.Add(this.submitButtonVBH);
+            this.Controls.Add(this.ConfirmButtonVBH);
             this.Controls.Add(this.guna2Button2);
             this.Controls.Add(this.AddGuestButton);
             this.Controls.Add(this.UpdateGuestButton);
@@ -227,7 +232,7 @@
         private Guna.UI2.WinForms.Guna2Button GuestStandingButton;
         private Guna.UI2.WinForms.Guna2TextBox emailConfirmtextbox;
         private System.Windows.Forms.Label enterEmailTextbox;
-        private Guna.UI2.WinForms.Guna2Button submitButtonVBH;
+        private Guna.UI2.WinForms.Guna2Button ConfirmButtonVBH;
         private System.Windows.Forms.Label ErrorLableVBH;
     }
 }

@@ -73,6 +73,16 @@ namespace Phumla_Kamnandi_GRP_12.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap add_50dp_FFFFFF_FILL0_wght400_GRAD0_opsz48 {
+            get {
+                object obj = ResourceManager.GetObject("add_50dp_FFFFFF_FILL0_wght400_GRAD0_opsz48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap analytics_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24 {
             get {
                 object obj = ResourceManager.GetObject("analytics_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24", resourceCulture);
@@ -93,9 +103,29 @@ namespace Phumla_Kamnandi_GRP_12.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap check_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24 {
+            get {
+                object obj = ResourceManager.GetObject("check_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap close_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24 {
             get {
                 object obj = ResourceManager.GetObject("close_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap close_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz241 {
+            get {
+                object obj = ResourceManager.GetObject("close_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz241", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -193,9 +223,29 @@ namespace Phumla_Kamnandi_GRP_12.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap hotel_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz241 {
+            get {
+                object obj = ResourceManager.GetObject("hotel_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz241", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap logout_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24 {
             get {
                 object obj = ResourceManager.GetObject("logout_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap man_4_50dp_FFFFFF_FILL0_wght400_GRAD0_opsz48 {
+            get {
+                object obj = ResourceManager.GetObject("man_4_50dp_FFFFFF_FILL0_wght400_GRAD0_opsz48", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -286,6 +336,26 @@ namespace Phumla_Kamnandi_GRP_12.Properties {
         internal static System.Drawing.Bitmap skyscraper_9226515 {
             get {
                 object obj = ResourceManager.GetObject("skyscraper-9226515", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap update_50dp_FFFFFF_FILL0_wght400_GRAD0_opsz48 {
+            get {
+                object obj = ResourceManager.GetObject("update_50dp_FFFFFF_FILL0_wght400_GRAD0_opsz48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap view_agenda_50dp_FFFFFF_FILL0_wght400_GRAD0_opsz48 {
+            get {
+                object obj = ResourceManager.GetObject("view_agenda_50dp_FFFFFF_FILL0_wght400_GRAD0_opsz48", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
