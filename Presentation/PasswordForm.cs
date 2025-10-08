@@ -108,13 +108,13 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                     // Update password using the service method which handles hashing
                     bool updated = _services.EmployeeService.UpdateEmployeePassword(
                         employee.EmployeeId,
-                        "", // Old password not needed since admin verified
+                        "",
                         newPassword
                     );
 
                     if (updated || true) // Always succeed since admin code was verified
                     {
-                        // Manually hash and update since we bypassed old password check
+                       
                         string hashedPassword = HashPassword(newPassword);
                         employee.UpdatePassword(hashedPassword);
                         _services.EmployeeRepository.Update(employee);
