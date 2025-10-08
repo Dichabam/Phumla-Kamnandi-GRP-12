@@ -32,9 +32,9 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.guna2DataGridView1 = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.showAvailableRoomsButton = new Guna.UI2.WinForms.Guna2Button();
             this.ShowAllRoomsButton = new Guna.UI2.WinForms.Guna2Button();
             this.ShowUnavailableRoomsButton = new Guna.UI2.WinForms.Guna2Button();
+            this.showAvailableRoomsButton = new Guna.UI2.WinForms.Guna2Button();
             ((System.ComponentModel.ISupportInitialize)(this.guna2DataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -93,24 +93,6 @@
             this.guna2DataGridView1.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.guna2DataGridView1.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             // 
-            // showAvailableRoomsButton
-            // 
-            this.showAvailableRoomsButton.Animated = true;
-            this.showAvailableRoomsButton.AutoRoundedCorners = true;
-            this.showAvailableRoomsButton.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.showAvailableRoomsButton.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.showAvailableRoomsButton.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.showAvailableRoomsButton.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.showAvailableRoomsButton.Font = new System.Drawing.Font("Nirmala UI", 10.2F, System.Drawing.FontStyle.Bold);
-            this.showAvailableRoomsButton.ForeColor = System.Drawing.Color.White;
-            this.showAvailableRoomsButton.Image = global::Phumla_Kamnandi_GRP_12.Properties.Resources.check_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24;
-            this.showAvailableRoomsButton.Location = new System.Drawing.Point(95, 522);
-            this.showAvailableRoomsButton.Name = "showAvailableRoomsButton";
-            this.showAvailableRoomsButton.Size = new System.Drawing.Size(221, 52);
-            this.showAvailableRoomsButton.TabIndex = 1;
-            this.showAvailableRoomsButton.Text = "Available Rooms";
-            this.showAvailableRoomsButton.Click += new System.EventHandler(this.showAvailableRoomsButton_Click);
-            // 
             // ShowAllRoomsButton
             // 
             this.ShowAllRoomsButton.Animated = true;
@@ -119,6 +101,7 @@
             this.ShowAllRoomsButton.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.ShowAllRoomsButton.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.ShowAllRoomsButton.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.ShowAllRoomsButton.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
             this.ShowAllRoomsButton.Font = new System.Drawing.Font("Nirmala UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ShowAllRoomsButton.ForeColor = System.Drawing.Color.White;
             this.ShowAllRoomsButton.Image = global::Phumla_Kamnandi_GRP_12.Properties.Resources.hotel_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz241;
@@ -137,6 +120,7 @@
             this.ShowUnavailableRoomsButton.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.ShowUnavailableRoomsButton.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.ShowUnavailableRoomsButton.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.ShowUnavailableRoomsButton.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
             this.ShowUnavailableRoomsButton.Font = new System.Drawing.Font("Nirmala UI", 10.2F, System.Drawing.FontStyle.Bold);
             this.ShowUnavailableRoomsButton.ForeColor = System.Drawing.Color.White;
             this.ShowUnavailableRoomsButton.Image = global::Phumla_Kamnandi_GRP_12.Properties.Resources.close_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz241;
@@ -146,6 +130,25 @@
             this.ShowUnavailableRoomsButton.TabIndex = 1;
             this.ShowUnavailableRoomsButton.Text = "Unavailable Rooms";
             this.ShowUnavailableRoomsButton.Click += new System.EventHandler(this.showAvailableRoomsButton_Click);
+            // 
+            // showAvailableRoomsButton
+            // 
+            this.showAvailableRoomsButton.Animated = true;
+            this.showAvailableRoomsButton.AutoRoundedCorners = true;
+            this.showAvailableRoomsButton.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.showAvailableRoomsButton.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.showAvailableRoomsButton.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.showAvailableRoomsButton.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.showAvailableRoomsButton.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
+            this.showAvailableRoomsButton.Font = new System.Drawing.Font("Nirmala UI", 10.2F, System.Drawing.FontStyle.Bold);
+            this.showAvailableRoomsButton.ForeColor = System.Drawing.Color.White;
+            this.showAvailableRoomsButton.Image = global::Phumla_Kamnandi_GRP_12.Properties.Resources.check_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24;
+            this.showAvailableRoomsButton.Location = new System.Drawing.Point(95, 522);
+            this.showAvailableRoomsButton.Name = "showAvailableRoomsButton";
+            this.showAvailableRoomsButton.Size = new System.Drawing.Size(221, 52);
+            this.showAvailableRoomsButton.TabIndex = 1;
+            this.showAvailableRoomsButton.Text = "Available Rooms";
+            this.showAvailableRoomsButton.Click += new System.EventHandler(this.showAvailableRoomsButton_Click);
             // 
             // FrmRooms
             // 

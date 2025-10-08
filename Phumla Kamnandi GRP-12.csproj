@@ -348,13 +348,17 @@
     <None Include="Resourses\Icons\visibility_off_50dp_000000_FILL0_wght400_GRAD0_opsz48.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="PhumlaKamnandiDB.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <Content Include="PhumlaKamnandiDB.mdf" />
     <Content Include="PhumlaKamnandiDB_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>PhumlaKamnandiDB.mdf</DependentUpon>
     </Content>
+    <None Include="Resourses\BigIcons\door_back_75dp_FFFFFF_FILL0_wght400_GRAD0_opsz48.png" />
+    <None Include="Resourses\BigIcons\event_busy_75dp_FFFFFF_FILL0_wght400_GRAD0_opsz48.png" />
+    <None Include="Resourses\BigIcons\credit_card_gear_75dp_EA3323_FILL0_wght400_GRAD0_opsz48.png" />
+    <None Include="Resourses\BigIcons\event_75dp_FFFFFF_FILL0_wght400_GRAD0_opsz48.png" />
+    <None Include="Resourses\BigIcons\event_available_75dp_FFFFFF_FILL0_wght400_GRAD0_opsz48.png" />
+    <None Include="Resourses\BigIcons\single_bed_75dp_FFFFFF_FILL0_wght400_GRAD0_opsz48.png" />
+    <None Include="Resourses\Icons\save_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png" />
     <None Include="Resourses\Icons\check_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png" />
     <None Include="Resourses\Icons\man_4_50dp_FFFFFF_FILL0_wght400_GRAD0_opsz48.png" />
     <None Include="Resourses\Icons\view_agenda_50dp_FFFFFF_FILL0_wght400_GRAD0_opsz48.png" />

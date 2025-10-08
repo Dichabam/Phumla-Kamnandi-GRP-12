@@ -38,11 +38,11 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             // Update welcome label with current user's name
             if (!string.IsNullOrEmpty(_services.CurrentUserName))
             {
-                WelcomLabel.Text = $"WELCOME BACK, {_services.CurrentUserName.ToUpper()}";
+                WelcomLabel.Text = $"{_services.CurrentUserName.ToUpper()}";
             }
             else
             {
-                WelcomLabel.Text = "WELCOME BACK, USER";
+                WelcomLabel.Text = "USER";
             }
 
             // Hide Employees button if user is not admin

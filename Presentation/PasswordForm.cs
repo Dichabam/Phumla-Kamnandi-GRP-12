@@ -235,5 +235,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                 viewConfirmPasswordButton.Image = Properties.Resources.visibility_50dp_000000_FILL0_wght400_GRAD0_opsz48;
             }
         }
+
+
     }
 }
