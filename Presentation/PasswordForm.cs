@@ -15,9 +15,9 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
         private string _personalEmail;
         private bool _isPasswordReset;
         private string _workEmail; // For password reset
-        private Label SuccessLabelPass;
+      
 
-        // Constructor for new account creation
+       
         public PasswordForm(string firstName, string lastName, string phone, string personalEmail, bool isPasswordReset)
         {
             InitializeComponent();
@@ -31,7 +31,10 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             NewPasswordTextbox.PasswordChar = '•';
             ConfirmPasswordTextbox.PasswordChar = '•';
 
-            // Update button text based on context
+           
+            SucessLabelPass.Visible = false;  
+
+            
             if (_isPasswordReset)
             {
                 NextButtonPass.Text = "SUBMIT";
@@ -45,7 +48,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             NextButtonPass.Click += NextButtonPass_Click;
         }
 
-        // Constructor for password reset
+       
         public PasswordForm(string workEmail) : this("", "", "", "", true)
         {
             _workEmail = workEmail;
@@ -69,26 +72,26 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
 
             if (_isPasswordReset)
             {
-                // Password reset flow
+                
                 await HandlePasswordReset(password);
             }
             else
             {
-                // New account creation flow
+               
                 await HandleNewAccountCreation(password);
             }
         }
 
         private async Task HandleNewAccountCreation(string password)
         {
-            // Hash the password before storing
+            // Hash password before storing
             string hashedPassword = HashPassword(password);
 
             // Show success message
-            SuccessLabelPass.Text = "Password created";
-            SuccessLabelPass.Visible = true;
-            await Task.Delay(1500); // Show for 1.5 seconds
-            SuccessLabelPass.Visible = false;
+            SucessLabelPass.Text = "Password created successfully";  
+            SucessLabelPass.Visible = true;
+            await Task.Delay(1500); 
+            SucessLabelPass.Visible = false;
 
             // Move to Admin Code verification
             AdminCode adminForm = new AdminCode(_firstName, _lastName, _phone, _personalEmail, hashedPassword);
@@ -110,10 +113,10 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                     _services.EmployeeRepository.Update(employee);
 
                     // Show success message
-                    SuccessLabelPass.Text = "Password updated successfully";
-                    SuccessLabelPass.Visible = true;
+                    SucessLabelPass.Text = "Password updated successfully";  // Use SucessLabelPass
+                    SucessLabelPass.Visible = true;
                     await Task.Delay(2000); // Show for 2 seconds
-                    SuccessLabelPass.Visible = false;
+                    SucessLabelPass.Visible = false;
 
                     // Return to login
                     Login loginForm = new Login();
@@ -187,7 +190,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
 
         private void EmailTextboxPass_TextChanged(object sender, EventArgs e)
         {
-            // Keep this for any future validation logic
+            
         }
     }
 }

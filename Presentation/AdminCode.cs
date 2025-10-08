@@ -20,7 +20,6 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
         private string _workEmail;
         private bool _isPasswordReset;
 
-        // Constructor for new account creation
         public AdminCode(string firstName, string lastName, string phone, string personalEmail, string password)
         {
             InitializeComponent();
@@ -35,7 +34,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             InitializeForm();
         }
 
-        // Constructor for password reset
+      
         public AdminCode(string workEmail, bool isPasswordReset)
         {
             InitializeComponent();
@@ -112,7 +111,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                 // Generate work email
                 string workEmail = GenerateWorkEmail(_firstName, _lastName);
 
-                // Create employee account
+                // Create employee 
                 Employee newEmployee = _services.EmployeeService.RegisterEmployee(
                     _firstName,
                     _lastName,
@@ -135,11 +134,11 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                     // Auto-login the new employee
                     _services.SetEmployeeSession(newEmployee);
 
-                    // Open dashboard
+                   
                     Dashbaord dashboard = new Dashbaord();
                     dashboard.Show();
 
-                    // Close all previous forms
+                    
                     this.Close();
                 }
                 else
