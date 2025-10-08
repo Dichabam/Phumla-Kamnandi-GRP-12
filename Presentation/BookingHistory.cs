@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace Phumla_Kamnandi_GRP_12.Presentation
 {
-    public partial class FrmRooms : Form
+    public partial class BookingHistory : Form
     {
-        public FrmRooms()
+        public BookingHistory()
         {
             InitializeComponent();
-        }
-
-        private void showAvailableRoomsButton_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

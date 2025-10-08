@@ -28,184 +28,168 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.FrmGuestsLabel = new System.Windows.Forms.Label();
-            this.FirstNamelabel = new System.Windows.Forms.Label();
-            this.Cardlabel = new System.Windows.Forms.Label();
-            this.Emaillabel = new System.Windows.Forms.Label();
-            this.SecondNamelabel = new System.Windows.Forms.Label();
-            this.Addresslabel = new System.Windows.Forms.Label();
-            this.Phonelabel = new System.Windows.Forms.Label();
-            this.Datelabel = new System.Windows.Forms.Label();
-            this.Formlabel = new System.Windows.Forms.Label();
-            this.FirstNametextBox = new System.Windows.Forms.TextBox();
-            this.DatetextBox = new System.Windows.Forms.TextBox();
-            this.FormtextBox = new System.Windows.Forms.TextBox();
-            this.AddresstextBox = new System.Windows.Forms.TextBox();
-            this.EmailtextBox = new System.Windows.Forms.TextBox();
-            this.SecondNametextBox = new System.Windows.Forms.TextBox();
-            this.CardtextBox = new System.Windows.Forms.TextBox();
-            this.PhonetextBox = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
+            this.components = new System.ComponentModel.Container();
+            this.GuestDataView = new System.Windows.Forms.DataGridView();
+            this.phumlaKamnandiDBDataSet = new Phumla_Kamnandi_GRP_12.PhumlaKamnandiDBDataSet();
+            this.phumlaKamnandiDBDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.UpdateGuestButton = new Guna.UI2.WinForms.Guna2Button();
+            this.AddGuestButton = new Guna.UI2.WinForms.Guna2Button();
+            this.guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
+            this.GuestStandingButton = new Guna.UI2.WinForms.Guna2Button();
+            this.emailConfirmtextbox = new Guna.UI2.WinForms.Guna2TextBox();
+            this.enterEmailTextbox = new System.Windows.Forms.Label();
+            this.submitButtonVBH = new Guna.UI2.WinForms.Guna2Button();
+            this.ErrorLableVBH = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.GuestDataView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.phumlaKamnandiDBDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.phumlaKamnandiDBDataSetBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
-            // FrmGuestsLabel
+            // GuestDataView
             // 
-            this.FrmGuestsLabel.AutoSize = true;
-            this.FrmGuestsLabel.Font = new System.Drawing.Font("Nirmala UI", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FrmGuestsLabel.ForeColor = System.Drawing.Color.White;
-            this.FrmGuestsLabel.Location = new System.Drawing.Point(114, 39);
-            this.FrmGuestsLabel.Name = "FrmGuestsLabel";
-            this.FrmGuestsLabel.Size = new System.Drawing.Size(740, 50);
-            this.FrmGuestsLabel.TabIndex = 4;
-            this.FrmGuestsLabel.Text = "PHUMLA KAMNANDI GROUP OF HOTELS";
-            this.FrmGuestsLabel.Click += new System.EventHandler(this.FrmGuestsLabel_Click);
+            this.GuestDataView.AllowUserToOrderColumns = true;
+            this.GuestDataView.AutoGenerateColumns = false;
+            this.GuestDataView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.GuestDataView.DataSource = this.phumlaKamnandiDBDataSetBindingSource;
+            this.GuestDataView.Location = new System.Drawing.Point(63, 12);
+            this.GuestDataView.Name = "GuestDataView";
+            this.GuestDataView.RowHeadersWidth = 51;
+            this.GuestDataView.RowTemplate.Height = 24;
+            this.GuestDataView.Size = new System.Drawing.Size(830, 312);
+            this.GuestDataView.TabIndex = 25;
             // 
-            // FirstNamelabel
+            // phumlaKamnandiDBDataSet
             // 
-            this.FirstNamelabel.AutoSize = true;
-            this.FirstNamelabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.FirstNamelabel.Location = new System.Drawing.Point(160, 217);
-            this.FirstNamelabel.Name = "FirstNamelabel";
-            this.FirstNamelabel.Size = new System.Drawing.Size(72, 16);
-            this.FirstNamelabel.TabIndex = 7;
-            this.FirstNamelabel.Text = "First Name";
+            this.phumlaKamnandiDBDataSet.DataSetName = "PhumlaKamnandiDBDataSet";
+            this.phumlaKamnandiDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // Cardlabel
+            // phumlaKamnandiDBDataSetBindingSource
             // 
-            this.Cardlabel.AutoSize = true;
-            this.Cardlabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.Cardlabel.Location = new System.Drawing.Point(160, 435);
-            this.Cardlabel.Name = "Cardlabel";
-            this.Cardlabel.Size = new System.Drawing.Size(128, 16);
-            this.Cardlabel.TabIndex = 8;
-            this.Cardlabel.Text = "Credit Card Number ";
+            this.phumlaKamnandiDBDataSetBindingSource.DataSource = this.phumlaKamnandiDBDataSet;
+            this.phumlaKamnandiDBDataSetBindingSource.Position = 0;
             // 
-            // Emaillabel
+            // UpdateGuestButton
             // 
-            this.Emaillabel.AutoSize = true;
-            this.Emaillabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.Emaillabel.Location = new System.Drawing.Point(168, 312);
-            this.Emaillabel.Name = "Emaillabel";
-            this.Emaillabel.Size = new System.Drawing.Size(41, 16);
-            this.Emaillabel.TabIndex = 9;
-            this.Emaillabel.Text = "Email";
+            this.UpdateGuestButton.AutoRoundedCorners = true;
+            this.UpdateGuestButton.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.UpdateGuestButton.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.UpdateGuestButton.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.UpdateGuestButton.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.UpdateGuestButton.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UpdateGuestButton.ForeColor = System.Drawing.Color.White;
+            this.UpdateGuestButton.Location = new System.Drawing.Point(63, 349);
+            this.UpdateGuestButton.Name = "UpdateGuestButton";
+            this.UpdateGuestButton.Size = new System.Drawing.Size(180, 45);
+            this.UpdateGuestButton.TabIndex = 26;
+            this.UpdateGuestButton.Text = "Update Guest";
+            this.UpdateGuestButton.Click += new System.EventHandler(this.UpdateGuestButton_Click);
             // 
-            // SecondNamelabel
+            // AddGuestButton
             // 
-            this.SecondNamelabel.AutoSize = true;
-            this.SecondNamelabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.SecondNamelabel.Location = new System.Drawing.Point(160, 268);
-            this.SecondNamelabel.Name = "SecondNamelabel";
-            this.SecondNamelabel.Size = new System.Drawing.Size(97, 16);
-            this.SecondNamelabel.TabIndex = 10;
-            this.SecondNamelabel.Text = "Second  Name";
+            this.AddGuestButton.AutoRoundedCorners = true;
+            this.AddGuestButton.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.AddGuestButton.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.AddGuestButton.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.AddGuestButton.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.AddGuestButton.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AddGuestButton.ForeColor = System.Drawing.Color.White;
+            this.AddGuestButton.Location = new System.Drawing.Point(285, 349);
+            this.AddGuestButton.Name = "AddGuestButton";
+            this.AddGuestButton.Size = new System.Drawing.Size(180, 45);
+            this.AddGuestButton.TabIndex = 26;
+            this.AddGuestButton.Text = "Add Guest";
+            this.AddGuestButton.Click += new System.EventHandler(this.UpdateGuestButton_Click);
             // 
-            // Addresslabel
+            // guna2Button2
             // 
-            this.Addresslabel.AutoSize = true;
-            this.Addresslabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.Addresslabel.Location = new System.Drawing.Point(160, 395);
-            this.Addresslabel.Name = "Addresslabel";
-            this.Addresslabel.Size = new System.Drawing.Size(58, 16);
-            this.Addresslabel.TabIndex = 11;
-            this.Addresslabel.Text = "Address";
+            this.guna2Button2.AutoRoundedCorners = true;
+            this.guna2Button2.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button2.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button2.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.guna2Button2.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.guna2Button2.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2Button2.ForeColor = System.Drawing.Color.White;
+            this.guna2Button2.Location = new System.Drawing.Point(502, 349);
+            this.guna2Button2.Name = "guna2Button2";
+            this.guna2Button2.Size = new System.Drawing.Size(180, 45);
+            this.guna2Button2.TabIndex = 26;
+            this.guna2Button2.Text = "View Booking History";
+            this.guna2Button2.Click += new System.EventHandler(this.UpdateGuestButton_Click);
             // 
-            // Phonelabel
+            // GuestStandingButton
             // 
-            this.Phonelabel.AutoSize = true;
-            this.Phonelabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.Phonelabel.Location = new System.Drawing.Point(165, 355);
-            this.Phonelabel.Name = "Phonelabel";
-            this.Phonelabel.Size = new System.Drawing.Size(46, 16);
-            this.Phonelabel.TabIndex = 12;
-            this.Phonelabel.Text = "Phone";
+            this.GuestStandingButton.AutoRoundedCorners = true;
+            this.GuestStandingButton.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.GuestStandingButton.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.GuestStandingButton.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.GuestStandingButton.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.GuestStandingButton.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.GuestStandingButton.ForeColor = System.Drawing.Color.White;
+            this.GuestStandingButton.Location = new System.Drawing.Point(713, 349);
+            this.GuestStandingButton.Name = "GuestStandingButton";
+            this.GuestStandingButton.Size = new System.Drawing.Size(180, 45);
+            this.GuestStandingButton.TabIndex = 26;
+            this.GuestStandingButton.Text = "Guest standing";
+            this.GuestStandingButton.Click += new System.EventHandler(this.UpdateGuestButton_Click);
             // 
-            // Datelabel
+            // emailConfirmtextbox
             // 
-            this.Datelabel.AutoSize = true;
-            this.Datelabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.Datelabel.Location = new System.Drawing.Point(161, 480);
-            this.Datelabel.Name = "Datelabel";
-            this.Datelabel.Size = new System.Drawing.Size(106, 16);
-            this.Datelabel.TabIndex = 13;
-            this.Datelabel.Text = "Date Registered";
+            this.emailConfirmtextbox.AutoRoundedCorners = true;
+            this.emailConfirmtextbox.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.emailConfirmtextbox.DefaultText = "";
+            this.emailConfirmtextbox.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.emailConfirmtextbox.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.emailConfirmtextbox.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.emailConfirmtextbox.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.emailConfirmtextbox.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.emailConfirmtextbox.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.emailConfirmtextbox.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.emailConfirmtextbox.Location = new System.Drawing.Point(236, 454);
+            this.emailConfirmtextbox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.emailConfirmtextbox.Name = "emailConfirmtextbox";
+            this.emailConfirmtextbox.PlaceholderText = "";
+            this.emailConfirmtextbox.SelectedText = "";
+            this.emailConfirmtextbox.Size = new System.Drawing.Size(422, 48);
+            this.emailConfirmtextbox.TabIndex = 27;
             // 
-            // Formlabel
+            // enterEmailTextbox
             // 
-            this.Formlabel.AutoSize = true;
-            this.Formlabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.Formlabel.Location = new System.Drawing.Point(160, 521);
-            this.Formlabel.Name = "Formlabel";
-            this.Formlabel.Size = new System.Drawing.Size(114, 16);
-            this.Formlabel.TabIndex = 14;
-            this.Formlabel.Text = "IsInGoodStanding";
+            this.enterEmailTextbox.AutoSize = true;
+            this.enterEmailTextbox.Font = new System.Drawing.Font("Nirmala UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.enterEmailTextbox.ForeColor = System.Drawing.Color.White;
+            this.enterEmailTextbox.Location = new System.Drawing.Point(59, 470);
+            this.enterEmailTextbox.Name = "enterEmailTextbox";
+            this.enterEmailTextbox.Size = new System.Drawing.Size(151, 23);
+            this.enterEmailTextbox.TabIndex = 28;
+            this.enterEmailTextbox.Text = "Enter Guest Email";
             // 
-            // FirstNametextBox
+            // submitButtonVBH
             // 
-            this.FirstNametextBox.Location = new System.Drawing.Point(435, 217);
-            this.FirstNametextBox.Name = "FirstNametextBox";
-            this.FirstNametextBox.Size = new System.Drawing.Size(298, 22);
-            this.FirstNametextBox.TabIndex = 15;
+            this.submitButtonVBH.AutoRoundedCorners = true;
+            this.submitButtonVBH.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.submitButtonVBH.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.submitButtonVBH.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.submitButtonVBH.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.submitButtonVBH.FillColor = System.Drawing.Color.LimeGreen;
+            this.submitButtonVBH.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold);
+            this.submitButtonVBH.ForeColor = System.Drawing.Color.White;
+            this.submitButtonVBH.Location = new System.Drawing.Point(713, 454);
+            this.submitButtonVBH.Name = "submitButtonVBH";
+            this.submitButtonVBH.Size = new System.Drawing.Size(180, 45);
+            this.submitButtonVBH.TabIndex = 26;
+            this.submitButtonVBH.Text = "Confirm";
+            this.submitButtonVBH.Click += new System.EventHandler(this.UpdateGuestButton_Click);
             // 
-            // DatetextBox
+            // ErrorLableVBH
             // 
-            this.DatetextBox.Location = new System.Drawing.Point(435, 477);
-            this.DatetextBox.Name = "DatetextBox";
-            this.DatetextBox.Size = new System.Drawing.Size(298, 22);
-            this.DatetextBox.TabIndex = 16;
-            // 
-            // FormtextBox
-            // 
-            this.FormtextBox.Location = new System.Drawing.Point(435, 518);
-            this.FormtextBox.Name = "FormtextBox";
-            this.FormtextBox.Size = new System.Drawing.Size(298, 22);
-            this.FormtextBox.TabIndex = 19;
-            // 
-            // AddresstextBox
-            // 
-            this.AddresstextBox.Location = new System.Drawing.Point(435, 389);
-            this.AddresstextBox.Name = "AddresstextBox";
-            this.AddresstextBox.Size = new System.Drawing.Size(298, 22);
-            this.AddresstextBox.TabIndex = 20;
-            // 
-            // EmailtextBox
-            // 
-            this.EmailtextBox.Location = new System.Drawing.Point(435, 310);
-            this.EmailtextBox.Name = "EmailtextBox";
-            this.EmailtextBox.Size = new System.Drawing.Size(298, 22);
-            this.EmailtextBox.TabIndex = 21;
-            // 
-            // SecondNametextBox
-            // 
-            this.SecondNametextBox.Location = new System.Drawing.Point(435, 264);
-            this.SecondNametextBox.Name = "SecondNametextBox";
-            this.SecondNametextBox.Size = new System.Drawing.Size(298, 22);
-            this.SecondNametextBox.TabIndex = 22;
-            // 
-            // CardtextBox
-            // 
-            this.CardtextBox.Location = new System.Drawing.Point(435, 429);
-            this.CardtextBox.Name = "CardtextBox";
-            this.CardtextBox.Size = new System.Drawing.Size(298, 22);
-            this.CardtextBox.TabIndex = 23;
-            // 
-            // PhonetextBox
-            // 
-            this.PhonetextBox.Location = new System.Drawing.Point(435, 352);
-            this.PhonetextBox.Name = "PhonetextBox";
-            this.PhonetextBox.Size = new System.Drawing.Size(298, 22);
-            this.PhonetextBox.TabIndex = 24;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Nirmala UI", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.ForeColor = System.Drawing.Color.White;
-            this.label9.Location = new System.Drawing.Point(353, 115);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(254, 50);
-            this.label9.TabIndex = 25;
-            this.label9.Text = "GUEST FORM";
+            this.ErrorLableVBH.AutoSize = true;
+            this.ErrorLableVBH.Font = new System.Drawing.Font("Nirmala UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ErrorLableVBH.ForeColor = System.Drawing.Color.Red;
+            this.ErrorLableVBH.Location = new System.Drawing.Point(241, 518);
+            this.ErrorLableVBH.Name = "ErrorLableVBH";
+            this.ErrorLableVBH.Size = new System.Drawing.Size(140, 23);
+            this.ErrorLableVBH.TabIndex = 28;
+            this.ErrorLableVBH.Text = "Guest not found";
             // 
             // FrmGuests
             // 
@@ -213,50 +197,37 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
             this.ClientSize = new System.Drawing.Size(954, 709);
-            this.Controls.Add(this.label9);
-            this.Controls.Add(this.PhonetextBox);
-            this.Controls.Add(this.CardtextBox);
-            this.Controls.Add(this.SecondNametextBox);
-            this.Controls.Add(this.EmailtextBox);
-            this.Controls.Add(this.AddresstextBox);
-            this.Controls.Add(this.FormtextBox);
-            this.Controls.Add(this.DatetextBox);
-            this.Controls.Add(this.FirstNametextBox);
-            this.Controls.Add(this.Formlabel);
-            this.Controls.Add(this.Datelabel);
-            this.Controls.Add(this.Phonelabel);
-            this.Controls.Add(this.Addresslabel);
-            this.Controls.Add(this.SecondNamelabel);
-            this.Controls.Add(this.Emaillabel);
-            this.Controls.Add(this.Cardlabel);
-            this.Controls.Add(this.FirstNamelabel);
-            this.Controls.Add(this.FrmGuestsLabel);
+            this.Controls.Add(this.ErrorLableVBH);
+            this.Controls.Add(this.enterEmailTextbox);
+            this.Controls.Add(this.emailConfirmtextbox);
+            this.Controls.Add(this.GuestStandingButton);
+            this.Controls.Add(this.submitButtonVBH);
+            this.Controls.Add(this.guna2Button2);
+            this.Controls.Add(this.AddGuestButton);
+            this.Controls.Add(this.UpdateGuestButton);
+            this.Controls.Add(this.GuestDataView);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmGuests";
             this.Text = "FrmGuests";
+            ((System.ComponentModel.ISupportInitialize)(this.GuestDataView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.phumlaKamnandiDBDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.phumlaKamnandiDBDataSetBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.Label FrmGuestsLabel;
-        private System.Windows.Forms.Label FirstNamelabel;
-        private System.Windows.Forms.Label Cardlabel;
-        private System.Windows.Forms.Label Emaillabel;
-        private System.Windows.Forms.Label SecondNamelabel;
-        private System.Windows.Forms.Label Addresslabel;
-        private System.Windows.Forms.Label Phonelabel;
-        private System.Windows.Forms.Label Datelabel;
-        private System.Windows.Forms.Label Formlabel;
-        private System.Windows.Forms.TextBox FirstNametextBox;
-        private System.Windows.Forms.TextBox DatetextBox;
-        private System.Windows.Forms.TextBox FormtextBox;
-        private System.Windows.Forms.TextBox AddresstextBox;
-        private System.Windows.Forms.TextBox EmailtextBox;
-        private System.Windows.Forms.TextBox SecondNametextBox;
-        private System.Windows.Forms.TextBox CardtextBox;
-        private System.Windows.Forms.TextBox PhonetextBox;
-        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.DataGridView GuestDataView;
+        private System.Windows.Forms.BindingSource phumlaKamnandiDBDataSetBindingSource;
+        private PhumlaKamnandiDBDataSet phumlaKamnandiDBDataSet;
+        private Guna.UI2.WinForms.Guna2Button UpdateGuestButton;
+        private Guna.UI2.WinForms.Guna2Button AddGuestButton;
+        private Guna.UI2.WinForms.Guna2Button guna2Button2;
+        private Guna.UI2.WinForms.Guna2Button GuestStandingButton;
+        private Guna.UI2.WinForms.Guna2TextBox emailConfirmtextbox;
+        private System.Windows.Forms.Label enterEmailTextbox;
+        private Guna.UI2.WinForms.Guna2Button submitButtonVBH;
+        private System.Windows.Forms.Label ErrorLableVBH;
     }
 }
