@@ -33,7 +33,6 @@
             this.MakeBookingButton = new System.Windows.Forms.Button();
             this.CancelBookingButton = new System.Windows.Forms.Button();
             this.UpdateBookingButton = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
             this.Addresslabel = new System.Windows.Forms.Label();
             this.Phonelabel = new System.Windows.Forms.Label();
             this.Emaillabel = new System.Windows.Forms.Label();
@@ -67,15 +66,17 @@
             // FirstNamelabel
             // 
             this.FirstNamelabel.AutoSize = true;
+            this.FirstNamelabel.Font = new System.Drawing.Font("Nirmala UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FirstNamelabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.FirstNamelabel.Location = new System.Drawing.Point(75, 358);
             this.FirstNamelabel.Name = "FirstNamelabel";
-            this.FirstNamelabel.Size = new System.Drawing.Size(72, 16);
+            this.FirstNamelabel.Size = new System.Drawing.Size(75, 17);
             this.FirstNamelabel.TabIndex = 28;
             this.FirstNamelabel.Text = "First Name";
             // 
             // MakeBookingButton
             // 
+            this.MakeBookingButton.Font = new System.Drawing.Font("Nirmala UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MakeBookingButton.Location = new System.Drawing.Point(53, 299);
             this.MakeBookingButton.Name = "MakeBookingButton";
             this.MakeBookingButton.Size = new System.Drawing.Size(203, 23);
@@ -86,7 +87,8 @@
             // 
             // CancelBookingButton
             // 
-            this.CancelBookingButton.Location = new System.Drawing.Point(289, 299);
+            this.CancelBookingButton.Font = new System.Drawing.Font("Nirmala UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CancelBookingButton.Location = new System.Drawing.Point(365, 299);
             this.CancelBookingButton.Name = "CancelBookingButton";
             this.CancelBookingButton.Size = new System.Drawing.Size(203, 23);
             this.CancelBookingButton.TabIndex = 30;
@@ -95,7 +97,8 @@
             // 
             // UpdateBookingButton
             // 
-            this.UpdateBookingButton.Location = new System.Drawing.Point(513, 299);
+            this.UpdateBookingButton.Font = new System.Drawing.Font("Nirmala UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UpdateBookingButton.Location = new System.Drawing.Point(694, 299);
             this.UpdateBookingButton.Name = "UpdateBookingButton";
             this.UpdateBookingButton.Size = new System.Drawing.Size(203, 23);
             this.UpdateBookingButton.TabIndex = 31;
@@ -103,53 +106,47 @@
             this.UpdateBookingButton.UseVisualStyleBackColor = true;
             this.UpdateBookingButton.Click += new System.EventHandler(this.UpdateBookingbutton_Click);
             // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(763, 299);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(146, 23);
-            this.button4.TabIndex = 32;
-            this.button4.Text = "button4";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
-            // 
             // Addresslabel
             // 
             this.Addresslabel.AutoSize = true;
+            this.Addresslabel.Font = new System.Drawing.Font("Nirmala UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Addresslabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.Addresslabel.Location = new System.Drawing.Point(75, 530);
             this.Addresslabel.Name = "Addresslabel";
-            this.Addresslabel.Size = new System.Drawing.Size(58, 16);
+            this.Addresslabel.Size = new System.Drawing.Size(57, 17);
             this.Addresslabel.TabIndex = 33;
             this.Addresslabel.Text = "Address";
             // 
             // Phonelabel
             // 
             this.Phonelabel.AutoSize = true;
+            this.Phonelabel.Font = new System.Drawing.Font("Nirmala UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Phonelabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.Phonelabel.Location = new System.Drawing.Point(75, 485);
             this.Phonelabel.Name = "Phonelabel";
-            this.Phonelabel.Size = new System.Drawing.Size(46, 16);
+            this.Phonelabel.Size = new System.Drawing.Size(47, 17);
             this.Phonelabel.TabIndex = 34;
             this.Phonelabel.Text = "Phone";
             // 
             // Emaillabel
             // 
             this.Emaillabel.AutoSize = true;
+            this.Emaillabel.Font = new System.Drawing.Font("Nirmala UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Emaillabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.Emaillabel.Location = new System.Drawing.Point(75, 447);
             this.Emaillabel.Name = "Emaillabel";
-            this.Emaillabel.Size = new System.Drawing.Size(41, 16);
+            this.Emaillabel.Size = new System.Drawing.Size(42, 17);
             this.Emaillabel.TabIndex = 35;
             this.Emaillabel.Text = "Email";
             // 
             // LastNamelabel
             // 
             this.LastNamelabel.AutoSize = true;
+            this.LastNamelabel.Font = new System.Drawing.Font("Nirmala UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LastNamelabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.LastNamelabel.Location = new System.Drawing.Point(75, 405);
             this.LastNamelabel.Name = "LastNamelabel";
-            this.LastNamelabel.Size = new System.Drawing.Size(72, 16);
+            this.LastNamelabel.Size = new System.Drawing.Size(73, 17);
             this.LastNamelabel.TabIndex = 36;
             this.LastNamelabel.Text = "Last Name";
             // 
@@ -200,10 +197,11 @@
             // Cardlabel
             // 
             this.Cardlabel.AutoSize = true;
+            this.Cardlabel.Font = new System.Drawing.Font("Nirmala UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Cardlabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.Cardlabel.Location = new System.Drawing.Point(437, 358);
             this.Cardlabel.Name = "Cardlabel";
-            this.Cardlabel.Size = new System.Drawing.Size(125, 16);
+            this.Cardlabel.Size = new System.Drawing.Size(131, 17);
             this.Cardlabel.TabIndex = 43;
             this.Cardlabel.Text = "Credit Card Number";
             this.Cardlabel.Click += new System.EventHandler(this.label6_Click);
@@ -211,20 +209,22 @@
             // Datelabel
             // 
             this.Datelabel.AutoSize = true;
+            this.Datelabel.Font = new System.Drawing.Font("Nirmala UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Datelabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.Datelabel.Location = new System.Drawing.Point(446, 399);
             this.Datelabel.Name = "Datelabel";
-            this.Datelabel.Size = new System.Drawing.Size(106, 16);
+            this.Datelabel.Size = new System.Drawing.Size(106, 17);
             this.Datelabel.TabIndex = 43;
             this.Datelabel.Text = "Date Registered";
             // 
             // Formlabel
             // 
             this.Formlabel.AutoSize = true;
+            this.Formlabel.Font = new System.Drawing.Font("Nirmala UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Formlabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.Formlabel.Location = new System.Drawing.Point(438, 447);
             this.Formlabel.Name = "Formlabel";
-            this.Formlabel.Size = new System.Drawing.Size(114, 16);
+            this.Formlabel.Size = new System.Drawing.Size(118, 17);
             this.Formlabel.TabIndex = 44;
             this.Formlabel.Text = "IsInGoodStanding";
             // 
@@ -246,6 +246,7 @@
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.Lime;
+            this.button1.Font = new System.Drawing.Font("Nirmala UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.Location = new System.Drawing.Point(309, 587);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(243, 34);
@@ -275,7 +276,6 @@
             this.Controls.Add(this.Emaillabel);
             this.Controls.Add(this.Phonelabel);
             this.Controls.Add(this.Addresslabel);
-            this.Controls.Add(this.button4);
             this.Controls.Add(this.UpdateBookingButton);
             this.Controls.Add(this.CancelBookingButton);
             this.Controls.Add(this.MakeBookingButton);
@@ -297,7 +297,6 @@
         private System.Windows.Forms.Button MakeBookingButton;
         private System.Windows.Forms.Button CancelBookingButton;
         private System.Windows.Forms.Button UpdateBookingButton;
-        private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Label Addresslabel;
         private System.Windows.Forms.Label Phonelabel;
         private System.Windows.Forms.Label Emaillabel;

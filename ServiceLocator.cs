@@ -14,7 +14,7 @@ namespace Phumla_Kamnandi_GRP_12
         private static ServiceLocator _instance;
         private static readonly object _lock = new object();
 
-        // Repositories
+        // Repos
         public BookingRepositoryInterface BookingRepository { get; private set; }
         public GuestRepositoryInterface GuestRepository { get; private set; }
         public RoomRepositoryInterface RoomRepository { get; private set; }
@@ -101,13 +101,13 @@ namespace Phumla_Kamnandi_GRP_12
 
         private void InitializeServices()
         {
-            // Initialize repositories with mock implementations change this to sql 
+            
             BookingRepository = new BookingDB();
             GuestRepository = new GuestDB();
             RoomRepository = new RoomDB();
             EmployeeRepository = new EmployeeDB();
 
-            // Initialize services with dependencies
+           
             PricingService = new PricingService();
             GuestService = new GuestService(GuestRepository, BookingRepository);
             BookingService = new BookingService(BookingRepository, GuestRepository, RoomRepository, PricingService);
