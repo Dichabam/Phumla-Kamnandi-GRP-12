@@ -76,41 +76,46 @@
             // 
             // MakeBookingButton
             // 
+            this.MakeBookingButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.MakeBookingButton.Location = new System.Drawing.Point(53, 299);
             this.MakeBookingButton.Name = "MakeBookingButton";
-            this.MakeBookingButton.Size = new System.Drawing.Size(203, 23);
-            this.MakeBookingButton.TabIndex = 29;
+            this.MakeBookingButton.Size = new System.Drawing.Size(203, 32);
+            this.MakeBookingButton.TabIndex = 26;
             this.MakeBookingButton.Text = "MAKE BOOKING";
-            this.MakeBookingButton.UseVisualStyleBackColor = true;
+            this.MakeBookingButton.UseVisualStyleBackColor = false;
             this.MakeBookingButton.Click += new System.EventHandler(this.MakeBookingButton_Click);
             // 
             // CancelBookingButton
             // 
+            this.CancelBookingButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.CancelBookingButton.Location = new System.Drawing.Point(289, 299);
             this.CancelBookingButton.Name = "CancelBookingButton";
-            this.CancelBookingButton.Size = new System.Drawing.Size(203, 23);
+            this.CancelBookingButton.Size = new System.Drawing.Size(203, 32);
             this.CancelBookingButton.TabIndex = 30;
             this.CancelBookingButton.Text = "CANCEL BOOKING";
-            this.CancelBookingButton.UseVisualStyleBackColor = true;
+            this.CancelBookingButton.UseVisualStyleBackColor = false;
+            this.CancelBookingButton.Click += new System.EventHandler(this.CancelBookingButton_Click);
             // 
             // UpdateBookingButton
             // 
+            this.UpdateBookingButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.UpdateBookingButton.Location = new System.Drawing.Point(513, 299);
             this.UpdateBookingButton.Name = "UpdateBookingButton";
-            this.UpdateBookingButton.Size = new System.Drawing.Size(203, 23);
+            this.UpdateBookingButton.Size = new System.Drawing.Size(203, 32);
             this.UpdateBookingButton.TabIndex = 31;
             this.UpdateBookingButton.Text = "UPDATE BOOKING";
-            this.UpdateBookingButton.UseVisualStyleBackColor = true;
+            this.UpdateBookingButton.UseVisualStyleBackColor = false;
             this.UpdateBookingButton.Click += new System.EventHandler(this.UpdateBookingbutton_Click);
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(763, 299);
+            this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.button4.Location = new System.Drawing.Point(745, 299);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(146, 23);
+            this.button4.Size = new System.Drawing.Size(203, 32);
             this.button4.TabIndex = 32;
             this.button4.Text = "button4";
-            this.button4.UseVisualStyleBackColor = true;
+            this.button4.UseVisualStyleBackColor = false;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // Addresslabel
@@ -155,6 +160,7 @@
             // 
             // FirstNametextBox
             // 
+            this.FirstNametextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.FirstNametextBox.Location = new System.Drawing.Point(201, 358);
             this.FirstNametextBox.Name = "FirstNametextBox";
             this.FirstNametextBox.Size = new System.Drawing.Size(177, 22);
@@ -170,6 +176,7 @@
             // 
             // LastNametextBox
             // 
+            this.LastNametextBox.AllowDrop = true;
             this.LastNametextBox.Location = new System.Drawing.Point(201, 399);
             this.LastNametextBox.Name = "LastNametextBox";
             this.LastNametextBox.Size = new System.Drawing.Size(177, 22);
@@ -248,7 +255,7 @@
             this.button1.BackColor = System.Drawing.Color.Lime;
             this.button1.Location = new System.Drawing.Point(309, 587);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(243, 34);
+            this.button1.Size = new System.Drawing.Size(203, 32);
             this.button1.TabIndex = 47;
             this.button1.Text = "Submit Booking";
             this.button1.UseVisualStyleBackColor = false;
@@ -257,6 +264,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
             this.ClientSize = new System.Drawing.Size(954, 709);
             this.Controls.Add(this.button1);
