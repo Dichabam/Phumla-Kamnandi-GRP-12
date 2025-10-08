@@ -12,6 +12,21 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -80,11 +95,18 @@
     <Compile Include="Business\Services\PricingService.cs" />
     <Compile Include="Business\Services\ReportingService.cs" />
     <Compile Include="Business\ValueObjects\PricingInfo.cs" />
+    <Compile Include="Database\DB.cs" />
+    <Compile Include="Database\GuestDB.cs" />
     <Compile Include="Database\MockBookingRepository.cs" />
     <Compile Include="Database\MockEmployeeRepository.cs" />
     <Compile Include="Database\MockGuestRepository.cs" />
     <Compile Include="Database\MockRoomRepository.cs" />
     <Compile Include="Database\Test2.cs" />
+    <Compile Include="PhumlaKamnandiDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PhumlaKamnandiDataSet1.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Presentation\AdminCode.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -216,6 +238,17 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <None Include="packages.config" />
+    <None Include="PhumlaKamnandiDataSet1.xsc">
+      <DependentUpon>PhumlaKamnandiDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="PhumlaKamnandiDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>PhumlaKamnandiDataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="PhumlaKamnandiDataSet1.xss">
+      <DependentUpon>PhumlaKamnandiDataSet1.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -286,6 +319,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resourses\Icons\for_you_1000dp_E3E3E3_FILL0_wght400_GRAD0_opsz48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.8">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.8 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
