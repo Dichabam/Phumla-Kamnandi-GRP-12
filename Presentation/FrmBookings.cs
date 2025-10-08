@@ -56,5 +56,35 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
         {
 
         }
+
+        private void textBox6_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void MakeBookingButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void DatetextBox_TextChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
