@@ -271,10 +271,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resources\" />
-    <Folder Include="valueobjects\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="Resourses\ok-Photoroom.png" />
   </ItemGroup>
