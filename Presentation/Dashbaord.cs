@@ -161,7 +161,10 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
         {
             Application.Exit();
         }
-        
-     
+
+        private void Dashbaord_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
