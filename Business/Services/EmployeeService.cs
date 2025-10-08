@@ -1,4 +1,12 @@
-﻿using Phumla_Kamnandi_GRP_12.Business.Entities;
+﻿/*Semester Project - Group 12
+ * 
+ * -----------------Members--------------------------
+ * Dichaba Mofokeng, MFKDIC001
+ * Simon Baraka, LMDSIM001 
+ * Rearabilwe Kgokong, KGKREA001  
+ * Khumiso Motata, MTTKAG001 
+ */
+using Phumla_Kamnandi_GRP_12.Business.Entities;
 using Phumla_Kamnandi_GRP_12.Business.Enums;
 using Phumla_Kamnandi_GRP_12.Business.Interfaces;
 using System.Collections.Generic;
@@ -10,7 +18,7 @@ namespace Phumla_Kamnandi_GRP_12.Business.Services
     public class EmployeeService : EmployeeServiceInterface
     {
         private readonly EmployeeRepositoryInterface _employeeRepository;
-        private const string ADMIN_CODE = "PKH2025ADMIN"; // Change this to your desired admin code
+        private const string ADMIN_CODE = "DIRK"; 
 
         public EmployeeService(EmployeeRepositoryInterface employeeRepo)
         {
@@ -136,8 +144,8 @@ namespace Phumla_Kamnandi_GRP_12.Business.Services
             return true;
         }
 
-        // Simple password hashing (for demo purposes)
-        // In production, use BCrypt or similar
+        // Simple password hashing 
+       
         private string HashPassword(string password)
         {
             using (SHA256 sha256 = SHA256.Create())

@@ -5,10 +5,10 @@ using Phumla_Kamnandi_GRP_12.Database;
 
 namespace Phumla_Kamnandi_GRP_12
 {
-    /// <summary>
+  
     /// Singleton class to manage all business services and repositories
     /// This acts as our dependency injection container
-    /// </summary>
+   
     public class ServiceLocator
     {
         private static ServiceLocator _instance;

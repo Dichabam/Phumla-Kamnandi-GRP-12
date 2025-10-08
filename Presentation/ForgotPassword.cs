@@ -90,5 +90,30 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             loginForm.Show();
             this.Hide();
         }
+
+        private void logo_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ErrorEmailLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void SubmitButtonFP_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void EmailTextboxFP_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void SidePanelFP_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

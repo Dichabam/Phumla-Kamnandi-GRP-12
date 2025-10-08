@@ -21,7 +21,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             _services = ServiceLocator.Instance;
             Region = System.Drawing.Region.FromHrgn(CreateRountRectRgn(0, 0, Width, Height, 25, 25));
 
-            // Setup user interface based on logged in user
+            
             SetupUserInterface();
 
             PnlNav.Height = HomeButton.Height;
