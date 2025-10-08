@@ -16,5 +16,40 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
         {
             InitializeComponent();
         }
+
+        private void FrmBookings_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Datelabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Formlabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CardtextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void DatetextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Cardlabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FormtextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
