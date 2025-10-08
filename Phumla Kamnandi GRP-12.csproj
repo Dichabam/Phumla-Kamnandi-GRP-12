@@ -348,11 +348,8 @@
     <None Include="Resourses\Icons\visibility_off_50dp_000000_FILL0_wght400_GRAD0_opsz48.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="PhumlaKamnandiDB.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <Content Include="PhumlaKamnandiDB.mdf" />
     <Content Include="PhumlaKamnandiDB_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>PhumlaKamnandiDB.mdf</DependentUpon>
     </Content>
     <None Include="Resourses\BigIcons\door_back_75dp_FFFFFF_FILL0_wght400_GRAD0_opsz48.png" />

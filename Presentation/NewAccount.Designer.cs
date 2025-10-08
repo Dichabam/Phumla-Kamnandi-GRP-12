@@ -36,13 +36,13 @@
             this.EmailTextboxCAEMP = new Guna.UI2.WinForms.Guna2TextBox();
             this.NextButtonCAEMP = new Guna.UI2.WinForms.Guna2Button();
             this.SidePanelFP = new Guna.UI2.WinForms.Guna2GradientPanel();
+            this.justLabel = new System.Windows.Forms.Label();
             this.CloseButtonCAEMP = new Guna.UI2.WinForms.Guna2Button();
             this.EmailLabelCAEMP = new System.Windows.Forms.Label();
             this.CellLabelCAEMP = new System.Windows.Forms.Label();
             this.SurnameLabelCAEMP = new System.Windows.Forms.Label();
             this.NameLabelCAEMP = new System.Windows.Forms.Label();
             this.logo = new System.Windows.Forms.PictureBox();
-            this.justLabel = new System.Windows.Forms.Label();
             this.SidePanelFP.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.logo)).BeginInit();
             this.SuspendLayout();
@@ -197,6 +197,17 @@
             this.SidePanelFP.Size = new System.Drawing.Size(660, 850);
             this.SidePanelFP.TabIndex = 8;
             // 
+            // justLabel
+            // 
+            this.justLabel.AutoSize = true;
+            this.justLabel.Font = new System.Drawing.Font("Century Gothic", 6F);
+            this.justLabel.ForeColor = System.Drawing.Color.White;
+            this.justLabel.Location = new System.Drawing.Point(219, 826);
+            this.justLabel.Name = "justLabel";
+            this.justLabel.Size = new System.Drawing.Size(203, 15);
+            this.justLabel.TabIndex = 13;
+            this.justLabel.Text = "Phumla Kamnandi Hotel Grout Pty(Ltd)";
+            // 
             // CloseButtonCAEMP
             // 
             this.CloseButtonCAEMP.Animated = true;
@@ -273,17 +284,6 @@
             this.logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.logo.TabIndex = 0;
             this.logo.TabStop = false;
-            // 
-            // justLabel
-            // 
-            this.justLabel.AutoSize = true;
-            this.justLabel.Font = new System.Drawing.Font("Century Gothic", 6F);
-            this.justLabel.ForeColor = System.Drawing.Color.White;
-            this.justLabel.Location = new System.Drawing.Point(219, 826);
-            this.justLabel.Name = "justLabel";
-            this.justLabel.Size = new System.Drawing.Size(203, 15);
-            this.justLabel.TabIndex = 13;
-            this.justLabel.Text = "Phumla Kamnandi Hotel Grout Pty(Ltd)";
             // 
             // NewAccount
             // 

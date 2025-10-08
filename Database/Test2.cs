@@ -8,5 +8,6 @@ namespace Phumla_Kamnandi_GRP_12.Database
 {
     internal class Test2
     {
+
     }
 }
