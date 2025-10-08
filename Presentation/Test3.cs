@@ -15,16 +15,16 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            //using (Login loginForm = new Login())
-            //{
-            //    Application.Run(loginForm);
-            //}
-
-          
-            using (Dashboard dashboardForm = new Dashboard())
+            using (Login loginForm = new Login())
             {
-                Application.Run(dashboardForm);
+                Application.Run(loginForm);
             }
+
+
+            //using (Dashboard dashboardForm = new Dashboard())
+            //{
+            //    Application.Run(dashboardForm);
+            //}
 
             
         }
