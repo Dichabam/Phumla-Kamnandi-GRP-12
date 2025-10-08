@@ -244,12 +244,13 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(309, 604);
+            this.button1.BackColor = System.Drawing.Color.Lime;
+            this.button1.Location = new System.Drawing.Point(309, 587);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(243, 23);
+            this.button1.Size = new System.Drawing.Size(243, 34);
             this.button1.TabIndex = 47;
             this.button1.Text = "Submit Booking";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.UseVisualStyleBackColor = false;
             // 
             // FrmBookings
             // 
