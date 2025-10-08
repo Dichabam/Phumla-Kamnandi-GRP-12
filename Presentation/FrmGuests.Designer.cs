@@ -30,19 +30,19 @@
         {
             this.components = new System.ComponentModel.Container();
             this.GuestDataView = new System.Windows.Forms.DataGridView();
-            this.phumlaKamnandiDBDataSet = new Phumla_Kamnandi_GRP_12.PhumlaKamnandiDBDataSet();
             this.phumlaKamnandiDBDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.phumlaKamnandiDBDataSet = new Phumla_Kamnandi_GRP_12.PhumlaKamnandiDBDataSet();
             this.emailConfirmtextbox = new Guna.UI2.WinForms.Guna2TextBox();
             this.enterEmailTextbox = new System.Windows.Forms.Label();
             this.ConfirmButtonVBH = new Guna.UI2.WinForms.Guna2Button();
             this.ErrorLableVBH = new System.Windows.Forms.Label();
-            this.guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
+            this.viewBookingHostoryButton = new Guna.UI2.WinForms.Guna2Button();
             this.GuestStandingButton = new Guna.UI2.WinForms.Guna2Button();
             this.AddGuestButton = new Guna.UI2.WinForms.Guna2Button();
             this.UpdateGuestButton = new Guna.UI2.WinForms.Guna2Button();
             ((System.ComponentModel.ISupportInitialize)(this.GuestDataView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.phumlaKamnandiDBDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.phumlaKamnandiDBDataSetBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.phumlaKamnandiDBDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // GuestDataView
@@ -58,15 +58,15 @@
             this.GuestDataView.Size = new System.Drawing.Size(830, 312);
             this.GuestDataView.TabIndex = 25;
             // 
-            // phumlaKamnandiDBDataSet
-            // 
-            this.phumlaKamnandiDBDataSet.DataSetName = "PhumlaKamnandiDBDataSet";
-            this.phumlaKamnandiDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // phumlaKamnandiDBDataSetBindingSource
             // 
             this.phumlaKamnandiDBDataSetBindingSource.DataSource = this.phumlaKamnandiDBDataSet;
             this.phumlaKamnandiDBDataSetBindingSource.Position = 0;
+            // 
+            // phumlaKamnandiDBDataSet
+            // 
+            this.phumlaKamnandiDBDataSet.DataSetName = "PhumlaKamnandiDBDataSet";
+            this.phumlaKamnandiDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // emailConfirmtextbox
             // 
@@ -104,6 +104,8 @@
             // ConfirmButtonVBH
             // 
             this.ConfirmButtonVBH.AutoRoundedCorners = true;
+            this.ConfirmButtonVBH.BorderColor = System.Drawing.Color.LimeGreen;
+            this.ConfirmButtonVBH.BorderThickness = 2;
             this.ConfirmButtonVBH.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.ConfirmButtonVBH.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.ConfirmButtonVBH.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -129,21 +131,21 @@
             this.ErrorLableVBH.TabIndex = 28;
             this.ErrorLableVBH.Text = "Guest not found";
             // 
-            // guna2Button2
+            // viewBookingHostoryButton
             // 
-            this.guna2Button2.AutoRoundedCorners = true;
-            this.guna2Button2.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button2.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button2.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2Button2.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button2.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2Button2.ForeColor = System.Drawing.Color.White;
-            this.guna2Button2.Location = new System.Drawing.Point(502, 349);
-            this.guna2Button2.Name = "guna2Button2";
-            this.guna2Button2.Size = new System.Drawing.Size(180, 45);
-            this.guna2Button2.TabIndex = 26;
-            this.guna2Button2.Text = "View Booking History";
-            this.guna2Button2.Click += new System.EventHandler(this.UpdateGuestButton_Click);
+            this.viewBookingHostoryButton.AutoRoundedCorners = true;
+            this.viewBookingHostoryButton.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.viewBookingHostoryButton.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.viewBookingHostoryButton.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.viewBookingHostoryButton.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.viewBookingHostoryButton.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.viewBookingHostoryButton.ForeColor = System.Drawing.Color.White;
+            this.viewBookingHostoryButton.Location = new System.Drawing.Point(502, 359);
+            this.viewBookingHostoryButton.Name = "viewBookingHostoryButton";
+            this.viewBookingHostoryButton.Size = new System.Drawing.Size(180, 45);
+            this.viewBookingHostoryButton.TabIndex = 26;
+            this.viewBookingHostoryButton.Text = "View Booking History";
+            this.viewBookingHostoryButton.Click += new System.EventHandler(this.UpdateGuestButton_Click);
             // 
             // GuestStandingButton
             // 
@@ -207,7 +209,7 @@
             this.Controls.Add(this.emailConfirmtextbox);
             this.Controls.Add(this.GuestStandingButton);
             this.Controls.Add(this.ConfirmButtonVBH);
-            this.Controls.Add(this.guna2Button2);
+            this.Controls.Add(this.viewBookingHostoryButton);
             this.Controls.Add(this.AddGuestButton);
             this.Controls.Add(this.UpdateGuestButton);
             this.Controls.Add(this.GuestDataView);
@@ -215,8 +217,8 @@
             this.Name = "FrmGuests";
             this.Text = "FrmGuests";
             ((System.ComponentModel.ISupportInitialize)(this.GuestDataView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.phumlaKamnandiDBDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.phumlaKamnandiDBDataSetBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.phumlaKamnandiDBDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -228,7 +230,7 @@
         private PhumlaKamnandiDBDataSet phumlaKamnandiDBDataSet;
         private Guna.UI2.WinForms.Guna2Button UpdateGuestButton;
         private Guna.UI2.WinForms.Guna2Button AddGuestButton;
-        private Guna.UI2.WinForms.Guna2Button guna2Button2;
+        private Guna.UI2.WinForms.Guna2Button viewBookingHostoryButton;
         private Guna.UI2.WinForms.Guna2Button GuestStandingButton;
         private Guna.UI2.WinForms.Guna2TextBox emailConfirmtextbox;
         private System.Windows.Forms.Label enterEmailTextbox;

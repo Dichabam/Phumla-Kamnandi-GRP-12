@@ -125,6 +125,14 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
 
                 if (newEmployee != null)
                 {
+                    // TEMPORARY DEBUG - Remove after fixing
+                    MessageBox.Show($"Account created!\n" +
+                        $"ID: {newEmployee.EmployeeId}\n" +
+                        $"Email: {newEmployee.Email}\n" +
+                        $"Password Hash Length: {newEmployee.PasswordHash.Length}\n" +
+                        $"First 10 chars: {newEmployee.PasswordHash.Substring(0, 10)}",
+                        "Debug Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                     MessageBox.Show($"Account created successfully!\n\n" +
                         $"Employee ID: {newEmployee.EmployeeId}\n" +
                         $"Name: {newEmployee.FullName}\n" +

@@ -11,7 +11,7 @@ namespace Phumla_Kamnandi_GRP_12.Database
 {
     public class BookingDB : BookingRepositoryInterface
     {
-        private readonly string connectionString = Settings.Default.PhumlaKamnandiConnectionString;
+        private readonly string connectionString = Settings.Default.PhumlaKamnandiDBConnectionString;
 
         public Booking GetByReference(string reference)
         {

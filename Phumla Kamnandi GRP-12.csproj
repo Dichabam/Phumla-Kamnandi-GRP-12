@@ -101,10 +101,6 @@
     <Compile Include="Database\DB.cs" />
     <Compile Include="Database\EmployeeDB.cs" />
     <Compile Include="Database\GuestDB.cs" />
-    <Compile Include="Database\MockBookingRepository.cs" />
-    <Compile Include="Database\MockEmployeeRepository.cs" />
-    <Compile Include="Database\MockGuestRepository.cs" />
-    <Compile Include="Database\MockRoomRepository.cs" />
     <Compile Include="Database\Test2.cs" />
     <Compile Include="PhumlaKamnandiDBDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -275,10 +271,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resources\" />
-    <Folder Include="valueobjects\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="Resourses\ok-Photoroom.png" />
   </ItemGroup>
