@@ -77,6 +77,7 @@
     <Compile Include="Business\Entities\OccupancyReport.cs" />
     <Compile Include="Business\Entities\RevenueReport.cs" />
     <Compile Include="Business\Entities\Room.cs" />
+    <Compile Include="Business\Entities\RoomDB.cs" />
     <Compile Include="Business\Enums\BookingStatus.cs" />
     <Compile Include="Business\Enums\EmployeeRole.cs" />
     <Compile Include="Business\Enums\PaymentStatus.cs" />
