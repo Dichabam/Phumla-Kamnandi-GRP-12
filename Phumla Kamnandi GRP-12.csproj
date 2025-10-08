@@ -27,6 +27,7 @@
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <LangVersion>8.0</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -97,6 +98,7 @@
     <Compile Include="Business\ValueObjects\PricingInfo.cs" />
     <Compile Include="Database\BookingDB.cs" />
     <Compile Include="Database\DB.cs" />
+    <Compile Include="Database\EmployeeDB.cs" />
     <Compile Include="Database\GuestDB.cs" />
     <Compile Include="Database\MockBookingRepository.cs" />
     <Compile Include="Database\MockEmployeeRepository.cs" />

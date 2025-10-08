@@ -1,176 +1,177 @@
 ﻿using System;
-using System.Collections.ObjectModel;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using Phumla_Kamnandi_GRP_12.Business.Entities;
 using Phumla_Kamnandi_GRP_12.Business.Enums;
+using Phumla_Kamnandi_GRP_12.Business.Interfaces;
+using Phumla_Kamnandi_GRP_12.Properties;
 
 namespace Phumla_Kamnandi_GRP_12.Database
 {
-    public class BookingDB : DB
+    public class BookingDB : BookingRepositoryInterface
     {
-        #region Data Members
-        private string table = "Booking";
-        private string sqlLocal = "SELECT * FROM Booking";
-        private Collection<Booking> bookings;
-        #endregion
+        private readonly string connectionString = Settings.Default.PhumlaKamnandiConnectionString;
 
-        #region Properties
-        public Collection<Booking> AllBookings => bookings;
-        #endregion
-
-        #region Constructor
-        public BookingDB() : base()
+        public Booking GetByReference(string reference)
         {
-            bookings = new Collection<Booking>();
-            FillDataSet(sqlLocal, table);
-            AddToCollection();
-        }
-        #endregion
-
-        #region Utility Methods
-        public DataSet GetDataSet() => dsMain;
-
-        private void AddToCollection()
-        {
-            foreach (DataRow row in dsMain.Tables[table].Rows)
-            {
-                if (row.RowState != DataRowState.Deleted)
-                {
-                    var booking = new Booking(
-                        row["GuestId"].ToString().Trim(),
-                        Convert.ToDateTime(row["CheckInDate"]),
-                        Convert.ToDateTime(row["CheckOutDate"]),
-                        Convert.ToInt32(row["NumberOfAdults"]),
-                        Convert.ToInt32(row["NumberOfChildren"]),
-                        Convert.ToBoolean(row["IsSingleOccupancy"])
-                    );
-
-                    booking.GetType().GetProperty("BookingReference")
-                        .SetValue(booking, row["BookingReference"].ToString().Trim());
-
-                    booking.RoomNumber = Convert.ToInt32(row["RoomNumber"]);
-                    booking.SetTotalAmount(Convert.ToDecimal(row["TotalAmount"]));
-                    booking.DepositPaid = Convert.ToDecimal(row["DepositPaid"]);
-                    booking.Status = (BookingStatus)Convert.ToInt32(row["Status"]);
-                    booking.PaymentStatus = (PaymentStatus)Convert.ToInt32(row["PaymentStatus"]);
-                    booking.GetType().GetProperty("BookingDate")
-                        .SetValue(booking, Convert.ToDateTime(row["BookingDate"]));
-
-                    if (row["DepositDueDate"] != DBNull.Value)
-                        booking.GetType().GetProperty("DepositDueDate")
-                            .SetValue(booking, Convert.ToDateTime(row["DepositDueDate"]));
-
-                    booking.SpecialRequests = row["SpecialRequests"].ToString();
-                    booking.CreditCardLastFour = row["CreditCardLastFour"].ToString();
-
-                    bookings.Add(booking);
-                }
-            }
+            using var cn = new SqlConnection(connectionString);
+            var cmd = new SqlCommand("SELECT * FROM Booking WHERE BookingReference = @ref", cn);
+            cmd.Parameters.AddWithValue("@ref", reference);
+            cn.Open();
+            using var reader = cmd.ExecuteReader();
+            return reader.Read() ? MapBooking(reader) : null;
         }
 
-        private void FillRow(DataRow row, Booking booking)
+        public List<Booking> GetByGuestId(string guestId)
         {
-            row["BookingReference"] = booking.BookingReference;
-            row["GuestId"] = booking.GuestId;
-            row["RoomNumber"] = booking.RoomNumber;
-            row["CheckInDate"] = booking.CheckInDate;
-            row["CheckOutDate"] = booking.CheckOutDate;
-            row["NumberOfAdults"] = booking.NumberOfAdults;
-            row["NumberOfChildren"] = booking.NumberOfChildren;
-            row["TotalAmount"] = booking.TotalAmount;
-            row["DepositAmount"] = booking.DepositAmount;
-            row["DepositPaid"] = booking.DepositPaid;
-            row["Status"] = (int)booking.Status;
-            row["PaymentStatus"] = (int)booking.PaymentStatus;
-            row["BookingDate"] = booking.BookingDate;
-            row["DepositDueDate"] = booking.DepositDueDate.HasValue ? (object)booking.DepositDueDate.Value : DBNull.Value;
-            row["SpecialRequests"] = booking.SpecialRequests ?? string.Empty;
-            row["IsSingleOccupancy"] = booking.IsSingleOccupancy;
-            row["CreditCardLastFour"] = booking.CreditCardLastFour ?? string.Empty;
-        }
-        #endregion
-
-        #region CRUD Operations
-        public void DataSetChange(Booking booking)
-        {
-            DataRow row = dsMain.Tables[table].NewRow();
-            FillRow(row, booking);
-            dsMain.Tables[table].Rows.Add(row);
-        }
-        #endregion
-
-        #region SQL Command Construction
-        private void BuildInsertParameters()
-        {
-            SqlParameter param;
-
-            param = new SqlParameter("@BookingReference", SqlDbType.NVarChar, 50, "BookingReference");
-            daMain.InsertCommand.Parameters.Add(param);
-
-            param = new SqlParameter("@GuestId", SqlDbType.NVarChar, 50, "GuestId");
-            daMain.InsertCommand.Parameters.Add(param);
-
-            param = new SqlParameter("@RoomNumber", SqlDbType.Int, 4, "RoomNumber");
-            daMain.InsertCommand.Parameters.Add(param);
-
-            param = new SqlParameter("@CheckInDate", SqlDbType.DateTime, 8, "CheckInDate");
-            daMain.InsertCommand.Parameters.Add(param);
-
-            param = new SqlParameter("@CheckOutDate", SqlDbType.DateTime, 8, "CheckOutDate");
-            daMain.InsertCommand.Parameters.Add(param);
-
-            param = new SqlParameter("@NumberOfAdults", SqlDbType.Int, 4, "NumberOfAdults");
-            daMain.InsertCommand.Parameters.Add(param);
-
-            param = new SqlParameter("@NumberOfChildren", SqlDbType.Int, 4, "NumberOfChildren");
-            daMain.InsertCommand.Parameters.Add(param);
-
-            param = new SqlParameter("@TotalAmount", SqlDbType.Decimal, 10, "TotalAmount");
-            daMain.InsertCommand.Parameters.Add(param);
-
-            param = new SqlParameter("@DepositAmount", SqlDbType.Decimal, 10, "DepositAmount");
-            daMain.InsertCommand.Parameters.Add(param);
-
-            param = new SqlParameter("@DepositPaid", SqlDbType.Decimal, 10, "DepositPaid");
-            daMain.InsertCommand.Parameters.Add(param);
-
-            param = new SqlParameter("@Status", SqlDbType.Int, 4, "Status");
-            daMain.InsertCommand.Parameters.Add(param);
-
-            param = new SqlParameter("@PaymentStatus", SqlDbType.Int, 4, "PaymentStatus");
-            daMain.InsertCommand.Parameters.Add(param);
-
-            param = new SqlParameter("@BookingDate", SqlDbType.DateTime, 8, "BookingDate");
-            daMain.InsertCommand.Parameters.Add(param);
-
-            param = new SqlParameter("@DepositDueDate", SqlDbType.DateTime, 8, "DepositDueDate");
-            daMain.InsertCommand.Parameters.Add(param);
-
-            param = new SqlParameter("@SpecialRequests", SqlDbType.NVarChar, -1, "SpecialRequests");
-            daMain.InsertCommand.Parameters.Add(param);
-
-            param = new SqlParameter("@IsSingleOccupancy", SqlDbType.Bit, 1, "IsSingleOccupancy");
-            daMain.InsertCommand.Parameters.Add(param);
-
-            param = new SqlParameter("@CreditCardLastFour", SqlDbType.NVarChar, 4, "CreditCardLastFour");
-            daMain.InsertCommand.Parameters.Add(param);
+            var bookings = new List<Booking>();
+            using var cn = new SqlConnection(connectionString);
+            var cmd = new SqlCommand("SELECT * FROM Booking WHERE GuestId = @guestId", cn);
+            cmd.Parameters.AddWithValue("@guestId", guestId);
+            cn.Open();
+            using var reader = cmd.ExecuteReader();
+            while (reader.Read())
+                bookings.Add(MapBooking(reader));
+            return bookings;
         }
 
-        private void CreateInsertCommand()
+        public List<Booking> GetByDateRange(DateTime startDate, DateTime endDate)
         {
-            daMain.InsertCommand = new SqlCommand(
-                "INSERT INTO Booking (BookingReference, GuestId, RoomNumber, CheckInDate, CheckOutDate, NumberOfAdults, NumberOfChildren, TotalAmount, DepositAmount, DepositPaid, Status, PaymentStatus, BookingDate, DepositDueDate, SpecialRequests, IsSingleOccupancy, CreditCardLastFour) " +
-                "VALUES (@BookingReference, @GuestId, @RoomNumber, @CheckInDate, @CheckOutDate, @NumberOfAdults, @NumberOfChildren, @TotalAmount, @DepositAmount, @DepositPaid, @Status, @PaymentStatus, @BookingDate, @DepositDueDate, @SpecialRequests, @IsSingleOccupancy, @CreditCardLastFour)",
-                cnMain);
-            BuildInsertParameters();
+            var bookings = new List<Booking>();
+            using var cn = new SqlConnection(connectionString);
+            var cmd = new SqlCommand("SELECT * FROM Booking WHERE CheckInDate <= @end AND CheckOutDate >= @start", cn);
+            cmd.Parameters.AddWithValue("@start", startDate);
+            cmd.Parameters.AddWithValue("@end", endDate);
+            cn.Open();
+            using var reader = cmd.ExecuteReader();
+            while (reader.Read())
+                bookings.Add(MapBooking(reader));
+            return bookings;
         }
 
-        public bool UpdateDataSource(Booking booking)
+        public List<Booking> GetActiveBookingsForDate(DateTime date)
         {
-            CreateInsertCommand();
-            return UpdateDataSource(sqlLocal, table);
+            var bookings = new List<Booking>();
+            using var cn = new SqlConnection(connectionString);
+            var cmd = new SqlCommand("SELECT * FROM Booking WHERE CheckInDate <= @date AND CheckOutDate > @date AND Status != @cancelled", cn);
+            cmd.Parameters.AddWithValue("@date", date);
+            cmd.Parameters.AddWithValue("@cancelled", (int)BookingStatus.Cancelled);
+            cn.Open();
+            using var reader = cmd.ExecuteReader();
+            while (reader.Read())
+                bookings.Add(MapBooking(reader));
+            return bookings;
         }
-        #endregion
+
+        public void Add(Booking booking)
+        {
+            using var cn = new SqlConnection(connectionString);
+            var cmd = new SqlCommand(@"
+                INSERT INTO Booking (BookingReference, GuestId, RoomNumber, CheckInDate, CheckOutDate, NumberOfAdults, NumberOfChildren, TotalAmount, DepositAmount, DepositPaid, Status, PaymentStatus, BookingDate, DepositDueDate, SpecialRequests, IsSingleOccupancy, CreditCardLastFour)
+                VALUES (@ref, @guestId, @room, @checkIn, @checkOut, @adults, @children, @total, @deposit, @paid, @status, @payment, @bookDate, @dueDate, @requests, @single, @card)", cn);
+
+            AddParameters(cmd, booking);
+            cn.Open();
+            cmd.ExecuteNonQuery();
+        }
+
+        public void Update(Booking booking)
+        {
+            using var cn = new SqlConnection(connectionString);
+            var cmd = new SqlCommand(@"
+                UPDATE Booking SET RoomNumber = @room, CheckInDate = @checkIn, CheckOutDate = @checkOut, NumberOfAdults = @adults, NumberOfChildren = @children, TotalAmount = @total, DepositAmount = @deposit, DepositPaid = @paid, Status = @status, PaymentStatus = @payment, DepositDueDate = @dueDate, SpecialRequests = @requests, IsSingleOccupancy = @single, CreditCardLastFour = @card
+                WHERE BookingReference = @ref", cn);
+
+            AddParameters(cmd, booking);
+            cn.Open();
+            cmd.ExecuteNonQuery();
+        }
+
+        public void Delete(string reference)
+        {
+            using var cn = new SqlConnection(connectionString);
+            var cmd = new SqlCommand("DELETE FROM Booking WHERE BookingReference = @ref", cn);
+            cmd.Parameters.AddWithValue("@ref", reference);
+            cn.Open();
+            cmd.ExecuteNonQuery();
+        }
+
+        public bool RoomAvailableForDates(int roomNumber, DateTime checkIn, DateTime checkOut, string excludeBookingRef = null)
+        {
+            using var cn = new SqlConnection(connectionString);
+            var query = @"
+                SELECT COUNT(*) FROM Booking 
+                WHERE RoomNumber = @room AND Status != @cancelled AND 
+                      CheckInDate < @checkOut AND CheckOutDate > @checkIn";
+
+            if (!string.IsNullOrEmpty(excludeBookingRef))
+                query += " AND BookingReference != @exclude";
+
+            var cmd = new SqlCommand(query, cn);
+            cmd.Parameters.AddWithValue("@room", roomNumber);
+            cmd.Parameters.AddWithValue("@cancelled", (int)BookingStatus.Cancelled);
+            cmd.Parameters.AddWithValue("@checkIn", checkIn);
+            cmd.Parameters.AddWithValue("@checkOut", checkOut);
+            if (!string.IsNullOrEmpty(excludeBookingRef))
+                cmd.Parameters.AddWithValue("@exclude", excludeBookingRef);
+
+            cn.Open();
+            int count = (int)cmd.ExecuteScalar();
+            return count == 0;
+        }
+
+        private void AddParameters(SqlCommand cmd, Booking b)
+        {
+            cmd.Parameters.AddWithValue("@ref", b.BookingReference);
+            cmd.Parameters.AddWithValue("@guestId", b.GuestId);
+            cmd.Parameters.AddWithValue("@room", b.RoomNumber);
+            cmd.Parameters.AddWithValue("@checkIn", b.CheckInDate);
+            cmd.Parameters.AddWithValue("@checkOut", b.CheckOutDate);
+            cmd.Parameters.AddWithValue("@adults", b.NumberOfAdults);
+            cmd.Parameters.AddWithValue("@children", b.NumberOfChildren);
+            cmd.Parameters.AddWithValue("@total", b.TotalAmount);
+            cmd.Parameters.AddWithValue("@deposit", b.DepositAmount);
+            cmd.Parameters.AddWithValue("@paid", b.DepositPaid);
+            cmd.Parameters.AddWithValue("@status", (int)b.Status);
+            cmd.Parameters.AddWithValue("@payment", (int)b.PaymentStatus);
+            cmd.Parameters.AddWithValue("@bookDate", b.BookingDate);
+            cmd.Parameters.AddWithValue("@dueDate", b.DepositDueDate ?? (object)DBNull.Value);
+            cmd.Parameters.AddWithValue("@requests", b.SpecialRequests ?? string.Empty);
+            cmd.Parameters.AddWithValue("@single", b.IsSingleOccupancy);
+            cmd.Parameters.AddWithValue("@card", b.CreditCardLastFour ?? string.Empty);
+        }
+
+        private Booking MapBooking(SqlDataReader reader)
+        {
+            var booking = new Booking(
+                reader["GuestId"].ToString().Trim(),
+                Convert.ToDateTime(reader["CheckInDate"]),
+                Convert.ToDateTime(reader["CheckOutDate"]),
+                Convert.ToInt32(reader["NumberOfAdults"]),
+                Convert.ToInt32(reader["NumberOfChildren"]),
+                Convert.ToBoolean(reader["IsSingleOccupancy"])
+            );
+
+            booking.GetType().GetProperty("BookingReference")
+                .SetValue(booking, reader["BookingReference"].ToString().Trim());
+
+            booking.RoomNumber = Convert.ToInt32(reader["RoomNumber"]);
+            booking.SetTotalAmount(Convert.ToDecimal(reader["TotalAmount"]));
+            booking.DepositPaid = Convert.ToDecimal(reader["DepositPaid"]);
+            booking.Status = (BookingStatus)Convert.ToInt32(reader["Status"]);
+            booking.PaymentStatus = (PaymentStatus)Convert.ToInt32(reader["PaymentStatus"]);
+            booking.GetType().GetProperty("BookingDate")
+                .SetValue(booking, Convert.ToDateTime(reader["BookingDate"]));
+
+            if (reader["DepositDueDate"] != DBNull.Value)
+                booking.GetType().GetProperty("DepositDueDate")
+                    .SetValue(booking, Convert.ToDateTime(reader["DepositDueDate"]));
+
+            booking.SpecialRequests = reader["SpecialRequests"].ToString();
+            booking.CreditCardLastFour = reader["CreditCardLastFour"].ToString();
+
+            return booking;
+        }
     }
 }
