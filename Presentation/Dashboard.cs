@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace Phumla_Kamnandi_GRP_12.Presentation
 {
-    public partial class Dashbaord : Form
+    public partial class Dashboard : Form
     {
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
         private static extern IntPtr CreateRountRectRgn(
@@ -15,7 +15,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
 
         private ServiceLocator _services;
 
-        public Dashbaord()
+        public Dashboard()
         {
             InitializeComponent();
             _services = ServiceLocator.Instance;

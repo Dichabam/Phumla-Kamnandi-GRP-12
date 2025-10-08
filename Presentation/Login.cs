@@ -97,7 +97,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
 
                     // Open Dashboard
                     this.Hide();
-                    Dashbaord dashboard = new Dashbaord();
+                    Dashboard dashboard = new Dashboard();
                     dashboard.FormClosed += (s, args) => this.Close();
                     dashboard.Show();
                     return;

@@ -1,6 +1,6 @@
 ﻿namespace Phumla_Kamnandi_GRP_12.Presentation
 {
-    partial class Dashbaord
+    partial class Dashboard
     {
         /// <summary>
         /// Required designer variable.
@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dashbaord));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dashboard));
             this.PnlNav = new System.Windows.Forms.Panel();
             this.SidePanel2 = new System.Windows.Forms.Panel();
-            this.guna2Separator2 = new Guna.UI2.WinForms.Guna2Separator();
-            this.guna2Separator1 = new Guna.UI2.WinForms.Guna2Separator();
+            this.Separator1 = new Guna.UI2.WinForms.Guna2Separator();
+            this.Separator2 = new Guna.UI2.WinForms.Guna2Separator();
             this.WelcomLabel = new System.Windows.Forms.Label();
             this.CompanyLogo = new System.Windows.Forms.PictureBox();
             this.SidePanelDSHB = new System.Windows.Forms.Panel();
@@ -65,8 +65,8 @@
             // 
             this.SidePanel2.BackColor = System.Drawing.Color.Transparent;
             this.SidePanel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.SidePanel2.Controls.Add(this.guna2Separator2);
-            this.SidePanel2.Controls.Add(this.guna2Separator1);
+            this.SidePanel2.Controls.Add(this.Separator1);
+            this.SidePanel2.Controls.Add(this.Separator2);
             this.SidePanel2.Controls.Add(this.WelcomLabel);
             this.SidePanel2.Controls.Add(this.CompanyLogo);
             this.SidePanel2.Dock = System.Windows.Forms.DockStyle.Top;
@@ -75,19 +75,19 @@
             this.SidePanel2.Size = new System.Drawing.Size(297, 201);
             this.SidePanel2.TabIndex = 0;
             // 
-            // guna2Separator2
+            // Separator1
             // 
-            this.guna2Separator2.Location = new System.Drawing.Point(51, 150);
-            this.guna2Separator2.Name = "guna2Separator2";
-            this.guna2Separator2.Size = new System.Drawing.Size(200, 10);
-            this.guna2Separator2.TabIndex = 5;
+            this.Separator1.Location = new System.Drawing.Point(51, 150);
+            this.Separator1.Name = "Separator1";
+            this.Separator1.Size = new System.Drawing.Size(200, 10);
+            this.Separator1.TabIndex = 5;
             // 
-            // guna2Separator1
+            // Separator2
             // 
-            this.guna2Separator1.Location = new System.Drawing.Point(51, 185);
-            this.guna2Separator1.Name = "guna2Separator1";
-            this.guna2Separator1.Size = new System.Drawing.Size(200, 10);
-            this.guna2Separator1.TabIndex = 4;
+            this.Separator2.Location = new System.Drawing.Point(51, 185);
+            this.Separator2.Name = "Separator2";
+            this.Separator2.Size = new System.Drawing.Size(200, 10);
+            this.Separator2.TabIndex = 4;
             // 
             // WelcomLabel
             // 
@@ -349,7 +349,7 @@
             this.exitButton.TabIndex = 15;
             this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
             // 
-            // Dashbaord
+            // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -363,10 +363,9 @@
             this.Controls.Add(this.SidePanelDSHB);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "Dashbaord";
+            this.Name = "Dashboard";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "-";
-           
             this.SidePanel2.ResumeLayout(false);
             this.SidePanel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CompanyLogo)).EndInit();
@@ -388,8 +387,8 @@
         private System.Windows.Forms.Button SettingsButton;
         private System.Windows.Forms.Panel SidePanelDSHB;
         private System.Windows.Forms.Label WelcomLabel;
-        private Guna.UI2.WinForms.Guna2Separator guna2Separator2;
-        private Guna.UI2.WinForms.Guna2Separator guna2Separator1;
+        private Guna.UI2.WinForms.Guna2Separator Separator1;
+        private Guna.UI2.WinForms.Guna2Separator Separator2;
         private Guna.UI2.WinForms.Guna2Button LogoutButton;
         private System.Windows.Forms.Button EmployeesButton;
         private System.Windows.Forms.Label lblTitle;
