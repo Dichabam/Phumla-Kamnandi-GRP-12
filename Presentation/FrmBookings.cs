@@ -86,5 +86,21 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
         {
 
         }
+
+        private void UpdateBookingbutton_Click(object sender, EventArgs e)
+        {
+                   DialogResult confirm = MessageBox.Show(
+                    "Are you sure you want to cancel this booking?",
+                    "Confirm Cancellation",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Warning);
+                    String name = FirstNametextBox.Text;
+                    String surname = LastNametextBox.Text;
+                    String Phone = PhonetextBox.Text;
+                    String Email= EmailtextBox.Text;
+                    String Address = AddresstextBox.Text;
+                    String creditCard = LastNametextBox.Text;
+                    String dateRegistered = LastNametextBox.Text;
+        }
     }
 }

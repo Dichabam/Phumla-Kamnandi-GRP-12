@@ -31,8 +31,8 @@
             this.ShowdataGridView = new System.Windows.Forms.DataGridView();
             this.FirstNamelabel = new System.Windows.Forms.Label();
             this.MakeBookingButton = new System.Windows.Forms.Button();
-            this.CancelBookingbutton = new System.Windows.Forms.Button();
-            this.UpdateBookingbutton = new System.Windows.Forms.Button();
+            this.CancelBookingButton = new System.Windows.Forms.Button();
+            this.UpdateBookingButton = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.Addresslabel = new System.Windows.Forms.Label();
             this.Phonelabel = new System.Windows.Forms.Label();
@@ -84,23 +84,24 @@
             this.MakeBookingButton.UseVisualStyleBackColor = true;
             this.MakeBookingButton.Click += new System.EventHandler(this.MakeBookingButton_Click);
             // 
-            // CancelBookingbutton
+            // CancelBookingButton
             // 
-            this.CancelBookingbutton.Location = new System.Drawing.Point(289, 299);
-            this.CancelBookingbutton.Name = "CancelBookingbutton";
-            this.CancelBookingbutton.Size = new System.Drawing.Size(203, 23);
-            this.CancelBookingbutton.TabIndex = 30;
-            this.CancelBookingbutton.Text = "CANCEL BOOKING";
-            this.CancelBookingbutton.UseVisualStyleBackColor = true;
+            this.CancelBookingButton.Location = new System.Drawing.Point(289, 299);
+            this.CancelBookingButton.Name = "CancelBookingButton";
+            this.CancelBookingButton.Size = new System.Drawing.Size(203, 23);
+            this.CancelBookingButton.TabIndex = 30;
+            this.CancelBookingButton.Text = "CANCEL BOOKING";
+            this.CancelBookingButton.UseVisualStyleBackColor = true;
             // 
-            // UpdateBookingbutton
+            // UpdateBookingButton
             // 
-            this.UpdateBookingbutton.Location = new System.Drawing.Point(513, 299);
-            this.UpdateBookingbutton.Name = "UpdateBookingbutton";
-            this.UpdateBookingbutton.Size = new System.Drawing.Size(203, 23);
-            this.UpdateBookingbutton.TabIndex = 31;
-            this.UpdateBookingbutton.Text = "UPDATE BOOKING";
-            this.UpdateBookingbutton.UseVisualStyleBackColor = true;
+            this.UpdateBookingButton.Location = new System.Drawing.Point(513, 299);
+            this.UpdateBookingButton.Name = "UpdateBookingButton";
+            this.UpdateBookingButton.Size = new System.Drawing.Size(203, 23);
+            this.UpdateBookingButton.TabIndex = 31;
+            this.UpdateBookingButton.Text = "UPDATE BOOKING";
+            this.UpdateBookingButton.UseVisualStyleBackColor = true;
+            this.UpdateBookingButton.Click += new System.EventHandler(this.UpdateBookingbutton_Click);
             // 
             // button4
             // 
@@ -275,8 +276,8 @@
             this.Controls.Add(this.Phonelabel);
             this.Controls.Add(this.Addresslabel);
             this.Controls.Add(this.button4);
-            this.Controls.Add(this.UpdateBookingbutton);
-            this.Controls.Add(this.CancelBookingbutton);
+            this.Controls.Add(this.UpdateBookingButton);
+            this.Controls.Add(this.CancelBookingButton);
             this.Controls.Add(this.MakeBookingButton);
             this.Controls.Add(this.FirstNamelabel);
             this.Controls.Add(this.ShowdataGridView);
@@ -294,8 +295,8 @@
         private System.Windows.Forms.DataGridView ShowdataGridView;
         private System.Windows.Forms.Label FirstNamelabel;
         private System.Windows.Forms.Button MakeBookingButton;
-        private System.Windows.Forms.Button CancelBookingbutton;
-        private System.Windows.Forms.Button UpdateBookingbutton;
+        private System.Windows.Forms.Button CancelBookingButton;
+        private System.Windows.Forms.Button UpdateBookingButton;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Label Addresslabel;
         private System.Windows.Forms.Label Phonelabel;
