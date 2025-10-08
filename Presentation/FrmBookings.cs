@@ -9,10 +9,10 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Phumla_Kamnandi_GRP_12.Presentation
-{
+{   
     public partial class FrmBookings : Form
-    {
-        public FrmBookings()
+    {   
+       public FrmBookings()
         {
             InitializeComponent();
         }
@@ -24,7 +24,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
 
         private void Datelabel_Click(object sender, EventArgs e)
         {
-
+            Datelabel.Text=
         }
 
         private void Formlabel_Click(object sender, EventArgs e)
@@ -74,7 +74,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
 
         private void MakeBookingButton_Click(object sender, EventArgs e)
         {
-
+           
         }
 
         private void DatetextBox_TextChanged_1(object sender, EventArgs e)
