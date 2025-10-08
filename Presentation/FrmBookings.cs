@@ -24,7 +24,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
 
         private void Datelabel_Click(object sender, EventArgs e)
         {
-            Datelabel.Text=
+           
         }
 
         private void Formlabel_Click(object sender, EventArgs e)
