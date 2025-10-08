@@ -104,16 +104,20 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
         private void LogoutButton_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show(
-                "Are you sure you want to logout?",
-                "Confirm Logout",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question);
+             "Are you sure you want to logout?",
+             "Confirm Logout",
+             MessageBoxButtons.YesNo,
+             MessageBoxIcon.Question);
 
             if (result == DialogResult.Yes)
             {
                 _services.ClearSession();
+
+                
                 Login loginForm = new Login();
                 loginForm.Show();
+
+               
                 this.Close();
             }
         }

@@ -366,6 +366,7 @@
             this.Name = "Dashbaord";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "-";
+           
             this.SidePanel2.ResumeLayout(false);
             this.SidePanel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CompanyLogo)).EndInit();

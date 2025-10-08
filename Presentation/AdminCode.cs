@@ -1,6 +1,7 @@
 ﻿using Phumla_Kamnandi_GRP_12.Business.Entities;
 using Phumla_Kamnandi_GRP_12.Business.Enums;
 using System;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace Phumla_Kamnandi_GRP_12.Presentation
@@ -20,7 +21,6 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
         private string _workEmail;
         private bool _isPasswordReset;
 
-        // Constructor for new account creation
         public AdminCode(string firstName, string lastName, string phone, string personalEmail, string password)
         {
             InitializeComponent();
@@ -35,7 +35,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             InitializeForm();
         }
 
-        // Constructor for password reset
+      
         public AdminCode(string workEmail, bool isPasswordReset)
         {
             InitializeComponent();
@@ -139,7 +139,15 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                     Dashbaord dashboard = new Dashbaord();
                     dashboard.Show();
 
-                    // Close all previous forms
+                    // Close all previous forms - ADD THESE LINES
+                    foreach (Form form in Application.OpenForms.Cast<Form>().ToList())
+                    {
+                        if (form != dashboard)
+                        {
+                            form.Hide();
+                        }
+                    }
+
                     this.Close();
                 }
                 else

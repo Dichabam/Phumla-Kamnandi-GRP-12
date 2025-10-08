@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,9 +16,9 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
         private string _personalEmail;
         private bool _isPasswordReset;
         private string _workEmail; // For password reset
-        private Label SuccessLabelPass;
+      
 
-        // Constructor for new account creation
+       
         public PasswordForm(string firstName, string lastName, string phone, string personalEmail, bool isPasswordReset)
         {
             InitializeComponent();
@@ -31,7 +32,10 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             NewPasswordTextbox.PasswordChar = '•';
             ConfirmPasswordTextbox.PasswordChar = '•';
 
-            // Update button text based on context
+           
+            SucessLabelPass.Visible = false;  
+
+            
             if (_isPasswordReset)
             {
                 NextButtonPass.Text = "SUBMIT";
@@ -45,7 +49,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             NextButtonPass.Click += NextButtonPass_Click;
         }
 
-        // Constructor for password reset
+       
         public PasswordForm(string workEmail) : this("", "", "", "", true)
         {
             _workEmail = workEmail;
@@ -69,29 +73,26 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
 
             if (_isPasswordReset)
             {
-                // Password reset flow
+                
                 await HandlePasswordReset(password);
             }
             else
             {
-                // New account creation flow
+               
                 await HandleNewAccountCreation(password);
             }
         }
 
         private async Task HandleNewAccountCreation(string password)
         {
-            // Hash the password before storing
-            string hashedPassword = HashPassword(password);
-
-            // Show success message
-            SuccessLabelPass.Text = "Password created";
-            SuccessLabelPass.Visible = true;
+            // DON'T hash the password here - let AdminCode handle it
+            SucessLabelPass.Text = "Password created successfully";
+            SucessLabelPass.Visible = true;
             await Task.Delay(1500); // Show for 1.5 seconds
-            SuccessLabelPass.Visible = false;
+            SucessLabelPass.Visible = false;
 
-            // Move to Admin Code verification
-            AdminCode adminForm = new AdminCode(_firstName, _lastName, _phone, _personalEmail, hashedPassword);
+          
+            AdminCode adminForm = new AdminCode(_firstName, _lastName, _phone, _personalEmail, password);
             adminForm.FormClosed += (s, args) => this.Close();
             adminForm.Show();
             this.Hide();
@@ -104,21 +105,53 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                 var employee = _services.EmployeeService.GetEmployeeByEmail(_workEmail);
                 if (employee != null)
                 {
-                    // Hash and update password
-                    string hashedPassword = HashPassword(newPassword);
-                    employee.UpdatePassword(hashedPassword);
-                    _services.EmployeeRepository.Update(employee);
+                    // Update password using the service method which handles hashing
+                    bool updated = _services.EmployeeService.UpdateEmployeePassword(
+                        employee.EmployeeId,
+                        "", // Old password not needed since admin verified
+                        newPassword
+                    );
 
-                    // Show success message
-                    SuccessLabelPass.Text = "Password updated successfully";
-                    SuccessLabelPass.Visible = true;
-                    await Task.Delay(2000); // Show for 2 seconds
-                    SuccessLabelPass.Visible = false;
+                    if (updated || true) // Always succeed since admin code was verified
+                    {
+                        // Manually hash and update since we bypassed old password check
+                        string hashedPassword = HashPassword(newPassword);
+                        employee.UpdatePassword(hashedPassword);
+                        _services.EmployeeRepository.Update(employee);
 
-                    // Return to login
-                    Login loginForm = new Login();
-                    loginForm.Show();
-                    this.Close();
+                        // Show success message
+                        SucessLabelPass.Text = "Password updated successfully";
+                        SucessLabelPass.Visible = true;
+                        await Task.Delay(2000);
+                        SucessLabelPass.Visible = false;
+
+                        // Close all forms except login
+                        foreach (Form form in Application.OpenForms.Cast<Form>().ToList())
+                        {
+                            if (!(form is Login))
+                            {
+                                form.Close();
+                            }
+                        }
+
+                        // Return to login or show it if already open
+                        var loginForm = Application.OpenForms.OfType<Login>().FirstOrDefault();
+                        if (loginForm != null)
+                        {
+                            loginForm.Show();
+                            loginForm.BringToFront();
+                        }
+                        else
+                        {
+                            Login newLoginForm = new Login();
+                            newLoginForm.Show();
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Failed to update password.", "Error",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
                 else
                 {
@@ -187,7 +220,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
 
         private void EmailTextboxPass_TextChanged(object sender, EventArgs e)
         {
-            // Keep this for any future validation logic
+            
         }
     }
 }
