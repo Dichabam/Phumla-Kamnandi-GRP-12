@@ -48,8 +48,7 @@ namespace Phumla_Kamnandi_GRP_12.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\PhumlaKamnand" +
-            "iDB.mdf;Integrated Security=True;Connect Timeout=30")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\PhumlaKamnandiDB.mdf;Integrated Security=True;Encrypt=False;Connect Timeout=300")]
         public string PhumlaKamnandiDBConnectionString {
             get {
                 return ((string)(this["PhumlaKamnandiDBConnectionString"]));
