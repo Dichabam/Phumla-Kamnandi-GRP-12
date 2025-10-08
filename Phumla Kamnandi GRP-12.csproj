@@ -123,11 +123,11 @@
     <Compile Include="Presentation\BookingHistory.Designer.cs">
       <DependentUpon>BookingHistory.cs</DependentUpon>
     </Compile>
-    <Compile Include="Presentation\Dashbaord.cs">
+    <Compile Include="Presentation\Dashboard.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Presentation\Dashbaord.Designer.cs">
-      <DependentUpon>Dashbaord.cs</DependentUpon>
+    <Compile Include="Presentation\Dashboard.Designer.cs">
+      <DependentUpon>Dashboard.cs</DependentUpon>
     </Compile>
     <Compile Include="Presentation\ForgotPassword.cs">
       <SubType>Form</SubType>
@@ -201,8 +201,11 @@
     <EmbeddedResource Include="Presentation\AdminCode.resx">
       <DependentUpon>AdminCode.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Presentation\Dashbaord.resx">
-      <DependentUpon>Dashbaord.cs</DependentUpon>
+    <EmbeddedResource Include="Presentation\BookingHistory.resx">
+      <DependentUpon>BookingHistory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentation\Dashboard.resx">
+      <DependentUpon>Dashboard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentation\ForgotPassword.resx">
       <DependentUpon>ForgotPassword.cs</DependentUpon>
@@ -359,6 +362,11 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>PhumlaKamnandiDB.mdf</DependentUpon>
     </Content>
+    <None Include="Resourses\Icons\check_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png" />
+    <None Include="Resourses\Icons\man_4_50dp_FFFFFF_FILL0_wght400_GRAD0_opsz48.png" />
+    <None Include="Resourses\Icons\view_agenda_50dp_FFFFFF_FILL0_wght400_GRAD0_opsz48.png" />
+    <None Include="Resourses\Icons\add_50dp_FFFFFF_FILL0_wght400_GRAD0_opsz48.png" />
+    <None Include="Resourses\Icons\update_50dp_FFFFFF_FILL0_wght400_GRAD0_opsz48.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
