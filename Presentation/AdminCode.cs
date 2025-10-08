@@ -132,17 +132,16 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                         $"Use your work email to login.",
                         "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    // Auto-login the new employee
-                    _services.SetEmployeeSession(newEmployee);
+                    
 
                     // Open dashboard
-                    Dashbaord dashboard = new Dashbaord();
-                    dashboard.Show();
+                    Login login = new Login();
+                    login.Show();
 
-                    // Close all previous forms - ADD THESE LINES
+                    // Close all previous forms 
                     foreach (Form form in Application.OpenForms.Cast<Form>().ToList())
                     {
-                        if (form != dashboard)
+                        if (form != login)
                         {
                             form.Hide();
                         }
