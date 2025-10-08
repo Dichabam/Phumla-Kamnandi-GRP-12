@@ -26,14 +26,14 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
 
         private void RefreshBookings()
         {
-            using (SqlConnection con = new SqlConnection(connectionString))
-            {
-                string query = "SELECT First Name, Surname, Email, Phone, Address,Credit Card Number,Date Registered,IsInGoodStanding";
-                SqlDataAdapter da = new SqlDataAdapter(query, con);
-                DataTable dt = new DataTable();
-                da.Fill(dt);
-                ShowdataGridView.DataSource = dt;
-            }
+            ////using (SqlConnection con = new SqlConnection(connectionString))
+            //{
+            //    string query = "SELECT First Name, Surname, Email, Phone, Address,Credit Card Number,Date Registered,IsInGoodStanding";
+            //    SqlDataAdapter da = new SqlDataAdapter(query);
+            //    DataTable dt = new DataTable();
+            //    da.Fill(dt);
+            //    ShowdataGridView.DataSource = dt;
+            //}
         }
 
 
@@ -100,7 +100,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             string query = "INSERT INTO Bookings (First Name, Surname, Email, Phone, Address,Credit Card Number,Date Registered,IsInGoodStanding) " +
                        "VALUES (@First Name, @Surname, @Email, @Phone, @Address,@Credit Card Number,@Date Registered,@IsInGoodStanding)";
 
-            SqlCommand bookingcommand = new SqlCommand(query, connection);  
+            SqlCommand bookingcommand = new SqlCommand(query);  
             bookingcommand.Parameters.AddWithValue("(@First Name", name);
             bookingcommand.Parameters.AddWithValue("@Surname", surname);
             bookingcommand.Parameters.AddWithValue("@Email", Email);
@@ -147,7 +147,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
 
             if(confirm == DialogResult.Yes)
             {
-                name.Enable = true;
+               // name.Enable = true;
             }
             else
             {
