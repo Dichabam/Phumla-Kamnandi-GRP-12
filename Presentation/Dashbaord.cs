@@ -203,5 +203,10 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             button.BackColor = Color.FromArgb(46, 51, 73);
         }
         #endregion
+
+        private void PnlFormLoader_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
