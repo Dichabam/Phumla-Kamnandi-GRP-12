@@ -1,15 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<xs:schema id="PhumlaKamnandiDataSet1" targetNamespace="http://tempuri.org/PhumlaKamnandiDataSet1.xsd" xmlns:mstns="http://tempuri.org/PhumlaKamnandiDataSet1.xsd" xmlns="http://tempuri.org/PhumlaKamnandiDataSet1.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+<xs:schema id="PhumlaKamnandiDBDataSet" targetNamespace="http://tempuri.org/PhumlaKamnandiDBDataSet.xsd" xmlns:mstns="http://tempuri.org/PhumlaKamnandiDBDataSet.xsd" xmlns="http://tempuri.org/PhumlaKamnandiDBDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
   <xs:annotation>
     <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
       <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
         <Connections>
-          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="PhumlaKamnandiConnectionString1" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="PhumlaKamnandiConnectionString1 (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.Phumla_Kamnandi_GRP_12.Properties.Settings.GlobalReference.Default.PhumlaKamnandiConnectionString1" Provider="System.Data.SqlClient" />
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="PhumlaKamnandiDBConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="PhumlaKamnandiDBConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.Phumla_Kamnandi_GRP_12.Properties.Settings.GlobalReference.Default.PhumlaKamnandiDBConnectionString" Provider="System.Data.SqlClient" />
         </Connections>
         <Tables>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="RoomTableAdapter" GeneratorDataComponentClassName="RoomTableAdapter" Name="Room" UserDataComponentName="RoomTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="PhumlaKamnandiConnectionString1 (Settings)" DbObjectName="dbo.Room" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="PhumlaKamnandiDBConnectionString (Settings)" DbObjectName="dbo.Room" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>DELETE FROM [dbo].[Room] WHERE (([RoomNum] = @Original_RoomNum) AND ([MaxOccupancy] = @Original_MaxOccupancy) AND ([Availability] = @Original_Availability))</CommandText>
@@ -65,7 +65,7 @@ SELECT RoomNum, MaxOccupancy, Availability FROM Room WHERE (RoomNum = @RoomNum)<
       </DataSource>
     </xs:appinfo>
   </xs:annotation>
-  <xs:element name="PhumlaKamnandiDataSet1" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_UserDSName="PhumlaKamnandiDataSet1" msprop:Generator_DataSetName="PhumlaKamnandiDataSet1">
+  <xs:element name="PhumlaKamnandiDBDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_UserDSName="PhumlaKamnandiDBDataSet" msprop:Generator_DataSetName="PhumlaKamnandiDBDataSet">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
         <xs:element name="Room" msprop:Generator_RowEvHandlerName="RoomRowChangeEventHandler" msprop:Generator_RowDeletedName="RoomRowDeleted" msprop:Generator_RowDeletingName="RoomRowDeleting" msprop:Generator_RowEvArgName="RoomRowChangeEvent" msprop:Generator_TablePropName="Room" msprop:Generator_RowChangedName="RoomRowChanged" msprop:Generator_RowChangingName="RoomRowChanging" msprop:Generator_TableClassName="RoomDataTable" msprop:Generator_RowClassName="RoomRow" msprop:Generator_TableVarName="tableRoom" msprop:Generator_UserTableName="Room">

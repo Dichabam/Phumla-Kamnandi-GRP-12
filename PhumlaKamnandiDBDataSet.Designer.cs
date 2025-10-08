@@ -20,9 +20,9 @@ namespace Phumla_Kamnandi_GRP_12 {
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
     [global::System.ComponentModel.ToolboxItem(true)]
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
-    [global::System.Xml.Serialization.XmlRootAttribute("PhumlaKamnandiDataSet1")]
+    [global::System.Xml.Serialization.XmlRootAttribute("PhumlaKamnandiDBDataSet")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
-    public partial class PhumlaKamnandiDataSet1 : global::System.Data.DataSet {
+    public partial class PhumlaKamnandiDBDataSet : global::System.Data.DataSet {
         
         private RoomDataTable tableRoom;
         
@@ -30,7 +30,7 @@ namespace Phumla_Kamnandi_GRP_12 {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public PhumlaKamnandiDataSet1() {
+        public PhumlaKamnandiDBDataSet() {
             this.BeginInit();
             this.InitClass();
             global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
@@ -41,7 +41,7 @@ namespace Phumla_Kamnandi_GRP_12 {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        protected PhumlaKamnandiDataSet1(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+        protected PhumlaKamnandiDBDataSet(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                 base(info, context, false) {
             if ((this.IsBinarySerialized(info, context) == true)) {
                 this.InitVars(false);
@@ -127,7 +127,7 @@ namespace Phumla_Kamnandi_GRP_12 {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         public override global::System.Data.DataSet Clone() {
-            PhumlaKamnandiDataSet1 cln = ((PhumlaKamnandiDataSet1)(base.Clone()));
+            PhumlaKamnandiDBDataSet cln = ((PhumlaKamnandiDBDataSet)(base.Clone()));
             cln.InitVars();
             cln.SchemaSerializationMode = this.SchemaSerializationMode;
             return cln;
@@ -199,9 +199,9 @@ namespace Phumla_Kamnandi_GRP_12 {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitClass() {
-            this.DataSetName = "PhumlaKamnandiDataSet1";
+            this.DataSetName = "PhumlaKamnandiDBDataSet";
             this.Prefix = "";
-            this.Namespace = "http://tempuri.org/PhumlaKamnandiDataSet1.xsd";
+            this.Namespace = "http://tempuri.org/PhumlaKamnandiDBDataSet.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
             this.tableRoom = new RoomDataTable();
@@ -225,7 +225,7 @@ namespace Phumla_Kamnandi_GRP_12 {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedDataSetSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-            PhumlaKamnandiDataSet1 ds = new PhumlaKamnandiDataSet1();
+            PhumlaKamnandiDBDataSet ds = new PhumlaKamnandiDBDataSet();
             global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
             global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
             global::System.Xml.Schema.XmlSchemaAny any = new global::System.Xml.Schema.XmlSchemaAny();
@@ -501,7 +501,7 @@ namespace Phumla_Kamnandi_GRP_12 {
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                PhumlaKamnandiDataSet1 ds = new PhumlaKamnandiDataSet1();
+                PhumlaKamnandiDBDataSet ds = new PhumlaKamnandiDBDataSet();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -643,7 +643,7 @@ namespace Phumla_Kamnandi_GRP_12 {
         }
     }
 }
-namespace Phumla_Kamnandi_GRP_12.PhumlaKamnandiDataSet1TableAdapters {
+namespace Phumla_Kamnandi_GRP_12.PhumlaKamnandiDBDataSetTableAdapters {
     
     
     /// <summary>
@@ -805,7 +805,7 @@ SELECT RoomNum, MaxOccupancy, Availability FROM Room WHERE (RoomNum = @RoomNum)"
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::Phumla_Kamnandi_GRP_12.Properties.Settings.Default.PhumlaKamnandiConnectionString1;
+            this._connection.ConnectionString = global::Phumla_Kamnandi_GRP_12.Properties.Settings.Default.PhumlaKamnandiDBConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -822,7 +822,7 @@ SELECT RoomNum, MaxOccupancy, Availability FROM Room WHERE (RoomNum = @RoomNum)"
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(PhumlaKamnandiDataSet1.RoomDataTable dataTable) {
+        public virtual int Fill(PhumlaKamnandiDBDataSet.RoomDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -835,9 +835,9 @@ SELECT RoomNum, MaxOccupancy, Availability FROM Room WHERE (RoomNum = @RoomNum)"
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual PhumlaKamnandiDataSet1.RoomDataTable GetData() {
+        public virtual PhumlaKamnandiDBDataSet.RoomDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            PhumlaKamnandiDataSet1.RoomDataTable dataTable = new PhumlaKamnandiDataSet1.RoomDataTable();
+            PhumlaKamnandiDBDataSet.RoomDataTable dataTable = new PhumlaKamnandiDBDataSet.RoomDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
@@ -845,14 +845,14 @@ SELECT RoomNum, MaxOccupancy, Availability FROM Room WHERE (RoomNum = @RoomNum)"
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(PhumlaKamnandiDataSet1.RoomDataTable dataTable) {
+        public virtual int Update(PhumlaKamnandiDBDataSet.RoomDataTable dataTable) {
             return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(PhumlaKamnandiDataSet1 dataSet) {
+        public virtual int Update(PhumlaKamnandiDBDataSet dataSet) {
             return this.Adapter.Update(dataSet, "Room");
         }
         
@@ -1046,7 +1046,7 @@ SELECT RoomNum, MaxOccupancy, Availability FROM Room WHERE (RoomNum = @RoomNum)"
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private int UpdateUpdatedRows(PhumlaKamnandiDataSet1 dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateUpdatedRows(PhumlaKamnandiDBDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
             if ((this._roomTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.Room.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
@@ -1065,7 +1065,7 @@ SELECT RoomNum, MaxOccupancy, Availability FROM Room WHERE (RoomNum = @RoomNum)"
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private int UpdateInsertedRows(PhumlaKamnandiDataSet1 dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
+        private int UpdateInsertedRows(PhumlaKamnandiDBDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
             if ((this._roomTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.Room.Select(null, null, global::System.Data.DataViewRowState.Added);
@@ -1083,7 +1083,7 @@ SELECT RoomNum, MaxOccupancy, Availability FROM Room WHERE (RoomNum = @RoomNum)"
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private int UpdateDeletedRows(PhumlaKamnandiDataSet1 dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
+        private int UpdateDeletedRows(PhumlaKamnandiDBDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows) {
             int result = 0;
             if ((this._roomTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.Room.Select(null, null, global::System.Data.DataViewRowState.Deleted);
@@ -1125,7 +1125,7 @@ SELECT RoomNum, MaxOccupancy, Availability FROM Room WHERE (RoomNum = @RoomNum)"
         ///</summary>
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public virtual int UpdateAll(PhumlaKamnandiDataSet1 dataSet) {
+        public virtual int UpdateAll(PhumlaKamnandiDBDataSet dataSet) {
             if ((dataSet == null)) {
                 throw new global::System.ArgumentNullException("dataSet");
             }

@@ -12,6 +12,7 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -24,7 +25,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -103,10 +103,10 @@
     <Compile Include="Database\MockGuestRepository.cs" />
     <Compile Include="Database\MockRoomRepository.cs" />
     <Compile Include="Database\Test2.cs" />
-    <Compile Include="PhumlaKamnandiDataSet1.Designer.cs">
+    <Compile Include="PhumlaKamnandiDBDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>PhumlaKamnandiDataSet1.xsd</DependentUpon>
+      <DependentUpon>PhumlaKamnandiDBDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="Presentation\AdminCode.cs">
       <SubType>Form</SubType>
@@ -239,16 +239,16 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <None Include="packages.config" />
-    <None Include="PhumlaKamnandiDataSet1.xsc">
-      <DependentUpon>PhumlaKamnandiDataSet1.xsd</DependentUpon>
+    <None Include="PhumlaKamnandiDBDataSet.xsc">
+      <DependentUpon>PhumlaKamnandiDBDataSet.xsd</DependentUpon>
     </None>
-    <None Include="PhumlaKamnandiDataSet1.xsd">
+    <None Include="PhumlaKamnandiDBDataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>PhumlaKamnandiDataSet1.Designer.cs</LastGenOutput>
+      <LastGenOutput>PhumlaKamnandiDBDataSet.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="PhumlaKamnandiDataSet1.xss">
-      <DependentUpon>PhumlaKamnandiDataSet1.xsd</DependentUpon>
+    <None Include="PhumlaKamnandiDBDataSet.xss">
+      <DependentUpon>PhumlaKamnandiDBDataSet.xsd</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -341,6 +341,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resourses\Icons\visibility_off_50dp_000000_FILL0_wght400_GRAD0_opsz48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="PhumlaKamnandiDB.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="PhumlaKamnandiDB_log.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DependentUpon>PhumlaKamnandiDB.mdf</DependentUpon>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
