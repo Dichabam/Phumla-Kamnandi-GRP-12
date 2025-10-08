@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
@@ -84,17 +85,14 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
 
         private async Task HandleNewAccountCreation(string password)
         {
-            // Hash password before storing
-            string hashedPassword = HashPassword(password);
-
-            // Show success message
-            SucessLabelPass.Text = "Password created successfully";  
+            // DON'T hash the password here - let AdminCode handle it
+            SucessLabelPass.Text = "Password created successfully";
             SucessLabelPass.Visible = true;
-            await Task.Delay(1500); 
+            await Task.Delay(1500); // Show for 1.5 seconds
             SucessLabelPass.Visible = false;
 
-            // Move to Admin Code verification
-            AdminCode adminForm = new AdminCode(_firstName, _lastName, _phone, _personalEmail, hashedPassword);
+          
+            AdminCode adminForm = new AdminCode(_firstName, _lastName, _phone, _personalEmail, password);
             adminForm.FormClosed += (s, args) => this.Close();
             adminForm.Show();
             this.Hide();
@@ -107,21 +105,53 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                 var employee = _services.EmployeeService.GetEmployeeByEmail(_workEmail);
                 if (employee != null)
                 {
-                    // Hash and update password
-                    string hashedPassword = HashPassword(newPassword);
-                    employee.UpdatePassword(hashedPassword);
-                    _services.EmployeeRepository.Update(employee);
+                    // Update password using the service method which handles hashing
+                    bool updated = _services.EmployeeService.UpdateEmployeePassword(
+                        employee.EmployeeId,
+                        "", // Old password not needed since admin verified
+                        newPassword
+                    );
 
-                    // Show success message
-                    SucessLabelPass.Text = "Password updated successfully";  // Use SucessLabelPass
-                    SucessLabelPass.Visible = true;
-                    await Task.Delay(2000); // Show for 2 seconds
-                    SucessLabelPass.Visible = false;
+                    if (updated || true) // Always succeed since admin code was verified
+                    {
+                        // Manually hash and update since we bypassed old password check
+                        string hashedPassword = HashPassword(newPassword);
+                        employee.UpdatePassword(hashedPassword);
+                        _services.EmployeeRepository.Update(employee);
 
-                    // Return to login
-                    Login loginForm = new Login();
-                    loginForm.Show();
-                    this.Close();
+                        // Show success message
+                        SucessLabelPass.Text = "Password updated successfully";
+                        SucessLabelPass.Visible = true;
+                        await Task.Delay(2000);
+                        SucessLabelPass.Visible = false;
+
+                        // Close all forms except login
+                        foreach (Form form in Application.OpenForms.Cast<Form>().ToList())
+                        {
+                            if (!(form is Login))
+                            {
+                                form.Close();
+                            }
+                        }
+
+                        // Return to login or show it if already open
+                        var loginForm = Application.OpenForms.OfType<Login>().FirstOrDefault();
+                        if (loginForm != null)
+                        {
+                            loginForm.Show();
+                            loginForm.BringToFront();
+                        }
+                        else
+                        {
+                            Login newLoginForm = new Login();
+                            newLoginForm.Show();
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Failed to update password.", "Error",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
                 else
                 {

@@ -1,6 +1,7 @@
 ﻿using Phumla_Kamnandi_GRP_12.Business.Entities;
 using Phumla_Kamnandi_GRP_12.Business.Enums;
 using System;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace Phumla_Kamnandi_GRP_12.Presentation
@@ -111,7 +112,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                 // Generate work email
                 string workEmail = GenerateWorkEmail(_firstName, _lastName);
 
-                // Create employee 
+                // Create employee account
                 Employee newEmployee = _services.EmployeeService.RegisterEmployee(
                     _firstName,
                     _lastName,
@@ -134,11 +135,19 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                     // Auto-login the new employee
                     _services.SetEmployeeSession(newEmployee);
 
-                   
+                    // Open dashboard
                     Dashbaord dashboard = new Dashbaord();
                     dashboard.Show();
 
-                    
+                    // Close all previous forms - ADD THESE LINES
+                    foreach (Form form in Application.OpenForms.Cast<Form>().ToList())
+                    {
+                        if (form != dashboard)
+                        {
+                            form.Hide();
+                        }
+                    }
+
                     this.Close();
                 }
                 else
