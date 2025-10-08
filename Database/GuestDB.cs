@@ -10,7 +10,7 @@ namespace Phumla_Kamnandi_GRP_12.Database
 {
     public class GuestDB : GuestRepositoryInterface
     {
-        private readonly string connectionString = Settings.Default.PhumlaKamnandiConnectionString;
+        private readonly string connectionString = Settings.Default.PhumlaKamnandiDBConnectionString;
 
         public Guest GetById(string guestId)
         {
