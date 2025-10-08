@@ -98,6 +98,7 @@
     <Compile Include="Business\ValueObjects\PricingInfo.cs" />
     <Compile Include="Database\BookingDB.cs" />
     <Compile Include="Database\DB.cs" />
+    <Compile Include="Database\EmployeeDB.cs" />
     <Compile Include="Database\GuestDB.cs" />
     <Compile Include="Database\MockBookingRepository.cs" />
     <Compile Include="Database\MockEmployeeRepository.cs" />
