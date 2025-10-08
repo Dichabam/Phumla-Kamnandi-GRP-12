@@ -28,31 +28,50 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.FrmReportsLabel = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            this.DatePickerStart = new Guna.UI2.WinForms.Guna2DateTimePicker();
+            this.DatePickerEnd = new Guna.UI2.WinForms.Guna2DateTimePicker();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.SuspendLayout();
             // 
-            // pictureBox5
+            // DatePickerStart
             // 
-            this.pictureBox5.Image = global::Phumla_Kamnandi_GRP_12.Properties.Resources.analytics_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24;
-            this.pictureBox5.Location = new System.Drawing.Point(250, 249);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(454, 263);
-            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox5.TabIndex = 3;
-            this.pictureBox5.TabStop = false;
+            this.DatePickerStart.Animated = true;
+            this.DatePickerStart.AutoRoundedCorners = true;
+            this.DatePickerStart.Checked = true;
+            this.DatePickerStart.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.DatePickerStart.Format = System.Windows.Forms.DateTimePickerFormat.Long;
+            this.DatePickerStart.Location = new System.Drawing.Point(46, 150);
+            this.DatePickerStart.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
+            this.DatePickerStart.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
+            this.DatePickerStart.Name = "DatePickerStart";
+            this.DatePickerStart.Size = new System.Drawing.Size(370, 36);
+            this.DatePickerStart.TabIndex = 1;
+            this.DatePickerStart.Value = new System.DateTime(2025, 10, 8, 17, 30, 36, 816);
             // 
-            // FrmReportsLabel
+            // DatePickerEnd
             // 
-            this.FrmReportsLabel.AutoSize = true;
-            this.FrmReportsLabel.Font = new System.Drawing.Font("Nirmala UI", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FrmReportsLabel.ForeColor = System.Drawing.Color.White;
-            this.FrmReportsLabel.Location = new System.Drawing.Point(288, 196);
-            this.FrmReportsLabel.Name = "FrmReportsLabel";
-            this.FrmReportsLabel.Size = new System.Drawing.Size(333, 50);
-            this.FrmReportsLabel.TabIndex = 2;
-            this.FrmReportsLabel.Text = "Your Reports here";
+            this.DatePickerEnd.Animated = true;
+            this.DatePickerEnd.AutoRoundedCorners = true;
+            this.DatePickerEnd.Checked = true;
+            this.DatePickerEnd.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.DatePickerEnd.Format = System.Windows.Forms.DateTimePickerFormat.Long;
+            this.DatePickerEnd.Location = new System.Drawing.Point(502, 150);
+            this.DatePickerEnd.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
+            this.DatePickerEnd.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
+            this.DatePickerEnd.Name = "DatePickerEnd";
+            this.DatePickerEnd.Size = new System.Drawing.Size(370, 36);
+            this.DatePickerEnd.TabIndex = 1;
+            this.DatePickerEnd.Value = new System.DateTime(2025, 10, 8, 17, 30, 36, 816);
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Dock = System.Windows.Forms.DockStyle.None;
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.menuStrip1.Location = new System.Drawing.Point(171, 48);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(158, 28);
+            this.menuStrip1.TabIndex = 2;
+            this.menuStrip1.Text = "menuStrip1";
             // 
             // FrmReports
             // 
@@ -60,12 +79,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
             this.ClientSize = new System.Drawing.Size(954, 709);
-            this.Controls.Add(this.pictureBox5);
-            this.Controls.Add(this.FrmReportsLabel);
+            this.Controls.Add(this.DatePickerEnd);
+            this.Controls.Add(this.DatePickerStart);
+            this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "FrmReports";
             this.Text = "FrmReports";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -73,7 +93,8 @@
 
         #endregion
 
-        private System.Windows.Forms.PictureBox pictureBox5;
-        private System.Windows.Forms.Label FrmReportsLabel;
+        private Guna.UI2.WinForms.Guna2DateTimePicker DatePickerStart;
+        private Guna.UI2.WinForms.Guna2DateTimePicker DatePickerEnd;
+        private System.Windows.Forms.MenuStrip menuStrip1;
     }
 }

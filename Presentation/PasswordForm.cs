@@ -105,52 +105,37 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                 var employee = _services.EmployeeService.GetEmployeeByEmail(_workEmail);
                 if (employee != null)
                 {
-                    // Update password using the service method which handles hashing
-                    bool updated = _services.EmployeeService.UpdateEmployeePassword(
-                        employee.EmployeeId,
-                        "",
-                        newPassword
-                    );
+                    // Hash the password once and update directly
+                    string hashedPassword = HashPassword(newPassword);
+                    employee.UpdatePassword(hashedPassword);
+                    _services.EmployeeRepository.Update(employee);
 
-                    if (updated || true) // Always succeed since admin code was verified
+                    // Show success message
+                    SucessLabelPass.Text = "Password updated successfully";
+                    SucessLabelPass.Visible = true;
+                    await Task.Delay(2000);
+                    SucessLabelPass.Visible = false;
+
+                    // Close all forms except login
+                    foreach (Form form in Application.OpenForms.Cast<Form>().ToList())
                     {
-                       
-                        string hashedPassword = HashPassword(newPassword);
-                        employee.UpdatePassword(hashedPassword);
-                        _services.EmployeeRepository.Update(employee);
-
-                        // Show success message
-                        SucessLabelPass.Text = "Password updated successfully";
-                        SucessLabelPass.Visible = true;
-                        await Task.Delay(2000);
-                        SucessLabelPass.Visible = false;
-
-                        // Close all forms except login
-                        foreach (Form form in Application.OpenForms.Cast<Form>().ToList())
+                        if (!(form is Login))
                         {
-                            if (!(form is Login))
-                            {
-                                form.Close();
-                            }
+                            form.Close();
                         }
+                    }
 
-                        // Return to login or show it if already open
-                        var loginForm = Application.OpenForms.OfType<Login>().FirstOrDefault();
-                        if (loginForm != null)
-                        {
-                            loginForm.Show();
-                            loginForm.BringToFront();
-                        }
-                        else
-                        {
-                            Login newLoginForm = new Login();
-                            newLoginForm.Show();
-                        }
+                    // Return to login
+                    var loginForm = Application.OpenForms.OfType<Login>().FirstOrDefault();
+                    if (loginForm != null)
+                    {
+                        loginForm.Show();
+                        loginForm.BringToFront();
                     }
                     else
                     {
-                        MessageBox.Show("Failed to update password.", "Error",
-                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        Login newLoginForm = new Login();
+                        newLoginForm.Show();
                     }
                 }
                 else

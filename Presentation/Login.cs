@@ -88,7 +88,14 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             // Check if it's a work email (employee login)
             if (email.EndsWith("@pkhotel.com"))
             {
+                string testHash = HashPassword(password); // Add this helper method
+                MessageBox.Show($"Login attempt:\n" +
+                    $"Email: {email}\n" +
+                    $"Password Hash: {testHash.Substring(0, 10)}...",
+                    "Debug", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                 Employee employee = _services.EmployeeService.AuthenticateEmployee(email, password);
+               
 
                 if (employee != null)
                 {
@@ -130,6 +137,20 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             {
                 PasswordTextbox.UseSystemPasswordChar = true;
                 viewPasswordButton.Image = Properties.Resources.visibility_50dp_000000_FILL0_wght400_GRAD0_opsz48;
+            }
+        }
+
+        private string HashPassword(string password)
+        {
+            using (System.Security.Cryptography.SHA256 sha256 = System.Security.Cryptography.SHA256.Create())
+            {
+                byte[] bytes = sha256.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
+                System.Text.StringBuilder builder = new System.Text.StringBuilder();
+                foreach (byte b in bytes)
+                {
+                    builder.Append(b.ToString("x2"));
+                }
+                return builder.ToString();
             }
         }
     }
