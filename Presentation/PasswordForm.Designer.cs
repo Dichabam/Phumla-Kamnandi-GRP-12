@@ -32,17 +32,17 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PasswordForm));
             this.SidePanelPass = new Guna.UI2.WinForms.Guna2GradientPanel();
+            this.viewConfirmPasswordButton = new Guna.UI2.WinForms.Guna2Button();
+            this.viewNewPasswordButton = new Guna.UI2.WinForms.Guna2Button();
             this.SucessLabelPass = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.justLabel = new System.Windows.Forms.Label();
+            this.CloseButtonPass = new Guna.UI2.WinForms.Guna2Button();
             this.NextButtonPass = new Guna.UI2.WinForms.Guna2Button();
             this.ConfirmPasswordTextbox = new Guna.UI2.WinForms.Guna2TextBox();
             this.NewPasswordTextbox = new Guna.UI2.WinForms.Guna2TextBox();
             this.VerifyPasswordLabel = new System.Windows.Forms.Label();
             this.NewPasswordLabel = new System.Windows.Forms.Label();
-            this.viewConfirmPasswordButton = new Guna.UI2.WinForms.Guna2Button();
-            this.viewNewPasswordButton = new Guna.UI2.WinForms.Guna2Button();
-            this.CloseButtonPass = new Guna.UI2.WinForms.Guna2Button();
             this.logo = new System.Windows.Forms.PictureBox();
             this.SidePanelPass.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.logo)).BeginInit();
@@ -72,6 +72,41 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             this.SidePanelPass.Name = "SidePanelPass";
             this.SidePanelPass.Size = new System.Drawing.Size(642, 803);
             this.SidePanelPass.TabIndex = 9;
+            this.SidePanelPass.Paint += new System.Windows.Forms.PaintEventHandler(this.SidePanelPass_Paint);
+            // 
+            // viewConfirmPasswordButton
+            // 
+            this.viewConfirmPasswordButton.BackColor = System.Drawing.Color.Transparent;
+            this.viewConfirmPasswordButton.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.viewConfirmPasswordButton.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.viewConfirmPasswordButton.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.viewConfirmPasswordButton.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.viewConfirmPasswordButton.FillColor = System.Drawing.Color.White;
+            this.viewConfirmPasswordButton.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.viewConfirmPasswordButton.ForeColor = System.Drawing.Color.White;
+            this.viewConfirmPasswordButton.Image = global::Phumla_Kamnandi_GRP_12.Properties.Resources.visibility_50dp_000000_FILL0_wght400_GRAD0_opsz48;
+            this.viewConfirmPasswordButton.Location = new System.Drawing.Point(546, 523);
+            this.viewConfirmPasswordButton.Name = "viewConfirmPasswordButton";
+            this.viewConfirmPasswordButton.Size = new System.Drawing.Size(56, 30);
+            this.viewConfirmPasswordButton.TabIndex = 17;
+            this.viewConfirmPasswordButton.Click += new System.EventHandler(this.viewConfirmPasswordButton_Click);
+            // 
+            // viewNewPasswordButton
+            // 
+            this.viewNewPasswordButton.BackColor = System.Drawing.Color.Transparent;
+            this.viewNewPasswordButton.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.viewNewPasswordButton.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.viewNewPasswordButton.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.viewNewPasswordButton.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.viewNewPasswordButton.FillColor = System.Drawing.Color.White;
+            this.viewNewPasswordButton.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.viewNewPasswordButton.ForeColor = System.Drawing.Color.White;
+            this.viewNewPasswordButton.Image = global::Phumla_Kamnandi_GRP_12.Properties.Resources.visibility_50dp_000000_FILL0_wght400_GRAD0_opsz48;
+            this.viewNewPasswordButton.Location = new System.Drawing.Point(546, 314);
+            this.viewNewPasswordButton.Name = "viewNewPasswordButton";
+            this.viewNewPasswordButton.Size = new System.Drawing.Size(56, 30);
+            this.viewNewPasswordButton.TabIndex = 16;
+            this.viewNewPasswordButton.Click += new System.EventHandler(this.viewNewPasswordButton_Click);
             // 
             // SucessLabelPass
             // 
@@ -105,6 +140,25 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             this.justLabel.Size = new System.Drawing.Size(203, 15);
             this.justLabel.TabIndex = 13;
             this.justLabel.Text = "Phumla Kamnandi Hotel Grout Pty(Ltd)";
+            // 
+            // CloseButtonPass
+            // 
+            this.CloseButtonPass.Animated = true;
+            this.CloseButtonPass.AutoRoundedCorners = true;
+            this.CloseButtonPass.BorderColor = System.Drawing.Color.Transparent;
+            this.CloseButtonPass.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.CloseButtonPass.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.CloseButtonPass.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.CloseButtonPass.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.CloseButtonPass.FillColor = System.Drawing.Color.Transparent;
+            this.CloseButtonPass.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.CloseButtonPass.ForeColor = System.Drawing.Color.White;
+            this.CloseButtonPass.Image = global::Phumla_Kamnandi_GRP_12.Properties.Resources.close_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24;
+            this.CloseButtonPass.Location = new System.Drawing.Point(585, 0);
+            this.CloseButtonPass.Name = "CloseButtonPass";
+            this.CloseButtonPass.Size = new System.Drawing.Size(57, 30);
+            this.CloseButtonPass.TabIndex = 12;
+            this.CloseButtonPass.UseTransparentBackground = true;
             // 
             // NextButtonPass
             // 
@@ -194,59 +248,6 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             this.NewPasswordLabel.Size = new System.Drawing.Size(374, 59);
             this.NewPasswordLabel.TabIndex = 8;
             this.NewPasswordLabel.Text = "New Password";
-            // 
-            // viewConfirmPasswordButton
-            // 
-            this.viewConfirmPasswordButton.BackColor = System.Drawing.Color.Transparent;
-            this.viewConfirmPasswordButton.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.viewConfirmPasswordButton.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.viewConfirmPasswordButton.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.viewConfirmPasswordButton.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.viewConfirmPasswordButton.FillColor = System.Drawing.Color.White;
-            this.viewConfirmPasswordButton.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.viewConfirmPasswordButton.ForeColor = System.Drawing.Color.White;
-            this.viewConfirmPasswordButton.Image = global::Phumla_Kamnandi_GRP_12.Properties.Resources.visibility_50dp_000000_FILL0_wght400_GRAD0_opsz48;
-            this.viewConfirmPasswordButton.Location = new System.Drawing.Point(546, 523);
-            this.viewConfirmPasswordButton.Name = "viewConfirmPasswordButton";
-            this.viewConfirmPasswordButton.Size = new System.Drawing.Size(56, 30);
-            this.viewConfirmPasswordButton.TabIndex = 17;
-            this.viewConfirmPasswordButton.Click += new System.EventHandler(this.viewConfirmPasswordButton_Click);
-            // 
-            // viewNewPasswordButton
-            // 
-            this.viewNewPasswordButton.BackColor = System.Drawing.Color.Transparent;
-            this.viewNewPasswordButton.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.viewNewPasswordButton.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.viewNewPasswordButton.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.viewNewPasswordButton.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.viewNewPasswordButton.FillColor = System.Drawing.Color.White;
-            this.viewNewPasswordButton.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.viewNewPasswordButton.ForeColor = System.Drawing.Color.White;
-            this.viewNewPasswordButton.Image = global::Phumla_Kamnandi_GRP_12.Properties.Resources.visibility_50dp_000000_FILL0_wght400_GRAD0_opsz48;
-            this.viewNewPasswordButton.Location = new System.Drawing.Point(546, 314);
-            this.viewNewPasswordButton.Name = "viewNewPasswordButton";
-            this.viewNewPasswordButton.Size = new System.Drawing.Size(56, 30);
-            this.viewNewPasswordButton.TabIndex = 16;
-            this.viewNewPasswordButton.Click += new System.EventHandler(this.viewNewPasswordButton_Click);
-            // 
-            // CloseButtonPass
-            // 
-            this.CloseButtonPass.Animated = true;
-            this.CloseButtonPass.AutoRoundedCorners = true;
-            this.CloseButtonPass.BorderColor = System.Drawing.Color.Transparent;
-            this.CloseButtonPass.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.CloseButtonPass.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.CloseButtonPass.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.CloseButtonPass.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.CloseButtonPass.FillColor = System.Drawing.Color.Transparent;
-            this.CloseButtonPass.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.CloseButtonPass.ForeColor = System.Drawing.Color.White;
-            this.CloseButtonPass.Image = global::Phumla_Kamnandi_GRP_12.Properties.Resources.close_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24;
-            this.CloseButtonPass.Location = new System.Drawing.Point(585, 0);
-            this.CloseButtonPass.Name = "CloseButtonPass";
-            this.CloseButtonPass.Size = new System.Drawing.Size(57, 30);
-            this.CloseButtonPass.TabIndex = 12;
-            this.CloseButtonPass.UseTransparentBackground = true;
             // 
             // logo
             // 

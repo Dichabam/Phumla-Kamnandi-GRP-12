@@ -34,12 +34,12 @@
             this.SubmitButton = new Guna.UI2.WinForms.Guna2Button();
             this.forgotpasswordLink = new System.Windows.Forms.LinkLabel();
             this.SidePanel = new Guna.UI2.WinForms.Guna2GradientPanel();
+            this.logo = new System.Windows.Forms.PictureBox();
             this.LoginLabel = new System.Windows.Forms.Label();
             this.ErrorLoginLabel = new System.Windows.Forms.Label();
             this.CreateAccountButton = new Guna.UI2.WinForms.Guna2Button();
             this.viewPasswordButton = new Guna.UI2.WinForms.Guna2Button();
             this.CloseButtonLogin = new Guna.UI2.WinForms.Guna2Button();
-            this.logo = new System.Windows.Forms.PictureBox();
             this.SidePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.logo)).BeginInit();
             this.SuspendLayout();
@@ -136,6 +136,19 @@
             this.SidePanel.Size = new System.Drawing.Size(393, 450);
             this.SidePanel.TabIndex = 6;
             // 
+            // logo
+            // 
+            this.logo.BackColor = System.Drawing.Color.Transparent;
+            this.logo.Dock = System.Windows.Forms.DockStyle.Left;
+            this.logo.Image = global::Phumla_Kamnandi_GRP_12.Properties.Resources.PHUMLA_KAMNANDI_Photoroom;
+            this.logo.Location = new System.Drawing.Point(0, 0);
+            this.logo.Name = "logo";
+            this.logo.Size = new System.Drawing.Size(411, 450);
+            this.logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.logo.TabIndex = 0;
+            this.logo.TabStop = false;
+            this.logo.Click += new System.EventHandler(this.logo_Click);
+            // 
             // LoginLabel
             // 
             this.LoginLabel.AutoSize = true;
@@ -218,18 +231,6 @@
             this.CloseButtonLogin.TabIndex = 12;
             this.CloseButtonLogin.UseTransparentBackground = true;
             this.CloseButtonLogin.Click += new System.EventHandler(this.CloseButtonLogin_Click);
-            // 
-            // logo
-            // 
-            this.logo.BackColor = System.Drawing.Color.Transparent;
-            this.logo.Dock = System.Windows.Forms.DockStyle.Left;
-            this.logo.Image = global::Phumla_Kamnandi_GRP_12.Properties.Resources.PHUMLA_KAMNANDI_Photoroom;
-            this.logo.Location = new System.Drawing.Point(0, 0);
-            this.logo.Name = "logo";
-            this.logo.Size = new System.Drawing.Size(411, 450);
-            this.logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.logo.TabIndex = 0;
-            this.logo.TabStop = false;
             // 
             // Login
             // 
