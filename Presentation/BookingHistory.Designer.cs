@@ -35,6 +35,7 @@
             this.GuestHistoryLabel = new System.Windows.Forms.Label();
             this.DetailsLabel = new System.Windows.Forms.Label();
             this.guna2Separator1 = new Guna.UI2.WinForms.Guna2Separator();
+            this.PhoneLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // Namelabel
@@ -84,7 +85,7 @@
             this.GuestHistoryLabel.ForeColor = System.Drawing.Color.White;
             this.GuestHistoryLabel.Location = new System.Drawing.Point(96, 199);
             this.GuestHistoryLabel.Name = "GuestHistoryLabel";
-            this.GuestHistoryLabel.Size = new System.Drawing.Size(238, 46);
+            this.GuestHistoryLabel.Size = new System.Drawing.Size(232, 45);
             this.GuestHistoryLabel.TabIndex = 0;
             this.GuestHistoryLabel.Text = "Guest History";
             // 
@@ -106,6 +107,17 @@
             this.guna2Separator1.Size = new System.Drawing.Size(765, 10);
             this.guna2Separator1.TabIndex = 6;
             // 
+            // PhoneLabel
+            // 
+            this.PhoneLabel.AutoSize = true;
+            this.PhoneLabel.Font = new System.Drawing.Font("Nirmala UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PhoneLabel.ForeColor = System.Drawing.Color.White;
+            this.PhoneLabel.Location = new System.Drawing.Point(463, 139);
+            this.PhoneLabel.Name = "PhoneLabel";
+            this.PhoneLabel.Size = new System.Drawing.Size(64, 23);
+            this.PhoneLabel.TabIndex = 0;
+            this.PhoneLabel.Text = "Phone:";
+            // 
             // BookingHistory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -116,6 +128,7 @@
             this.Controls.Add(this.guna2Separator2);
             this.Controls.Add(this.GuestHistoryLabel);
             this.Controls.Add(this.DetailsLabel);
+            this.Controls.Add(this.PhoneLabel);
             this.Controls.Add(this.EmailLabel);
             this.Controls.Add(this.SurnameLabel);
             this.Controls.Add(this.Namelabel);
@@ -137,5 +150,6 @@
         private System.Windows.Forms.Label GuestHistoryLabel;
         private System.Windows.Forms.Label DetailsLabel;
         private Guna.UI2.WinForms.Guna2Separator guna2Separator1;
+        private System.Windows.Forms.Label PhoneLabel;
     }
 }

@@ -30,8 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             this.GuestDataView = new System.Windows.Forms.DataGridView();
-            this.phumlaKamnandiDBDataSet = new Phumla_Kamnandi_GRP_12.PhumlaKamnandiDBDataSet();
             this.phumlaKamnandiDBDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.phumlaKamnandiDBDataSet = new Phumla_Kamnandi_GRP_12.PhumlaKamnandiDBDataSet();
             this.emailConfirmtextbox = new Guna.UI2.WinForms.Guna2TextBox();
             this.enterEmailTextbox = new System.Windows.Forms.Label();
             this.ConfirmButtonVBH = new Guna.UI2.WinForms.Guna2Button();
@@ -41,8 +41,8 @@
             this.AddGuestButton = new Guna.UI2.WinForms.Guna2Button();
             this.UpdateGuestButton = new Guna.UI2.WinForms.Guna2Button();
             ((System.ComponentModel.ISupportInitialize)(this.GuestDataView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.phumlaKamnandiDBDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.phumlaKamnandiDBDataSetBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.phumlaKamnandiDBDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // GuestDataView
@@ -58,15 +58,15 @@
             this.GuestDataView.Size = new System.Drawing.Size(830, 312);
             this.GuestDataView.TabIndex = 25;
             // 
-            // phumlaKamnandiDBDataSet
-            // 
-            this.phumlaKamnandiDBDataSet.DataSetName = "PhumlaKamnandiDBDataSet";
-            this.phumlaKamnandiDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // phumlaKamnandiDBDataSetBindingSource
             // 
             this.phumlaKamnandiDBDataSetBindingSource.DataSource = this.phumlaKamnandiDBDataSet;
             this.phumlaKamnandiDBDataSetBindingSource.Position = 0;
+            // 
+            // phumlaKamnandiDBDataSet
+            // 
+            this.phumlaKamnandiDBDataSet.DataSetName = "PhumlaKamnandiDBDataSet";
+            this.phumlaKamnandiDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // emailConfirmtextbox
             // 
@@ -104,6 +104,8 @@
             // ConfirmButtonVBH
             // 
             this.ConfirmButtonVBH.AutoRoundedCorners = true;
+            this.ConfirmButtonVBH.BorderColor = System.Drawing.Color.LimeGreen;
+            this.ConfirmButtonVBH.BorderThickness = 2;
             this.ConfirmButtonVBH.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.ConfirmButtonVBH.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.ConfirmButtonVBH.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -215,8 +217,8 @@
             this.Name = "FrmGuests";
             this.Text = "FrmGuests";
             ((System.ComponentModel.ISupportInitialize)(this.GuestDataView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.phumlaKamnandiDBDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.phumlaKamnandiDBDataSetBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.phumlaKamnandiDBDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
