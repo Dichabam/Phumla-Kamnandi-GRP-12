@@ -57,6 +57,7 @@
             this.GuestDataView.RowTemplate.Height = 24;
             this.GuestDataView.Size = new System.Drawing.Size(830, 312);
             this.GuestDataView.TabIndex = 25;
+            this.GuestDataView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GuestDataView_CellContentClick);
             // 
             // phumlaKamnandiDBDataSetBindingSource
             // 
@@ -89,6 +90,7 @@
             this.emailConfirmtextbox.SelectedText = "";
             this.emailConfirmtextbox.Size = new System.Drawing.Size(422, 48);
             this.emailConfirmtextbox.TabIndex = 27;
+            this.emailConfirmtextbox.TextChanged += new System.EventHandler(this.emailConfirmtextbox_TextChanged);
             // 
             // enterEmailTextbox
             // 
@@ -138,9 +140,10 @@
             this.viewBookingHostoryButton.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.viewBookingHostoryButton.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.viewBookingHostoryButton.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.viewBookingHostoryButton.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
             this.viewBookingHostoryButton.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.viewBookingHostoryButton.ForeColor = System.Drawing.Color.White;
-            this.viewBookingHostoryButton.Location = new System.Drawing.Point(502, 359);
+            this.viewBookingHostoryButton.Location = new System.Drawing.Point(499, 349);
             this.viewBookingHostoryButton.Name = "viewBookingHostoryButton";
             this.viewBookingHostoryButton.Size = new System.Drawing.Size(180, 45);
             this.viewBookingHostoryButton.TabIndex = 26;
@@ -154,6 +157,7 @@
             this.GuestStandingButton.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.GuestStandingButton.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.GuestStandingButton.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.GuestStandingButton.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
             this.GuestStandingButton.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GuestStandingButton.ForeColor = System.Drawing.Color.White;
             this.GuestStandingButton.Image = global::Phumla_Kamnandi_GRP_12.Properties.Resources.man_4_50dp_FFFFFF_FILL0_wght400_GRAD0_opsz48;
@@ -171,6 +175,7 @@
             this.AddGuestButton.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.AddGuestButton.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.AddGuestButton.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.AddGuestButton.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
             this.AddGuestButton.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AddGuestButton.ForeColor = System.Drawing.Color.White;
             this.AddGuestButton.Image = global::Phumla_Kamnandi_GRP_12.Properties.Resources.add_50dp_FFFFFF_FILL0_wght400_GRAD0_opsz48;
@@ -188,6 +193,7 @@
             this.UpdateGuestButton.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.UpdateGuestButton.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.UpdateGuestButton.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.UpdateGuestButton.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
             this.UpdateGuestButton.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.UpdateGuestButton.ForeColor = System.Drawing.Color.White;
             this.UpdateGuestButton.Image = global::Phumla_Kamnandi_GRP_12.Properties.Resources.update_50dp_FFFFFF_FILL0_wght400_GRAD0_opsz48;

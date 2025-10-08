@@ -22,12 +22,19 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
 
         }
 
-        private void textBox4_TextChanged(object sender, EventArgs e)
+        
+
+        private void UpdateGuestButton_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void UpdateGuestButton_Click(object sender, EventArgs e)
+        private void emailConfirmtextbox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void GuestDataView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
