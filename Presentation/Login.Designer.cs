@@ -37,8 +37,8 @@
             this.logo = new System.Windows.Forms.PictureBox();
             this.LoginLabel = new System.Windows.Forms.Label();
             this.ErrorLoginLabel = new System.Windows.Forms.Label();
-            this.CreateAccountLink = new System.Windows.Forms.LinkLabel();
             this.CloseButtonLogin = new Guna.UI2.WinForms.Guna2Button();
+            this.CreateAccountButton = new Guna.UI2.WinForms.Guna2Button();
             this.SidePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.logo)).BeginInit();
             this.SuspendLayout();
@@ -101,7 +101,6 @@
             this.SubmitButton.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.SubmitButton.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.SubmitButton.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.SubmitButton.FillColor = System.Drawing.Color.Transparent;
             this.SubmitButton.Font = new System.Drawing.Font("Century Gothic", 9F);
             this.SubmitButton.ForeColor = System.Drawing.Color.White;
             this.SubmitButton.Location = new System.Drawing.Point(504, 325);
@@ -109,7 +108,7 @@
             this.SubmitButton.Size = new System.Drawing.Size(180, 45);
             this.SubmitButton.TabIndex = 3;
             this.SubmitButton.Text = "SUBMIT";
-            this.SubmitButton.Click += new System.EventHandler(this.guna2Button1_Click);
+            this.SubmitButton.Click += new System.EventHandler(this.SubmitButton_Click);
             // 
             // forgotpasswordLink
             // 
@@ -172,19 +171,6 @@
             this.ErrorLoginLabel.Text = "Email/Password is incorrect. Try again";
             this.ErrorLoginLabel.Click += new System.EventHandler(this.ErrorLoginLabel_Click);
             // 
-            // CreateAccountLink
-            // 
-            this.CreateAccountLink.AutoSize = true;
-            this.CreateAccountLink.Font = new System.Drawing.Font("Century Gothic", 7.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CreateAccountLink.LinkColor = System.Drawing.Color.SteelBlue;
-            this.CreateAccountLink.Location = new System.Drawing.Point(538, 392);
-            this.CreateAccountLink.Name = "CreateAccountLink";
-            this.CreateAccountLink.Size = new System.Drawing.Size(109, 16);
-            this.CreateAccountLink.TabIndex = 5;
-            this.CreateAccountLink.TabStop = true;
-            this.CreateAccountLink.Text = "Create Account";
-            this.CreateAccountLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.forgotpasswordLink_LinkClicked);
-            // 
             // CloseButtonLogin
             // 
             this.CloseButtonLogin.Animated = true;
@@ -206,6 +192,27 @@
             this.CloseButtonLogin.UseTransparentBackground = true;
             this.CloseButtonLogin.Click += new System.EventHandler(this.CloseButtonLogin_Click);
             // 
+            // CreateAccountButton
+            // 
+            this.CreateAccountButton.Animated = true;
+            this.CreateAccountButton.AutoRoundedCorners = true;
+            this.CreateAccountButton.BackColor = System.Drawing.Color.Transparent;
+            this.CreateAccountButton.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.CreateAccountButton.BorderThickness = 2;
+            this.CreateAccountButton.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.CreateAccountButton.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.CreateAccountButton.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.CreateAccountButton.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.CreateAccountButton.FillColor = System.Drawing.Color.Transparent;
+            this.CreateAccountButton.Font = new System.Drawing.Font("Century Gothic", 9F);
+            this.CreateAccountButton.ForeColor = System.Drawing.Color.White;
+            this.CreateAccountButton.Location = new System.Drawing.Point(504, 376);
+            this.CreateAccountButton.Name = "CreateAccountButton";
+            this.CreateAccountButton.Size = new System.Drawing.Size(180, 45);
+            this.CreateAccountButton.TabIndex = 3;
+            this.CreateAccountButton.Text = "Create Account";
+            this.CreateAccountButton.Click += new System.EventHandler(this.CreateAccountButton_Click);
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -217,8 +224,8 @@
             this.Controls.Add(this.ErrorLoginLabel);
             this.Controls.Add(this.LoginLabel);
             this.Controls.Add(this.SidePanel);
-            this.Controls.Add(this.CreateAccountLink);
             this.Controls.Add(this.forgotpasswordLink);
+            this.Controls.Add(this.CreateAccountButton);
             this.Controls.Add(this.SubmitButton);
             this.Controls.Add(this.PasswordTextbox);
             this.Controls.Add(this.EmailTextbox);
@@ -243,7 +250,7 @@
         private Guna.UI2.WinForms.Guna2GradientPanel SidePanel;
         private System.Windows.Forms.Label LoginLabel;
         private System.Windows.Forms.Label ErrorLoginLabel;
-        private System.Windows.Forms.LinkLabel CreateAccountLink;
         private Guna.UI2.WinForms.Guna2Button CloseButtonLogin;
+        private Guna.UI2.WinForms.Guna2Button CreateAccountButton;
     }
 }

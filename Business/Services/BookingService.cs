@@ -1,4 +1,12 @@
-﻿using Phumla_Kamnandi_GRP_12.Business.Entities;
+﻿/*Semester Project - Group 12
+ * 
+ * -----------------Members--------------------------
+ * Dichaba Mofokeng, MFKDIC001
+ * Simon Baraka, LMDSIM001 
+ * Rearabilwe Kgokong, KGKREA001  
+ * Khumiso Motata, MTTKAG001 
+ */
+using Phumla_Kamnandi_GRP_12.Business.Entities;
 using Phumla_Kamnandi_GRP_12.Business.Enums;
 using Phumla_Kamnandi_GRP_12.Business.Interfaces;
 using System;
@@ -203,7 +211,7 @@ namespace Phumla_Kamnandi_GRP_12.Business.Services
         // Simulate payment verification as mentioned in use case
         private bool SimulatePaymentVerification(string creditCardNumber, decimal amount)
         {
-            // As per project requirements: "assume all payments are authorised"
+            //"assume all payments are authorised"
             // This simulates the verification step mentioned in the use case
 
             // Basic amount validation
@@ -218,7 +226,7 @@ namespace Phumla_Kamnandi_GRP_12.Business.Services
             }
 
             // For deposits without credit card (cash/bank transfer), accept if amount is valid
-            // Simulate successful verification (as required by project scope)
+            // Simulate successful verification 
             return true;
         }
 

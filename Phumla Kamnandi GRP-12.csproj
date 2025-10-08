@@ -12,6 +12,21 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -39,6 +54,7 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Design" />
+    <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Management" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
@@ -52,33 +68,51 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Business\BusinessLayerTests.cs" />
     <Compile Include="Business\Entities\Booking.cs" />
     <Compile Include="Business\Entities\BookingResult.cs" />
     <Compile Include="Business\Entities\DailyOccupancy.cs" />
+    <Compile Include="Business\Entities\Employee.cs" />
     <Compile Include="Business\Entities\Guest.cs" />
     <Compile Include="Business\Entities\OccupancyReport.cs" />
     <Compile Include="Business\Entities\RevenueReport.cs" />
     <Compile Include="Business\Entities\Room.cs" />
     <Compile Include="Business\Enums\BookingStatus.cs" />
+    <Compile Include="Business\Enums\EmployeeRole.cs" />
     <Compile Include="Business\Enums\PaymentStatus.cs" />
     <Compile Include="Business\Enums\Season.cs" />
     <Compile Include="Business\Interfaces\BookingRepositoryInterface.cs" />
+    <Compile Include="Business\Interfaces\EmployeeRepositoryInterface.cs" />
+    <Compile Include="Business\Interfaces\EmployeeServiceInterface.cs" />
     <Compile Include="Business\Interfaces\GuestRepositoryInterface.cs" />
     <Compile Include="Business\Interfaces\GuestServiceInterface.cs" />
     <Compile Include="Business\Interfaces\BookingServiceInterface.cs" />
     <Compile Include="Business\Interfaces\ReportingServiceInterface.cs" />
     <Compile Include="Business\Interfaces\PricingServiceInterface.cs" />
     <Compile Include="Business\Interfaces\RoomRepositoryInterface.cs" />
-    <Compile Include="Business\MockGuestRepository.cs" />
-    <Compile Include="Business\MockRoomRepository.cs" />
     <Compile Include="Business\Services\BookingService.cs" />
+    <Compile Include="Business\Services\EmployeeService.cs" />
     <Compile Include="Business\Services\GuestService.cs" />
     <Compile Include="Business\Services\PricingService.cs" />
     <Compile Include="Business\Services\ReportingService.cs" />
-    <Compile Include="Business\MockBookingRepository.cs" />
     <Compile Include="Business\ValueObjects\PricingInfo.cs" />
+    <Compile Include="Database\DB.cs" />
+    <Compile Include="Database\GuestDB.cs" />
+    <Compile Include="Database\MockBookingRepository.cs" />
+    <Compile Include="Database\MockEmployeeRepository.cs" />
+    <Compile Include="Database\MockGuestRepository.cs" />
+    <Compile Include="Database\MockRoomRepository.cs" />
     <Compile Include="Database\Test2.cs" />
+    <Compile Include="PhumlaKamnandiDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PhumlaKamnandiDataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\AdminCode.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation\AdminCode.Designer.cs">
+      <DependentUpon>AdminCode.cs</DependentUpon>
+    </Compile>
     <Compile Include="Presentation\Dashbaord.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -90,6 +124,48 @@
     </Compile>
     <Compile Include="Presentation\ForgotPassword.Designer.cs">
       <DependentUpon>ForgotPassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\FrmBookings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation\FrmBookings.Designer.cs">
+      <DependentUpon>FrmBookings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\FrmEmployees.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation\FrmEmployees.Designer.cs">
+      <DependentUpon>FrmEmployees.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\FrmGuests.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation\FrmGuests.Designer.cs">
+      <DependentUpon>FrmGuests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\FrmHome.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation\FrmHome.Designer.cs">
+      <DependentUpon>FrmHome.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\FrmReports.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation\FrmReports.Designer.cs">
+      <DependentUpon>FrmReports.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\FrmRooms.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation\FrmRooms.Designer.cs">
+      <DependentUpon>FrmRooms.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\FrmSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation\FrmSettings.Designer.cs">
+      <DependentUpon>FrmSettings.cs</DependentUpon>
     </Compile>
     <Compile Include="Presentation\Login.cs">
       <SubType>Form</SubType>
@@ -103,19 +179,53 @@
     <Compile Include="Presentation\NewAccount.Designer.cs">
       <DependentUpon>NewAccount.cs</DependentUpon>
     </Compile>
+    <Compile Include="Presentation\PasswordForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation\PasswordForm.Designer.cs">
+      <DependentUpon>PasswordForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Presentation\Test3.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServiceLocator.cs" />
+    <EmbeddedResource Include="Presentation\AdminCode.resx">
+      <DependentUpon>AdminCode.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Presentation\Dashbaord.resx">
       <DependentUpon>Dashbaord.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentation\ForgotPassword.resx">
       <DependentUpon>ForgotPassword.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Presentation\FrmBookings.resx">
+      <DependentUpon>FrmBookings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentation\FrmEmployees.resx">
+      <DependentUpon>FrmEmployees.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentation\FrmGuests.resx">
+      <DependentUpon>FrmGuests.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentation\FrmHome.resx">
+      <DependentUpon>FrmHome.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentation\FrmReports.resx">
+      <DependentUpon>FrmReports.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentation\FrmRooms.resx">
+      <DependentUpon>FrmRooms.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentation\FrmSettings.resx">
+      <DependentUpon>FrmSettings.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Presentation\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentation\NewAccount.resx">
       <DependentUpon>NewAccount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentation\PasswordForm.resx">
+      <DependentUpon>PasswordForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -128,6 +238,17 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <None Include="packages.config" />
+    <None Include="PhumlaKamnandiDataSet1.xsc">
+      <DependentUpon>PhumlaKamnandiDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="PhumlaKamnandiDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>PhumlaKamnandiDataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="PhumlaKamnandiDataSet1.xss">
+      <DependentUpon>PhumlaKamnandiDataSet1.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -186,6 +307,30 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resourses\Icons\minimize_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resourses\Icons\groups_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resourses\Icons\analytics_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resourses\Icons\hotel_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resourses\Icons\for_you_1000dp_E3E3E3_FILL0_wght400_GRAD0_opsz48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.8">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.8 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
