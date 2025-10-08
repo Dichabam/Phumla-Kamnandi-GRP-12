@@ -91,7 +91,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
         {
             UpdateNavigationPanel(RoomsButton);
             lblTitle.Text = "ROOMS";
-            LoadForm(new FrmRooms());
+             LoadForm(new FrmRooms());
         }
 
         private void SettingsButton_Click(object sender, EventArgs e)
@@ -117,8 +117,8 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                 Login loginForm = new Login();
                 loginForm.Show();
 
-               
-                this.Close();
+
+                this.Hide();
             }
         }
 
