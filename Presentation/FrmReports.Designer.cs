@@ -135,7 +135,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             this.OccupancyReportRadioButton.TabStop = true;
             this.OccupancyReportRadioButton.Text = "Occupancy Report";
             this.OccupancyReportRadioButton.UseVisualStyleBackColor = true;
-            this.OccupancyReportRadioButton.CheckedChanged += new System.EventHandler(this.OccupancyReportRadioButton_CheckedChanged);
+
             // 
             // RevenueRadioButton
             // 
@@ -149,7 +149,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             this.RevenueRadioButton.TabStop = true;
             this.RevenueRadioButton.Text = "Revenue Report";
             this.RevenueRadioButton.UseVisualStyleBackColor = true;
-            this.RevenueRadioButton.CheckedChanged += new System.EventHandler(this.RevenueRadioButton_CheckedChanged);
+            
             // 
             // SelectDateLabel
             // 

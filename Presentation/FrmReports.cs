@@ -28,15 +28,9 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
 
             AlltimeRB.Checked = true;
 
-            // Wire up ALL radio button events
-            AlltimeRB.CheckedChanged += DateRangeOption_CheckedChanged;
-            todayRB.CheckedChanged += DateRangeOption_CheckedChanged;
-            SpecificRB.CheckedChanged += DateRangeOption_CheckedChanged;
+           
 
-            OccupancyReportRadioButton.CheckedChanged += ReportType_CheckedChanged;
-            RevenueRadioButton.CheckedChanged += ReportType_CheckedChanged;
-
-            // Wire up button events
+           
             GenerateReportButton.Click += GenerateReportButton_Click;
             saveButton.Click += saveButton_Click;
         }
@@ -46,7 +40,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             RadioButton rb = sender as RadioButton;
             if (!rb.Checked) return;
 
-            // Show/hide date pickers based on selection
+            
             bool showDatePickers = rb == SpecificRB;
             FromLabel.Visible = showDatePickers;
             ToLabel.Visible = showDatePickers;
@@ -54,14 +48,11 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             DatePickerEnd.Visible = showDatePickers;
         }
 
-        private void ReportType_CheckedChanged(object sender, EventArgs e)
-        {
-            // Just ensure a report type is selected
-        }
+        
 
         private void GenerateReportButton_Click(object sender, EventArgs e)
         {
-            // Validate report type selection
+            
             if (!OccupancyReportRadioButton.Checked && !RevenueRadioButton.Checked)
             {
                 MessageBox.Show("Please select a report type", "Validation",
@@ -69,11 +60,11 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                 return;
             }
 
-            // Determine date range
+           
             DateTime startDate, endDate;
             if (AlltimeRB.Checked)
             {
-                startDate = new DateTime(2020, 1, 1);
+                startDate = DateTime.MinValue;
                 endDate = DateTime.Today;
             }
             else if (todayRB.Checked)
@@ -102,7 +93,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
 
             try
             {
-                // Generate appropriate report
+               
                 if (OccupancyReportRadioButton.Checked)
                 {
                     GenerateOccupancyReport(startDate, endDate);
@@ -125,7 +116,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             {
                 var report = _services.ReportingService.GenerateOccupancyReport(startDate, endDate);
 
-                // Create DataTable for display
+               
                 DataTable dt = new DataTable();
                 dt.Columns.Add("Date", typeof(string));
                 dt.Columns.Add("Total Rooms", typeof(int));
@@ -144,7 +135,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                     );
                 }
 
-                // Add summary row
+                
                 dt.Rows.Add(
                     "AVERAGE",
                     report.DailyOccupancies.First().TotalRooms,
@@ -155,7 +146,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
 
                 ReportDataview.DataSource = dt;
 
-                // Format summary row
+               
                 if (ReportDataview.Rows.Count > 0)
                 {
                     var lastRow = ReportDataview.Rows[ReportDataview.Rows.Count - 1];
@@ -182,7 +173,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             {
                 var report = _services.ReportingService.GenerateRevenueReport(startDate, endDate);
 
-                // Create DataTable for display
+                
                 DataTable dt = new DataTable();
                 dt.Columns.Add("Metric", typeof(string));
                 dt.Columns.Add("Value", typeof(string));
@@ -195,7 +186,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
 
                 ReportDataview.DataSource = dt;
 
-                // Format the grid
+              
                 ReportDataview.Columns[0].Width = 250;
                 ReportDataview.Columns[1].Width = 200;
                 ReportDataview.Columns[0].DefaultCellStyle.Font =
@@ -236,13 +227,13 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                 {
                     StringBuilder sb = new StringBuilder();
 
-                    // Add header
+                   
                     string reportType = OccupancyReportRadioButton.Checked ? "Occupancy" : "Revenue";
                     sb.AppendLine($"=== {reportType} Report ===");
                     sb.AppendLine($"Generated: {DateTime.Now:yyyy-MM-dd HH:mm:ss}");
                     sb.AppendLine();
 
-                    // Add column headers
+                   
                     foreach (DataGridViewColumn col in ReportDataview.Columns)
                     {
                         sb.Append(col.HeaderText.PadRight(20) + "\t");
@@ -250,7 +241,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                     sb.AppendLine();
                     sb.AppendLine(new string('-', 80));
 
-                    // Add data rows
+                 
                     foreach (DataGridViewRow row in ReportDataview.Rows)
                     {
                         if (!row.IsNewRow)
@@ -302,14 +293,6 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             
         }
 
-        private void OccupancyReportRadioButton_CheckedChanged(object sender, EventArgs e)
-        {
-            ReportType_CheckedChanged(sender, e);
-        }
-
-        private void RevenueRadioButton_CheckedChanged(object sender, EventArgs e)
-        {
-            ReportType_CheckedChanged(sender, e);
-        }
+        
     }
 }

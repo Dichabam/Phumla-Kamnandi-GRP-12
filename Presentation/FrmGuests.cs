@@ -122,7 +122,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
         private void ViewBookingHistoryButton_Click(object sender, EventArgs e)
         {
             // Show email verification controls
-            enterEmailTextbox.Text = "Enter Guest Email to View History";
+            enterEmailTextbox.Text = "Enter Guest Email";
             enterEmailTextbox.Visible = true;
             emailConfirmtextbox.Visible = true;
             ConfirmButtonVBH.Visible = true;
@@ -134,7 +134,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
         private void GuestStandingButton_Click(object sender, EventArgs e)
         {
             // Show email verification controls with different label
-            enterEmailTextbox.Text = "Enter Guest Email to Check Standing";
+            enterEmailTextbox.Text = "Enter Guest Email";
             enterEmailTextbox.Visible = true;
             emailConfirmtextbox.Visible = true;
             ConfirmButtonVBH.Visible = true;
@@ -188,7 +188,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
         {
             try
             {
-                // Check and update guest standing
+               
                 bool isInGoodStanding = _services.GuestService.CheckAndUpdateGuestStanding(guest.GuestId);
 
                 string status = isInGoodStanding ? "Good Standing" : "Not in Good Standing";
@@ -237,11 +237,11 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             {
                 var bookings = _services.GuestService.GetGuestBookings(guest.GuestId);
 
-                // Open BookingHistory form
+                
                 BookingHistory historyForm = new BookingHistory(guest, bookings);
                 historyForm.ShowDialog();
 
-                // Reset controls
+                
                 HideBookingHistoryControls();
             }
             catch (Exception ex)
@@ -253,7 +253,13 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
 
         private void AddGuestButton_Click(object sender, EventArgs e)
         {
-            // Navigate to Bookings form within dashboard
+            
+            if (enterEmailTextbox.Visible || emailConfirmtextbox.Visible || ConfirmButtonVBH.Visible)
+            {
+                enterEmailTextbox.Visible = false;
+                emailConfirmtextbox.Visible = false;
+                ConfirmButtonVBH.Visible = false;
+            }
             var dashboard = Application.OpenForms.OfType<Dashboard>().FirstOrDefault();
             if (dashboard != null)
             {
@@ -263,6 +269,12 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
 
         private void UpdateGuestButton_Click(object sender, EventArgs e)
         {
+            if (enterEmailTextbox.Visible || emailConfirmtextbox.Visible || ConfirmButtonVBH.Visible)
+            {
+                enterEmailTextbox.Visible = false;
+                emailConfirmtextbox.Visible = false;
+                ConfirmButtonVBH.Visible = false;
+            }
             if (!_isUpdateMode)
             {
                 // Enable update mode
@@ -271,10 +283,10 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
 
                 // Make only certain columns editable
                 GuestDataView.Columns["GuestId"].ReadOnly = true;
-                GuestDataView.Columns["FirstName"].ReadOnly = false;
-                GuestDataView.Columns["LastName"].ReadOnly = false;
-                GuestDataView.Columns["Email"].ReadOnly = false;
-                GuestDataView.Columns["Phone"].ReadOnly = false;
+                GuestDataView.Columns["FirstName"].ReadOnly = true;
+                GuestDataView.Columns["LastName"].ReadOnly = true;
+                GuestDataView.Columns["Email"].ReadOnly = true;
+                GuestDataView.Columns["Phone"].ReadOnly = true;
                 GuestDataView.Columns["IsInGoodStanding"].ReadOnly = true;
 
                 UpdateGuestButton.Text = "Save Changes";
@@ -282,6 +294,8 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
 
                 MessageBox.Show("Update mode enabled. Edit guest details and click 'Save Changes' when done.",
                     "Update Mode", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                return;
             }
             else
             {
@@ -290,7 +304,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                 {
                     foreach (DataGridViewRow row in GuestDataView.Rows)
                     {
-                        if (row.DataBoundItem is Guest guest && row.IsNewRow == false)
+                        if (row.DataBoundItem is Guest guest && !row.IsNewRow)
                         {
                             // Update guest in database
                             _services.GuestService.UpdateGuestContactInfo(
@@ -305,13 +319,13 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                     MessageBox.Show("Guest information updated successfully!",
                         "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    // Exit update mode
+                    
                     _isUpdateMode = false;
                     GuestDataView.ReadOnly = true;
                     UpdateGuestButton.Text = "Update Guest";
                     UpdateGuestButton.FillColor = Color.FromArgb(0, 126, 249);
 
-                    // Refresh data
+                   
                     LoadAllGuests();
                 }
                 catch (Exception ex)
