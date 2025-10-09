@@ -30,55 +30,55 @@
         {
             this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.AmountBookings = new System.Windows.Forms.Label();
+            this.desLabel1 = new System.Windows.Forms.Label();
             this.TotalBookingsLabel = new System.Windows.Forms.Label();
             this.guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(this.components);
-            this.AmountBookings = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.CurrentOccupancyLabel = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.roomsAvailableLabel = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.TotalRoomsAvailableLabel = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.ArrivalsTopday = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.ArrivalsLabel = new System.Windows.Forms.Label();
             this.phumlaKamnandiDBDataSet = new Phumla_Kamnandi_GRP_12.PhumlaKamnandiDBDataSet();
             this.phumlaKamnandiDBDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.label2 = new System.Windows.Forms.Label();
-            this.roomsAvailableLabel = new System.Windows.Forms.Label();
-            this.desLabel1 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.ArrivalsTopday = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.DepaturesLabel = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.depositsOverdue = new System.Windows.Forms.Label();
             this.makeBookingButton = new Guna.UI2.WinForms.Guna2Button();
             this.ViewGuestButton = new Guna.UI2.WinForms.Guna2Button();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox6 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.phumlaKamnandiDBDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.phumlaKamnandiDBDataSetBindingSource)).BeginInit();
             this.panel5.SuspendLayout();
-            this.panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            this.panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -92,6 +92,38 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(269, 158);
             this.panel1.TabIndex = 0;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Phumla_Kamnandi_GRP_12.Properties.Resources.event_75dp_FFFFFF_FILL0_wght400_GRAD0_opsz48;
+            this.pictureBox1.Location = new System.Drawing.Point(166, 61);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(100, 85);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
+            // 
+            // AmountBookings
+            // 
+            this.AmountBookings.AutoSize = true;
+            this.AmountBookings.Font = new System.Drawing.Font("Nirmala UI", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AmountBookings.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
+            this.AmountBookings.Location = new System.Drawing.Point(16, 61);
+            this.AmountBookings.Name = "AmountBookings";
+            this.AmountBookings.Size = new System.Drawing.Size(58, 45);
+            this.AmountBookings.TabIndex = 0;
+            this.AmountBookings.Text = "12";
+            // 
+            // desLabel1
+            // 
+            this.desLabel1.AutoSize = true;
+            this.desLabel1.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.desLabel1.ForeColor = System.Drawing.Color.Silver;
+            this.desLabel1.Location = new System.Drawing.Point(20, 107);
+            this.desLabel1.Name = "desLabel1";
+            this.desLabel1.Size = new System.Drawing.Size(86, 20);
+            this.desLabel1.TabIndex = 0;
+            this.desLabel1.Text = "As of Today";
             // 
             // TotalBookingsLabel
             // 
@@ -110,17 +142,6 @@
             this.guna2BorderlessForm1.DockIndicatorTransparencyValue = 0.6D;
             this.guna2BorderlessForm1.TransparentWhileDrag = true;
             // 
-            // AmountBookings
-            // 
-            this.AmountBookings.AutoSize = true;
-            this.AmountBookings.Font = new System.Drawing.Font("Nirmala UI", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AmountBookings.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
-            this.AmountBookings.Location = new System.Drawing.Point(16, 61);
-            this.AmountBookings.Name = "AmountBookings";
-            this.AmountBookings.Size = new System.Drawing.Size(60, 46);
-            this.AmountBookings.TabIndex = 0;
-            this.AmountBookings.Text = "12";
-            // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(42)))), ((int)(((byte)(64)))));
@@ -133,6 +154,16 @@
             this.panel2.Size = new System.Drawing.Size(306, 158);
             this.panel2.TabIndex = 1;
             // 
+            // pictureBox6
+            // 
+            this.pictureBox6.Image = global::Phumla_Kamnandi_GRP_12.Properties.Resources.door_back_75dp_FFFFFF_FILL0_wght400_GRAD0_opsz48;
+            this.pictureBox6.Location = new System.Drawing.Point(178, 61);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(100, 85);
+            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox6.TabIndex = 1;
+            this.pictureBox6.TabStop = false;
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -140,9 +171,20 @@
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
             this.label1.Location = new System.Drawing.Point(12, 61);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(89, 46);
+            this.label1.Size = new System.Drawing.Size(87, 45);
             this.label1.TabIndex = 0;
             this.label1.Text = "12%";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.Silver;
+            this.label3.Location = new System.Drawing.Point(25, 107);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(48, 20);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Today";
             // 
             // CurrentOccupancyLabel
             // 
@@ -168,6 +210,49 @@
             this.panel3.Size = new System.Drawing.Size(294, 158);
             this.panel3.TabIndex = 2;
             // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::Phumla_Kamnandi_GRP_12.Properties.Resources.single_bed_75dp_FFFFFF_FILL0_wght400_GRAD0_opsz48;
+            this.pictureBox2.Location = new System.Drawing.Point(166, 61);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(100, 85);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 1;
+            this.pictureBox2.TabStop = false;
+            // 
+            // roomsAvailableLabel
+            // 
+            this.roomsAvailableLabel.AutoSize = true;
+            this.roomsAvailableLabel.Font = new System.Drawing.Font("Nirmala UI", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.roomsAvailableLabel.ForeColor = System.Drawing.Color.YellowGreen;
+            this.roomsAvailableLabel.Location = new System.Drawing.Point(16, 61);
+            this.roomsAvailableLabel.Name = "roomsAvailableLabel";
+            this.roomsAvailableLabel.Size = new System.Drawing.Size(77, 45);
+            this.roomsAvailableLabel.TabIndex = 0;
+            this.roomsAvailableLabel.Text = "120";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.Silver;
+            this.label4.Location = new System.Drawing.Point(26, 107);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(48, 20);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "Today";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Nirmala UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
+            this.label2.Location = new System.Drawing.Point(26, 61);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(30, 23);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "12";
+            // 
             // TotalRoomsAvailableLabel
             // 
             this.TotalRoomsAvailableLabel.AutoSize = true;
@@ -191,6 +276,38 @@
             this.panel4.Size = new System.Drawing.Size(442, 144);
             this.panel4.TabIndex = 3;
             // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = global::Phumla_Kamnandi_GRP_12.Properties.Resources.event_available_75dp_FFFFFF_FILL0_wght400_GRAD0_opsz48;
+            this.pictureBox3.Location = new System.Drawing.Point(254, 19);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(175, 105);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox3.TabIndex = 1;
+            this.pictureBox3.TabStop = false;
+            // 
+            // ArrivalsTopday
+            // 
+            this.ArrivalsTopday.AutoSize = true;
+            this.ArrivalsTopday.Font = new System.Drawing.Font("Nirmala UI", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ArrivalsTopday.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
+            this.ArrivalsTopday.Location = new System.Drawing.Point(21, 58);
+            this.ArrivalsTopday.Name = "ArrivalsTopday";
+            this.ArrivalsTopday.Size = new System.Drawing.Size(39, 45);
+            this.ArrivalsTopday.TabIndex = 0;
+            this.ArrivalsTopday.Text = "2";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.Silver;
+            this.label5.Location = new System.Drawing.Point(25, 104);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(73, 20);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "For Today";
+            // 
             // ArrivalsLabel
             // 
             this.ArrivalsLabel.AutoSize = true;
@@ -212,83 +329,6 @@
             this.phumlaKamnandiDBDataSetBindingSource.DataSource = this.phumlaKamnandiDBDataSet;
             this.phumlaKamnandiDBDataSetBindingSource.Position = 0;
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Nirmala UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
-            this.label2.Location = new System.Drawing.Point(26, 61);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(30, 23);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "12";
-            // 
-            // roomsAvailableLabel
-            // 
-            this.roomsAvailableLabel.AutoSize = true;
-            this.roomsAvailableLabel.Font = new System.Drawing.Font("Nirmala UI", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.roomsAvailableLabel.ForeColor = System.Drawing.Color.YellowGreen;
-            this.roomsAvailableLabel.Location = new System.Drawing.Point(16, 61);
-            this.roomsAvailableLabel.Name = "roomsAvailableLabel";
-            this.roomsAvailableLabel.Size = new System.Drawing.Size(80, 46);
-            this.roomsAvailableLabel.TabIndex = 0;
-            this.roomsAvailableLabel.Text = "120";
-            // 
-            // desLabel1
-            // 
-            this.desLabel1.AutoSize = true;
-            this.desLabel1.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.desLabel1.ForeColor = System.Drawing.Color.Silver;
-            this.desLabel1.Location = new System.Drawing.Point(20, 107);
-            this.desLabel1.Name = "desLabel1";
-            this.desLabel1.Size = new System.Drawing.Size(86, 20);
-            this.desLabel1.TabIndex = 0;
-            this.desLabel1.Text = "As of Today";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.Silver;
-            this.label3.Location = new System.Drawing.Point(25, 107);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(48, 20);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "Today";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.Silver;
-            this.label4.Location = new System.Drawing.Point(26, 107);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(48, 20);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "Today";
-            // 
-            // ArrivalsTopday
-            // 
-            this.ArrivalsTopday.AutoSize = true;
-            this.ArrivalsTopday.Font = new System.Drawing.Font("Nirmala UI", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ArrivalsTopday.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
-            this.ArrivalsTopday.Location = new System.Drawing.Point(21, 58);
-            this.ArrivalsTopday.Name = "ArrivalsTopday";
-            this.ArrivalsTopday.Size = new System.Drawing.Size(40, 46);
-            this.ArrivalsTopday.TabIndex = 0;
-            this.ArrivalsTopday.Text = "2";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.Silver;
-            this.label5.Location = new System.Drawing.Point(25, 104);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(73, 20);
-            this.label5.TabIndex = 0;
-            this.label5.Text = "For Today";
-            // 
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(42)))), ((int)(((byte)(64)))));
@@ -301,6 +341,16 @@
             this.panel5.Size = new System.Drawing.Size(440, 144);
             this.panel5.TabIndex = 4;
             // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Image = global::Phumla_Kamnandi_GRP_12.Properties.Resources.event_busy_75dp_FFFFFF_FILL0_wght400_GRAD0_opsz48;
+            this.pictureBox4.Location = new System.Drawing.Point(252, 19);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(175, 105);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox4.TabIndex = 1;
+            this.pictureBox4.TabStop = false;
+            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -308,7 +358,7 @@
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
             this.label6.Location = new System.Drawing.Point(21, 58);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(40, 46);
+            this.label6.Size = new System.Drawing.Size(39, 45);
             this.label6.TabIndex = 0;
             this.label6.Text = "5";
             // 
@@ -346,6 +396,16 @@
             this.panel6.Size = new System.Drawing.Size(906, 144);
             this.panel6.TabIndex = 3;
             // 
+            // pictureBox5
+            // 
+            this.pictureBox5.Image = global::Phumla_Kamnandi_GRP_12.Properties.Resources.credit_card_gear_75dp_EA3323_FILL0_wght400_GRAD0_opsz48;
+            this.pictureBox5.Location = new System.Drawing.Point(706, 19);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(175, 105);
+            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox5.TabIndex = 1;
+            this.pictureBox5.TabStop = false;
+            // 
             // label8
             // 
             this.label8.AutoSize = true;
@@ -353,7 +413,7 @@
             this.label8.ForeColor = System.Drawing.Color.Red;
             this.label8.Location = new System.Drawing.Point(21, 58);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(40, 46);
+            this.label8.Size = new System.Drawing.Size(39, 45);
             this.label8.TabIndex = 0;
             this.label8.Text = "2";
             // 
@@ -390,7 +450,7 @@
             this.makeBookingButton.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
             this.makeBookingButton.Font = new System.Drawing.Font("Nirmala UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.makeBookingButton.ForeColor = System.Drawing.Color.White;
-            this.makeBookingButton.Location = new System.Drawing.Point(103, 581);
+            this.makeBookingButton.Location = new System.Drawing.Point(89, 581);
             this.makeBookingButton.Name = "makeBookingButton";
             this.makeBookingButton.Size = new System.Drawing.Size(249, 45);
             this.makeBookingButton.TabIndex = 5;
@@ -413,66 +473,6 @@
             this.ViewGuestButton.TabIndex = 5;
             this.ViewGuestButton.Text = "View Guests";
             // 
-            // pictureBox4
-            // 
-            this.pictureBox4.Image = global::Phumla_Kamnandi_GRP_12.Properties.Resources.event_busy_75dp_FFFFFF_FILL0_wght400_GRAD0_opsz48;
-            this.pictureBox4.Location = new System.Drawing.Point(252, 19);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(175, 105);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox4.TabIndex = 1;
-            this.pictureBox4.TabStop = false;
-            // 
-            // pictureBox5
-            // 
-            this.pictureBox5.Image = global::Phumla_Kamnandi_GRP_12.Properties.Resources.credit_card_gear_75dp_EA3323_FILL0_wght400_GRAD0_opsz48;
-            this.pictureBox5.Location = new System.Drawing.Point(706, 19);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(175, 105);
-            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox5.TabIndex = 1;
-            this.pictureBox5.TabStop = false;
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Image = global::Phumla_Kamnandi_GRP_12.Properties.Resources.event_available_75dp_FFFFFF_FILL0_wght400_GRAD0_opsz48;
-            this.pictureBox3.Location = new System.Drawing.Point(254, 19);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(175, 105);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox3.TabIndex = 1;
-            this.pictureBox3.TabStop = false;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = global::Phumla_Kamnandi_GRP_12.Properties.Resources.single_bed_75dp_FFFFFF_FILL0_wght400_GRAD0_opsz48;
-            this.pictureBox2.Location = new System.Drawing.Point(166, 61);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(100, 85);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 1;
-            this.pictureBox2.TabStop = false;
-            // 
-            // pictureBox6
-            // 
-            this.pictureBox6.Image = global::Phumla_Kamnandi_GRP_12.Properties.Resources.door_back_75dp_FFFFFF_FILL0_wght400_GRAD0_opsz48;
-            this.pictureBox6.Location = new System.Drawing.Point(178, 61);
-            this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(100, 85);
-            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox6.TabIndex = 1;
-            this.pictureBox6.TabStop = false;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::Phumla_Kamnandi_GRP_12.Properties.Resources.event_75dp_FFFFFF_FILL0_wght400_GRAD0_opsz48;
-            this.pictureBox1.Location = new System.Drawing.Point(166, 61);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(100, 85);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
-            // 
             // FrmHome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -492,24 +492,24 @@
             this.Text = "FrmHome";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.phumlaKamnandiDBDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.phumlaKamnandiDBDataSetBindingSource)).EndInit();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }

@@ -2,6 +2,7 @@
 using Phumla_Kamnandi_GRP_12.Business.Interfaces;
 using Phumla_Kamnandi_GRP_12.Business.Services;
 using Phumla_Kamnandi_GRP_12.Database;
+using System;
 
 namespace Phumla_Kamnandi_GRP_12
 {
@@ -101,7 +102,7 @@ namespace Phumla_Kamnandi_GRP_12
 
         private void InitializeServices()
         {
-            
+            AppDomain.CurrentDomain.SetData("DataDirectory",System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory));
             BookingRepository = new BookingDB();
             GuestRepository = new GuestDB();
             RoomRepository = new RoomDB();

@@ -41,12 +41,15 @@
             this.ToLabel = new System.Windows.Forms.Label();
             this.GenerateReportButton = new Guna.UI2.WinForms.Guna2Button();
             this.ReportDataview = new System.Windows.Forms.DataGridView();
-            this.saveButton = new Guna.UI2.WinForms.Guna2Button();
-            this.phumlaKamnandiDBDataSet = new Phumla_Kamnandi_GRP_12.PhumlaKamnandiDBDataSet();
             this.phumlaKamnandiDBDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.phumlaKamnandiDBDataSet = new Phumla_Kamnandi_GRP_12.PhumlaKamnandiDBDataSet();
+            this.saveButton = new Guna.UI2.WinForms.Guna2Button();
+            this.AlltimeRB = new System.Windows.Forms.RadioButton();
+            this.todayRB = new System.Windows.Forms.RadioButton();
+            this.SpecificRB = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.ReportDataview)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.phumlaKamnandiDBDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.phumlaKamnandiDBDataSetBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.phumlaKamnandiDBDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // DatePickerStart
@@ -56,7 +59,7 @@
             this.DatePickerStart.Checked = true;
             this.DatePickerStart.Font = new System.Drawing.Font("Nirmala Text", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DatePickerStart.Format = System.Windows.Forms.DateTimePickerFormat.Long;
-            this.DatePickerStart.Location = new System.Drawing.Point(63, 209);
+            this.DatePickerStart.Location = new System.Drawing.Point(60, 248);
             this.DatePickerStart.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.DatePickerStart.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.DatePickerStart.Name = "DatePickerStart";
@@ -71,7 +74,7 @@
             this.DatePickerEnd.Checked = true;
             this.DatePickerEnd.Font = new System.Drawing.Font("Nirmala Text", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DatePickerEnd.Format = System.Windows.Forms.DateTimePickerFormat.Long;
-            this.DatePickerEnd.Location = new System.Drawing.Point(527, 209);
+            this.DatePickerEnd.Location = new System.Drawing.Point(527, 248);
             this.DatePickerEnd.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.DatePickerEnd.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.DatePickerEnd.Name = "DatePickerEnd";
@@ -143,7 +146,7 @@
             this.SelectDateLabel.AutoSize = true;
             this.SelectDateLabel.Font = new System.Drawing.Font("Nirmala UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SelectDateLabel.ForeColor = System.Drawing.Color.LightSeaGreen;
-            this.SelectDateLabel.Location = new System.Drawing.Point(362, 129);
+            this.SelectDateLabel.Location = new System.Drawing.Point(362, 114);
             this.SelectDateLabel.Name = "SelectDateLabel";
             this.SelectDateLabel.Size = new System.Drawing.Size(235, 31);
             this.SelectDateLabel.TabIndex = 8;
@@ -154,7 +157,7 @@
             this.FromLabel.AutoSize = true;
             this.FromLabel.Font = new System.Drawing.Font("Nirmala UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FromLabel.ForeColor = System.Drawing.Color.White;
-            this.FromLabel.Location = new System.Drawing.Point(81, 183);
+            this.FromLabel.Location = new System.Drawing.Point(83, 209);
             this.FromLabel.Name = "FromLabel";
             this.FromLabel.Size = new System.Drawing.Size(52, 23);
             this.FromLabel.TabIndex = 10;
@@ -165,7 +168,7 @@
             this.ToLabel.AutoSize = true;
             this.ToLabel.Font = new System.Drawing.Font("Nirmala UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ToLabel.ForeColor = System.Drawing.Color.White;
-            this.ToLabel.Location = new System.Drawing.Point(544, 183);
+            this.ToLabel.Location = new System.Drawing.Point(544, 209);
             this.ToLabel.Name = "ToLabel";
             this.ToLabel.Size = new System.Drawing.Size(28, 23);
             this.ToLabel.TabIndex = 10;
@@ -178,11 +181,11 @@
             this.GenerateReportButton.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.GenerateReportButton.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.GenerateReportButton.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
-            this.GenerateReportButton.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.GenerateReportButton.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GenerateReportButton.ForeColor = System.Drawing.Color.White;
-            this.GenerateReportButton.Location = new System.Drawing.Point(392, 288);
+            this.GenerateReportButton.Location = new System.Drawing.Point(392, 315);
             this.GenerateReportButton.Name = "GenerateReportButton";
-            this.GenerateReportButton.Size = new System.Drawing.Size(180, 45);
+            this.GenerateReportButton.Size = new System.Drawing.Size(180, 37);
             this.GenerateReportButton.TabIndex = 11;
             this.GenerateReportButton.Text = "Generate Report";
             // 
@@ -198,8 +201,18 @@
             this.ReportDataview.ReadOnly = true;
             this.ReportDataview.RowHeadersWidth = 51;
             this.ReportDataview.RowTemplate.Height = 24;
-            this.ReportDataview.Size = new System.Drawing.Size(903, 269);
+            this.ReportDataview.Size = new System.Drawing.Size(903, 262);
             this.ReportDataview.TabIndex = 12;
+            // 
+            // phumlaKamnandiDBDataSetBindingSource
+            // 
+            this.phumlaKamnandiDBDataSetBindingSource.DataSource = this.phumlaKamnandiDBDataSet;
+            this.phumlaKamnandiDBDataSetBindingSource.Position = 0;
+            // 
+            // phumlaKamnandiDBDataSet
+            // 
+            this.phumlaKamnandiDBDataSet.DataSetName = "PhumlaKamnandiDBDataSet";
+            this.phumlaKamnandiDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // saveButton
             // 
@@ -219,15 +232,44 @@
             this.saveButton.TabIndex = 13;
             this.saveButton.Text = "Save Report";
             // 
-            // phumlaKamnandiDBDataSet
+            // AlltimeRB
             // 
-            this.phumlaKamnandiDBDataSet.DataSetName = "PhumlaKamnandiDBDataSet";
-            this.phumlaKamnandiDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.AlltimeRB.AutoSize = true;
+            this.AlltimeRB.Font = new System.Drawing.Font("Nirmala Text", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AlltimeRB.ForeColor = System.Drawing.Color.White;
+            this.AlltimeRB.Location = new System.Drawing.Point(159, 165);
+            this.AlltimeRB.Name = "AlltimeRB";
+            this.AlltimeRB.Size = new System.Drawing.Size(81, 21);
+            this.AlltimeRB.TabIndex = 14;
+            this.AlltimeRB.TabStop = true;
+            this.AlltimeRB.Text = "All Time";
+            this.AlltimeRB.UseVisualStyleBackColor = true;
             // 
-            // phumlaKamnandiDBDataSetBindingSource
+            // todayRB
             // 
-            this.phumlaKamnandiDBDataSetBindingSource.DataSource = this.phumlaKamnandiDBDataSet;
-            this.phumlaKamnandiDBDataSetBindingSource.Position = 0;
+            this.todayRB.AutoSize = true;
+            this.todayRB.Font = new System.Drawing.Font("Nirmala Text", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.todayRB.ForeColor = System.Drawing.Color.White;
+            this.todayRB.Location = new System.Drawing.Point(434, 165);
+            this.todayRB.Name = "todayRB";
+            this.todayRB.Size = new System.Drawing.Size(66, 21);
+            this.todayRB.TabIndex = 14;
+            this.todayRB.TabStop = true;
+            this.todayRB.Text = "Today";
+            this.todayRB.UseVisualStyleBackColor = true;
+            // 
+            // SpecificRB
+            // 
+            this.SpecificRB.AutoSize = true;
+            this.SpecificRB.Font = new System.Drawing.Font("Nirmala Text", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SpecificRB.ForeColor = System.Drawing.Color.White;
+            this.SpecificRB.Location = new System.Drawing.Point(717, 165);
+            this.SpecificRB.Name = "SpecificRB";
+            this.SpecificRB.Size = new System.Drawing.Size(118, 21);
+            this.SpecificRB.TabIndex = 14;
+            this.SpecificRB.TabStop = true;
+            this.SpecificRB.Text = "Specific Range";
+            this.SpecificRB.UseVisualStyleBackColor = true;
             // 
             // FrmReports
             // 
@@ -235,6 +277,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
             this.ClientSize = new System.Drawing.Size(954, 709);
+            this.Controls.Add(this.SpecificRB);
+            this.Controls.Add(this.todayRB);
+            this.Controls.Add(this.AlltimeRB);
             this.Controls.Add(this.saveButton);
             this.Controls.Add(this.ReportDataview);
             this.Controls.Add(this.GenerateReportButton);
@@ -251,8 +296,8 @@
             this.Name = "FrmReports";
             this.Text = "FrmReports";
             ((System.ComponentModel.ISupportInitialize)(this.ReportDataview)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.phumlaKamnandiDBDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.phumlaKamnandiDBDataSetBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.phumlaKamnandiDBDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -275,5 +320,8 @@
         private Guna.UI2.WinForms.Guna2Button saveButton;
         private System.Windows.Forms.BindingSource phumlaKamnandiDBDataSetBindingSource;
         private PhumlaKamnandiDBDataSet phumlaKamnandiDBDataSet;
+        private System.Windows.Forms.RadioButton AlltimeRB;
+        private System.Windows.Forms.RadioButton todayRB;
+        private System.Windows.Forms.RadioButton SpecificRB;
     }
 }
