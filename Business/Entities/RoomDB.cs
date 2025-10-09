@@ -10,7 +10,7 @@ namespace Phumla_Kamnandi_GRP_12.Database
 {
     public class RoomDB : RoomRepositoryInterface
     {
-        private readonly string connectionString = Settings.Default.PhumlaKamnandiConnectionString;
+        private readonly string connectionString = Settings.Default.PhumlaKamnandiDBConnectionString;
 
         public Room GetByNumber(int roomNumber)
         {
