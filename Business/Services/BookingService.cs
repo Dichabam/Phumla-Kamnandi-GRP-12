@@ -170,7 +170,7 @@ namespace Phumla_Kamnandi_GRP_12.Business.Services
             return availableRooms.FirstOrDefault();
         }
 
-        // Simulate payment verification as mentioned in use case
+        // Simulate payment verification 
 
         public bool ConfirmBookingWithDeposit(string bookingRef, decimal depositAmount, string creditCardNumber = null)
         {
@@ -208,7 +208,7 @@ namespace Phumla_Kamnandi_GRP_12.Business.Services
             return false;
         }
 
-        // Simulate payment verification as mentioned in use case
+        // Simulate payment verification
         private bool SimulatePaymentVerification(string creditCardNumber, decimal amount)
         {
             //"assume all payments are authorised"

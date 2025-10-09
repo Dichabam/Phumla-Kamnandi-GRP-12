@@ -28,46 +28,37 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.ShowdataGridView = new System.Windows.Forms.DataGridView();
-            this.BookingReferncelabel = new System.Windows.Forms.Label();
-            this.CheckOutDatelabel = new System.Windows.Forms.Label();
-            this.CheckInDatelabel = new System.Windows.Forms.Label();
-            this.RoomNumberlabel = new System.Windows.Forms.Label();
-            this.GuestIdlabel = new System.Windows.Forms.Label();
-            this.BookingReferencetextBox = new System.Windows.Forms.TextBox();
-            this.DepositAmounttextBox = new System.Windows.Forms.TextBox();
-            this.GuestIdtextBox = new System.Windows.Forms.TextBox();
-            this.RoomNumbertextBox = new System.Windows.Forms.TextBox();
-            this.DepositAmountlabel = new System.Windows.Forms.Label();
-            this.DepositPaidlabel = new System.Windows.Forms.Label();
-            this.Statuslabel = new System.Windows.Forms.Label();
-            this.DepositPaidtextBox = new System.Windows.Forms.TextBox();
-            this.AdulttextBox = new System.Windows.Forms.TextBox();
-            this.ChildrentextBox = new System.Windows.Forms.TextBox();
-            this.SpecialRequesttextBox = new System.Windows.Forms.TextBox();
-            this.TotalAmounttextBox = new System.Windows.Forms.TextBox();
-            this.CreditCardtextBox = new System.Windows.Forms.TextBox();
-            this.Adultslabel = new System.Windows.Forms.Label();
-            this.PaymentStatuslabel = new System.Windows.Forms.Label();
-            this.BookingDatelabel = new System.Windows.Forms.Label();
-            this.DepositDuelabel = new System.Windows.Forms.Label();
+            this.PhoneNumberLabel = new System.Windows.Forms.Label();
+            this.NameLabel = new System.Windows.Forms.Label();
+            this.AddressLabel = new System.Windows.Forms.Label();
             this.SpecialRequestlabel = new System.Windows.Forms.Label();
-            this.CreditCardlabel = new System.Windows.Forms.Label();
-            this.TotalAmountlabel = new System.Windows.Forms.Label();
             this.Childrenlabel = new System.Windows.Forms.Label();
             this.Occupancylabel = new System.Windows.Forms.Label();
-            this.OccupancytextBox = new System.Windows.Forms.TextBox();
             this.UpdatebookingButton = new Guna.UI2.WinForms.Guna2Button();
             this.CancelBookingButton = new Guna.UI2.WinForms.Guna2Button();
             this.MakeBookingButton = new Guna.UI2.WinForms.Guna2Button();
             this.SubmitButton = new Guna.UI2.WinForms.Guna2Button();
-            this.CheckInDatetextBox = new System.Windows.Forms.DateTimePicker();
-            this.CheckoutDatetextBox = new System.Windows.Forms.DateTimePicker();
-            this.BookingDatetextBox = new System.Windows.Forms.DateTimePicker();
-            this.DepositDuetextBox = new System.Windows.Forms.DateTimePicker();
-            this.StatustextBox = new System.Windows.Forms.ComboBox();
-            this.PaymentStatustextBox = new System.Windows.Forms.ComboBox();
+            this.SurnameLabel = new System.Windows.Forms.Label();
+            this.EmailLabel = new System.Windows.Forms.Label();
+            this.CreditCardlabel = new System.Windows.Forms.Label();
+            this.phumlaKamnandiDBDataSet = new Phumla_Kamnandi_GRP_12.PhumlaKamnandiDBDataSet();
+            this.phumlaKamnandiDBDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.NoOfAdultsLabel = new System.Windows.Forms.Label();
+            this.YesNoComboBox = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.NameTextBox = new Guna.UI2.WinForms.Guna2TextBox();
+            this.emailtextbox = new Guna.UI2.WinForms.Guna2TextBox();
+            this.surnametextbox = new Guna.UI2.WinForms.Guna2TextBox();
+            this.phonetextbox = new Guna.UI2.WinForms.Guna2TextBox();
+            this.addresstextbox = new Guna.UI2.WinForms.Guna2TextBox();
+            this.adultstextbox = new Guna.UI2.WinForms.Guna2TextBox();
+            this.childrentextbox = new Guna.UI2.WinForms.Guna2TextBox();
+            this.specialrequestTextbox = new Guna.UI2.WinForms.Guna2TextBox();
+            this.creditTextbox = new Guna.UI2.WinForms.Guna2TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.ShowdataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.phumlaKamnandiDBDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.phumlaKamnandiDBDataSetBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // ShowdataGridView
@@ -81,253 +72,56 @@
             this.ShowdataGridView.TabIndex = 27;
             this.ShowdataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
-            // BookingReferncelabel
+            // PhoneNumberLabel
             // 
-            this.BookingReferncelabel.AutoSize = true;
-            this.BookingReferncelabel.Font = new System.Drawing.Font("Nirmala UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BookingReferncelabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.BookingReferncelabel.Location = new System.Drawing.Point(72, 331);
-            this.BookingReferncelabel.Name = "BookingReferncelabel";
-            this.BookingReferncelabel.Size = new System.Drawing.Size(123, 17);
-            this.BookingReferncelabel.TabIndex = 28;
-            this.BookingReferncelabel.Text = "Booking Reference";
-            this.BookingReferncelabel.Click += new System.EventHandler(this.FirstNamelabel_Click);
+            this.PhoneNumberLabel.AutoSize = true;
+            this.PhoneNumberLabel.Font = new System.Drawing.Font("Nirmala UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PhoneNumberLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.PhoneNumberLabel.Location = new System.Drawing.Point(574, 388);
+            this.PhoneNumberLabel.Name = "PhoneNumberLabel";
+            this.PhoneNumberLabel.Size = new System.Drawing.Size(101, 17);
+            this.PhoneNumberLabel.TabIndex = 33;
+            this.PhoneNumberLabel.Text = "Phone Number";
             // 
-            // CheckOutDatelabel
+            // NameLabel
             // 
-            this.CheckOutDatelabel.AutoSize = true;
-            this.CheckOutDatelabel.Font = new System.Drawing.Font("Nirmala UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CheckOutDatelabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.CheckOutDatelabel.Location = new System.Drawing.Point(72, 503);
-            this.CheckOutDatelabel.Name = "CheckOutDatelabel";
-            this.CheckOutDatelabel.Size = new System.Drawing.Size(104, 17);
-            this.CheckOutDatelabel.TabIndex = 33;
-            this.CheckOutDatelabel.Text = "Check Out Date";
+            this.NameLabel.AutoSize = true;
+            this.NameLabel.Font = new System.Drawing.Font("Nirmala UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NameLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.NameLabel.Location = new System.Drawing.Point(50, 336);
+            this.NameLabel.Name = "NameLabel";
+            this.NameLabel.Size = new System.Drawing.Size(44, 17);
+            this.NameLabel.TabIndex = 34;
+            this.NameLabel.Text = "Name";
             // 
-            // CheckInDatelabel
+            // AddressLabel
             // 
-            this.CheckInDatelabel.AutoSize = true;
-            this.CheckInDatelabel.Font = new System.Drawing.Font("Nirmala UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CheckInDatelabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.CheckInDatelabel.Location = new System.Drawing.Point(72, 458);
-            this.CheckInDatelabel.Name = "CheckInDatelabel";
-            this.CheckInDatelabel.Size = new System.Drawing.Size(93, 17);
-            this.CheckInDatelabel.TabIndex = 34;
-            this.CheckInDatelabel.Text = "Check In Date";
-            // 
-            // RoomNumberlabel
-            // 
-            this.RoomNumberlabel.AutoSize = true;
-            this.RoomNumberlabel.Font = new System.Drawing.Font("Nirmala UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RoomNumberlabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.RoomNumberlabel.Location = new System.Drawing.Point(72, 420);
-            this.RoomNumberlabel.Name = "RoomNumberlabel";
-            this.RoomNumberlabel.Size = new System.Drawing.Size(98, 17);
-            this.RoomNumberlabel.TabIndex = 35;
-            this.RoomNumberlabel.Text = "Room Number";
-            // 
-            // GuestIdlabel
-            // 
-            this.GuestIdlabel.AutoSize = true;
-            this.GuestIdlabel.Font = new System.Drawing.Font("Nirmala UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.GuestIdlabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.GuestIdlabel.Location = new System.Drawing.Point(72, 377);
-            this.GuestIdlabel.Name = "GuestIdlabel";
-            this.GuestIdlabel.Size = new System.Drawing.Size(57, 17);
-            this.GuestIdlabel.TabIndex = 36;
-            this.GuestIdlabel.Text = "GuestID";
-            // 
-            // BookingReferencetextBox
-            // 
-            this.BookingReferencetextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.BookingReferencetextBox.Location = new System.Drawing.Point(210, 331);
-            this.BookingReferencetextBox.Name = "BookingReferencetextBox";
-            this.BookingReferencetextBox.Size = new System.Drawing.Size(177, 22);
-            this.BookingReferencetextBox.TabIndex = 37;
-            this.BookingReferencetextBox.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-            // 
-            // DepositAmounttextBox
-            // 
-            this.DepositAmounttextBox.Location = new System.Drawing.Point(676, 331);
-            this.DepositAmounttextBox.Name = "DepositAmounttextBox";
-            this.DepositAmounttextBox.Size = new System.Drawing.Size(177, 22);
-            this.DepositAmounttextBox.TabIndex = 38;
-            // 
-            // GuestIdtextBox
-            // 
-            this.GuestIdtextBox.AllowDrop = true;
-            this.GuestIdtextBox.Location = new System.Drawing.Point(210, 372);
-            this.GuestIdtextBox.Name = "GuestIdtextBox";
-            this.GuestIdtextBox.Size = new System.Drawing.Size(177, 22);
-            this.GuestIdtextBox.TabIndex = 39;
-            // 
-            // RoomNumbertextBox
-            // 
-            this.RoomNumbertextBox.Location = new System.Drawing.Point(210, 414);
-            this.RoomNumbertextBox.Name = "RoomNumbertextBox";
-            this.RoomNumbertextBox.Size = new System.Drawing.Size(177, 22);
-            this.RoomNumbertextBox.TabIndex = 40;
-            // 
-            // DepositAmountlabel
-            // 
-            this.DepositAmountlabel.AutoSize = true;
-            this.DepositAmountlabel.Font = new System.Drawing.Font("Nirmala UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DepositAmountlabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.DepositAmountlabel.Location = new System.Drawing.Point(510, 336);
-            this.DepositAmountlabel.Name = "DepositAmountlabel";
-            this.DepositAmountlabel.Size = new System.Drawing.Size(110, 17);
-            this.DepositAmountlabel.TabIndex = 43;
-            this.DepositAmountlabel.Text = "Deposit Amount";
-            this.DepositAmountlabel.Click += new System.EventHandler(this.label6_Click);
-            // 
-            // DepositPaidlabel
-            // 
-            this.DepositPaidlabel.AutoSize = true;
-            this.DepositPaidlabel.Font = new System.Drawing.Font("Nirmala UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DepositPaidlabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.DepositPaidlabel.Location = new System.Drawing.Point(516, 377);
-            this.DepositPaidlabel.Name = "DepositPaidlabel";
-            this.DepositPaidlabel.Size = new System.Drawing.Size(87, 17);
-            this.DepositPaidlabel.TabIndex = 43;
-            this.DepositPaidlabel.Text = "Deposit Paid";
-            // 
-            // Statuslabel
-            // 
-            this.Statuslabel.AutoSize = true;
-            this.Statuslabel.Font = new System.Drawing.Font("Nirmala UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Statuslabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.Statuslabel.Location = new System.Drawing.Point(516, 411);
-            this.Statuslabel.Name = "Statuslabel";
-            this.Statuslabel.Size = new System.Drawing.Size(46, 17);
-            this.Statuslabel.TabIndex = 44;
-            this.Statuslabel.Text = "Status";
-            // 
-            // DepositPaidtextBox
-            // 
-            this.DepositPaidtextBox.Location = new System.Drawing.Point(676, 372);
-            this.DepositPaidtextBox.Name = "DepositPaidtextBox";
-            this.DepositPaidtextBox.Size = new System.Drawing.Size(177, 22);
-            this.DepositPaidtextBox.TabIndex = 45;
-            this.DepositPaidtextBox.TextChanged += new System.EventHandler(this.DatetextBox_TextChanged_1);
-            // 
-            // AdulttextBox
-            // 
-            this.AdulttextBox.Location = new System.Drawing.Point(210, 541);
-            this.AdulttextBox.Name = "AdulttextBox";
-            this.AdulttextBox.Size = new System.Drawing.Size(177, 22);
-            this.AdulttextBox.TabIndex = 48;
-            // 
-            // ChildrentextBox
-            // 
-            this.ChildrentextBox.Location = new System.Drawing.Point(223, 585);
-            this.ChildrentextBox.Name = "ChildrentextBox";
-            this.ChildrentextBox.Size = new System.Drawing.Size(177, 22);
-            this.ChildrentextBox.TabIndex = 49;
-            // 
-            // SpecialRequesttextBox
-            // 
-            this.SpecialRequesttextBox.Location = new System.Drawing.Point(676, 569);
-            this.SpecialRequesttextBox.Name = "SpecialRequesttextBox";
-            this.SpecialRequesttextBox.Size = new System.Drawing.Size(177, 22);
-            this.SpecialRequesttextBox.TabIndex = 50;
-            // 
-            // TotalAmounttextBox
-            // 
-            this.TotalAmounttextBox.Location = new System.Drawing.Point(210, 627);
-            this.TotalAmounttextBox.Name = "TotalAmounttextBox";
-            this.TotalAmounttextBox.Size = new System.Drawing.Size(177, 22);
-            this.TotalAmounttextBox.TabIndex = 54;
-            // 
-            // CreditCardtextBox
-            // 
-            this.CreditCardtextBox.Location = new System.Drawing.Point(676, 637);
-            this.CreditCardtextBox.Name = "CreditCardtextBox";
-            this.CreditCardtextBox.Size = new System.Drawing.Size(177, 22);
-            this.CreditCardtextBox.TabIndex = 55;
-            // 
-            // Adultslabel
-            // 
-            this.Adultslabel.AutoSize = true;
-            this.Adultslabel.Font = new System.Drawing.Font("Nirmala UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Adultslabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.Adultslabel.Location = new System.Drawing.Point(72, 546);
-            this.Adultslabel.Name = "Adultslabel";
-            this.Adultslabel.Size = new System.Drawing.Size(121, 17);
-            this.Adultslabel.TabIndex = 56;
-            this.Adultslabel.Text = "Number Of Adults";
-            // 
-            // PaymentStatuslabel
-            // 
-            this.PaymentStatuslabel.AutoSize = true;
-            this.PaymentStatuslabel.Font = new System.Drawing.Font("Nirmala UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PaymentStatuslabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.PaymentStatuslabel.Location = new System.Drawing.Point(516, 451);
-            this.PaymentStatuslabel.Name = "PaymentStatuslabel";
-            this.PaymentStatuslabel.Size = new System.Drawing.Size(104, 17);
-            this.PaymentStatuslabel.TabIndex = 57;
-            this.PaymentStatuslabel.Text = "Payment Status";
-            // 
-            // BookingDatelabel
-            // 
-            this.BookingDatelabel.AutoSize = true;
-            this.BookingDatelabel.Font = new System.Drawing.Font("Nirmala UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BookingDatelabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.BookingDatelabel.Location = new System.Drawing.Point(516, 490);
-            this.BookingDatelabel.Name = "BookingDatelabel";
-            this.BookingDatelabel.Size = new System.Drawing.Size(92, 17);
-            this.BookingDatelabel.TabIndex = 58;
-            this.BookingDatelabel.Text = "Booking Date";
-            // 
-            // DepositDuelabel
-            // 
-            this.DepositDuelabel.AutoSize = true;
-            this.DepositDuelabel.Font = new System.Drawing.Font("Nirmala UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DepositDuelabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.DepositDuelabel.Location = new System.Drawing.Point(519, 534);
-            this.DepositDuelabel.Name = "DepositDuelabel";
-            this.DepositDuelabel.Size = new System.Drawing.Size(122, 17);
-            this.DepositDuelabel.TabIndex = 59;
-            this.DepositDuelabel.Text = "Deposit Due Date ";
+            this.AddressLabel.AutoSize = true;
+            this.AddressLabel.Font = new System.Drawing.Font("Nirmala UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AddressLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.AddressLabel.Location = new System.Drawing.Point(50, 446);
+            this.AddressLabel.Name = "AddressLabel";
+            this.AddressLabel.Size = new System.Drawing.Size(111, 17);
+            this.AddressLabel.TabIndex = 56;
+            this.AddressLabel.Text = "Physical Address";
             // 
             // SpecialRequestlabel
             // 
             this.SpecialRequestlabel.AutoSize = true;
             this.SpecialRequestlabel.Font = new System.Drawing.Font("Nirmala UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SpecialRequestlabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.SpecialRequestlabel.Location = new System.Drawing.Point(516, 571);
+            this.SpecialRequestlabel.Location = new System.Drawing.Point(401, 558);
             this.SpecialRequestlabel.Name = "SpecialRequestlabel";
             this.SpecialRequestlabel.Size = new System.Drawing.Size(104, 17);
             this.SpecialRequestlabel.TabIndex = 60;
             this.SpecialRequestlabel.Text = "Special Request";
-            // 
-            // CreditCardlabel
-            // 
-            this.CreditCardlabel.AutoSize = true;
-            this.CreditCardlabel.Font = new System.Drawing.Font("Nirmala UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CreditCardlabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.CreditCardlabel.Location = new System.Drawing.Point(517, 640);
-            this.CreditCardlabel.Name = "CreditCardlabel";
-            this.CreditCardlabel.Size = new System.Drawing.Size(126, 17);
-            this.CreditCardlabel.TabIndex = 61;
-            this.CreditCardlabel.Text = "CreditCardLastFour";
-            // 
-            // TotalAmountlabel
-            // 
-            this.TotalAmountlabel.AutoSize = true;
-            this.TotalAmountlabel.Font = new System.Drawing.Font("Nirmala UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TotalAmountlabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.TotalAmountlabel.Location = new System.Drawing.Point(72, 628);
-            this.TotalAmountlabel.Name = "TotalAmountlabel";
-            this.TotalAmountlabel.Size = new System.Drawing.Size(93, 17);
-            this.TotalAmountlabel.TabIndex = 62;
-            this.TotalAmountlabel.Text = "Total Amount";
             // 
             // Childrenlabel
             // 
             this.Childrenlabel.AutoSize = true;
             this.Childrenlabel.Font = new System.Drawing.Font("Nirmala UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Childrenlabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.Childrenlabel.Location = new System.Drawing.Point(69, 587);
+            this.Childrenlabel.Location = new System.Drawing.Point(392, 504);
             this.Childrenlabel.Name = "Childrenlabel";
             this.Childrenlabel.Size = new System.Drawing.Size(137, 17);
             this.Childrenlabel.TabIndex = 63;
@@ -338,18 +132,11 @@
             this.Occupancylabel.AutoSize = true;
             this.Occupancylabel.Font = new System.Drawing.Font("Nirmala UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Occupancylabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.Occupancylabel.Location = new System.Drawing.Point(516, 605);
+            this.Occupancylabel.Location = new System.Drawing.Point(40, 558);
             this.Occupancylabel.Name = "Occupancylabel";
             this.Occupancylabel.Size = new System.Drawing.Size(122, 17);
             this.Occupancylabel.TabIndex = 65;
             this.Occupancylabel.Text = "IsSingleOccupancy";
-            // 
-            // OccupancytextBox
-            // 
-            this.OccupancytextBox.Location = new System.Drawing.Point(676, 602);
-            this.OccupancytextBox.Name = "OccupancytextBox";
-            this.OccupancytextBox.Size = new System.Drawing.Size(177, 22);
-            this.OccupancytextBox.TabIndex = 64;
             // 
             // UpdatebookingButton
             // 
@@ -362,7 +149,7 @@
             this.UpdatebookingButton.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.UpdatebookingButton.ForeColor = System.Drawing.Color.White;
             this.UpdatebookingButton.Image = global::Phumla_Kamnandi_GRP_12.Properties.Resources.man_4_50dp_FFFFFF_FILL0_wght400_GRAD0_opsz48;
-            this.UpdatebookingButton.Location = new System.Drawing.Point(369, 261);
+            this.UpdatebookingButton.Location = new System.Drawing.Point(357, 261);
             this.UpdatebookingButton.Name = "UpdatebookingButton";
             this.UpdatebookingButton.Size = new System.Drawing.Size(230, 45);
             this.UpdatebookingButton.TabIndex = 66;
@@ -385,6 +172,7 @@
             this.CancelBookingButton.Size = new System.Drawing.Size(234, 45);
             this.CancelBookingButton.TabIndex = 67;
             this.CancelBookingButton.Text = "CANCEL BOOKING";
+            this.CancelBookingButton.Click += new System.EventHandler(this.CancelBookingButton_Click_1);
             // 
             // MakeBookingButton
             // 
@@ -422,74 +210,268 @@
             this.SubmitButton.Text = "Submit Booking";
             this.SubmitButton.Click += new System.EventHandler(this.SubmitButton_Click);
             // 
-            // CheckInDatetextBox
+            // SurnameLabel
             // 
-            this.CheckInDatetextBox.Location = new System.Drawing.Point(210, 458);
-            this.CheckInDatetextBox.Name = "CheckInDatetextBox";
-            this.CheckInDatetextBox.Size = new System.Drawing.Size(177, 22);
-            this.CheckInDatetextBox.TabIndex = 70;
-            this.CheckInDatetextBox.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
+            this.SurnameLabel.AutoSize = true;
+            this.SurnameLabel.Font = new System.Drawing.Font("Nirmala UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SurnameLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.SurnameLabel.Location = new System.Drawing.Point(525, 336);
+            this.SurnameLabel.Name = "SurnameLabel";
+            this.SurnameLabel.Size = new System.Drawing.Size(62, 17);
+            this.SurnameLabel.TabIndex = 34;
+            this.SurnameLabel.Text = "Surname";
             // 
-            // CheckoutDatetextBox
+            // EmailLabel
             // 
-            this.CheckoutDatetextBox.Location = new System.Drawing.Point(210, 503);
-            this.CheckoutDatetextBox.Name = "CheckoutDatetextBox";
-            this.CheckoutDatetextBox.Size = new System.Drawing.Size(177, 22);
-            this.CheckoutDatetextBox.TabIndex = 71;
+            this.EmailLabel.AutoSize = true;
+            this.EmailLabel.Font = new System.Drawing.Font("Nirmala UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EmailLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.EmailLabel.Location = new System.Drawing.Point(50, 388);
+            this.EmailLabel.Name = "EmailLabel";
+            this.EmailLabel.Size = new System.Drawing.Size(42, 17);
+            this.EmailLabel.TabIndex = 34;
+            this.EmailLabel.Text = "Email";
             // 
-            // BookingDatetextBox
+            // CreditCardlabel
             // 
-            this.BookingDatetextBox.Location = new System.Drawing.Point(676, 490);
-            this.BookingDatetextBox.Name = "BookingDatetextBox";
-            this.BookingDatetextBox.Size = new System.Drawing.Size(177, 22);
-            this.BookingDatetextBox.TabIndex = 72;
-            this.BookingDatetextBox.ValueChanged += new System.EventHandler(this.BookingDatetextBox_ValueChanged);
+            this.CreditCardlabel.AutoSize = true;
+            this.CreditCardlabel.Font = new System.Drawing.Font("Nirmala UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CreditCardlabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.CreditCardlabel.Location = new System.Drawing.Point(50, 623);
+            this.CreditCardlabel.Name = "CreditCardlabel";
+            this.CreditCardlabel.Size = new System.Drawing.Size(126, 17);
+            this.CreditCardlabel.TabIndex = 61;
+            this.CreditCardlabel.Text = "CreditCardLastFour";
             // 
-            // DepositDuetextBox
+            // phumlaKamnandiDBDataSet
             // 
-            this.DepositDuetextBox.Location = new System.Drawing.Point(676, 530);
-            this.DepositDuetextBox.Name = "DepositDuetextBox";
-            this.DepositDuetextBox.Size = new System.Drawing.Size(177, 22);
-            this.DepositDuetextBox.TabIndex = 73;
+            this.phumlaKamnandiDBDataSet.DataSetName = "PhumlaKamnandiDBDataSet";
+            this.phumlaKamnandiDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // StatustextBox
+            // phumlaKamnandiDBDataSetBindingSource
             // 
-            this.StatustextBox.AutoCompleteCustomSource.AddRange(new string[] {
-            "Pending",
-            "Confirmed",
-            "Cancelled",
-            "Complete"});
-            this.StatustextBox.FormattingEnabled = true;
-            this.StatustextBox.Items.AddRange(new object[] {
-            "Unconfirmed",
-            "Confirmed",
-            "Completed",
-            "Cancelled",
-            "No Show"});
-            this.StatustextBox.Location = new System.Drawing.Point(676, 404);
-            this.StatustextBox.Name = "StatustextBox";
-            this.StatustextBox.Size = new System.Drawing.Size(177, 24);
-            this.StatustextBox.TabIndex = 74;
-            this.StatustextBox.SelectedIndexChanged += new System.EventHandler(this.StatustextBox_SelectedIndexChanged);
+            this.phumlaKamnandiDBDataSetBindingSource.DataSource = this.phumlaKamnandiDBDataSet;
+            this.phumlaKamnandiDBDataSetBindingSource.Position = 0;
             // 
-            // PaymentStatustextBox
+            // NoOfAdultsLabel
             // 
-            this.PaymentStatustextBox.AutoCompleteCustomSource.AddRange(new string[] {
-            "Pending",
-            "Confirmed",
-            "Cancelled",
-            "Complete"});
-            this.PaymentStatustextBox.FormattingEnabled = true;
-            this.PaymentStatustextBox.Items.AddRange(new object[] {
-            "Unconfirmed",
-            "Confirmed",
-            "Completed",
-            "Cancelled",
-            "No Show"});
-            this.PaymentStatustextBox.Location = new System.Drawing.Point(676, 449);
-            this.PaymentStatustextBox.Name = "PaymentStatustextBox";
-            this.PaymentStatustextBox.Size = new System.Drawing.Size(177, 24);
-            this.PaymentStatustextBox.TabIndex = 75;
+            this.NoOfAdultsLabel.AutoSize = true;
+            this.NoOfAdultsLabel.Font = new System.Drawing.Font("Nirmala UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NoOfAdultsLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.NoOfAdultsLabel.Location = new System.Drawing.Point(50, 504);
+            this.NoOfAdultsLabel.Name = "NoOfAdultsLabel";
+            this.NoOfAdultsLabel.Size = new System.Drawing.Size(125, 17);
+            this.NoOfAdultsLabel.TabIndex = 63;
+            this.NoOfAdultsLabel.Text = "Number Of Adults ";
+            // 
+            // YesNoComboBox
+            // 
+            this.YesNoComboBox.AutoRoundedCorners = true;
+            this.YesNoComboBox.BackColor = System.Drawing.Color.Transparent;
+            this.YesNoComboBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.YesNoComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.YesNoComboBox.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.YesNoComboBox.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.YesNoComboBox.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.YesNoComboBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.YesNoComboBox.ItemHeight = 30;
+            this.YesNoComboBox.Items.AddRange(new object[] {
+            "Yes",
+            "No"});
+            this.YesNoComboBox.Location = new System.Drawing.Point(181, 558);
+            this.YesNoComboBox.Name = "YesNoComboBox";
+            this.YesNoComboBox.Size = new System.Drawing.Size(140, 36);
+            this.YesNoComboBox.TabIndex = 70;
+            this.YesNoComboBox.SelectedIndexChanged += new System.EventHandler(this.YesNoComboBox_SelectedIndexChanged);
+            // 
+            // NameTextBox
+            // 
+            this.NameTextBox.AutoRoundedCorners = true;
+            this.NameTextBox.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.NameTextBox.DefaultText = "";
+            this.NameTextBox.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.NameTextBox.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.NameTextBox.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.NameTextBox.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.NameTextBox.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.NameTextBox.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.NameTextBox.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.NameTextBox.Location = new System.Drawing.Point(114, 336);
+            this.NameTextBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.NameTextBox.Name = "NameTextBox";
+            this.NameTextBox.PlaceholderText = "";
+            this.NameTextBox.SelectedText = "";
+            this.NameTextBox.Size = new System.Drawing.Size(229, 33);
+            this.NameTextBox.TabIndex = 71;
+            this.NameTextBox.TextChanged += new System.EventHandler(this.NameTextBox_TextChanged);
+            // 
+            // emailtextbox
+            // 
+            this.emailtextbox.AutoRoundedCorners = true;
+            this.emailtextbox.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.emailtextbox.DefaultText = "";
+            this.emailtextbox.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.emailtextbox.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.emailtextbox.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.emailtextbox.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.emailtextbox.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.emailtextbox.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.emailtextbox.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.emailtextbox.Location = new System.Drawing.Point(114, 388);
+            this.emailtextbox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.emailtextbox.Name = "emailtextbox";
+            this.emailtextbox.PlaceholderText = "";
+            this.emailtextbox.SelectedText = "";
+            this.emailtextbox.Size = new System.Drawing.Size(426, 33);
+            this.emailtextbox.TabIndex = 71;
+            this.emailtextbox.TextChanged += new System.EventHandler(this.emailtextbox_TextChanged);
+            // 
+            // surnametextbox
+            // 
+            this.surnametextbox.AutoRoundedCorners = true;
+            this.surnametextbox.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.surnametextbox.DefaultText = "";
+            this.surnametextbox.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.surnametextbox.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.surnametextbox.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.surnametextbox.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.surnametextbox.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.surnametextbox.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.surnametextbox.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.surnametextbox.Location = new System.Drawing.Point(604, 336);
+            this.surnametextbox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.surnametextbox.Name = "surnametextbox";
+            this.surnametextbox.PlaceholderText = "";
+            this.surnametextbox.SelectedText = "";
+            this.surnametextbox.Size = new System.Drawing.Size(229, 33);
+            this.surnametextbox.TabIndex = 71;
+            this.surnametextbox.TextChanged += new System.EventHandler(this.surnametextBox_TextChanged);
+            // 
+            // phonetextbox
+            // 
+            this.phonetextbox.AutoRoundedCorners = true;
+            this.phonetextbox.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.phonetextbox.DefaultText = "";
+            this.phonetextbox.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.phonetextbox.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.phonetextbox.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.phonetextbox.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.phonetextbox.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.phonetextbox.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.phonetextbox.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.phonetextbox.Location = new System.Drawing.Point(681, 388);
+            this.phonetextbox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.phonetextbox.Name = "phonetextbox";
+            this.phonetextbox.PlaceholderText = "";
+            this.phonetextbox.SelectedText = "";
+            this.phonetextbox.Size = new System.Drawing.Size(229, 33);
+            this.phonetextbox.TabIndex = 71;
+            this.phonetextbox.TextChanged += new System.EventHandler(this.phoneNumberTextbox_TextChanged);
+            // 
+            // addresstextbox
+            // 
+            this.addresstextbox.AutoRoundedCorners = true;
+            this.addresstextbox.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.addresstextbox.DefaultText = "";
+            this.addresstextbox.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.addresstextbox.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.addresstextbox.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.addresstextbox.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.addresstextbox.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.addresstextbox.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.addresstextbox.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.addresstextbox.Location = new System.Drawing.Point(181, 446);
+            this.addresstextbox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.addresstextbox.Name = "addresstextbox";
+            this.addresstextbox.PlaceholderText = "";
+            this.addresstextbox.SelectedText = "";
+            this.addresstextbox.Size = new System.Drawing.Size(716, 33);
+            this.addresstextbox.TabIndex = 71;
+            this.addresstextbox.TextChanged += new System.EventHandler(this.addresstextbox_TextChanged);
+            // 
+            // adultstextbox
+            // 
+            this.adultstextbox.AutoRoundedCorners = true;
+            this.adultstextbox.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.adultstextbox.DefaultText = "";
+            this.adultstextbox.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.adultstextbox.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.adultstextbox.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.adultstextbox.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.adultstextbox.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.adultstextbox.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.adultstextbox.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.adultstextbox.Location = new System.Drawing.Point(181, 504);
+            this.adultstextbox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.adultstextbox.Name = "adultstextbox";
+            this.adultstextbox.PlaceholderText = "";
+            this.adultstextbox.SelectedText = "";
+            this.adultstextbox.Size = new System.Drawing.Size(104, 33);
+            this.adultstextbox.TabIndex = 71;
+            this.adultstextbox.TextChanged += new System.EventHandler(this.adultstextbox_TextChanged);
+            // 
+            // childrentextbox
+            // 
+            this.childrentextbox.AutoRoundedCorners = true;
+            this.childrentextbox.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.childrentextbox.DefaultText = "";
+            this.childrentextbox.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.childrentextbox.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.childrentextbox.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.childrentextbox.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.childrentextbox.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.childrentextbox.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.childrentextbox.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.childrentextbox.Location = new System.Drawing.Point(535, 504);
+            this.childrentextbox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.childrentextbox.Name = "childrentextbox";
+            this.childrentextbox.PlaceholderText = "";
+            this.childrentextbox.SelectedText = "";
+            this.childrentextbox.Size = new System.Drawing.Size(104, 33);
+            this.childrentextbox.TabIndex = 71;
+            this.childrentextbox.TextChanged += new System.EventHandler(this.childrentextbox_TextChanged);
+            // 
+            // specialrequestTextbox
+            // 
+            this.specialrequestTextbox.AutoRoundedCorners = true;
+            this.specialrequestTextbox.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.specialrequestTextbox.DefaultText = "";
+            this.specialrequestTextbox.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.specialrequestTextbox.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.specialrequestTextbox.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.specialrequestTextbox.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.specialrequestTextbox.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.specialrequestTextbox.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.specialrequestTextbox.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.specialrequestTextbox.Location = new System.Drawing.Point(511, 561);
+            this.specialrequestTextbox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.specialrequestTextbox.Name = "specialrequestTextbox";
+            this.specialrequestTextbox.PlaceholderText = "";
+            this.specialrequestTextbox.SelectedText = "";
+            this.specialrequestTextbox.Size = new System.Drawing.Size(386, 33);
+            this.specialrequestTextbox.TabIndex = 71;
+            this.specialrequestTextbox.TextChanged += new System.EventHandler(this.specialrequestTextbox_TextChanged);
+            // 
+            // creditTextbox
+            // 
+            this.creditTextbox.AutoRoundedCorners = true;
+            this.creditTextbox.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.creditTextbox.DefaultText = "";
+            this.creditTextbox.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.creditTextbox.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.creditTextbox.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.creditTextbox.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.creditTextbox.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.creditTextbox.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.creditTextbox.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.creditTextbox.Location = new System.Drawing.Point(182, 623);
+            this.creditTextbox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.creditTextbox.Name = "creditTextbox";
+            this.creditTextbox.PlaceholderText = "";
+            this.creditTextbox.SelectedText = "";
+            this.creditTextbox.Size = new System.Drawing.Size(362, 33);
+            this.creditTextbox.TabIndex = 71;
+            this.creditTextbox.TextChanged += new System.EventHandler(this.creditTextbox_TextChanged);
             // 
             // FrmBookings
             // 
@@ -498,50 +480,38 @@
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
             this.ClientSize = new System.Drawing.Size(954, 759);
-            this.Controls.Add(this.PaymentStatustextBox);
-            this.Controls.Add(this.StatustextBox);
-            this.Controls.Add(this.DepositDuetextBox);
-            this.Controls.Add(this.BookingDatetextBox);
-            this.Controls.Add(this.CheckoutDatetextBox);
-            this.Controls.Add(this.CheckInDatetextBox);
+            this.Controls.Add(this.addresstextbox);
+            this.Controls.Add(this.emailtextbox);
+            this.Controls.Add(this.phonetextbox);
+            this.Controls.Add(this.surnametextbox);
+            this.Controls.Add(this.childrentextbox);
+            this.Controls.Add(this.adultstextbox);
+            this.Controls.Add(this.creditTextbox);
+            this.Controls.Add(this.specialrequestTextbox);
+            this.Controls.Add(this.NameTextBox);
+            this.Controls.Add(this.YesNoComboBox);
             this.Controls.Add(this.SubmitButton);
             this.Controls.Add(this.MakeBookingButton);
             this.Controls.Add(this.CancelBookingButton);
             this.Controls.Add(this.UpdatebookingButton);
             this.Controls.Add(this.Occupancylabel);
-            this.Controls.Add(this.OccupancytextBox);
+            this.Controls.Add(this.NoOfAdultsLabel);
             this.Controls.Add(this.Childrenlabel);
-            this.Controls.Add(this.TotalAmountlabel);
             this.Controls.Add(this.CreditCardlabel);
             this.Controls.Add(this.SpecialRequestlabel);
-            this.Controls.Add(this.DepositDuelabel);
-            this.Controls.Add(this.BookingDatelabel);
-            this.Controls.Add(this.PaymentStatuslabel);
-            this.Controls.Add(this.Adultslabel);
-            this.Controls.Add(this.CreditCardtextBox);
-            this.Controls.Add(this.TotalAmounttextBox);
-            this.Controls.Add(this.SpecialRequesttextBox);
-            this.Controls.Add(this.ChildrentextBox);
-            this.Controls.Add(this.AdulttextBox);
-            this.Controls.Add(this.DepositPaidtextBox);
-            this.Controls.Add(this.Statuslabel);
-            this.Controls.Add(this.DepositPaidlabel);
-            this.Controls.Add(this.DepositAmountlabel);
-            this.Controls.Add(this.RoomNumbertextBox);
-            this.Controls.Add(this.GuestIdtextBox);
-            this.Controls.Add(this.DepositAmounttextBox);
-            this.Controls.Add(this.BookingReferencetextBox);
-            this.Controls.Add(this.GuestIdlabel);
-            this.Controls.Add(this.RoomNumberlabel);
-            this.Controls.Add(this.CheckInDatelabel);
-            this.Controls.Add(this.CheckOutDatelabel);
-            this.Controls.Add(this.BookingReferncelabel);
+            this.Controls.Add(this.AddressLabel);
+            this.Controls.Add(this.EmailLabel);
+            this.Controls.Add(this.SurnameLabel);
+            this.Controls.Add(this.NameLabel);
+            this.Controls.Add(this.PhoneNumberLabel);
             this.Controls.Add(this.ShowdataGridView);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmBookings";
             this.Text = "FrmBookings";
             this.Load += new System.EventHandler(this.FrmBookings_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ShowdataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.phumlaKamnandiDBDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.phumlaKamnandiDBDataSetBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -549,43 +519,31 @@
 
         #endregion
         private System.Windows.Forms.DataGridView ShowdataGridView;
-        private System.Windows.Forms.Label BookingReferncelabel;
-        private System.Windows.Forms.Label CheckOutDatelabel;
-        private System.Windows.Forms.Label CheckInDatelabel;
-        private System.Windows.Forms.Label RoomNumberlabel;
-        private System.Windows.Forms.Label GuestIdlabel;
-        private System.Windows.Forms.TextBox BookingReferencetextBox;
-        private System.Windows.Forms.TextBox DepositAmounttextBox;
-        private System.Windows.Forms.TextBox GuestIdtextBox;
-        private System.Windows.Forms.TextBox RoomNumbertextBox;
-        private System.Windows.Forms.Label DepositAmountlabel;
-        private System.Windows.Forms.Label DepositPaidlabel;
-        private System.Windows.Forms.Label Statuslabel;
-        private System.Windows.Forms.TextBox DepositPaidtextBox;
-        private System.Windows.Forms.TextBox AdulttextBox;
-        private System.Windows.Forms.TextBox ChildrentextBox;
-        private System.Windows.Forms.TextBox SpecialRequesttextBox;
-        private System.Windows.Forms.TextBox TotalAmounttextBox;
-        private System.Windows.Forms.TextBox CreditCardtextBox;
-        private System.Windows.Forms.Label Adultslabel;
-        private System.Windows.Forms.Label PaymentStatuslabel;
-        private System.Windows.Forms.Label BookingDatelabel;
-        private System.Windows.Forms.Label DepositDuelabel;
+        private System.Windows.Forms.Label PhoneNumberLabel;
+        private System.Windows.Forms.Label NameLabel;
+        private System.Windows.Forms.Label AddressLabel;
         private System.Windows.Forms.Label SpecialRequestlabel;
-        private System.Windows.Forms.Label CreditCardlabel;
-        private System.Windows.Forms.Label TotalAmountlabel;
         private System.Windows.Forms.Label Childrenlabel;
         private System.Windows.Forms.Label Occupancylabel;
-        private System.Windows.Forms.TextBox OccupancytextBox;
         private Guna.UI2.WinForms.Guna2Button UpdatebookingButton;
         private Guna.UI2.WinForms.Guna2Button CancelBookingButton;
         private Guna.UI2.WinForms.Guna2Button MakeBookingButton;
         private Guna.UI2.WinForms.Guna2Button SubmitButton;
-        private System.Windows.Forms.DateTimePicker CheckInDatetextBox;
-        private System.Windows.Forms.DateTimePicker CheckoutDatetextBox;
-        private System.Windows.Forms.DateTimePicker BookingDatetextBox;
-        private System.Windows.Forms.DateTimePicker DepositDuetextBox;
-        private System.Windows.Forms.ComboBox StatustextBox;
-        private System.Windows.Forms.ComboBox PaymentStatustextBox;
+        private System.Windows.Forms.Label SurnameLabel;
+        private System.Windows.Forms.Label EmailLabel;
+        private System.Windows.Forms.Label CreditCardlabel;
+        private PhumlaKamnandiDBDataSet phumlaKamnandiDBDataSet;
+        private System.Windows.Forms.BindingSource phumlaKamnandiDBDataSetBindingSource;
+        private System.Windows.Forms.Label NoOfAdultsLabel;
+        private Guna.UI2.WinForms.Guna2ComboBox YesNoComboBox;
+        private Guna.UI2.WinForms.Guna2TextBox NameTextBox;
+        private Guna.UI2.WinForms.Guna2TextBox emailtextbox;
+        private Guna.UI2.WinForms.Guna2TextBox surnametextbox;
+        private Guna.UI2.WinForms.Guna2TextBox phonetextbox;
+        private Guna.UI2.WinForms.Guna2TextBox addresstextbox;
+        private Guna.UI2.WinForms.Guna2TextBox adultstextbox;
+        private Guna.UI2.WinForms.Guna2TextBox childrentextbox;
+        private Guna.UI2.WinForms.Guna2TextBox specialrequestTextbox;
+        private Guna.UI2.WinForms.Guna2TextBox creditTextbox;
     }
 }
