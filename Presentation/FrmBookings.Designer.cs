@@ -57,7 +57,7 @@
             this.Childrenlabel = new System.Windows.Forms.Label();
             this.Occupancylabel = new System.Windows.Forms.Label();
             this.OccupancytextBox = new System.Windows.Forms.TextBox();
-            this.GuestStandingButton = new Guna.UI2.WinForms.Guna2Button();
+            this.UpdatebookingButton = new Guna.UI2.WinForms.Guna2Button();
             this.CancelBookingButton = new Guna.UI2.WinForms.Guna2Button();
             this.MakeBookingButton = new Guna.UI2.WinForms.Guna2Button();
             this.SubmitButton = new Guna.UI2.WinForms.Guna2Button();
@@ -351,22 +351,22 @@
             this.OccupancytextBox.Size = new System.Drawing.Size(177, 22);
             this.OccupancytextBox.TabIndex = 64;
             // 
-            // GuestStandingButton
+            // UpdatebookingButton
             // 
-            this.GuestStandingButton.AutoRoundedCorners = true;
-            this.GuestStandingButton.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.GuestStandingButton.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.GuestStandingButton.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.GuestStandingButton.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.GuestStandingButton.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
-            this.GuestStandingButton.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.GuestStandingButton.ForeColor = System.Drawing.Color.White;
-            this.GuestStandingButton.Image = global::Phumla_Kamnandi_GRP_12.Properties.Resources.man_4_50dp_FFFFFF_FILL0_wght400_GRAD0_opsz48;
-            this.GuestStandingButton.Location = new System.Drawing.Point(369, 261);
-            this.GuestStandingButton.Name = "GuestStandingButton";
-            this.GuestStandingButton.Size = new System.Drawing.Size(230, 45);
-            this.GuestStandingButton.TabIndex = 66;
-            this.GuestStandingButton.Text = "UPDATE BOOKING";
+            this.UpdatebookingButton.AutoRoundedCorners = true;
+            this.UpdatebookingButton.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.UpdatebookingButton.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.UpdatebookingButton.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.UpdatebookingButton.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.UpdatebookingButton.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
+            this.UpdatebookingButton.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UpdatebookingButton.ForeColor = System.Drawing.Color.White;
+            this.UpdatebookingButton.Image = global::Phumla_Kamnandi_GRP_12.Properties.Resources.man_4_50dp_FFFFFF_FILL0_wght400_GRAD0_opsz48;
+            this.UpdatebookingButton.Location = new System.Drawing.Point(369, 261);
+            this.UpdatebookingButton.Name = "UpdatebookingButton";
+            this.UpdatebookingButton.Size = new System.Drawing.Size(230, 45);
+            this.UpdatebookingButton.TabIndex = 66;
+            this.UpdatebookingButton.Text = "UPDATE BOOKING";
             // 
             // CancelBookingButton
             // 
@@ -505,7 +505,7 @@
             this.Controls.Add(this.SubmitButton);
             this.Controls.Add(this.MakeBookingButton);
             this.Controls.Add(this.CancelBookingButton);
-            this.Controls.Add(this.GuestStandingButton);
+            this.Controls.Add(this.UpdatebookingButton);
             this.Controls.Add(this.Occupancylabel);
             this.Controls.Add(this.OccupancytextBox);
             this.Controls.Add(this.Childrenlabel);
@@ -575,7 +575,7 @@
         private System.Windows.Forms.Label Childrenlabel;
         private System.Windows.Forms.Label Occupancylabel;
         private System.Windows.Forms.TextBox OccupancytextBox;
-        private Guna.UI2.WinForms.Guna2Button GuestStandingButton;
+        private Guna.UI2.WinForms.Guna2Button UpdatebookingButton;
         private Guna.UI2.WinForms.Guna2Button CancelBookingButton;
         private Guna.UI2.WinForms.Guna2Button MakeBookingButton;
         private Guna.UI2.WinForms.Guna2Button SubmitButton;

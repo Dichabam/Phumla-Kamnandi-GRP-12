@@ -23,7 +23,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
         }
 
         private void FrmBookings_Load(object sender, EventArgs e)
-        {   HideAllFields();
+        {  
             GenerateBookingReference();
             RefreshBookings();
         }
@@ -195,53 +195,61 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             String occupancy = OccupancytextBox.Text;
             String creditcardnumber = CreditCardtextBox.Text;
             #endregion
-            DialogResult confirm = MessageBox.Show(
-                    "Are you sure you want to Update this booking?",
-                    "Confirm Update",
-                    MessageBoxButtons.YesNo,
-                    MessageBoxIcon.Warning);
-                   
+           
 
-            if(confirm == DialogResult.Yes)
+            // update DB
+            try
             {
-
-              
                 using (SqlConnection connection = new SqlConnection(connectionString))
-                {   
-                    HideAllFields();
+                {
                     string query = @"UPDATE Booking 
-                                         SET RoomNumber=@RoomNumber, CheckInDate=@CheckInDate, CheckOutDate=@CheckOutDate,
-                                             NumberOfAdults=@NumberOfAdults, NumberOfChildren=@NumberOfChildren,
-                                             TotalAmount=@TotalAmount, Status=@Status, PaymentStatus=@PaymentStatus
-                                         WHERE BookingReference=@BookingReference";
+                             SET RoomNumber = @RoomNumber,
+                                 CheckInDate = @CheckInDate,
+                                 CheckOutDate = @CheckOutDate,
+                                 NumberOfAdults = @NumberOfAdults,
+                                 NumberOfChildren = @NumberOfChildren,
+                                 TotalAmount = @TotalAmount,
+                                 Status = @Status,
+                                 PaymentStatus = @PaymentStatus
+                             WHERE BookingReference = @BookingReference";
 
-                    SqlCommand cmd = new SqlCommand(query, connection);
+                    using (SqlCommand cmd = new SqlCommand(query, connection))
+                    {
+                        cmd.Parameters.AddWithValue("@RoomNumber", roomnumber);
+                        cmd.Parameters.AddWithValue("@CheckInDate", checkin);
+                        cmd.Parameters.AddWithValue("@CheckOutDate", checkout);
+                        cmd.Parameters.AddWithValue("@NumberOfAdults", numberofadults);
+                        cmd.Parameters.AddWithValue("@NumberOfChildren", numberofchildren);
+                        cmd.Parameters.AddWithValue("@TotalAmount", totalamount);
+                        cmd.Parameters.AddWithValue("@Status", status);
+                        cmd.Parameters.AddWithValue("@PaymentStatus", paymentstatus);
+                        cmd.Parameters.AddWithValue("@BookingReference", bookingRef);
 
-                    SqlCommand bookingcommand = new SqlCommand(query, connection);
-                   
-                    bookingcommand.Parameters.AddWithValue("@RoomNumber", int.Parse(RoomNumbertextBox.Text));
-                    bookingcommand.Parameters.AddWithValue("@CheckOutDate", DateTime.Parse(CheckoutDatetextBox.Text));
-                    bookingcommand.Parameters.AddWithValue("@NumberOfAdults", int.Parse(AdulttextBox.Text));
-                    bookingcommand.Parameters.AddWithValue("@NumberOfChildren", int.Parse(ChildrentextBox.Text));
-                    bookingcommand.Parameters.AddWithValue("@TotalAmount", decimal.Parse(TotalAmounttextBox.Text));
-                    bookingcommand.Parameters.AddWithValue("@Status", StatustextBox.Text);
-                    bookingcommand.Parameters.AddWithValue("@PaymentStatus", PaymentStatustextBox.Text);
-                    bookingcommand.Parameters.AddWithValue("@BookingReference", BookingReferencetextBox.Text);
+                        connection.Open();
+                        int rows = cmd.ExecuteNonQuery();
+                        connection.Close();
 
-                    connection.Open();
-                    cmd.ExecuteNonQuery();
-                    connection.Close();
-
-                    MessageBox.Show("Booking updated successfully!");
-                    RefreshBookings();
-                   
+                        if (rows > 0)
+                        {
+                            MessageBox.Show("Booking updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            MessageBox.Show("No booking was updated. Please verify the booking reference.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                    }
                 }
+
+                // Reset UI: hide edit fields and restore button text
+                HideAllFields();
+               
+                RefreshBookings();
             }
-            else
+            catch (Exception ex)
             {
-                
-                MessageBox.Show("Update aborted.");
+                MessageBox.Show("Error updating booking: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        
         }
 
         private void CancelBookingButton_Click(object sender, EventArgs e)
@@ -256,56 +264,56 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
 
         private void HideAllFields()
         {
-            BookingReferencetextBox.Enabled = false;
-            BookingReferncelabel.Enabled = false;
+            BookingReferencetextBox.Visible = false;
+            BookingReferncelabel.Visible = false;
 
-            GuestIdtextBox.Enabled = false;
-            GuestIdlabel.Enabled = false;
+            GuestIdtextBox.Visible = false;
+            GuestIdlabel.Visible = false;
 
-            RoomNumbertextBox.Enabled = false;
-            RoomNumberlabel.Enabled = false; 
+            RoomNumbertextBox.Visible = false;
+            RoomNumberlabel.Visible = false;
 
-            CheckInDatetextBox.Enabled = false;
-            CheckInDatelabel.Enabled = false;
+            CheckInDatetextBox.Visible = false;
+            CheckInDatelabel.Visible = false;
 
-            CheckoutDatetextBox.Enabled = false;
-            CheckOutDatelabel.Enabled = false;
+            CheckoutDatetextBox.Visible = false;
+            CheckOutDatelabel.Visible = false;
 
-            AdulttextBox.Enabled = false;
-            Adultslabel.Enabled = false;
+            AdulttextBox.Visible = false;
+            Adultslabel.Visible = false;
 
-            ChildrentextBox.Enabled = false;
-            Childrenlabel.Enabled = false;
+            ChildrentextBox.Visible = false;
+            Childrenlabel.Visible = false;
 
-            TotalAmounttextBox.Enabled = false;
-            TotalAmountlabel.Enabled = false;
+            TotalAmounttextBox.Visible = false;
+            TotalAmountlabel.Visible = false;
 
-            DepositAmounttextBox.Enabled = false;
-            DepositAmountlabel.Enabled = false;
+            DepositAmounttextBox.Visible = false;
+            DepositAmountlabel.Visible = false;
 
-            DepositPaidtextBox.Enabled = false;
-            DepositPaidlabel.Enabled = false;
+            DepositPaidtextBox.Visible = false;
+            DepositPaidlabel.Visible = false;
 
-            StatustextBox.Enabled = false;
-            Statuslabel.Enabled = false;
+            StatustextBox.Visible = false;
+            Statuslabel.Visible = false;
 
-            PaymentStatustextBox.Enabled = false;
-            PaymentStatuslabel.Enabled = false;
+            PaymentStatustextBox.Visible = false;
+            PaymentStatuslabel.Visible = false;
 
-            BookingDatetextBox.Enabled = false;
-            BookingDatelabel.Enabled = false;
+            BookingDatetextBox.Visible = false;
+            BookingDatelabel.Visible = false;
 
-            DepositDuetextBox.Enabled = false;
-            DepositDuelabel.Enabled = false;
+            DepositDuetextBox.Visible = false;
+            DepositDuelabel.Visible = false;
 
-            SpecialRequesttextBox.Enabled = false;
-            SpecialRequestlabel.Enabled = false;
+            SpecialRequesttextBox.Visible = false;
+            SpecialRequestlabel.Visible = false;
 
-            OccupancytextBox.Enabled = false;
-            Occupancylabel.Enabled = false;
+            OccupancytextBox.Visible = false;
+            Occupancylabel.Visible = false;
 
-            CreditCardtextBox.Enabled = false;
-            CreditCardlabel.Enabled = false;
+            CreditCardtextBox.Visible = false;
+            CreditCardlabel.Visible = false;
         }
 
         private void SubmitButton_Click(object sender, EventArgs e)
