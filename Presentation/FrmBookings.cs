@@ -23,7 +23,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
         }
 
         private void FrmBookings_Load(object sender, EventArgs e)
-        {
+        {   HideAllFields();
             GenerateBookingReference();
             RefreshBookings();
         }
@@ -208,7 +208,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
               
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {   
-                    HideInputFields();
+                    HideAllFields();
                     string query = @"UPDATE Booking 
                                          SET RoomNumber=@RoomNumber, CheckInDate=@CheckInDate, CheckOutDate=@CheckOutDate,
                                              NumberOfAdults=@NumberOfAdults, NumberOfChildren=@NumberOfChildren,
@@ -246,7 +246,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
 
         private void CancelBookingButton_Click(object sender, EventArgs e)
         {
-            StatustextBox.Text = "Cancelled";
+            
         }
 
         private void FirstNamelabel_Click(object sender, EventArgs e)
@@ -254,25 +254,58 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
 
         }
 
-        private void HideInputFields()
+        private void HideAllFields()
         {
-            BookingReferencetextBox.Enabled = true;
-            GuestIdtextBox.Enabled = true;
-            RoomNumbertextBox.Enabled = true;
-            CheckInDatetextBox.Enabled = true;
-            CheckoutDatetextBox.Enabled = true;
+            BookingReferencetextBox.Enabled = false;
+            BookingReferncelabel.Enabled = false;
+
+            GuestIdtextBox.Enabled = false;
+            GuestIdlabel.Enabled = false;
+
+            RoomNumbertextBox.Enabled = false;
+            RoomNumberlabel.Enabled = false; 
+
+            CheckInDatetextBox.Enabled = false;
+            CheckInDatelabel.Enabled = false;
+
+            CheckoutDatetextBox.Enabled = false;
+            CheckOutDatelabel.Enabled = false;
+
             AdulttextBox.Enabled = false;
+            Adultslabel.Enabled = false;
+
             ChildrentextBox.Enabled = false;
+            Childrenlabel.Enabled = false;
+
             TotalAmounttextBox.Enabled = false;
+            TotalAmountlabel.Enabled = false;
+
             DepositAmounttextBox.Enabled = false;
+            DepositAmountlabel.Enabled = false;
+
             DepositPaidtextBox.Enabled = false;
+            DepositPaidlabel.Enabled = false;
+
             StatustextBox.Enabled = false;
+            Statuslabel.Enabled = false;
+
             PaymentStatustextBox.Enabled = false;
+            PaymentStatuslabel.Enabled = false;
+
             BookingDatetextBox.Enabled = false;
+            BookingDatelabel.Enabled = false;
+
             DepositDuetextBox.Enabled = false;
+            DepositDuelabel.Enabled = false;
+
             SpecialRequesttextBox.Enabled = false;
+            SpecialRequestlabel.Enabled = false;
+
             OccupancytextBox.Enabled = false;
+            Occupancylabel.Enabled = false;
+
             CreditCardtextBox.Enabled = false;
+            CreditCardlabel.Enabled = false;
         }
 
         private void SubmitButton_Click(object sender, EventArgs e)
