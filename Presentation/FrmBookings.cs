@@ -31,7 +31,8 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
         {   
             using (SqlConnection con = new SqlConnection(connectionString))
             {
-                string query = "SELECT First Name, Surname, Email, Phone, Address,Credit Card Number,Date Registered,IsInGoodStanding";
+                string query = "SELECT BookingReference, GuestId, RoomNumber, CheckInDate, CheckOutDate, Status FROM Booking";
+
                 SqlDataAdapter da = new SqlDataAdapter(query,con);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
@@ -193,15 +194,6 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             String occupancy = OccupancytextBox.Text;
             String creditcardnumber = CreditCardtextBox.Text;
             #endregion
-
-            SqlConnection connection = new SqlConnection(connectionString);
-            String query = "UPDATE Bookings SET First Name=@First Name, Surname=@Surname, Email=@Email, Phone=@Phone, +" +
-                "Address=@Address,Credit Card Number=@Credit Card Number,Date Registered=@Date Registered,+" +
-                "IsInGoodStanding=@IsInGoodStanding WHERE Phone=@Phone";
-
-            SqlCommand bookingcommand = new SqlCommand(query,connection);
-
-
             DialogResult confirm = MessageBox.Show(
                     "Are you sure you want to Update this booking?",
                     "Confirm Update",
@@ -211,39 +203,69 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
 
             if(confirm == DialogResult.Yes)
             {
-               BookingReferncelabel.Enabled = true; BookingReferencetextBox.Enabled = true;
-                GuestIdlabel.Enabled = true; GuestIdtextBox.Enabled = true; 
+                //BookingReferncelabel.Enabled = true; BookingReferencetextBox.Enabled = true;
+                // GuestIdlabel.Enabled = true; GuestIdtextBox.Enabled = true; 
 
-                CheckInDatetextBox.Enabled = true; CheckInDatetextBox.Enabled = true; 
-                CheckoutDatetextBox.Enabled = true; CheckOutDatelabel.Enabled = true;
+                // CheckInDatetextBox.Enabled = true; CheckInDatetextBox.Enabled = true; 
+                // CheckoutDatetextBox.Enabled = true; CheckOutDatelabel.Enabled = true;
 
-                Adultslabel.Enabled = true; AdulttextBox.Enabled = true; 
-                Childrenlabel.Enabled = true; ChildrentextBox.Enabled = true;
+                // Adultslabel.Enabled = true; AdulttextBox.Enabled = true; 
+                // Childrenlabel.Enabled = true; ChildrentextBox.Enabled = true;
 
-                TotalAmountlabel.Enabled = true; TotalAmounttextBox.Enabled = true;
-                DepositAmountlabel.Enabled = true; DepositAmounttextBox.Enabled=true;
+                // TotalAmountlabel.Enabled = true; TotalAmounttextBox.Enabled = true;
+                // DepositAmountlabel.Enabled = true; DepositAmounttextBox.Enabled=true;
 
-                DepositPaidlabel.Enabled = true; DepositPaidtextBox.Enabled = true; 
-                StatustextBox.Enabled = true; Statuslabel.Enabled = true;   
+                // DepositPaidlabel.Enabled = true; DepositPaidtextBox.Enabled = true; 
+                // StatustextBox.Enabled = true; Statuslabel.Enabled = true;   
 
-                PaymentStatustextBox.Enabled = false; PaymentStatuslabel.Enabled = false;
-                BookingDatetextBox.Enabled = true; BookingDatelabel.Enabled = true;
+                // PaymentStatustextBox.Enabled = false; PaymentStatuslabel.Enabled = false;
+                // BookingDatetextBox.Enabled = true; BookingDatelabel.Enabled = true;
 
-                DepositDuetextBox.Enabled = false; DepositDuelabel.Enabled = false;
-                SpecialRequesttextBox.Enabled = false; SpecialRequestlabel.Enabled = false;
+                // DepositDuetextBox.Enabled = false; DepositDuelabel.Enabled = false;
+                // SpecialRequesttextBox.Enabled = false; SpecialRequestlabel.Enabled = false;
 
-                OccupancytextBox.Enabled = true; Occupancylabel.Enabled = true;
-                CreditCardtextBox.Enabled = false; CreditCardlabel.Enabled = false;
+                // OccupancytextBox.Enabled = true; Occupancylabel.Enabled = true;
+                // CreditCardtextBox.Enabled = false; CreditCardlabel.Enabled = false;
 
 
-                RoomNumbertextBox.Enabled = false;RoomNumberlabel.Enabled = false;
+                // RoomNumbertextBox.Enabled = false;RoomNumberlabel.Enabled = false;
 
-                connection.Open();
-                bookingcommand.ExecuteNonQuery();
-                connection.Close();
+                // connection.Open();
+                // bookingcommand.ExecuteNonQuery();
+                // connection.Close();
 
-                MessageBox.Show("Booking updated successfully!");
-                RefreshBookings();
+                // MessageBox.Show("Booking updated successfully!");
+                // RefreshBookings();
+
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    string query = @"UPDATE Booking 
+                                         SET RoomNumber=@RoomNumber, CheckInDate=@CheckInDate, CheckOutDate=@CheckOutDate,
+                                             NumberOfAdults=@NumberOfAdults, NumberOfChildren=@NumberOfChildren,
+                                             TotalAmount=@TotalAmount, Status=@Status, PaymentStatus=@PaymentStatus
+                                         WHERE BookingReference=@BookingReference";
+
+                    SqlCommand cmd = new SqlCommand(query, connection);
+
+                    SqlCommand bookingcommand = new SqlCommand(query, connection);
+
+                    bookingcommand.Parameters.AddWithValue("@RoomNumber", int.Parse(RoomNumbertextBox.Text));
+                    bookingcommand.Parameters.AddWithValue("@CheckOutDate", DateTime.Parse(CheckoutDatetextBox.Text));
+                    bookingcommand.Parameters.AddWithValue("@NumberOfAdults", int.Parse(AdulttextBox.Text));
+                    bookingcommand.Parameters.AddWithValue("@NumberOfChildren", int.Parse(ChildrentextBox.Text));
+                    bookingcommand.Parameters.AddWithValue("@TotalAmount", decimal.Parse(TotalAmounttextBox.Text));
+                    bookingcommand.Parameters.AddWithValue("@Status", StatustextBox.Text);
+                    bookingcommand.Parameters.AddWithValue("@PaymentStatus", PaymentStatustextBox.Text);
+                    bookingcommand.Parameters.AddWithValue("@BookingReference", BookingReferencetextBox.Text);
+
+                    connection.Open();
+                    cmd.ExecuteNonQuery();
+                    connection.Close();
+
+                    MessageBox.Show("Booking updated successfully!");
+                    RefreshBookings();
+                   
+                }
             }
             else
             {
