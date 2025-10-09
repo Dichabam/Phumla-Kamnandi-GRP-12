@@ -208,6 +208,50 @@ namespace Phumla_Kamnandi_GRP_12.Business.Services
             return false;
         }
 
+        public string GenerateConfirmationLetter(string bookingRef)
+        {
+            var booking = GetBookingDetails(bookingRef);
+            if (booking == null) return "Booking not found";
+
+            var guest = _guestRepository.GetById(booking.GuestId);
+            if (guest == null) return "Guest information not found";
+
+            return $@"
+            ═══════════════════════════════════════════════════════
+                PHUMLA KAMNANDI HOTELS - BOOKING CONFIRMATION
+            ═══════════════════════════════════════════════════════
+
+            Booking Reference: {booking.BookingReference}
+
+            Guest Information:
+                Name: {guest.FullName}
+                Email: {guest.Email}
+                Phone: {guest.Phone}
+
+            Booking Details:
+                Check-in Date: {booking.CheckInDate:dd MMM yyyy}
+                Check-out Date: {booking.CheckOutDate:dd MMM yyyy}
+                Room Number: {booking.RoomNumber}
+                Number of Guests: {booking.NumberOfAdults} Adults, {booking.NumberOfChildren} Children
+
+            Financial Summary:
+                Total Amount: R{booking.TotalAmount:N2}
+                Deposit Paid: R{booking.DepositPaid:N2}
+                Balance Due: R{(booking.TotalAmount - booking.DepositPaid):N2}
+
+            Booking Status: {booking.Status}
+            Payment Status: {booking.PaymentStatus}
+
+            Deposit Due Date: {booking.DepositDueDate:dd MMM yyyy}
+
+            Special Requests: {(string.IsNullOrEmpty(booking.SpecialRequests) ? "None" : booking.SpecialRequests)}
+
+            ═══════════════════════════════════════════════════════
+            Thank you for choosing Phumla Kamnandi Hotels!
+            ═══════════════════════════════════════════════════════
+            ";
+        }
+
         // Simulate payment verification
         private bool SimulatePaymentVerification(string creditCardNumber, decimal amount)
         {
