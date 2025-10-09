@@ -88,12 +88,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             // Check if it's a work email (employee login)
             if (email.EndsWith("@pkhotel.com"))
             {
-                string testHash = HashPassword(password); // Add this helper method
-                MessageBox.Show($"Login attempt:\n" +
-                    $"Email: {email}\n" +
-                    $"Password Hash: {testHash.Substring(0, 10)}...",
-                    "Debug", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+               
                 Employee employee = _services.EmployeeService.AuthenticateEmployee(email, password);
                
 

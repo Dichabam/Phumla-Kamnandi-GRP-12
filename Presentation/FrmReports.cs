@@ -20,16 +20,23 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
 
         private void InitializeForm()
         {
-            // Hide date controls by default
+          
             FromLabel.Visible = false;
             ToLabel.Visible = false;
             DatePickerStart.Visible = false;
             DatePickerEnd.Visible = false;
 
-            // Set default radio button
             AlltimeRB.Checked = true;
 
-            // Wire up events
+            // Wire up ALL radio button events
+            AlltimeRB.CheckedChanged += DateRangeOption_CheckedChanged;
+            todayRB.CheckedChanged += DateRangeOption_CheckedChanged;
+            SpecificRB.CheckedChanged += DateRangeOption_CheckedChanged;
+
+            OccupancyReportRadioButton.CheckedChanged += ReportType_CheckedChanged;
+            RevenueRadioButton.CheckedChanged += ReportType_CheckedChanged;
+
+            // Wire up button events
             GenerateReportButton.Click += GenerateReportButton_Click;
             saveButton.Click += saveButton_Click;
         }
@@ -47,6 +54,11 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             DatePickerEnd.Visible = showDatePickers;
         }
 
+        private void ReportType_CheckedChanged(object sender, EventArgs e)
+        {
+            // Just ensure a report type is selected
+        }
+
         private void GenerateReportButton_Click(object sender, EventArgs e)
         {
             // Validate report type selection
@@ -61,7 +73,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             DateTime startDate, endDate;
             if (AlltimeRB.Checked)
             {
-                startDate = new DateTime(2020, 1, 1); // Or earliest booking date
+                startDate = new DateTime(2020, 1, 1);
                 endDate = DateTime.Today;
             }
             else if (todayRB.Checked)
@@ -88,14 +100,22 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                 return;
             }
 
-            // Generate appropriate report
-            if (OccupancyReportRadioButton.Checked)
+            try
             {
-                GenerateOccupancyReport(startDate, endDate);
+                // Generate appropriate report
+                if (OccupancyReportRadioButton.Checked)
+                {
+                    GenerateOccupancyReport(startDate, endDate);
+                }
+                else
+                {
+                    GenerateRevenueReport(startDate, endDate);
+                }
             }
-            else
+            catch (Exception ex)
             {
-                GenerateRevenueReport(startDate, endDate);
+                MessageBox.Show($"Error generating report: {ex.Message}", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -151,7 +171,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error generating report: {ex.Message}", "Error",
+                MessageBox.Show($"Error generating occupancy report: {ex.Message}", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -189,40 +209,9 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error generating report: {ex.Message}", "Error",
+                MessageBox.Show($"Error generating revenue report: {ex.Message}", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
-
-        private void SpecificRB_CheckedChanged(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
-        private void todayRB_CheckedChanged(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
-        private void AlltimeRB_CheckedChanged(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
-        private void DatePickerEnd_ValueChanged(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
-        private void DatePickerStart_ValueChanged(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
-        private void OccupancyReportRadioButton_CheckedChanged(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
         }
 
         private void saveButton_Click(object sender, EventArgs e)
@@ -287,9 +276,40 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             }
         }
 
+      
+        private void SpecificRB_CheckedChanged(object sender, EventArgs e)
+        {
+            DateRangeOption_CheckedChanged(sender, e);
+        }
+
+        private void todayRB_CheckedChanged(object sender, EventArgs e)
+        {
+            DateRangeOption_CheckedChanged(sender, e);
+        }
+
+        private void AlltimeRB_CheckedChanged(object sender, EventArgs e)
+        {
+            DateRangeOption_CheckedChanged(sender, e);
+        }
+
+        private void DatePickerEnd_ValueChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void DatePickerStart_ValueChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void OccupancyReportRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            ReportType_CheckedChanged(sender, e);
+        }
+
         private void RevenueRadioButton_CheckedChanged(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            ReportType_CheckedChanged(sender, e);
         }
     }
 }

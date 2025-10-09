@@ -28,7 +28,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             ConfirmButtonVBH.Visible = false;
             ErrorLableVBH.Visible = false;
 
-            // Make DataGridView read-only by default
+             
             GuestDataView.ReadOnly = true;
 
             // Configure DataGridView
@@ -94,33 +94,41 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
 
         private void LoadAllGuests()
         {
-            var guests = _services.GuestRepository.GetAll();
-            GuestDataView.DataSource = guests;
-
-            // Highlight guests not in good standing
-            foreach (DataGridViewRow row in GuestDataView.Rows)
+            try
             {
-                if (row.DataBoundItem is Guest guest)
+                var guests = _services.GuestRepository.GetAll();
+                GuestDataView.DataSource = guests;
+
+                // Highlight guests not in good standing
+                foreach (DataGridViewRow row in GuestDataView.Rows)
                 {
-                    if (!guest.IsInGoodStanding)
+                    if (row.DataBoundItem is Guest guest)
                     {
-                        row.DefaultCellStyle.BackColor = Color.LightCoral;
-                        row.DefaultCellStyle.ForeColor = Color.DarkRed;
+                        if (!guest.IsInGoodStanding)
+                        {
+                            row.DefaultCellStyle.BackColor = Color.LightCoral;
+                            row.DefaultCellStyle.ForeColor = Color.DarkRed;
+                        }
                     }
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error loading guests: {ex.Message}\n\nPlease ensure database is properly configured.",
+                    "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void ViewBookingHistoryButton_Click(object sender, EventArgs e)
         {
             // Show email verification controls
+            enterEmailTextbox.Text = "Enter Guest Email to View History";
             enterEmailTextbox.Visible = true;
             emailConfirmtextbox.Visible = true;
             ConfirmButtonVBH.Visible = true;
             ErrorLableVBH.Visible = false;
-
-            // Hide other verification controls if visible
-            HideGuestStandingControls();
+            emailConfirmtextbox.Clear();
+            emailConfirmtextbox.Focus();
         }
 
         private void GuestStandingButton_Click(object sender, EventArgs e)
@@ -131,9 +139,8 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             emailConfirmtextbox.Visible = true;
             ConfirmButtonVBH.Visible = true;
             ErrorLableVBH.Visible = false;
-
-            // Hide other verification controls
-            HideBookingHistoryControls();
+            emailConfirmtextbox.Clear();
+            emailConfirmtextbox.Focus();
         }
 
         private void ConfirmButtonVBH_Click(object sender, EventArgs e)
@@ -147,85 +154,110 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                 return;
             }
 
-            var guest = _services.GuestService.GetGuestByEmail(email);
-
-            if (guest == null)
+            try
             {
-                ErrorLableVBH.Text = "Guest not found";
-                ErrorLableVBH.Visible = true;
-                return;
+                var guest = _services.GuestService.GetGuestByEmail(email);
+
+                if (guest == null)
+                {
+                    ErrorLableVBH.Text = "Guest not found";
+                    ErrorLableVBH.Visible = true;
+                    return;
+                }
+
+                ErrorLableVBH.Visible = false;
+
+                // Determine which button was clicked based on visible controls
+                if (enterEmailTextbox.Text.Contains("Standing"))
+                {
+                    ShowGuestStanding(guest);
+                }
+                else
+                {
+                    ShowBookingHistory(guest);
+                }
             }
-
-            ErrorLableVBH.Visible = false;
-
-            // Determine which button was clicked based on visible controls
-            if (enterEmailTextbox.Text.Contains("Standing"))
+            catch (Exception ex)
             {
-                ShowGuestStanding(guest);
-            }
-            else
-            {
-                ShowBookingHistory(guest);
+                MessageBox.Show($"Error: {ex.Message}", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void ShowGuestStanding(Guest guest)
         {
-            // Check and update guest standing
-            bool isInGoodStanding = _services.GuestService.CheckAndUpdateGuestStanding(guest.GuestId);
-
-            string status = isInGoodStanding ? "Good Standing" : "Not in Good Standing";
-            string message = $"Guest: {guest.FullName}\n" +
-                           $"Email: {guest.Email}\n" +
-                           $"Status: {status}\n\n";
-
-            if (!isInGoodStanding)
+            try
             {
-                var bookings = _services.GuestService.GetGuestBookings(guest.GuestId);
-                var overdueDeposits = bookings.Where(b =>
-                    b.Status == Business.Enums.BookingStatus.Unconfirmed &&
-                    b.DepositDueDate.HasValue &&
-                    b.DepositDueDate.Value < DateTime.Today).ToList();
+                // Check and update guest standing
+                bool isInGoodStanding = _services.GuestService.CheckAndUpdateGuestStanding(guest.GuestId);
 
-                if (overdueDeposits.Any())
+                string status = isInGoodStanding ? "Good Standing" : "Not in Good Standing";
+                string message = $"Guest: {guest.FullName}\n" +
+                               $"Email: {guest.Email}\n" +
+                               $"Status: {status}\n\n";
+
+                if (!isInGoodStanding)
                 {
-                    message += "Issues:\n";
-                    foreach (var booking in overdueDeposits)
+                    var bookings = _services.GuestService.GetGuestBookings(guest.GuestId);
+                    var overdueDeposits = bookings.Where(b =>
+                        b.Status == Business.Enums.BookingStatus.Unconfirmed &&
+                        b.DepositDueDate.HasValue &&
+                        b.DepositDueDate.Value < DateTime.Today).ToList();
+
+                    if (overdueDeposits.Any())
                     {
-                        message += $"- Overdue deposit for booking {booking.BookingReference}\n";
+                        message += "Issues:\n";
+                        foreach (var booking in overdueDeposits)
+                        {
+                            message += $"- Overdue deposit for booking {booking.BookingReference}\n";
+                        }
                     }
                 }
+
+                MessageBox.Show(message, "Guest Standing",
+                    MessageBoxButtons.OK,
+                    isInGoodStanding ? MessageBoxIcon.Information : MessageBoxIcon.Warning);
+
+                // Refresh the grid to show updated standing
+                LoadAllGuests();
+
+                // Hide controls
+                HideBookingHistoryControls();
             }
-
-            MessageBox.Show(message, "Guest Standing",
-                MessageBoxButtons.OK,
-                isInGoodStanding ? MessageBoxIcon.Information : MessageBoxIcon.Warning);
-
-            // Refresh the grid to show updated standing
-            LoadAllGuests();
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error checking guest standing: {ex.Message}", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void ShowBookingHistory(Guest guest)
         {
-            var bookings = _services.GuestService.GetGuestBookings(guest.GuestId);
+            try
+            {
+                var bookings = _services.GuestService.GetGuestBookings(guest.GuestId);
 
-            // Open BookingHistory form
-            BookingHistory historyForm = new BookingHistory(guest, bookings);
-            historyForm.ShowDialog();
+                // Open BookingHistory form
+                BookingHistory historyForm = new BookingHistory(guest, bookings);
+                historyForm.ShowDialog();
 
-            // Reset controls
-            emailConfirmtextbox.Clear();
-            HideBookingHistoryControls();
+                // Reset controls
+                HideBookingHistoryControls();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error loading booking history: {ex.Message}", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
+
         private void AddGuestButton_Click(object sender, EventArgs e)
         {
             // Navigate to Bookings form within dashboard
             var dashboard = Application.OpenForms.OfType<Dashboard>().FirstOrDefault();
             if (dashboard != null)
             {
-                var bookingButton = dashboard.Controls.Find("BookingButton", true).FirstOrDefault() as Button;
-                bookingButton?.PerformClick();
-
+                dashboard.NavigateToBookings();
             }
         }
 
@@ -299,12 +331,6 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             emailConfirmtextbox.Clear();
         }
 
-        private void HideGuestStandingControls()
-        {
-            // Same as HideBookingHistoryControls in this case
-            HideBookingHistoryControls();
-        }
-
         private void GuestDataView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             
@@ -312,8 +338,8 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
 
         private void emailConfirmtextbox_TextChanged(object sender, EventArgs e)
         {
-           
+            
+            ErrorLableVBH.Visible = false;
         }
-
     }
 }

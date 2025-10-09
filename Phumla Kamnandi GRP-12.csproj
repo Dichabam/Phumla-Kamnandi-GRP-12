@@ -349,12 +349,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="PhumlaKamnandiDB.mdf">
-    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-  </Content>
-  <Content Include="PhumlaKamnandiDB_log.ldf">
-    <DependentUpon>PhumlaKamnandiDB.mdf</DependentUpon>
-    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-  </Content>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="PhumlaKamnandiDB_log.ldf">
+      <DependentUpon>PhumlaKamnandiDB.mdf</DependentUpon>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="Resourses\BigIcons\door_back_75dp_FFFFFF_FILL0_wght400_GRAD0_opsz48.png" />
     <None Include="Resourses\BigIcons\event_busy_75dp_FFFFFF_FILL0_wght400_GRAD0_opsz48.png" />
     <None Include="Resourses\BigIcons\credit_card_gear_75dp_EA3323_FILL0_wght400_GRAD0_opsz48.png" />

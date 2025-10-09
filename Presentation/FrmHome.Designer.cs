@@ -96,9 +96,9 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::Phumla_Kamnandi_GRP_12.Properties.Resources.event_75dp_FFFFFF_FILL0_wght400_GRAD0_opsz48;
-            this.pictureBox1.Location = new System.Drawing.Point(166, 61);
+            this.pictureBox1.Location = new System.Drawing.Point(157, 45);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(100, 85);
+            this.pictureBox1.Size = new System.Drawing.Size(109, 101);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
@@ -157,9 +157,9 @@
             // pictureBox6
             // 
             this.pictureBox6.Image = global::Phumla_Kamnandi_GRP_12.Properties.Resources.door_back_75dp_FFFFFF_FILL0_wght400_GRAD0_opsz48;
-            this.pictureBox6.Location = new System.Drawing.Point(178, 61);
+            this.pictureBox6.Location = new System.Drawing.Point(192, 45);
             this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(100, 85);
+            this.pictureBox6.Size = new System.Drawing.Size(111, 101);
             this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox6.TabIndex = 1;
             this.pictureBox6.TabStop = false;
@@ -213,12 +213,13 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = global::Phumla_Kamnandi_GRP_12.Properties.Resources.single_bed_75dp_FFFFFF_FILL0_wght400_GRAD0_opsz48;
-            this.pictureBox2.Location = new System.Drawing.Point(166, 61);
+            this.pictureBox2.Location = new System.Drawing.Point(181, 45);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(100, 85);
+            this.pictureBox2.Size = new System.Drawing.Size(113, 101);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 1;
             this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // roomsAvailableLabel
             // 
