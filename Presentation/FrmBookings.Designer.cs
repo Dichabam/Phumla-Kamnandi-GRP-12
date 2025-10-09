@@ -42,11 +42,9 @@
             this.DepositPaidlabel = new System.Windows.Forms.Label();
             this.Statuslabel = new System.Windows.Forms.Label();
             this.DepositPaidtextBox = new System.Windows.Forms.TextBox();
-            this.StatustextBox = new System.Windows.Forms.TextBox();
             this.AdulttextBox = new System.Windows.Forms.TextBox();
             this.ChildrentextBox = new System.Windows.Forms.TextBox();
             this.SpecialRequesttextBox = new System.Windows.Forms.TextBox();
-            this.PaymentStatustextBox = new System.Windows.Forms.TextBox();
             this.TotalAmounttextBox = new System.Windows.Forms.TextBox();
             this.CreditCardtextBox = new System.Windows.Forms.TextBox();
             this.Adultslabel = new System.Windows.Forms.Label();
@@ -67,6 +65,8 @@
             this.CheckoutDatetextBox = new System.Windows.Forms.DateTimePicker();
             this.BookingDatetextBox = new System.Windows.Forms.DateTimePicker();
             this.DepositDuetextBox = new System.Windows.Forms.DateTimePicker();
+            this.StatustextBox = new System.Windows.Forms.ComboBox();
+            this.PaymentStatustextBox = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.ShowdataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -210,13 +210,6 @@
             this.DepositPaidtextBox.TabIndex = 45;
             this.DepositPaidtextBox.TextChanged += new System.EventHandler(this.DatetextBox_TextChanged_1);
             // 
-            // StatustextBox
-            // 
-            this.StatustextBox.Location = new System.Drawing.Point(676, 406);
-            this.StatustextBox.Name = "StatustextBox";
-            this.StatustextBox.Size = new System.Drawing.Size(177, 22);
-            this.StatustextBox.TabIndex = 46;
-            // 
             // AdulttextBox
             // 
             this.AdulttextBox.Location = new System.Drawing.Point(210, 541);
@@ -237,13 +230,6 @@
             this.SpecialRequesttextBox.Name = "SpecialRequesttextBox";
             this.SpecialRequesttextBox.Size = new System.Drawing.Size(177, 22);
             this.SpecialRequesttextBox.TabIndex = 50;
-            // 
-            // PaymentStatustextBox
-            // 
-            this.PaymentStatustextBox.Location = new System.Drawing.Point(676, 448);
-            this.PaymentStatustextBox.Name = "PaymentStatustextBox";
-            this.PaymentStatustextBox.Size = new System.Drawing.Size(177, 22);
-            this.PaymentStatustextBox.TabIndex = 53;
             // 
             // TotalAmounttextBox
             // 
@@ -464,6 +450,45 @@
             this.DepositDuetextBox.Size = new System.Drawing.Size(177, 22);
             this.DepositDuetextBox.TabIndex = 73;
             // 
+            // StatustextBox
+            // 
+            this.StatustextBox.AutoCompleteCustomSource.AddRange(new string[] {
+            "Pending",
+            "Confirmed",
+            "Cancelled",
+            "Complete"});
+            this.StatustextBox.FormattingEnabled = true;
+            this.StatustextBox.Items.AddRange(new object[] {
+            "Unconfirmed",
+            "Confirmed",
+            "Completed",
+            "Cancelled",
+            "No Show"});
+            this.StatustextBox.Location = new System.Drawing.Point(676, 404);
+            this.StatustextBox.Name = "StatustextBox";
+            this.StatustextBox.Size = new System.Drawing.Size(177, 24);
+            this.StatustextBox.TabIndex = 74;
+            this.StatustextBox.SelectedIndexChanged += new System.EventHandler(this.StatustextBox_SelectedIndexChanged);
+            // 
+            // PaymentStatustextBox
+            // 
+            this.PaymentStatustextBox.AutoCompleteCustomSource.AddRange(new string[] {
+            "Pending",
+            "Confirmed",
+            "Cancelled",
+            "Complete"});
+            this.PaymentStatustextBox.FormattingEnabled = true;
+            this.PaymentStatustextBox.Items.AddRange(new object[] {
+            "Unconfirmed",
+            "Confirmed",
+            "Completed",
+            "Cancelled",
+            "No Show"});
+            this.PaymentStatustextBox.Location = new System.Drawing.Point(676, 449);
+            this.PaymentStatustextBox.Name = "PaymentStatustextBox";
+            this.PaymentStatustextBox.Size = new System.Drawing.Size(177, 24);
+            this.PaymentStatustextBox.TabIndex = 75;
+            // 
             // FrmBookings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -471,6 +496,8 @@
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
             this.ClientSize = new System.Drawing.Size(954, 759);
+            this.Controls.Add(this.PaymentStatustextBox);
+            this.Controls.Add(this.StatustextBox);
             this.Controls.Add(this.DepositDuetextBox);
             this.Controls.Add(this.BookingDatetextBox);
             this.Controls.Add(this.CheckoutDatetextBox);
@@ -491,11 +518,9 @@
             this.Controls.Add(this.Adultslabel);
             this.Controls.Add(this.CreditCardtextBox);
             this.Controls.Add(this.TotalAmounttextBox);
-            this.Controls.Add(this.PaymentStatustextBox);
             this.Controls.Add(this.SpecialRequesttextBox);
             this.Controls.Add(this.ChildrentextBox);
             this.Controls.Add(this.AdulttextBox);
-            this.Controls.Add(this.StatustextBox);
             this.Controls.Add(this.DepositPaidtextBox);
             this.Controls.Add(this.Statuslabel);
             this.Controls.Add(this.DepositPaidlabel);
@@ -535,11 +560,9 @@
         private System.Windows.Forms.Label DepositPaidlabel;
         private System.Windows.Forms.Label Statuslabel;
         private System.Windows.Forms.TextBox DepositPaidtextBox;
-        private System.Windows.Forms.TextBox StatustextBox;
         private System.Windows.Forms.TextBox AdulttextBox;
         private System.Windows.Forms.TextBox ChildrentextBox;
         private System.Windows.Forms.TextBox SpecialRequesttextBox;
-        private System.Windows.Forms.TextBox PaymentStatustextBox;
         private System.Windows.Forms.TextBox TotalAmounttextBox;
         private System.Windows.Forms.TextBox CreditCardtextBox;
         private System.Windows.Forms.Label Adultslabel;
@@ -560,5 +583,7 @@
         private System.Windows.Forms.DateTimePicker CheckoutDatetextBox;
         private System.Windows.Forms.DateTimePicker BookingDatetextBox;
         private System.Windows.Forms.DateTimePicker DepositDuetextBox;
+        private System.Windows.Forms.ComboBox StatustextBox;
+        private System.Windows.Forms.ComboBox PaymentStatustextBox;
     }
 }

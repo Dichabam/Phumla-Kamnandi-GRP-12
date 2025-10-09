@@ -97,22 +97,22 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
         {
  #region booking textbox fields
             String bookingRef = BookingReferencetextBox.Text;
-            String guest = GuestIdtextBox.Text;
-            String roomnumber = RoomNumbertextBox.Text;
-            String checkin = CheckInDatetextBox.Text;
-            String checkout = CheckoutDatetextBox.Text;
-            String numberofadults = AdulttextBox.Text;
-            String numberofchildren = ChildrentextBox.Text;
-            String totalamount= TotalAmounttextBox.Text;
-            String depositamount = DepositAmounttextBox.Text;
-            String depositpaid = DepositPaidtextBox.Text;
-            String status =     StatustextBox.Text;
+            int guest = int.Parse(GuestIdtextBox.Text);
+            int roomnumber = int.Parse(RoomNumbertextBox.Text);
+            DateTime checkin = DateTime.Parse(CheckInDatetextBox.Text);
+            DateTime checkout = DateTime.Parse(CheckoutDatetextBox.Text);
+            int numberofadults = int.Parse(AdulttextBox.Text);
+            int numberofchildren = int.Parse(ChildrentextBox.Text);
+            decimal totalamount= decimal.Parse(TotalAmounttextBox.Text);
+            decimal depositamount = decimal.Parse(DepositAmounttextBox.Text);
+            decimal depositpaid = decimal.Parse(DepositPaidtextBox.Text);
+            String status =    StatustextBox.Text;
             String paymentstatus = PaymentStatustextBox.Text;
-            String bookingdate = BookingDatetextBox.Text;
-            String depositdue = DepositDuetextBox.Text;
+            DateTime bookingdate = DateTime.Parse(BookingDatetextBox.Text);
+            DateTime  depositdue = DateTime.Parse(DepositDuetextBox.Text);
             String specialrequest = SpecialRequesttextBox.Text;
             String occupancy = OccupancytextBox.Text;
-            String creditcardnumber = CreditCardtextBox.Text;
+            int creditcardnumber = int.Parse(CreditCardtextBox.Text);
  #endregion
 
            
@@ -218,7 +218,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                     SqlCommand cmd = new SqlCommand(query, connection);
 
                     SqlCommand bookingcommand = new SqlCommand(query, connection);
-
+                   
                     bookingcommand.Parameters.AddWithValue("@RoomNumber", int.Parse(RoomNumbertextBox.Text));
                     bookingcommand.Parameters.AddWithValue("@CheckOutDate", DateTime.Parse(CheckoutDatetextBox.Text));
                     bookingcommand.Parameters.AddWithValue("@NumberOfAdults", int.Parse(AdulttextBox.Text));
@@ -246,7 +246,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
 
         private void CancelBookingButton_Click(object sender, EventArgs e)
         {
-
+            StatustextBox.Text = "Cancelled";
         }
 
         private void FirstNamelabel_Click(object sender, EventArgs e)
@@ -297,6 +297,9 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             BookingReferencetextBox.Text = bookingRef;
         }
 
-        
+        private void StatustextBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
