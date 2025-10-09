@@ -91,76 +91,97 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
         {
 
         }
-       
+
         // Method to handle the Make Booking button click event
         private void MakeBookingButton_Click(object sender, EventArgs e)
         {
- #region booking textbox fields
-            String bookingRef = BookingReferencetextBox.Text;
-            int guest = int.Parse(GuestIdtextBox.Text);
-            int roomnumber = int.Parse(RoomNumbertextBox.Text);
-            DateTime checkin = DateTime.Parse(CheckInDatetextBox.Text);
-            DateTime checkout = DateTime.Parse(CheckoutDatetextBox.Text);
-            int numberofadults = int.Parse(AdulttextBox.Text);
-            int numberofchildren = int.Parse(ChildrentextBox.Text);
-            decimal totalamount= decimal.Parse(TotalAmounttextBox.Text);
-            decimal depositamount = decimal.Parse(DepositAmounttextBox.Text);
-            decimal depositpaid = decimal.Parse(DepositPaidtextBox.Text);
-            String status =    StatustextBox.Text;
-            String paymentstatus = PaymentStatustextBox.Text;
-            DateTime bookingdate = DateTime.Parse(BookingDatetextBox.Text);
-            DateTime  depositdue = DateTime.Parse(DepositDuetextBox.Text);
-            String specialrequest = SpecialRequesttextBox.Text;
-            String occupancy = OccupancytextBox.Text;
-            int creditcardnumber = int.Parse(CreditCardtextBox.Text);
- #endregion
-
-           
-            SqlConnection connection = new SqlConnection(connectionString);
-            string query = @"INSERT INTO Booking (BookingReference, GuestId, RoomNumber, CheckInDate, CheckOutDate, NumberOfAdults, NumberOfChildren,
-                     TotalAmount, DepositAmount, DepositPaid, Status, PaymentStatus, BookingDate, DepositDueDate, 
-                     SpecialRequests, IsSingleOccupancy, CreditCardLastFour) 
-                    VALUES (@BookingReference, @GuestId, @RoomNumber, @CheckInDate, @CheckOutDate, @NumberOfAdults, 
-                    @NumberOfChildren, @TotalAmount, @DepositAmount, @DepositPaid, @Status, @PaymentStatus, 
-                    @BookingDate, @DepositDueDate, @SpecialRequests, @IsSingleOccupancy, @CreditCardLastFour)";
-
-
-            SqlCommand bookingcommand = new SqlCommand(query,connection);
-            bookingcommand.Parameters.AddWithValue("@BookingReference", bookingRef);
-            bookingcommand.Parameters.AddWithValue("@GuestId", guest);
-            bookingcommand.Parameters.AddWithValue("@RoomNumber", roomnumber);
-            bookingcommand.Parameters.AddWithValue("@CheckInDate", checkin);
-            bookingcommand.Parameters.AddWithValue("@CheckOutDate", checkout);
-            bookingcommand.Parameters.AddWithValue("@NumberOfAdults", numberofadults);
-            bookingcommand.Parameters.AddWithValue("@NumberOfChildren", numberofchildren);
-            bookingcommand.Parameters.AddWithValue("@TotalAmount", totalamount);
-            bookingcommand.Parameters.AddWithValue("@DepositAmount", depositamount);
-            bookingcommand.Parameters.AddWithValue("@DepositPaid", depositpaid);
-            bookingcommand.Parameters.AddWithValue("@Status", status);
-            bookingcommand.Parameters.AddWithValue("@PaymentStatus", paymentstatus);
-            bookingcommand.Parameters.AddWithValue("@BookingDate", bookingdate);
-            bookingcommand.Parameters.AddWithValue("@DepositDueDate", depositdue);
-            bookingcommand.Parameters.AddWithValue("@SpecialRequest", specialrequest);
-            bookingcommand.Parameters.AddWithValue("@IsSingleOccupancy", occupancy);
-            bookingcommand.Parameters.AddWithValue("@CreditCardLastFour", creditcardnumber);
-
             try
             {
-                connection.Open();
-                bookingcommand.ExecuteNonQuery();
-                MessageBox.Show("Booking added successfully!");
-                RefreshBookings();
+                #region Validate and parse booking fields
+                // Validate required fields
+                if (string.IsNullOrWhiteSpace(BookingReferencetextBox.Text) ||
+                    string.IsNullOrWhiteSpace(GuestIdtextBox.Text) ||
+                    string.IsNullOrWhiteSpace(RoomNumbertextBox.Text))
+                {
+                    MessageBox.Show("Please fill in all required fields.");
+                    return;
+                }
+
+                String bookingRef = BookingReferencetextBox.Text;
+                int guest = int.Parse(GuestIdtextBox.Text);
+                int roomnumber = int.Parse(RoomNumbertextBox.Text);
+                DateTime checkin = DateTime.Parse(CheckInDatetextBox.Text);
+                DateTime checkout = DateTime.Parse(CheckoutDatetextBox.Text);
+                int numberofadults = int.Parse(AdulttextBox.Text);
+                int numberofchildren = int.Parse(ChildrentextBox.Text);
+                decimal totalamount = decimal.Parse(TotalAmounttextBox.Text);
+                decimal depositamount = decimal.Parse(DepositAmounttextBox.Text);
+                decimal depositpaid = decimal.Parse(DepositPaidtextBox.Text);
+                String status = StatustextBox.Text;
+                String paymentstatus = PaymentStatustextBox.Text;
+                DateTime bookingdate = DateTime.Parse(BookingDatetextBox.Text);
+                DateTime depositdue = DateTime.Parse(DepositDuetextBox.Text);
+                String specialrequest = SpecialRequesttextBox.Text;
+                String occupancy = OccupancytextBox.Text;
+                int creditcardnumber = int.Parse(CreditCardtextBox.Text);
+                #endregion
+
+                // Validate dates
+                if (checkout <= checkin)
+                {
+                    MessageBox.Show("Check-out date must be after check-in date.");
+                    return;
+                }
+
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    string query = @"INSERT INTO Booking (BookingReference, GuestId, RoomNumber, CheckInDate, CheckOutDate, 
+                            NumberOfAdults, NumberOfChildren, TotalAmount, DepositAmount, DepositPaid, Status, 
+                            PaymentStatus, BookingDate, DepositDueDate, SpecialRequests, IsSingleOccupancy, CreditCardLastFour) 
+                            VALUES (@BookingReference, @GuestId, @RoomNumber, @CheckInDate, @CheckOutDate, @NumberOfAdults, 
+                            @NumberOfChildren, @TotalAmount, @DepositAmount, @DepositPaid, @Status, @PaymentStatus, 
+                            @BookingDate, @DepositDueDate, @SpecialRequests, @IsSingleOccupancy, @CreditCardLastFour)";
+
+                    SqlCommand bookingcommand = new SqlCommand(query, connection);
+
+                    bookingcommand.Parameters.AddWithValue("@BookingReference", bookingRef);
+                    bookingcommand.Parameters.AddWithValue("@GuestId", guest);
+                    bookingcommand.Parameters.AddWithValue("@RoomNumber", roomnumber);
+                    bookingcommand.Parameters.AddWithValue("@CheckInDate", checkin);
+                    bookingcommand.Parameters.AddWithValue("@CheckOutDate", checkout);
+                    bookingcommand.Parameters.AddWithValue("@NumberOfAdults", numberofadults);
+                    bookingcommand.Parameters.AddWithValue("@NumberOfChildren", numberofchildren);
+                    bookingcommand.Parameters.AddWithValue("@TotalAmount", totalamount);
+                    bookingcommand.Parameters.AddWithValue("@DepositAmount", depositamount);
+                    bookingcommand.Parameters.AddWithValue("@DepositPaid", depositpaid);
+                    bookingcommand.Parameters.AddWithValue("@Status", status);
+                    bookingcommand.Parameters.AddWithValue("@PaymentStatus", paymentstatus);
+                    bookingcommand.Parameters.AddWithValue("@BookingDate", bookingdate);
+                    bookingcommand.Parameters.AddWithValue("@DepositDueDate", depositdue);
+                    bookingcommand.Parameters.AddWithValue("@SpecialRequests", specialrequest); // ← FIXED: was @SpecialRequest
+                    bookingcommand.Parameters.AddWithValue("@IsSingleOccupancy", occupancy);
+                    bookingcommand.Parameters.AddWithValue("@CreditCardLastFour", creditcardnumber);
+
+                    connection.Open();
+                    bookingcommand.ExecuteNonQuery();
+
+                    MessageBox.Show("Booking added successfully!");
+                    RefreshBookings();
+                    ClearAllFields(); // Clear fields after successful booking
+                }
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Please enter valid data in all fields. Check that dates, numbers, and amounts are formatted correctly.");
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show("Database error: " + ex.Message);
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error: " + ex.Message);
             }
-            finally
-            {
-                connection.Close();
-            }
-
-
         }
 
         private void DatetextBox_TextChanged_1(object sender, EventArgs e)
@@ -339,6 +360,33 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
         }
 
         private void StatustextBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void MakeBookingButton_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ClearAllFields()
+        {
+            BookingReferencetextBox.Clear();
+            GuestIdtextBox.Clear();
+            RoomNumbertextBox.Clear();
+            AdulttextBox.Clear();
+            ChildrentextBox.Clear();
+            TotalAmounttextBox.Clear();
+            DepositAmounttextBox.Clear();
+            DepositPaidtextBox.Clear();
+            SpecialRequesttextBox.Clear();
+            OccupancytextBox.Clear();
+            CreditCardtextBox.Clear();
+
+            GenerateBookingReference(); // Generate new reference for next booking
+        }
+
+        private void UpdatebookingButton_Click_1(object sender, EventArgs e)
         {
 
         }

@@ -367,6 +367,7 @@
             this.UpdatebookingButton.Size = new System.Drawing.Size(230, 45);
             this.UpdatebookingButton.TabIndex = 66;
             this.UpdatebookingButton.Text = "UPDATE BOOKING";
+            this.UpdatebookingButton.Click += new System.EventHandler(this.UpdatebookingButton_Click_1);
             // 
             // CancelBookingButton
             // 
@@ -401,6 +402,7 @@
             this.MakeBookingButton.Size = new System.Drawing.Size(230, 45);
             this.MakeBookingButton.TabIndex = 68;
             this.MakeBookingButton.Text = "MAKE BOOKING";
+            this.MakeBookingButton.Click += new System.EventHandler(this.MakeBookingButton_Click_1);
             // 
             // SubmitButton
             // 
