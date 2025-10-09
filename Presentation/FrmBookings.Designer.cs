@@ -60,9 +60,11 @@
             this.MakeBookingButton = new Guna.UI2.WinForms.Guna2Button();
             this.CancelBookingButton = new Guna.UI2.WinForms.Guna2Button();
             this.UpdatebookingButton = new Guna.UI2.WinForms.Guna2Button();
+            this.phumlaKamnandiDBDataSetBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.ShowdataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.phumlaKamnandiDBDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.phumlaKamnandiDBDataSetBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.phumlaKamnandiDBDataSetBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // ShowdataGridView
@@ -70,7 +72,9 @@
             this.ShowdataGridView.AllowDrop = true;
             this.ShowdataGridView.AllowUserToAddRows = false;
             this.ShowdataGridView.AllowUserToDeleteRows = false;
+            this.ShowdataGridView.AutoGenerateColumns = false;
             this.ShowdataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ShowdataGridView.DataSource = this.phumlaKamnandiDBDataSetBindingSource1;
             this.ShowdataGridView.Location = new System.Drawing.Point(53, 6);
             this.ShowdataGridView.Name = "ShowdataGridView";
             this.ShowdataGridView.RowHeadersWidth = 51;
@@ -530,6 +534,11 @@
             this.UpdatebookingButton.Text = "UPDATE BOOKING";
             this.UpdatebookingButton.Click += new System.EventHandler(this.UpdatebookingButton_Click_1);
             // 
+            // phumlaKamnandiDBDataSetBindingSource1
+            // 
+            this.phumlaKamnandiDBDataSetBindingSource1.DataSource = this.phumlaKamnandiDBDataSet;
+            this.phumlaKamnandiDBDataSetBindingSource1.Position = 0;
+            // 
             // FrmBookings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -573,6 +582,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.ShowdataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.phumlaKamnandiDBDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.phumlaKamnandiDBDataSetBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.phumlaKamnandiDBDataSetBindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -610,5 +620,6 @@
         private System.Windows.Forms.Label checkoutlabel;
         private Guna.UI2.WinForms.Guna2DateTimePicker checkindp;
         private Guna.UI2.WinForms.Guna2DateTimePicker checkoutdp;
+        private System.Windows.Forms.BindingSource phumlaKamnandiDBDataSetBindingSource1;
     }
 }
