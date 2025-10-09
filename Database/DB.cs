@@ -17,7 +17,7 @@ namespace Phumla_Kamnandi_GRP_12.Database
         public DataSet dsMain = new DataSet();
         public SqlDataAdapter daMain = new SqlDataAdapter();
         public DB()
-        {
+        { 
             try
             {
                 cnMain = new SqlConnection(strConn);
