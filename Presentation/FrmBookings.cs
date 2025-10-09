@@ -273,5 +273,20 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             OccupancytextBox.Enabled = false;
             CreditCardtextBox.Enabled = false;
         }
+
+        private void SubmitButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BookingDatetextBox_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

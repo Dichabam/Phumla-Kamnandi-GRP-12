@@ -38,8 +38,6 @@
             this.DepositAmounttextBox = new System.Windows.Forms.TextBox();
             this.GuestIdtextBox = new System.Windows.Forms.TextBox();
             this.RoomNumbertextBox = new System.Windows.Forms.TextBox();
-            this.CheckInDatetextBox = new System.Windows.Forms.TextBox();
-            this.CheckoutDatetextBox = new System.Windows.Forms.TextBox();
             this.DepositAmountlabel = new System.Windows.Forms.Label();
             this.DepositPaidlabel = new System.Windows.Forms.Label();
             this.Statuslabel = new System.Windows.Forms.Label();
@@ -48,8 +46,6 @@
             this.AdulttextBox = new System.Windows.Forms.TextBox();
             this.ChildrentextBox = new System.Windows.Forms.TextBox();
             this.SpecialRequesttextBox = new System.Windows.Forms.TextBox();
-            this.DepositDuetextBox = new System.Windows.Forms.TextBox();
-            this.BookingDatetextBox = new System.Windows.Forms.TextBox();
             this.PaymentStatustextBox = new System.Windows.Forms.TextBox();
             this.TotalAmounttextBox = new System.Windows.Forms.TextBox();
             this.CreditCardtextBox = new System.Windows.Forms.TextBox();
@@ -67,6 +63,10 @@
             this.CancelBookingButton = new Guna.UI2.WinForms.Guna2Button();
             this.MakeBookingButton = new Guna.UI2.WinForms.Guna2Button();
             this.SubmitButton = new Guna.UI2.WinForms.Guna2Button();
+            this.CheckInDatetextBox = new System.Windows.Forms.DateTimePicker();
+            this.CheckoutDatetextBox = new System.Windows.Forms.DateTimePicker();
+            this.BookingDatetextBox = new System.Windows.Forms.DateTimePicker();
+            this.DepositDuetextBox = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.ShowdataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -168,21 +168,6 @@
             this.RoomNumbertextBox.Size = new System.Drawing.Size(177, 22);
             this.RoomNumbertextBox.TabIndex = 40;
             // 
-            // CheckInDatetextBox
-            // 
-            this.CheckInDatetextBox.Location = new System.Drawing.Point(210, 457);
-            this.CheckInDatetextBox.Name = "CheckInDatetextBox";
-            this.CheckInDatetextBox.Size = new System.Drawing.Size(177, 22);
-            this.CheckInDatetextBox.TabIndex = 41;
-            // 
-            // CheckoutDatetextBox
-            // 
-            this.CheckoutDatetextBox.Location = new System.Drawing.Point(210, 503);
-            this.CheckoutDatetextBox.Name = "CheckoutDatetextBox";
-            this.CheckoutDatetextBox.Size = new System.Drawing.Size(177, 22);
-            this.CheckoutDatetextBox.TabIndex = 42;
-            this.CheckoutDatetextBox.TextChanged += new System.EventHandler(this.textBox6_TextChanged);
-            // 
             // DepositAmountlabel
             // 
             this.DepositAmountlabel.AutoSize = true;
@@ -252,20 +237,6 @@
             this.SpecialRequesttextBox.Name = "SpecialRequesttextBox";
             this.SpecialRequesttextBox.Size = new System.Drawing.Size(177, 22);
             this.SpecialRequesttextBox.TabIndex = 50;
-            // 
-            // DepositDuetextBox
-            // 
-            this.DepositDuetextBox.Location = new System.Drawing.Point(676, 533);
-            this.DepositDuetextBox.Name = "DepositDuetextBox";
-            this.DepositDuetextBox.Size = new System.Drawing.Size(177, 22);
-            this.DepositDuetextBox.TabIndex = 51;
-            // 
-            // BookingDatetextBox
-            // 
-            this.BookingDatetextBox.Location = new System.Drawing.Point(676, 490);
-            this.BookingDatetextBox.Name = "BookingDatetextBox";
-            this.BookingDatetextBox.Size = new System.Drawing.Size(177, 22);
-            this.BookingDatetextBox.TabIndex = 52;
             // 
             // PaymentStatustextBox
             // 
@@ -456,11 +427,42 @@
             this.SubmitButton.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SubmitButton.ForeColor = System.Drawing.Color.White;
             this.SubmitButton.Image = global::Phumla_Kamnandi_GRP_12.Properties.Resources.man_4_50dp_FFFFFF_FILL0_wght400_GRAD0_opsz48;
-            this.SubmitButton.Location = new System.Drawing.Point(329, 691);
+            this.SubmitButton.Location = new System.Drawing.Point(328, 678);
             this.SubmitButton.Name = "SubmitButton";
             this.SubmitButton.Size = new System.Drawing.Size(282, 45);
             this.SubmitButton.TabIndex = 69;
             this.SubmitButton.Text = "Submit Booking";
+            this.SubmitButton.Click += new System.EventHandler(this.SubmitButton_Click);
+            // 
+            // CheckInDatetextBox
+            // 
+            this.CheckInDatetextBox.Location = new System.Drawing.Point(210, 458);
+            this.CheckInDatetextBox.Name = "CheckInDatetextBox";
+            this.CheckInDatetextBox.Size = new System.Drawing.Size(177, 22);
+            this.CheckInDatetextBox.TabIndex = 70;
+            this.CheckInDatetextBox.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
+            // 
+            // CheckoutDatetextBox
+            // 
+            this.CheckoutDatetextBox.Location = new System.Drawing.Point(210, 503);
+            this.CheckoutDatetextBox.Name = "CheckoutDatetextBox";
+            this.CheckoutDatetextBox.Size = new System.Drawing.Size(177, 22);
+            this.CheckoutDatetextBox.TabIndex = 71;
+            // 
+            // BookingDatetextBox
+            // 
+            this.BookingDatetextBox.Location = new System.Drawing.Point(676, 490);
+            this.BookingDatetextBox.Name = "BookingDatetextBox";
+            this.BookingDatetextBox.Size = new System.Drawing.Size(177, 22);
+            this.BookingDatetextBox.TabIndex = 72;
+            this.BookingDatetextBox.ValueChanged += new System.EventHandler(this.BookingDatetextBox_ValueChanged);
+            // 
+            // DepositDuetextBox
+            // 
+            this.DepositDuetextBox.Location = new System.Drawing.Point(676, 530);
+            this.DepositDuetextBox.Name = "DepositDuetextBox";
+            this.DepositDuetextBox.Size = new System.Drawing.Size(177, 22);
+            this.DepositDuetextBox.TabIndex = 73;
             // 
             // FrmBookings
             // 
@@ -469,6 +471,10 @@
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
             this.ClientSize = new System.Drawing.Size(954, 759);
+            this.Controls.Add(this.DepositDuetextBox);
+            this.Controls.Add(this.BookingDatetextBox);
+            this.Controls.Add(this.CheckoutDatetextBox);
+            this.Controls.Add(this.CheckInDatetextBox);
             this.Controls.Add(this.SubmitButton);
             this.Controls.Add(this.MakeBookingButton);
             this.Controls.Add(this.CancelBookingButton);
@@ -486,8 +492,6 @@
             this.Controls.Add(this.CreditCardtextBox);
             this.Controls.Add(this.TotalAmounttextBox);
             this.Controls.Add(this.PaymentStatustextBox);
-            this.Controls.Add(this.BookingDatetextBox);
-            this.Controls.Add(this.DepositDuetextBox);
             this.Controls.Add(this.SpecialRequesttextBox);
             this.Controls.Add(this.ChildrentextBox);
             this.Controls.Add(this.AdulttextBox);
@@ -496,8 +500,6 @@
             this.Controls.Add(this.Statuslabel);
             this.Controls.Add(this.DepositPaidlabel);
             this.Controls.Add(this.DepositAmountlabel);
-            this.Controls.Add(this.CheckoutDatetextBox);
-            this.Controls.Add(this.CheckInDatetextBox);
             this.Controls.Add(this.RoomNumbertextBox);
             this.Controls.Add(this.GuestIdtextBox);
             this.Controls.Add(this.DepositAmounttextBox);
@@ -529,8 +531,6 @@
         private System.Windows.Forms.TextBox DepositAmounttextBox;
         private System.Windows.Forms.TextBox GuestIdtextBox;
         private System.Windows.Forms.TextBox RoomNumbertextBox;
-        private System.Windows.Forms.TextBox CheckInDatetextBox;
-        private System.Windows.Forms.TextBox CheckoutDatetextBox;
         private System.Windows.Forms.Label DepositAmountlabel;
         private System.Windows.Forms.Label DepositPaidlabel;
         private System.Windows.Forms.Label Statuslabel;
@@ -539,8 +539,6 @@
         private System.Windows.Forms.TextBox AdulttextBox;
         private System.Windows.Forms.TextBox ChildrentextBox;
         private System.Windows.Forms.TextBox SpecialRequesttextBox;
-        private System.Windows.Forms.TextBox DepositDuetextBox;
-        private System.Windows.Forms.TextBox BookingDatetextBox;
         private System.Windows.Forms.TextBox PaymentStatustextBox;
         private System.Windows.Forms.TextBox TotalAmounttextBox;
         private System.Windows.Forms.TextBox CreditCardtextBox;
@@ -558,5 +556,9 @@
         private Guna.UI2.WinForms.Guna2Button CancelBookingButton;
         private Guna.UI2.WinForms.Guna2Button MakeBookingButton;
         private Guna.UI2.WinForms.Guna2Button SubmitButton;
+        private System.Windows.Forms.DateTimePicker CheckInDatetextBox;
+        private System.Windows.Forms.DateTimePicker CheckoutDatetextBox;
+        private System.Windows.Forms.DateTimePicker BookingDatetextBox;
+        private System.Windows.Forms.DateTimePicker DepositDuetextBox;
     }
 }
