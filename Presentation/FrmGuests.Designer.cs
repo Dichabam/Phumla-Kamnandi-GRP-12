@@ -43,9 +43,11 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             this.GuestStandingButton = new Guna.UI2.WinForms.Guna2Button();
             this.AddGuestButton = new Guna.UI2.WinForms.Guna2Button();
             this.UpdateGuestButton = new Guna.UI2.WinForms.Guna2Button();
+            this.phumlaKamnandiDBDataSetBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.GuestDataView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.phumlaKamnandiDBDataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.phumlaKamnandiDBDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.phumlaKamnandiDBDataSetBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // GuestDataView
@@ -53,7 +55,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             this.GuestDataView.AllowUserToOrderColumns = true;
             this.GuestDataView.AutoGenerateColumns = false;
             this.GuestDataView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.GuestDataView.DataSource = this.phumlaKamnandiDBDataSetBindingSource;
+            this.GuestDataView.DataSource = this.phumlaKamnandiDBDataSetBindingSource1;
             this.GuestDataView.Location = new System.Drawing.Point(63, 12);
             this.GuestDataView.Name = "GuestDataView";
             this.GuestDataView.RowHeadersWidth = 51;
@@ -207,6 +209,11 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             this.UpdateGuestButton.Text = "Update Guest";
             this.UpdateGuestButton.Click += new System.EventHandler(this.UpdateGuestButton_Click);
             // 
+            // phumlaKamnandiDBDataSetBindingSource1
+            // 
+            this.phumlaKamnandiDBDataSetBindingSource1.DataSource = this.phumlaKamnandiDBDataSet;
+            this.phumlaKamnandiDBDataSetBindingSource1.Position = 0;
+            // 
             // FrmGuests
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -228,6 +235,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             ((System.ComponentModel.ISupportInitialize)(this.GuestDataView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.phumlaKamnandiDBDataSetBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.phumlaKamnandiDBDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.phumlaKamnandiDBDataSetBindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -246,5 +254,6 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
         private System.Windows.Forms.Label enterEmailTextbox;
         private Guna.UI2.WinForms.Guna2Button ConfirmButtonVBH;
         private System.Windows.Forms.Label ErrorLableVBH;
+        private BindingSource phumlaKamnandiDBDataSetBindingSource1;
     }
 }
