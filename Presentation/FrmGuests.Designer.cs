@@ -130,7 +130,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             this.ConfirmButtonVBH.Size = new System.Drawing.Size(180, 45);
             this.ConfirmButtonVBH.TabIndex = 26;
             this.ConfirmButtonVBH.Text = "Confirm";
-            this.ConfirmButtonVBH.Click += new System.EventHandler(this.UpdateGuestButton_Click);
+            this.ConfirmButtonVBH.Click += new System.EventHandler(this.ConfirmButtonVBH_Click);
             // 
             // ErrorLableVBH
             // 
@@ -158,7 +158,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             this.viewBookingHostoryButton.Size = new System.Drawing.Size(180, 45);
             this.viewBookingHostoryButton.TabIndex = 26;
             this.viewBookingHostoryButton.Text = "View Booking History";
-            this.viewBookingHostoryButton.Click += new System.EventHandler(this.UpdateGuestButton_Click);
+            this.viewBookingHostoryButton.Click += new System.EventHandler(this.ViewBookingHistoryButton_Click);
             // 
             // GuestStandingButton
             // 
@@ -176,7 +176,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             this.GuestStandingButton.Size = new System.Drawing.Size(180, 45);
             this.GuestStandingButton.TabIndex = 26;
             this.GuestStandingButton.Text = "Guest standing";
-            this.GuestStandingButton.Click += new System.EventHandler(this.UpdateGuestButton_Click);
+            this.GuestStandingButton.Click += new System.EventHandler(this.GuestStandingButton_Click);
             // 
             // AddGuestButton
             // 
