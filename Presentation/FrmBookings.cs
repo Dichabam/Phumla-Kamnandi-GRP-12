@@ -24,6 +24,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
 
         private void FrmBookings_Load(object sender, EventArgs e)
         {
+            GenerateBookingReference();
             RefreshBookings();
         }
 
@@ -288,5 +289,14 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
         {
 
         }
+
+        private void GenerateBookingReference()
+        {
+            Random random = new Random();
+            string bookingRef = "PK-" + random.Next(100000, 999999);
+            BookingReferencetextBox.Text = bookingRef;
+        }
+
+        
     }
 }
