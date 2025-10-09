@@ -21,5 +21,23 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
         {
 
         }
+
+        private void makeBookingButton_Click(object sender, EventArgs e)
+        {
+            var dashboard = Application.OpenForms.OfType<Dashboard>().FirstOrDefault();
+            if (dashboard != null)
+            {
+                dashboard.NavigateToBookings();
+            }
+        }
+
+        private void ViewGuestButton_Click(object sender, EventArgs e)
+        {
+            var dashboard = Application.OpenForms.OfType<Dashboard>().FirstOrDefault();
+            if (dashboard != null)
+            {
+                dashboard.NavigateToGuest();
+            }
+        }
     }
 }

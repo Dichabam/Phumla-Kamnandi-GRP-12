@@ -33,8 +33,9 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
         {
             this.components = new System.ComponentModel.Container();
             this.GuestDataView = new System.Windows.Forms.DataGridView();
-            this.phumlaKamnandiDBDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.phumlaKamnandiDBDataSetBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.phumlaKamnandiDBDataSet = new Phumla_Kamnandi_GRP_12.PhumlaKamnandiDBDataSet();
+            this.phumlaKamnandiDBDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.emailConfirmtextbox = new Guna.UI2.WinForms.Guna2TextBox();
             this.enterEmailTextbox = new System.Windows.Forms.Label();
             this.ConfirmButtonVBH = new Guna.UI2.WinForms.Guna2Button();
@@ -43,11 +44,10 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             this.GuestStandingButton = new Guna.UI2.WinForms.Guna2Button();
             this.AddGuestButton = new Guna.UI2.WinForms.Guna2Button();
             this.UpdateGuestButton = new Guna.UI2.WinForms.Guna2Button();
-            this.phumlaKamnandiDBDataSetBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.GuestDataView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.phumlaKamnandiDBDataSetBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.phumlaKamnandiDBDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.phumlaKamnandiDBDataSetBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.phumlaKamnandiDBDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.phumlaKamnandiDBDataSetBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // GuestDataView
@@ -64,15 +64,20 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             this.GuestDataView.TabIndex = 25;
             this.GuestDataView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GuestDataView_CellContentClick);
             // 
-            // phumlaKamnandiDBDataSetBindingSource
+            // phumlaKamnandiDBDataSetBindingSource1
             // 
-            this.phumlaKamnandiDBDataSetBindingSource.DataSource = this.phumlaKamnandiDBDataSet;
-            this.phumlaKamnandiDBDataSetBindingSource.Position = 0;
+            this.phumlaKamnandiDBDataSetBindingSource1.DataSource = this.phumlaKamnandiDBDataSet;
+            this.phumlaKamnandiDBDataSetBindingSource1.Position = 0;
             // 
             // phumlaKamnandiDBDataSet
             // 
             this.phumlaKamnandiDBDataSet.DataSetName = "PhumlaKamnandiDBDataSet";
             this.phumlaKamnandiDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // phumlaKamnandiDBDataSetBindingSource
+            // 
+            this.phumlaKamnandiDBDataSetBindingSource.DataSource = this.phumlaKamnandiDBDataSet;
+            this.phumlaKamnandiDBDataSetBindingSource.Position = 0;
             // 
             // emailConfirmtextbox
             // 
@@ -189,7 +194,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             this.AddGuestButton.Size = new System.Drawing.Size(180, 45);
             this.AddGuestButton.TabIndex = 26;
             this.AddGuestButton.Text = "Add Guest";
-            this.AddGuestButton.Click += new System.EventHandler(this.UpdateGuestButton_Click);
+            this.AddGuestButton.Click += new System.EventHandler(this.AddGuestButton_Click);
             // 
             // UpdateGuestButton
             // 
@@ -208,11 +213,6 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             this.UpdateGuestButton.TabIndex = 26;
             this.UpdateGuestButton.Text = "Update Guest";
             this.UpdateGuestButton.Click += new System.EventHandler(this.UpdateGuestButton_Click);
-            // 
-            // phumlaKamnandiDBDataSetBindingSource1
-            // 
-            this.phumlaKamnandiDBDataSetBindingSource1.DataSource = this.phumlaKamnandiDBDataSet;
-            this.phumlaKamnandiDBDataSetBindingSource1.Position = 0;
             // 
             // FrmGuests
             // 
@@ -233,9 +233,9 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             this.Name = "FrmGuests";
             this.Text = "FrmGuests";
             ((System.ComponentModel.ISupportInitialize)(this.GuestDataView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.phumlaKamnandiDBDataSetBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.phumlaKamnandiDBDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.phumlaKamnandiDBDataSetBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.phumlaKamnandiDBDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.phumlaKamnandiDBDataSetBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
