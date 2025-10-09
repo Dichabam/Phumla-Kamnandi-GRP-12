@@ -31,7 +31,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
         {   
             using (SqlConnection con = new SqlConnection(connectionString))
             {
-                string query = "SELECT BookingReference, GuestId, RoomNumber, CheckInDate, CheckOutDate, Status FROM Booking";
+                string query = "SELECT BookingReference, GuestId, RoomNumber, CheckInDate, CheckOutDate, NumberOfAdults, NumberOfChildren,TotalAmount, DepositAmount, DepositPaid, Status, PaymentStatus, BookingDate, DepositDueDate,SpecialRequests, IsSingleOccupancy, CreditCardLastFour FROM Booking";
 
                 SqlDataAdapter da = new SqlDataAdapter(query,con);
                 DataTable dt = new DataTable();
@@ -118,10 +118,10 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             SqlConnection connection = new SqlConnection(connectionString);
             string query = @"INSERT INTO Booking (BookingReference, GuestId, RoomNumber, CheckInDate, CheckOutDate, NumberOfAdults, NumberOfChildren,
                      TotalAmount, DepositAmount, DepositPaid, Status, PaymentStatus, BookingDate, DepositDueDate, 
-                     SpecialRequest, IsSingleOccupancy, CreditCardLastFour) 
+                     SpecialRequests, IsSingleOccupancy, CreditCardLastFour) 
                     VALUES (@BookingReference, @GuestId, @RoomNumber, @CheckInDate, @CheckOutDate, @NumberOfAdults, 
                     @NumberOfChildren, @TotalAmount, @DepositAmount, @DepositPaid, @Status, @PaymentStatus, 
-                    @BookingDate, @DepositDueDate, @SpecialRequest, @IsSingleOccupancy, @CreditCardLastFour)";
+                    @BookingDate, @DepositDueDate, @SpecialRequests, @IsSingleOccupancy, @CreditCardLastFour)";
 
 
             SqlCommand bookingcommand = new SqlCommand(query,connection);
@@ -203,42 +203,11 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
 
             if(confirm == DialogResult.Yes)
             {
-                //BookingReferncelabel.Enabled = true; BookingReferencetextBox.Enabled = true;
-                // GuestIdlabel.Enabled = true; GuestIdtextBox.Enabled = true; 
 
-                // CheckInDatetextBox.Enabled = true; CheckInDatetextBox.Enabled = true; 
-                // CheckoutDatetextBox.Enabled = true; CheckOutDatelabel.Enabled = true;
-
-                // Adultslabel.Enabled = true; AdulttextBox.Enabled = true; 
-                // Childrenlabel.Enabled = true; ChildrentextBox.Enabled = true;
-
-                // TotalAmountlabel.Enabled = true; TotalAmounttextBox.Enabled = true;
-                // DepositAmountlabel.Enabled = true; DepositAmounttextBox.Enabled=true;
-
-                // DepositPaidlabel.Enabled = true; DepositPaidtextBox.Enabled = true; 
-                // StatustextBox.Enabled = true; Statuslabel.Enabled = true;   
-
-                // PaymentStatustextBox.Enabled = false; PaymentStatuslabel.Enabled = false;
-                // BookingDatetextBox.Enabled = true; BookingDatelabel.Enabled = true;
-
-                // DepositDuetextBox.Enabled = false; DepositDuelabel.Enabled = false;
-                // SpecialRequesttextBox.Enabled = false; SpecialRequestlabel.Enabled = false;
-
-                // OccupancytextBox.Enabled = true; Occupancylabel.Enabled = true;
-                // CreditCardtextBox.Enabled = false; CreditCardlabel.Enabled = false;
-
-
-                // RoomNumbertextBox.Enabled = false;RoomNumberlabel.Enabled = false;
-
-                // connection.Open();
-                // bookingcommand.ExecuteNonQuery();
-                // connection.Close();
-
-                // MessageBox.Show("Booking updated successfully!");
-                // RefreshBookings();
-
+              
                 using (SqlConnection connection = new SqlConnection(connectionString))
-                {
+                {   
+                    HideInputFields();
                     string query = @"UPDATE Booking 
                                          SET RoomNumber=@RoomNumber, CheckInDate=@CheckInDate, CheckOutDate=@CheckOutDate,
                                              NumberOfAdults=@NumberOfAdults, NumberOfChildren=@NumberOfChildren,
@@ -282,6 +251,27 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
         private void FirstNamelabel_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void HideInputFields()
+        {
+            BookingReferencetextBox.Enabled = true;
+            GuestIdtextBox.Enabled = true;
+            RoomNumbertextBox.Enabled = true;
+            CheckInDatetextBox.Enabled = true;
+            CheckoutDatetextBox.Enabled = true;
+            AdulttextBox.Enabled = false;
+            ChildrentextBox.Enabled = false;
+            TotalAmounttextBox.Enabled = false;
+            DepositAmounttextBox.Enabled = false;
+            DepositPaidtextBox.Enabled = false;
+            StatustextBox.Enabled = false;
+            PaymentStatustextBox.Enabled = false;
+            BookingDatetextBox.Enabled = false;
+            DepositDuetextBox.Enabled = false;
+            SpecialRequesttextBox.Enabled = false;
+            OccupancytextBox.Enabled = false;
+            CreditCardtextBox.Enabled = false;
         }
     }
 }
