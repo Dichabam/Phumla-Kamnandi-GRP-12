@@ -1,4 +1,7 @@
-﻿namespace Phumla_Kamnandi_GRP_12.Presentation
+﻿using System;
+using System.Windows.Forms;
+
+namespace Phumla_Kamnandi_GRP_12.Presentation
 {
     partial class FrmGuests
     {
@@ -230,6 +233,7 @@
 
         }
 
+    
         #endregion
         private System.Windows.Forms.DataGridView GuestDataView;
         private System.Windows.Forms.BindingSource phumlaKamnandiDBDataSetBindingSource;

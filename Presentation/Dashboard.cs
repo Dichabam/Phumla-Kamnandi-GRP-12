@@ -14,6 +14,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
         );
 
         private ServiceLocator _services;
+        private FrmRooms _currentRoomsForm;
 
         public Dashboard()
         {
@@ -31,6 +32,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
 
             lblTitle.Text = "HOME";
             LoadForm(new FrmHome());
+            SearchBox.TextChanged += SearchBox_TextChanged;
         }
 
         private void SetupUserInterface()
@@ -64,6 +66,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             UpdateNavigationPanel(HomeButton);
             lblTitle.Text = "HOME";
             LoadForm(new FrmHome());
+            SearchBox.ReadOnly = true; 
         }
 
         private void BookingButton_Click(object sender, EventArgs e)
@@ -91,7 +94,12 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
         {
             UpdateNavigationPanel(RoomsButton);
             lblTitle.Text = "ROOMS";
-             LoadForm(new FrmRooms());
+            _currentRoomsForm = new FrmRooms();
+            LoadForm(_currentRoomsForm);
+
+            // Enable search for rooms
+            SearchBox.Visible = true;
+            SearchBox.PlaceholderText = "Search rooms...";
         }
 
         private void SettingsButton_Click(object sender, EventArgs e)
@@ -202,11 +210,30 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             PnlNav.Top = button.Top;
             button.BackColor = Color.FromArgb(46, 51, 73);
         }
+
+        public void NavigateToBookings()
+        {
+            BookingButton_Click(BookingButton, EventArgs.Empty);
+        }
         #endregion
 
         private void PnlFormLoader_Paint(object sender, PaintEventArgs e)
         {
 
         }
+
+        // Add TextChanged event for SearchBox:
+        private void SearchBox_TextChanged(object sender, EventArgs e)
+        {
+            if (_currentRoomsForm != null && lblTitle.Text == "ROOMS")
+            {
+                _currentRoomsForm.SearchRooms(SearchBox.Text);
+            }
+        }
+
+        
+       
     }
+
+
 }

@@ -1,10 +1,11 @@
-﻿using System;
+﻿using Phumla_Kamnandi_GRP_12.Business.Entities;
+using Phumla_Kamnandi_GRP_12.Business.Enums;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Text;
 using System.Windows.Forms;
-using Phumla_Kamnandi_GRP_12.Business.Entities;
-using Phumla_Kamnandi_GRP_12.Business.Enums;
 
 namespace Phumla_Kamnandi_GRP_12.Presentation
 {
@@ -145,6 +146,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             PhoneLabel.ForeColor = Color.White;
         }
 
+
         private void LoadBookingHistory()
         {
             if (_bookings == null || _bookings.Count == 0)
@@ -155,10 +157,10 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                 return;
             }
 
-         
+            // Sort bookings
             var sortedBookings = _bookings.OrderByDescending(b => b.CheckInDate).ToList();
 
-           
+            // Separate current and past bookings
             var currentBookings = sortedBookings
                 .Where(b => b.CheckOutDate >= DateTime.Today && b.Status != BookingStatus.Cancelled)
                 .ToList();
@@ -166,16 +168,38 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                 .Where(b => b.CheckOutDate < DateTime.Today || b.Status == BookingStatus.Cancelled)
                 .ToList();
 
-          
-            DetailsLabel.Text = $"Total Bookings: {_bookings.Count} " +
-                              $"(Current: {currentBookings.Count}, Past: {pastBookings.Count})";
-            DetailsLabel.Font = new Font("Nirmala UI", 10.2F, FontStyle.Bold);
-            DetailsLabel.ForeColor = Color.FromArgb(0, 126, 249);
+            // Get the most recent booking
+            var lastBooking = sortedBookings.FirstOrDefault();
 
-        
+            // Build details text
+            StringBuilder details = new StringBuilder();
+            details.AppendLine($"Total Bookings: {_bookings.Count}");
+            details.AppendLine($"Current: {currentBookings.Count} | Past: {pastBookings.Count}");
+
+            if (lastBooking != null)
+            {
+                details.AppendLine();
+                details.AppendLine("Last Booking:");
+                details.AppendLine($"  Reference: {lastBooking.BookingReference}");
+                details.AppendLine($"  Check-in: {lastBooking.CheckInDate:yyyy-MM-dd}");
+                details.AppendLine($"  Check-out: {lastBooking.CheckOutDate:yyyy-MM-dd}");
+                details.AppendLine($"  Status: {lastBooking.Status}");
+
+                // Payment status
+                string paymentStatus = lastBooking.PaymentStatus == PaymentStatus.Paid
+                    ? "✓ Fully Paid"
+                    : $"Deposit: {lastBooking.DepositPaid:C} / {lastBooking.DepositAmount:C}";
+                details.AppendLine($"  Payment: {paymentStatus}");
+            }
+
+            DetailsLabel.Text = details.ToString();
+            DetailsLabel.Font = new Font("Nirmala UI", 9F, FontStyle.Regular);
+            DetailsLabel.ForeColor = Color.White;
+
+            // Display all bookings in grid
             _bookingsGrid.DataSource = sortedBookings;
 
-            
+            // Color code rows
             foreach (DataGridViewRow row in _bookingsGrid.Rows)
             {
                 var booking = row.DataBoundItem as Booking;
@@ -188,16 +212,33 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                     }
                     else if (booking.CheckInDate <= DateTime.Today && booking.CheckOutDate >= DateTime.Today)
                     {
-                       
+                        // Current stay
                         row.DefaultCellStyle.BackColor = Color.FromArgb(0, 100, 0);
+                        row.DefaultCellStyle.ForeColor = Color.White;
                     }
                     else if (booking.CheckInDate > DateTime.Today)
                     {
-                       
+                        // Future booking
                         row.DefaultCellStyle.BackColor = Color.FromArgb(0, 70, 140);
+                        row.DefaultCellStyle.ForeColor = Color.White;
+                    }
+                    else
+                    {
+                        // Past booking
+                        row.DefaultCellStyle.BackColor = Color.FromArgb(60, 60, 60);
+                        row.DefaultCellStyle.ForeColor = Color.LightGray;
+                    }
+
+                    // Highlight unpaid bookings
+                    if (booking.PaymentStatus != PaymentStatus.Paid)
+                    {
+                        row.Cells["PaymentStatus"].Style.BackColor = Color.Yellow;
+                        row.Cells["PaymentStatus"].Style.ForeColor = Color.Red;
                     }
                 }
             }
         }
+
+
     }
 }

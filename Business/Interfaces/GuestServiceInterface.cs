@@ -20,5 +20,6 @@ namespace Phumla_Kamnandi_GRP_12.Business.Interfaces
         bool UpdateGuestCreditCard(string guestId, string lastFourDigits);
         List<Booking> GetGuestBookings(string guestId);
         bool UpdateGuestContactInfo(string guestId, string email, string phone, string address);
+        bool CheckAndUpdateGuestStanding(string guestId);
     }
 }

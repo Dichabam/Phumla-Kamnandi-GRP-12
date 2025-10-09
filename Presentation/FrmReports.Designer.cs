@@ -1,4 +1,6 @@
-﻿namespace Phumla_Kamnandi_GRP_12.Presentation
+﻿using System;
+
+namespace Phumla_Kamnandi_GRP_12.Presentation
 {
     partial class FrmReports
     {
@@ -47,9 +49,11 @@
             this.AlltimeRB = new System.Windows.Forms.RadioButton();
             this.todayRB = new System.Windows.Forms.RadioButton();
             this.SpecificRB = new System.Windows.Forms.RadioButton();
+            this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.ReportDataview)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.phumlaKamnandiDBDataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.phumlaKamnandiDBDataSet)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // DatePickerStart
@@ -66,6 +70,7 @@
             this.DatePickerStart.Size = new System.Drawing.Size(370, 36);
             this.DatePickerStart.TabIndex = 1;
             this.DatePickerStart.Value = new System.DateTime(2025, 10, 8, 17, 30, 36, 816);
+            this.DatePickerStart.ValueChanged += new System.EventHandler(this.DatePickerStart_ValueChanged);
             // 
             // DatePickerEnd
             // 
@@ -81,6 +86,7 @@
             this.DatePickerEnd.Size = new System.Drawing.Size(370, 36);
             this.DatePickerEnd.TabIndex = 1;
             this.DatePickerEnd.Value = new System.DateTime(2025, 10, 8, 17, 30, 36, 816);
+            this.DatePickerEnd.ValueChanged += new System.EventHandler(this.DatePickerEnd_ValueChanged);
             // 
             // guna2ContextMenuStrip1
             // 
@@ -127,6 +133,7 @@
             this.OccupancyReportRadioButton.TabStop = true;
             this.OccupancyReportRadioButton.Text = "Occupancy Report";
             this.OccupancyReportRadioButton.UseVisualStyleBackColor = true;
+            this.OccupancyReportRadioButton.CheckedChanged += new System.EventHandler(this.OccupancyReportRadioButton_CheckedChanged);
             // 
             // RevenueRadioButton
             // 
@@ -140,6 +147,7 @@
             this.RevenueRadioButton.TabStop = true;
             this.RevenueRadioButton.Text = "Revenue Report";
             this.RevenueRadioButton.UseVisualStyleBackColor = true;
+            this.RevenueRadioButton.CheckedChanged += new System.EventHandler(this.RevenueRadioButton_CheckedChanged);
             // 
             // SelectDateLabel
             // 
@@ -188,6 +196,7 @@
             this.GenerateReportButton.Size = new System.Drawing.Size(180, 37);
             this.GenerateReportButton.TabIndex = 11;
             this.GenerateReportButton.Text = "Generate Report";
+            this.GenerateReportButton.Click += new System.EventHandler(this.GenerateReportButton_Click);
             // 
             // ReportDataview
             // 
@@ -231,45 +240,59 @@
             this.saveButton.Size = new System.Drawing.Size(180, 45);
             this.saveButton.TabIndex = 13;
             this.saveButton.Text = "Save Report";
+            this.saveButton.Click += new System.EventHandler(this.saveButton_Click);
             // 
             // AlltimeRB
             // 
             this.AlltimeRB.AutoSize = true;
             this.AlltimeRB.Font = new System.Drawing.Font("Nirmala Text", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AlltimeRB.ForeColor = System.Drawing.Color.White;
-            this.AlltimeRB.Location = new System.Drawing.Point(159, 165);
+            this.AlltimeRB.Location = new System.Drawing.Point(27, 3);
             this.AlltimeRB.Name = "AlltimeRB";
             this.AlltimeRB.Size = new System.Drawing.Size(81, 21);
             this.AlltimeRB.TabIndex = 14;
             this.AlltimeRB.TabStop = true;
             this.AlltimeRB.Text = "All Time";
             this.AlltimeRB.UseVisualStyleBackColor = true;
+            this.AlltimeRB.CheckedChanged += new System.EventHandler(this.AlltimeRB_CheckedChanged);
             // 
             // todayRB
             // 
             this.todayRB.AutoSize = true;
             this.todayRB.Font = new System.Drawing.Font("Nirmala Text", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.todayRB.ForeColor = System.Drawing.Color.White;
-            this.todayRB.Location = new System.Drawing.Point(434, 165);
+            this.todayRB.Location = new System.Drawing.Point(332, 3);
             this.todayRB.Name = "todayRB";
             this.todayRB.Size = new System.Drawing.Size(66, 21);
             this.todayRB.TabIndex = 14;
             this.todayRB.TabStop = true;
             this.todayRB.Text = "Today";
             this.todayRB.UseVisualStyleBackColor = true;
+            this.todayRB.CheckedChanged += new System.EventHandler(this.todayRB_CheckedChanged);
             // 
             // SpecificRB
             // 
             this.SpecificRB.AutoSize = true;
             this.SpecificRB.Font = new System.Drawing.Font("Nirmala Text", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SpecificRB.ForeColor = System.Drawing.Color.White;
-            this.SpecificRB.Location = new System.Drawing.Point(717, 165);
+            this.SpecificRB.Location = new System.Drawing.Point(657, 0);
             this.SpecificRB.Name = "SpecificRB";
             this.SpecificRB.Size = new System.Drawing.Size(118, 21);
             this.SpecificRB.TabIndex = 14;
             this.SpecificRB.TabStop = true;
             this.SpecificRB.Text = "Specific Range";
             this.SpecificRB.UseVisualStyleBackColor = true;
+            this.SpecificRB.CheckedChanged += new System.EventHandler(this.SpecificRB_CheckedChanged);
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.AlltimeRB);
+            this.panel1.Controls.Add(this.todayRB);
+            this.panel1.Controls.Add(this.SpecificRB);
+            this.panel1.Location = new System.Drawing.Point(60, 167);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(827, 30);
+            this.panel1.TabIndex = 15;
             // 
             // FrmReports
             // 
@@ -277,9 +300,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
             this.ClientSize = new System.Drawing.Size(954, 709);
-            this.Controls.Add(this.SpecificRB);
-            this.Controls.Add(this.todayRB);
-            this.Controls.Add(this.AlltimeRB);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.saveButton);
             this.Controls.Add(this.ReportDataview);
             this.Controls.Add(this.GenerateReportButton);
@@ -298,10 +319,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.ReportDataview)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.phumlaKamnandiDBDataSetBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.phumlaKamnandiDBDataSet)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
+
+       
 
         #endregion
 
@@ -323,5 +348,6 @@
         private System.Windows.Forms.RadioButton AlltimeRB;
         private System.Windows.Forms.RadioButton todayRB;
         private System.Windows.Forms.RadioButton SpecificRB;
+        private System.Windows.Forms.Panel panel1;
     }
 }

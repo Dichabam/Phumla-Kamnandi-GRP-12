@@ -7,8 +7,11 @@
  * Khumiso Motata, MTTKAG001 
  */
 using Phumla_Kamnandi_GRP_12.Business.Entities;
+using Phumla_Kamnandi_GRP_12.Business.Enums;
 using Phumla_Kamnandi_GRP_12.Business.Interfaces;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Phumla_Kamnandi_GRP_12.Business.Services
 {
@@ -78,5 +81,43 @@ namespace Phumla_Kamnandi_GRP_12.Business.Services
             _guestRepository.Update(guest);
             return true;
         }
+
+        public bool UpdateGuestStanding(string guestId, bool isInGoodStanding, string reason = null)
+        {
+            var guest = _guestRepository.GetById(guestId);
+            if (guest == null) return false;
+
+            guest.IsInGoodStanding = isInGoodStanding;
+            _guestRepository.Update(guest);
+
+
+            return true;
+        }
+
+        public bool CheckAndUpdateGuestStanding(string guestId)
+        {
+            var guest = _guestRepository.GetById(guestId);
+            if (guest == null) return false;
+
+            var bookings = _bookingRepository.GetByGuestId(guestId);
+
+            // Check for overdue deposits
+            bool hasOverdueDeposits = bookings.Any(b =>
+                b.Status == BookingStatus.Unconfirmed &&
+                b.DepositDueDate.HasValue &&
+                b.DepositDueDate.Value < DateTime.Today);
+
+            // Update standing if needed
+            if (hasOverdueDeposits && guest.IsInGoodStanding)
+            {
+                guest.IsInGoodStanding = false;
+                _guestRepository.Update(guest);
+                return false;
+            }
+
+            return guest.IsInGoodStanding;
+        }
+
+
     }
 }
