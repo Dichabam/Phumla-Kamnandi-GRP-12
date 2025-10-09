@@ -30,9 +30,6 @@
         {
             this.ShowdataGridView = new System.Windows.Forms.DataGridView();
             this.BookingReferncelabel = new System.Windows.Forms.Label();
-            this.MakeBookingButton = new System.Windows.Forms.Button();
-            this.CancelBookingButton = new System.Windows.Forms.Button();
-            this.UpdateBookingButton = new System.Windows.Forms.Button();
             this.CheckOutDatelabel = new System.Windows.Forms.Label();
             this.CheckInDatelabel = new System.Windows.Forms.Label();
             this.RoomNumberlabel = new System.Windows.Forms.Label();
@@ -48,7 +45,6 @@
             this.Statuslabel = new System.Windows.Forms.Label();
             this.DepositPaidtextBox = new System.Windows.Forms.TextBox();
             this.StatustextBox = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.AdulttextBox = new System.Windows.Forms.TextBox();
             this.ChildrentextBox = new System.Windows.Forms.TextBox();
             this.SpecialRequesttextBox = new System.Windows.Forms.TextBox();
@@ -67,6 +63,10 @@
             this.Childrenlabel = new System.Windows.Forms.Label();
             this.Occupancylabel = new System.Windows.Forms.Label();
             this.OccupancytextBox = new System.Windows.Forms.TextBox();
+            this.GuestStandingButton = new Guna.UI2.WinForms.Guna2Button();
+            this.CancelBookingButton = new Guna.UI2.WinForms.Guna2Button();
+            this.MakeBookingButton = new Guna.UI2.WinForms.Guna2Button();
+            this.SubmitButton = new Guna.UI2.WinForms.Guna2Button();
             ((System.ComponentModel.ISupportInitialize)(this.ShowdataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -92,39 +92,6 @@
             this.BookingReferncelabel.TabIndex = 28;
             this.BookingReferncelabel.Text = "Booking Reference";
             this.BookingReferncelabel.Click += new System.EventHandler(this.FirstNamelabel_Click);
-            // 
-            // MakeBookingButton
-            // 
-            this.MakeBookingButton.Font = new System.Drawing.Font("Nirmala UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MakeBookingButton.Location = new System.Drawing.Point(53, 299);
-            this.MakeBookingButton.Name = "MakeBookingButton";
-            this.MakeBookingButton.Size = new System.Drawing.Size(203, 32);
-            this.MakeBookingButton.TabIndex = 26;
-            this.MakeBookingButton.Text = "MAKE BOOKING";
-            this.MakeBookingButton.UseVisualStyleBackColor = false;
-            this.MakeBookingButton.Click += new System.EventHandler(this.MakeBookingButton_Click);
-            // 
-            // CancelBookingButton
-            // 
-            this.CancelBookingButton.Font = new System.Drawing.Font("Nirmala UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CancelBookingButton.Location = new System.Drawing.Point(365, 299);
-            this.CancelBookingButton.Name = "CancelBookingButton";
-            this.CancelBookingButton.Size = new System.Drawing.Size(203, 32);
-            this.CancelBookingButton.TabIndex = 30;
-            this.CancelBookingButton.Text = "CANCEL BOOKING";
-            this.CancelBookingButton.UseVisualStyleBackColor = false;
-            this.CancelBookingButton.Click += new System.EventHandler(this.CancelBookingButton_Click);
-            // 
-            // UpdateBookingButton
-            // 
-            this.UpdateBookingButton.Font = new System.Drawing.Font("Nirmala UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.UpdateBookingButton.Location = new System.Drawing.Point(694, 299);
-            this.UpdateBookingButton.Name = "UpdateBookingButton";
-            this.UpdateBookingButton.Size = new System.Drawing.Size(203, 32);
-            this.UpdateBookingButton.TabIndex = 31;
-            this.UpdateBookingButton.Text = "UPDATE BOOKING";
-            this.UpdateBookingButton.UseVisualStyleBackColor = false;
-            this.UpdateBookingButton.Click += new System.EventHandler(this.UpdateBookingbutton_Click);
             // 
             // CheckOutDatelabel
             // 
@@ -181,7 +148,7 @@
             // 
             // DepositAmounttextBox
             // 
-            this.DepositAmounttextBox.Location = new System.Drawing.Point(615, 352);
+            this.DepositAmounttextBox.Location = new System.Drawing.Point(667, 358);
             this.DepositAmounttextBox.Name = "DepositAmounttextBox";
             this.DepositAmounttextBox.Size = new System.Drawing.Size(177, 22);
             this.DepositAmounttextBox.TabIndex = 38;
@@ -221,7 +188,7 @@
             this.DepositAmountlabel.AutoSize = true;
             this.DepositAmountlabel.Font = new System.Drawing.Font("Nirmala UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DepositAmountlabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.DepositAmountlabel.Location = new System.Drawing.Point(449, 357);
+            this.DepositAmountlabel.Location = new System.Drawing.Point(501, 363);
             this.DepositAmountlabel.Name = "DepositAmountlabel";
             this.DepositAmountlabel.Size = new System.Drawing.Size(110, 17);
             this.DepositAmountlabel.TabIndex = 43;
@@ -233,7 +200,7 @@
             this.DepositPaidlabel.AutoSize = true;
             this.DepositPaidlabel.Font = new System.Drawing.Font("Nirmala UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DepositPaidlabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.DepositPaidlabel.Location = new System.Drawing.Point(455, 398);
+            this.DepositPaidlabel.Location = new System.Drawing.Point(507, 404);
             this.DepositPaidlabel.Name = "DepositPaidlabel";
             this.DepositPaidlabel.Size = new System.Drawing.Size(87, 17);
             this.DepositPaidlabel.TabIndex = 43;
@@ -244,7 +211,7 @@
             this.Statuslabel.AutoSize = true;
             this.Statuslabel.Font = new System.Drawing.Font("Nirmala UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Statuslabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.Statuslabel.Location = new System.Drawing.Point(455, 446);
+            this.Statuslabel.Location = new System.Drawing.Point(507, 438);
             this.Statuslabel.Name = "Statuslabel";
             this.Statuslabel.Size = new System.Drawing.Size(46, 17);
             this.Statuslabel.TabIndex = 44;
@@ -252,7 +219,7 @@
             // 
             // DepositPaidtextBox
             // 
-            this.DepositPaidtextBox.Location = new System.Drawing.Point(615, 393);
+            this.DepositPaidtextBox.Location = new System.Drawing.Point(667, 399);
             this.DepositPaidtextBox.Name = "DepositPaidtextBox";
             this.DepositPaidtextBox.Size = new System.Drawing.Size(177, 22);
             this.DepositPaidtextBox.TabIndex = 45;
@@ -260,21 +227,10 @@
             // 
             // StatustextBox
             // 
-            this.StatustextBox.Location = new System.Drawing.Point(615, 441);
+            this.StatustextBox.Location = new System.Drawing.Point(667, 433);
             this.StatustextBox.Name = "StatustextBox";
             this.StatustextBox.Size = new System.Drawing.Size(177, 22);
             this.StatustextBox.TabIndex = 46;
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.Lime;
-            this.button1.Font = new System.Drawing.Font("Nirmala UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(365, 714);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(203, 32);
-            this.button1.TabIndex = 47;
-            this.button1.Text = "Submit Booking";
-            this.button1.UseVisualStyleBackColor = false;
             // 
             // AdulttextBox
             // 
@@ -292,42 +248,42 @@
             // 
             // SpecialRequesttextBox
             // 
-            this.SpecialRequesttextBox.Location = new System.Drawing.Point(615, 607);
+            this.SpecialRequesttextBox.Location = new System.Drawing.Point(667, 596);
             this.SpecialRequesttextBox.Name = "SpecialRequesttextBox";
             this.SpecialRequesttextBox.Size = new System.Drawing.Size(177, 22);
             this.SpecialRequesttextBox.TabIndex = 50;
             // 
             // DepositDuetextBox
             // 
-            this.DepositDuetextBox.Location = new System.Drawing.Point(615, 568);
+            this.DepositDuetextBox.Location = new System.Drawing.Point(667, 560);
             this.DepositDuetextBox.Name = "DepositDuetextBox";
             this.DepositDuetextBox.Size = new System.Drawing.Size(177, 22);
             this.DepositDuetextBox.TabIndex = 51;
             // 
             // BookingDatetextBox
             // 
-            this.BookingDatetextBox.Location = new System.Drawing.Point(615, 525);
+            this.BookingDatetextBox.Location = new System.Drawing.Point(667, 517);
             this.BookingDatetextBox.Name = "BookingDatetextBox";
             this.BookingDatetextBox.Size = new System.Drawing.Size(177, 22);
             this.BookingDatetextBox.TabIndex = 52;
             // 
             // PaymentStatustextBox
             // 
-            this.PaymentStatustextBox.Location = new System.Drawing.Point(615, 483);
+            this.PaymentStatustextBox.Location = new System.Drawing.Point(667, 475);
             this.PaymentStatustextBox.Name = "PaymentStatustextBox";
             this.PaymentStatustextBox.Size = new System.Drawing.Size(177, 22);
             this.PaymentStatustextBox.TabIndex = 53;
             // 
             // TotalAmounttextBox
             // 
-            this.TotalAmounttextBox.Location = new System.Drawing.Point(201, 649);
+            this.TotalAmounttextBox.Location = new System.Drawing.Point(201, 654);
             this.TotalAmounttextBox.Name = "TotalAmounttextBox";
             this.TotalAmounttextBox.Size = new System.Drawing.Size(177, 22);
             this.TotalAmounttextBox.TabIndex = 54;
             // 
             // CreditCardtextBox
             // 
-            this.CreditCardtextBox.Location = new System.Drawing.Point(615, 667);
+            this.CreditCardtextBox.Location = new System.Drawing.Point(667, 664);
             this.CreditCardtextBox.Name = "CreditCardtextBox";
             this.CreditCardtextBox.Size = new System.Drawing.Size(177, 22);
             this.CreditCardtextBox.TabIndex = 55;
@@ -348,7 +304,7 @@
             this.PaymentStatuslabel.AutoSize = true;
             this.PaymentStatuslabel.Font = new System.Drawing.Font("Nirmala UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PaymentStatuslabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.PaymentStatuslabel.Location = new System.Drawing.Point(455, 486);
+            this.PaymentStatuslabel.Location = new System.Drawing.Point(507, 478);
             this.PaymentStatuslabel.Name = "PaymentStatuslabel";
             this.PaymentStatuslabel.Size = new System.Drawing.Size(104, 17);
             this.PaymentStatuslabel.TabIndex = 57;
@@ -359,7 +315,7 @@
             this.BookingDatelabel.AutoSize = true;
             this.BookingDatelabel.Font = new System.Drawing.Font("Nirmala UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BookingDatelabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.BookingDatelabel.Location = new System.Drawing.Point(455, 525);
+            this.BookingDatelabel.Location = new System.Drawing.Point(507, 517);
             this.BookingDatelabel.Name = "BookingDatelabel";
             this.BookingDatelabel.Size = new System.Drawing.Size(92, 17);
             this.BookingDatelabel.TabIndex = 58;
@@ -370,7 +326,7 @@
             this.DepositDuelabel.AutoSize = true;
             this.DepositDuelabel.Font = new System.Drawing.Font("Nirmala UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DepositDuelabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.DepositDuelabel.Location = new System.Drawing.Point(464, 573);
+            this.DepositDuelabel.Location = new System.Drawing.Point(510, 561);
             this.DepositDuelabel.Name = "DepositDuelabel";
             this.DepositDuelabel.Size = new System.Drawing.Size(122, 17);
             this.DepositDuelabel.TabIndex = 59;
@@ -381,7 +337,7 @@
             this.SpecialRequestlabel.AutoSize = true;
             this.SpecialRequestlabel.Font = new System.Drawing.Font("Nirmala UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SpecialRequestlabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.SpecialRequestlabel.Location = new System.Drawing.Point(455, 611);
+            this.SpecialRequestlabel.Location = new System.Drawing.Point(507, 598);
             this.SpecialRequestlabel.Name = "SpecialRequestlabel";
             this.SpecialRequestlabel.Size = new System.Drawing.Size(104, 17);
             this.SpecialRequestlabel.TabIndex = 60;
@@ -392,7 +348,7 @@
             this.CreditCardlabel.AutoSize = true;
             this.CreditCardlabel.Font = new System.Drawing.Font("Nirmala UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CreditCardlabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.CreditCardlabel.Location = new System.Drawing.Point(456, 669);
+            this.CreditCardlabel.Location = new System.Drawing.Point(508, 667);
             this.CreditCardlabel.Name = "CreditCardlabel";
             this.CreditCardlabel.Size = new System.Drawing.Size(126, 17);
             this.CreditCardlabel.TabIndex = 61;
@@ -403,7 +359,7 @@
             this.TotalAmountlabel.AutoSize = true;
             this.TotalAmountlabel.Font = new System.Drawing.Font("Nirmala UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TotalAmountlabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.TotalAmountlabel.Location = new System.Drawing.Point(63, 649);
+            this.TotalAmountlabel.Location = new System.Drawing.Point(63, 655);
             this.TotalAmountlabel.Name = "TotalAmountlabel";
             this.TotalAmountlabel.Size = new System.Drawing.Size(93, 17);
             this.TotalAmountlabel.TabIndex = 62;
@@ -425,7 +381,7 @@
             this.Occupancylabel.AutoSize = true;
             this.Occupancylabel.Font = new System.Drawing.Font("Nirmala UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Occupancylabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.Occupancylabel.Location = new System.Drawing.Point(455, 642);
+            this.Occupancylabel.Location = new System.Drawing.Point(507, 632);
             this.Occupancylabel.Name = "Occupancylabel";
             this.Occupancylabel.Size = new System.Drawing.Size(122, 17);
             this.Occupancylabel.TabIndex = 65;
@@ -433,10 +389,78 @@
             // 
             // OccupancytextBox
             // 
-            this.OccupancytextBox.Location = new System.Drawing.Point(615, 637);
+            this.OccupancytextBox.Location = new System.Drawing.Point(667, 629);
             this.OccupancytextBox.Name = "OccupancytextBox";
             this.OccupancytextBox.Size = new System.Drawing.Size(177, 22);
             this.OccupancytextBox.TabIndex = 64;
+            // 
+            // GuestStandingButton
+            // 
+            this.GuestStandingButton.AutoRoundedCorners = true;
+            this.GuestStandingButton.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.GuestStandingButton.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.GuestStandingButton.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.GuestStandingButton.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.GuestStandingButton.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
+            this.GuestStandingButton.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.GuestStandingButton.ForeColor = System.Drawing.Color.White;
+            this.GuestStandingButton.Image = global::Phumla_Kamnandi_GRP_12.Properties.Resources.man_4_50dp_FFFFFF_FILL0_wght400_GRAD0_opsz48;
+            this.GuestStandingButton.Location = new System.Drawing.Point(369, 290);
+            this.GuestStandingButton.Name = "GuestStandingButton";
+            this.GuestStandingButton.Size = new System.Drawing.Size(230, 45);
+            this.GuestStandingButton.TabIndex = 66;
+            this.GuestStandingButton.Text = "UPDATE BOOKING";
+            // 
+            // CancelBookingButton
+            // 
+            this.CancelBookingButton.AutoRoundedCorners = true;
+            this.CancelBookingButton.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.CancelBookingButton.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.CancelBookingButton.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.CancelBookingButton.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.CancelBookingButton.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
+            this.CancelBookingButton.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CancelBookingButton.ForeColor = System.Drawing.Color.White;
+            this.CancelBookingButton.Image = global::Phumla_Kamnandi_GRP_12.Properties.Resources.man_4_50dp_FFFFFF_FILL0_wght400_GRAD0_opsz48;
+            this.CancelBookingButton.Location = new System.Drawing.Point(667, 290);
+            this.CancelBookingButton.Name = "CancelBookingButton";
+            this.CancelBookingButton.Size = new System.Drawing.Size(234, 45);
+            this.CancelBookingButton.TabIndex = 67;
+            this.CancelBookingButton.Text = "CANCEL BOOKING";
+            // 
+            // MakeBookingButton
+            // 
+            this.MakeBookingButton.AutoRoundedCorners = true;
+            this.MakeBookingButton.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.MakeBookingButton.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.MakeBookingButton.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.MakeBookingButton.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.MakeBookingButton.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
+            this.MakeBookingButton.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MakeBookingButton.ForeColor = System.Drawing.Color.White;
+            this.MakeBookingButton.Image = global::Phumla_Kamnandi_GRP_12.Properties.Resources.man_4_50dp_FFFFFF_FILL0_wght400_GRAD0_opsz48;
+            this.MakeBookingButton.Location = new System.Drawing.Point(43, 290);
+            this.MakeBookingButton.Name = "MakeBookingButton";
+            this.MakeBookingButton.Size = new System.Drawing.Size(230, 45);
+            this.MakeBookingButton.TabIndex = 68;
+            this.MakeBookingButton.Text = "MAKE BOOKING";
+            // 
+            // SubmitButton
+            // 
+            this.SubmitButton.AutoRoundedCorners = true;
+            this.SubmitButton.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.SubmitButton.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.SubmitButton.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.SubmitButton.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.SubmitButton.FillColor = System.Drawing.Color.Lime;
+            this.SubmitButton.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SubmitButton.ForeColor = System.Drawing.Color.White;
+            this.SubmitButton.Image = global::Phumla_Kamnandi_GRP_12.Properties.Resources.man_4_50dp_FFFFFF_FILL0_wght400_GRAD0_opsz48;
+            this.SubmitButton.Location = new System.Drawing.Point(329, 716);
+            this.SubmitButton.Name = "SubmitButton";
+            this.SubmitButton.Size = new System.Drawing.Size(282, 45);
+            this.SubmitButton.TabIndex = 69;
+            this.SubmitButton.Text = "Submit Booking";
             // 
             // FrmBookings
             // 
@@ -445,6 +469,10 @@
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
             this.ClientSize = new System.Drawing.Size(954, 773);
+            this.Controls.Add(this.SubmitButton);
+            this.Controls.Add(this.MakeBookingButton);
+            this.Controls.Add(this.CancelBookingButton);
+            this.Controls.Add(this.GuestStandingButton);
             this.Controls.Add(this.Occupancylabel);
             this.Controls.Add(this.OccupancytextBox);
             this.Controls.Add(this.Childrenlabel);
@@ -463,7 +491,6 @@
             this.Controls.Add(this.SpecialRequesttextBox);
             this.Controls.Add(this.ChildrentextBox);
             this.Controls.Add(this.AdulttextBox);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.StatustextBox);
             this.Controls.Add(this.DepositPaidtextBox);
             this.Controls.Add(this.Statuslabel);
@@ -479,9 +506,6 @@
             this.Controls.Add(this.RoomNumberlabel);
             this.Controls.Add(this.CheckInDatelabel);
             this.Controls.Add(this.CheckOutDatelabel);
-            this.Controls.Add(this.UpdateBookingButton);
-            this.Controls.Add(this.CancelBookingButton);
-            this.Controls.Add(this.MakeBookingButton);
             this.Controls.Add(this.BookingReferncelabel);
             this.Controls.Add(this.ShowdataGridView);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -497,9 +521,6 @@
         #endregion
         private System.Windows.Forms.DataGridView ShowdataGridView;
         private System.Windows.Forms.Label BookingReferncelabel;
-        private System.Windows.Forms.Button MakeBookingButton;
-        private System.Windows.Forms.Button CancelBookingButton;
-        private System.Windows.Forms.Button UpdateBookingButton;
         private System.Windows.Forms.Label CheckOutDatelabel;
         private System.Windows.Forms.Label CheckInDatelabel;
         private System.Windows.Forms.Label RoomNumberlabel;
@@ -515,7 +536,6 @@
         private System.Windows.Forms.Label Statuslabel;
         private System.Windows.Forms.TextBox DepositPaidtextBox;
         private System.Windows.Forms.TextBox StatustextBox;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox AdulttextBox;
         private System.Windows.Forms.TextBox ChildrentextBox;
         private System.Windows.Forms.TextBox SpecialRequesttextBox;
@@ -534,5 +554,9 @@
         private System.Windows.Forms.Label Childrenlabel;
         private System.Windows.Forms.Label Occupancylabel;
         private System.Windows.Forms.TextBox OccupancytextBox;
+        private Guna.UI2.WinForms.Guna2Button GuestStandingButton;
+        private Guna.UI2.WinForms.Guna2Button CancelBookingButton;
+        private Guna.UI2.WinForms.Guna2Button MakeBookingButton;
+        private Guna.UI2.WinForms.Guna2Button SubmitButton;
     }
 }

@@ -171,6 +171,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
 
         }
 
+        // Method to handle the Update Booking button click event
         private void UpdateBookingbutton_Click(object sender, EventArgs e)
         {
             #region booking fields textboxes 
