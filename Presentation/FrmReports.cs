@@ -64,7 +64,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             DateTime startDate, endDate;
             if (AlltimeRB.Checked)
             {
-                startDate = DateTime.MinValue;
+                startDate = new DateTime(1753, 1, 1);
                 endDate = DateTime.Today;
             }
             else if (todayRB.Checked)
