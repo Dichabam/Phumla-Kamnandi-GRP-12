@@ -101,7 +101,7 @@ namespace Phumla_Kamnandi_GRP_12.Database
             using var cn = new SqlConnection(connectionString);
             var cmd = new SqlCommand(@"
                 UPDATE Guest SET FirstName = @first, LastName = @last, Email = @email, Phone = @phone, Address = @address, CreditCardNum = @card, IsInGoodStanding = @status
-                WHERE GuestId = @id", cn);
+                WHERE Id = @id", cn);
 
             cmd.Parameters.AddWithValue("@id", guest.GuestId);
             cmd.Parameters.AddWithValue("@first", guest.FirstName);
