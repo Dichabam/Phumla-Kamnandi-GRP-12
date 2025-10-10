@@ -13,6 +13,10 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
     public partial class MDIParent : Form
     {
         private int childFormNumber = 0;
+        private System.Windows.Forms.ToolStrip toolStrip;
+        private System.Windows.Forms.ToolStripMenuItem toolBarToolStripMenuItem;
+        private System.Windows.Forms.StatusStrip statusStrip;
+        private System.Windows.Forms.ToolStripMenuItem statusBarToolStripMenuItem;
 
         public MDIParent()
         {
@@ -102,6 +106,11 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             {
                 childForm.Close();
             }
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
