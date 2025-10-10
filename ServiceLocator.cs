@@ -102,7 +102,9 @@ namespace Phumla_Kamnandi_GRP_12
 
         private void InitializeServices()
         {
-            AppDomain.CurrentDomain.SetData("DataDirectory",System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory));
+            string projectRoot = System.IO.Path.GetFullPath(@"..\..\");
+            AppDomain.CurrentDomain.SetData("DataDirectory", projectRoot);
+
             BookingRepository = new BookingDB();
             GuestRepository = new GuestDB();
             RoomRepository = new RoomDB();
