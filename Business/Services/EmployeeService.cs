@@ -18,36 +18,54 @@ namespace Phumla_Kamnandi_GRP_12.Business.Services
     public class EmployeeService : EmployeeServiceInterface
     {
         private readonly EmployeeRepositoryInterface _employeeRepository;
-        private const string ADMIN_CODE = "DIRK"; 
+        private const string ADMIN_CODE = "INF2011S"; 
 
         public EmployeeService(EmployeeRepositoryInterface employeeRepo)
         {
             _employeeRepository = employeeRepo;
         }
 
-        public Employee RegisterEmployee(string firstName, string lastName, string email,
-                                        string phone, string password, EmployeeRole role,
-                                        string createdByEmployeeId)
+        /// <summary>
+        /// 1. check if email exists
+        /// 2. hash password
+        /// 3. then creat new employee
+        /// 4. save to repo
+        /// </summary>
+        /// <param name="firstName"></param>
+        /// <param name="lastName"></param>
+        /// <param name="email"></param>
+        /// <param name="phone"></param>
+        /// <param name="password"></param>
+        /// <param name="role"></param>
+        /// <param name="createdByEmployeeId"></param>
+        /// <returns></returns>
+        public Employee RegisterEmployee(string firstName, string lastName, string email,string phone, string password, EmployeeRole role, string createdByEmployeeId)
         {
-            // Check if email already exists
+            // 1
             if (_employeeRepository.EmailExists(email))
             {
                 return null;
             }
 
-            // Hash password
+            // 2
             string passwordHash = HashPassword(password);
 
-            // Create new employee
-            var employee = new Employee(firstName, lastName, email, phone,
-                                       passwordHash, role, createdByEmployeeId);
+            // 3
+            var employee = new Employee(firstName, lastName, email, phone, passwordHash, role, createdByEmployeeId);
 
-            // Save to repository
+            // 4
             _employeeRepository.Add(employee);
 
             return employee;
         }
 
+        /// <summary>
+        /// Employee has to enter the email
+        /// and password which will be vefiried
+        /// </summary>
+        /// <param name="email"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
         public Employee AuthenticateEmployee(string email, string password)
         {
             var employee = _employeeRepository.GetByEmail(email);
@@ -57,7 +75,6 @@ namespace Phumla_Kamnandi_GRP_12.Business.Services
                 return null;
             }
 
-            // Verify password
             string passwordHash = HashPassword(password);
             if (employee.PasswordHash == passwordHash)
             {
@@ -105,11 +122,19 @@ namespace Phumla_Kamnandi_GRP_12.Business.Services
             return true;
         }
 
+
         public bool ValidateAdminCode(string adminCode)
         {
             return adminCode == ADMIN_CODE;
         }
-
+        
+        /// <summary>
+        /// Only admins can update roles
+        /// </summary>
+        /// <param name="employeeId"></param>
+        /// <param name="newRole"></param>
+        /// <param name="updatedByEmployeeId"></param>
+        /// <returns></returns>
         public bool UpdateEmployeeRole(string employeeId, EmployeeRole newRole, string updatedByEmployeeId)
         {
             var employee = _employeeRepository.GetById(employeeId);
@@ -127,12 +152,17 @@ namespace Phumla_Kamnandi_GRP_12.Business.Services
             return true;
         }
 
+        /// <summary>
+        /// Only admins can deactivate employees
+        /// </summary>
+        /// <param name="employeeId"></param>
+        /// <param name="deactivatedByEmployeeId"></param>
+        /// <returns></returns>
         public bool DeactivateEmployee(string employeeId, string deactivatedByEmployeeId)
         {
             var employee = _employeeRepository.GetById(employeeId);
             var deactivatedBy = _employeeRepository.GetById(deactivatedByEmployeeId);
 
-            // Only admins can deactivate employees
             if (employee == null || deactivatedBy == null || !deactivatedBy.IsAdmin())
             {
                 return false;
@@ -144,8 +174,11 @@ namespace Phumla_Kamnandi_GRP_12.Business.Services
             return true;
         }
 
-        // Simple password hashing 
-       
+       /// <summary>
+       /// Password hashing
+       /// </summary>
+       /// <param name="password"></param>
+       /// <returns></returns>
         private string HashPassword(string password)
         {
             using (SHA256 sha256 = SHA256.Create())

@@ -101,7 +101,6 @@
     <Compile Include="Database\DB.cs" />
     <Compile Include="Database\EmployeeDB.cs" />
     <Compile Include="Database\GuestDB.cs" />
-    <Compile Include="Database\Test2.cs" />
     <Compile Include="PhumlaKamnandiDBDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

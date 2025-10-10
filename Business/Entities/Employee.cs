@@ -22,11 +22,9 @@ namespace Phumla_Kamnandi_GRP_12.Business.Entities
         public EmployeeRole Role { get; private set; }
         public DateTime DateRegistered { get; private set; }
         public bool IsActive { get; set; }
-        public string CreatedBy { get; private set; } // Admin who created this account
+        public string CreatedBy { get; private set; } // Admin/manager who created this account
 
-        public Employee(string firstName, string lastName, string email,
-                       string phone, string passwordHash, EmployeeRole role = EmployeeRole.Employee,
-                       string createdBy = null)
+        public Employee(string firstName, string lastName, string email, string phone, string passwordHash, EmployeeRole role = EmployeeRole.Employee,string createdBy = null)
         {
             EmployeeId = Guid.NewGuid().ToString("N").Substring(0, 8).ToUpper();
             FirstName = firstName;

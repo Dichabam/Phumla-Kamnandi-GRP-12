@@ -26,8 +26,17 @@ namespace Phumla_Kamnandi_GRP_12.Business.Services
             _bookingRepository = bookingRepo;
         }
 
-        public Guest RegisterNewGuest(string firstName, string lastName, string email,
-            string phone, string address)
+        /// <summary>
+        /// check if guest exists already(to avoid double booking)
+        /// if doe not exist, make booking
+        /// </summary>
+        /// <param name="firstName"></param>
+        /// <param name="lastName"></param>
+        /// <param name="email"></param>
+        /// <param name="phone"></param>
+        /// <param name="address"></param>
+        /// <returns></returns>
+        public Guest RegisterNewGuest(string firstName, string lastName, string email,string phone, string address)
         {
             // Check if guest already exists
             var existingGuest = _guestRepository.GetByEmail(email);

@@ -12,6 +12,9 @@ using System;
 namespace Phumla_Kamnandi_GRP_12.Business.ValueObjects
 
 {
+    /// <summary>
+    /// class for automatic price generation
+    /// </summary>
     public class PricingInfo
     {
         public Season Season { get; }

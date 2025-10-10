@@ -31,9 +31,21 @@ namespace Phumla_Kamnandi_GRP_12.Business.Services
             _pricingService = pricingService;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="guestId"></param>
+        /// <param name="checkIn"></param>
+        /// <param name="checkOut"></param>
+        /// <param name="adults"></param>
+        /// <param name="children"></param>
+        /// <param name="singleOccupancy"></param>
+        /// <param name="specialRequests"></param>
+        /// <returns></returns>
         public BookingResult MakeBooking(string guestId, DateTime checkIn, DateTime checkOut,
             int adults, int children, bool singleOccupancy, string specialRequests = null)
         {
+         // IDEA: 
             // 1: Validate guest exists and is in good standing
             var guest = _guestRepository.GetById(guestId);
             if (guest == null)
@@ -85,6 +97,14 @@ namespace Phumla_Kamnandi_GRP_12.Business.Services
             };
         }
 
+        /// <summary>
+        /// the idea is when you change booking, the system must try to find try to look for an available room
+        /// and check if the room is available for the "changed" dates and 
+        /// </summary>
+        /// <param name="bookingRef"></param>
+        /// <param name="newCheckIn"></param>
+        /// <param name="newCheckOut"></param>
+        /// <returns></returns>
         public bool ChangeBooking(string bookingRef, DateTime newCheckIn, DateTime newCheckOut)
         {
             var booking = _bookingRepository.GetByReference(bookingRef);
@@ -130,6 +150,11 @@ namespace Phumla_Kamnandi_GRP_12.Business.Services
             return true;
         }
 
+        /// <summary>
+        /// remove every instance of the booking in the database 
+        /// </summary>
+        /// <param name="bookingRef"></param>
+        /// <returns></returns>
         public bool CancelBooking(string bookingRef)
         {
             var booking = _bookingRepository.GetByReference(bookingRef);
@@ -141,12 +166,15 @@ namespace Phumla_Kamnandi_GRP_12.Business.Services
             return true;
         }
 
+        /// <summary>
+        /// for searching purposes 
+        /// </summary>
+        /// <param name="bookingRef"></param>
+        /// <returns></returns>
         public Booking GetBookingDetails(string bookingRef)
         {
             return _bookingRepository.GetByReference(bookingRef);
         }
-
-       
 
         public List<Room> GetAvailableRooms(DateTime checkIn, DateTime checkOut)
         {
@@ -195,7 +223,7 @@ namespace Phumla_Kamnandi_GRP_12.Business.Services
                 }
             }
 
-            // Simulate payment verification (as per use case step 11)
+            // Simulate payment verification 
             bool paymentVerified = SimulatePaymentVerification(creditCardNumber, depositAmount);
 
             if (paymentVerified)
@@ -252,25 +280,24 @@ namespace Phumla_Kamnandi_GRP_12.Business.Services
             ";
         }
 
-        // Simulate payment verification
+        /// <summary>
+        /// Assumes all payments are authorised
+        /// for deposits whithout credit card, accept if amount is valid
+        /// </summary>
+        /// <param name="creditCardNumber"></param>
+        /// <param name="amount"></param>
+        /// <returns></returns>
         private bool SimulatePaymentVerification(string creditCardNumber, decimal amount)
         {
-            //"assume all payments are authorised"
-            // This simulates the verification step mentioned in the use case
-
-            // Basic amount validation
             if (amount <= 0)
                 return false;
 
-            // If credit card is provided, do basic validation
             if (!string.IsNullOrEmpty(creditCardNumber))
             {
                 if (creditCardNumber.Length < 13)
                     return false;
             }
 
-            // For deposits without credit card (cash/bank transfer), accept if amount is valid
-            // Simulate successful verification 
             return true;
         }
 
