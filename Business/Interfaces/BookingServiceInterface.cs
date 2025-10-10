@@ -21,5 +21,6 @@ namespace Phumla_Kamnandi_GRP_12.Business.Interfaces
         Booking GetBookingDetails(string bookingRef);
         bool ConfirmBookingWithDeposit(string bookingRef, decimal depositAmount, string creditCardNumber = null);
         List<Room> GetAvailableRooms(DateTime checkIn, DateTime checkOut);
+        string GenerateConfirmationLetter(string bookingRef);
     }
 }

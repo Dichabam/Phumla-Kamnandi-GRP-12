@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -35,7 +36,14 @@
             this.ShowAllRoomsButton = new Guna.UI2.WinForms.Guna2Button();
             this.ShowUnavailableRoomsButton = new Guna.UI2.WinForms.Guna2Button();
             this.showAvailableRoomsButton = new Guna.UI2.WinForms.Guna2Button();
+            this.phumlaKamnandiDBDataSet = new Phumla_Kamnandi_GRP_12.PhumlaKamnandiDBDataSet();
+            this.phumlaKamnandiDBDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.roomBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.roomTableAdapter = new Phumla_Kamnandi_GRP_12.PhumlaKamnandiDBDataSetTableAdapters.RoomTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.roomsDateview)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.phumlaKamnandiDBDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.phumlaKamnandiDBDataSetBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.roomBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // roomsDateview
@@ -44,6 +52,7 @@
             this.roomsDateview.AllowUserToDeleteRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
             this.roomsDateview.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.roomsDateview.AutoGenerateColumns = false;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -54,6 +63,7 @@
             this.roomsDateview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.roomsDateview.ColumnHeadersHeight = 4;
             this.roomsDateview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+            this.roomsDateview.DataSource = this.phumlaKamnandiDBDataSetBindingSource;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -150,6 +160,25 @@
             this.showAvailableRoomsButton.Text = "Available Rooms";
             this.showAvailableRoomsButton.Click += new System.EventHandler(this.showAvailableRoomsButton_Click);
             // 
+            // phumlaKamnandiDBDataSet
+            // 
+            this.phumlaKamnandiDBDataSet.DataSetName = "PhumlaKamnandiDBDataSet";
+            this.phumlaKamnandiDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // phumlaKamnandiDBDataSetBindingSource
+            // 
+            this.phumlaKamnandiDBDataSetBindingSource.DataSource = this.phumlaKamnandiDBDataSet;
+            this.phumlaKamnandiDBDataSetBindingSource.Position = 0;
+            // 
+            // roomBindingSource
+            // 
+            this.roomBindingSource.DataMember = "Room";
+            this.roomBindingSource.DataSource = this.phumlaKamnandiDBDataSetBindingSource;
+            // 
+            // roomTableAdapter
+            // 
+            this.roomTableAdapter.ClearBeforeFill = true;
+            // 
             // FrmRooms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -163,7 +192,11 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmRooms";
             this.Text = "FrmRooms";
+            this.Load += new System.EventHandler(this.FrmRooms_Load);
             ((System.ComponentModel.ISupportInitialize)(this.roomsDateview)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.phumlaKamnandiDBDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.phumlaKamnandiDBDataSetBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.roomBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -174,5 +207,9 @@
         private Guna.UI2.WinForms.Guna2Button showAvailableRoomsButton;
         private Guna.UI2.WinForms.Guna2Button ShowUnavailableRoomsButton;
         private Guna.UI2.WinForms.Guna2Button ShowAllRoomsButton;
+        private System.Windows.Forms.BindingSource phumlaKamnandiDBDataSetBindingSource;
+        private PhumlaKamnandiDBDataSet phumlaKamnandiDBDataSet;
+        private System.Windows.Forms.BindingSource roomBindingSource;
+        private PhumlaKamnandiDBDataSetTableAdapters.RoomTableAdapter roomTableAdapter;
     }
 }

@@ -179,6 +179,12 @@
     <Compile Include="Presentation\Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
+    <Compile Include="Presentation\MDIParent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation\MDIParent.Designer.cs">
+      <DependentUpon>MDIParent.cs</DependentUpon>
+    </Compile>
     <Compile Include="Presentation\NewAccount.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -229,6 +235,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Presentation\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentation\MDIParent.resx">
+      <DependentUpon>MDIParent.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentation\NewAccount.resx">
       <DependentUpon>NewAccount.cs</DependentUpon>
@@ -355,6 +364,7 @@
       <DependentUpon>PhumlaKamnandiDB.mdf</DependentUpon>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Resourses\Icons\cancel_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png" />
     <None Include="Resourses\BigIcons\door_back_75dp_FFFFFF_FILL0_wght400_GRAD0_opsz48.png" />
     <None Include="Resourses\BigIcons\event_busy_75dp_FFFFFF_FILL0_wght400_GRAD0_opsz48.png" />
     <None Include="Resourses\BigIcons\credit_card_gear_75dp_EA3323_FILL0_wght400_GRAD0_opsz48.png" />

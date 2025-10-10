@@ -50,10 +50,12 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             this.todayRB = new System.Windows.Forms.RadioButton();
             this.SpecificRB = new System.Windows.Forms.RadioButton();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.phumlaKamnandiDBDataSetBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.ReportDataview)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.phumlaKamnandiDBDataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.phumlaKamnandiDBDataSet)).BeginInit();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.phumlaKamnandiDBDataSetBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // DatePickerStart
@@ -133,7 +135,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             this.OccupancyReportRadioButton.TabStop = true;
             this.OccupancyReportRadioButton.Text = "Occupancy Report";
             this.OccupancyReportRadioButton.UseVisualStyleBackColor = true;
-            this.OccupancyReportRadioButton.CheckedChanged += new System.EventHandler(this.OccupancyReportRadioButton_CheckedChanged);
+
             // 
             // RevenueRadioButton
             // 
@@ -147,7 +149,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             this.RevenueRadioButton.TabStop = true;
             this.RevenueRadioButton.Text = "Revenue Report";
             this.RevenueRadioButton.UseVisualStyleBackColor = true;
-            this.RevenueRadioButton.CheckedChanged += new System.EventHandler(this.RevenueRadioButton_CheckedChanged);
+            
             // 
             // SelectDateLabel
             // 
@@ -204,7 +206,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             this.ReportDataview.AllowUserToDeleteRows = false;
             this.ReportDataview.AutoGenerateColumns = false;
             this.ReportDataview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.ReportDataview.DataSource = this.phumlaKamnandiDBDataSetBindingSource;
+            this.ReportDataview.DataSource = this.phumlaKamnandiDBDataSetBindingSource1;
             this.ReportDataview.Location = new System.Drawing.Point(25, 367);
             this.ReportDataview.Name = "ReportDataview";
             this.ReportDataview.ReadOnly = true;
@@ -294,6 +296,11 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             this.panel1.Size = new System.Drawing.Size(827, 30);
             this.panel1.TabIndex = 15;
             // 
+            // phumlaKamnandiDBDataSetBindingSource1
+            // 
+            this.phumlaKamnandiDBDataSetBindingSource1.DataSource = this.phumlaKamnandiDBDataSet;
+            this.phumlaKamnandiDBDataSetBindingSource1.Position = 0;
+            // 
             // FrmReports
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -321,6 +328,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             ((System.ComponentModel.ISupportInitialize)(this.phumlaKamnandiDBDataSet)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.phumlaKamnandiDBDataSetBindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -349,5 +357,6 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
         private System.Windows.Forms.RadioButton todayRB;
         private System.Windows.Forms.RadioButton SpecificRB;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.BindingSource phumlaKamnandiDBDataSetBindingSource1;
     }
 }

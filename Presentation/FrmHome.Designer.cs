@@ -456,6 +456,7 @@
             this.makeBookingButton.Size = new System.Drawing.Size(249, 45);
             this.makeBookingButton.TabIndex = 5;
             this.makeBookingButton.Text = "Make New Booking";
+            this.makeBookingButton.Click += new System.EventHandler(this.makeBookingButton_Click);
             // 
             // ViewGuestButton
             // 
@@ -473,6 +474,7 @@
             this.ViewGuestButton.Size = new System.Drawing.Size(249, 45);
             this.ViewGuestButton.TabIndex = 5;
             this.ViewGuestButton.Text = "View Guests";
+            this.ViewGuestButton.Click += new System.EventHandler(this.ViewGuestButton_Click);
             // 
             // FrmHome
             // 

@@ -215,6 +215,11 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
         {
             BookingButton_Click(BookingButton, EventArgs.Empty);
         }
+
+        public void NavigateToGuest()
+        {
+            GuestButton_Click(GuestButton, EventArgs.Empty);
+        }
         #endregion
 
         private void PnlFormLoader_Paint(object sender, PaintEventArgs e)

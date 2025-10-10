@@ -163,5 +163,12 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                 }
             }
         }
+
+        private void FrmRooms_Load(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'phumlaKamnandiDBDataSet.Room' table. You can move, or remove it, as needed.
+            this.roomTableAdapter.Fill(this.phumlaKamnandiDBDataSet.Room);
+
+        }
     }
 }
