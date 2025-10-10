@@ -55,7 +55,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             this.GuestDataView.AllowUserToOrderColumns = true;
             this.GuestDataView.AutoGenerateColumns = false;
             this.GuestDataView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.GuestDataView.DataSource = this.phumlaKamnandiDBDataSetBindingSource1;
+            this.GuestDataView.DataSource = this.phumlaKamnandiDBDataSetBindingSource;
             this.GuestDataView.Location = new System.Drawing.Point(63, 12);
             this.GuestDataView.Name = "GuestDataView";
             this.GuestDataView.RowHeadersWidth = 51;
