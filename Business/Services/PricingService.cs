@@ -54,8 +54,28 @@ namespace Phumla_Kamnandi_GRP_12.Business.Services
             }
         }
 
-        public decimal CalculateTotalAmount(DateTime checkIn, DateTime checkOut,
-            int adults, int childrenUnder5, int childrenOver5, bool singleOccupancy)
+        /// <summary>
+        /// Things to consider
+        /// 1. calculate the price per day. prices might differ for different season
+        ///    e.g. if someone books a room for a between high and mid season, consider both
+        /// 2. add a signle supplement if applicable
+        /// 3. ADD CHildren discount - Not yet accounted for 
+        /// </summary>
+        /// <param name="checkIn"></param>
+        /// <param name="checkOut"></param>
+        /// <param name="adults"></param>
+        /// <param name="childrenUnder5"></param>
+        /// <param name="childrenOver5"></param>
+        /// <param name="singleOccupancy"></param>
+        /// <returns></returns>
+        /// 
+
+        /*
+         * Note that is the provisional class, the actual calculation will be revised
+         * like do we account for the number of children when giving out a discount?
+         * and is the price the total amount owed per person for just for the room
+         */
+        public decimal CalculateTotalAmount(DateTime checkIn, DateTime checkOut, int adults, int childrenUnder5, int childrenOver5, bool singleOccupancy)
         {
             decimal total = 0m;
             int nights = (checkOut - checkIn).Days;

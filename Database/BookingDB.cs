@@ -66,14 +66,52 @@ namespace Phumla_Kamnandi_GRP_12.Database
 
         public void Add(Booking booking)
         {
+            // inside Add(Booking booking)
             using var cn = new SqlConnection(connectionString);
             var cmd = new SqlCommand(@"
-                INSERT INTO Booking (BookingReference, GuestId, RoomNumber, CheckInDate, CheckOutDate, NumberOfAdults, NumberOfChildren, TotalAmount, DepositAmount, DepositPaid, Status, PaymentStatus, BookingDate, DepositDueDate, SpecialRequests, IsSingleOccupancy, CreditCardLastFour)
-                VALUES (@ref, @guestId, @room, @checkIn, @checkOut, @adults, @children, @total, @deposit, @paid, @status, @payment, @bookDate, @dueDate, @requests, @single, @card)", cn);
+            INSERT INTO Booking (
+                BookingReference,
+                GuestId,
+                RoomNumber,
+                CheckInDate,
+                CheckOutDate,
+                NumberOfAdults,
+                NumberOfChildren,
+                TotalAmount,
+                DepositAmount,
+                DepositPaid,
+                Status,
+                PaymentStatus,
+                BookingDate,
+                DepositDueDate,
+                SpecialRequests,
+                IsSingleOccupancy,
+                CreditCardLastFour
+            )
+            VALUES (
+                @ref,
+                @guestId,
+                @room,
+                @checkIn,
+                @checkOut,
+                @adults,
+                @children,
+                @total,
+                @deposit,
+                @paid,
+                @status,
+                @payment,
+                @bookDate,
+                @dueDate,
+                @requests,
+                @single,
+                @card
+            )", cn);
 
             AddParameters(cmd, booking);
             cn.Open();
             cmd.ExecuteNonQuery();
+
         }
 
         public void Update(Booking booking)

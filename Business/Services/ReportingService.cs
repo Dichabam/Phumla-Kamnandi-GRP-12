@@ -24,7 +24,7 @@ namespace Phumla_Kamnandi_GRP_12.Business.Services
             _bookingRepository = bookingRepo;
             _roomRepository = roomRepo;
         }
-
+        //Occupancy report generation
         public OccupancyReport GenerateOccupancyReport(DateTime startDate, DateTime endDate)
         {
             var report = new OccupancyReport
@@ -47,7 +47,8 @@ namespace Phumla_Kamnandi_GRP_12.Business.Services
                     TotalRooms = totalRooms,
                     OccupiedRooms = occupiedRooms,
                     AvailableRooms = totalRooms - occupiedRooms,
-                    OccupancyPercentage = (decimal)occupiedRooms / totalRooms * 100
+                    OccupancyPercentage = totalRooms > 0 ? (decimal)occupiedRooms / totalRooms * 100 : 0
+
                 };
 
                 report.DailyOccupancies.Add(daily);
@@ -63,6 +64,7 @@ namespace Phumla_Kamnandi_GRP_12.Business.Services
             return report;
         }
 
+        //Revenue report generation
         public RevenueReport GenerateRevenueReport(DateTime startDate, DateTime endDate)
         {
             var bookings = _bookingRepository.GetByDateRange(startDate, endDate);

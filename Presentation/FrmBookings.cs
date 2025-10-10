@@ -41,30 +41,30 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                 {
                     // First, let's try a simpler query to see what columns exist
                     string query = @"
-                SELECT 
-                    b.BookingReference,
-                    b.CheckInDate,
-                    b.CheckOutDate,
-                    b.RoomNumber,
-                    b.NumberOfAdults,
-                    b.NumberOfChildren,
-                    b.TotalAmount,
-                    b.DepositPaid,
-                    CASE b.Status 
-                        WHEN 0 THEN 'Unconfirmed'
-                        WHEN 1 THEN 'Confirmed'
-                        WHEN 2 THEN 'Cancelled'
-                        WHEN 3 THEN 'Completed'
-                        WHEN 4 THEN 'NoShow'
-                    END AS Status,
-                    CASE b.PaymentStatus
-                        WHEN 0 THEN 'Pending'
-                        WHEN 1 THEN 'Paid'
-                        WHEN 2 THEN 'Refunded'
-                        WHEN 3 THEN 'Failed'
-                    END AS PaymentStatus
-                FROM Booking b
-                ORDER BY b.BookingDate DESC";
+                    SELECT 
+                        b.BookingReference,
+                        b.CheckInDate,
+                        b.CheckOutDate,
+                        b.RoomNumber,
+                        b.NumberOfAdults,
+                        b.NumberOfChildren,
+                        b.TotalAmount,
+                        b.DepositPaid,
+                        CASE b.Status 
+                            WHEN 0 THEN 'Unconfirmed'
+                            WHEN 1 THEN 'Confirmed'
+                            WHEN 2 THEN 'Cancelled'
+                            WHEN 3 THEN 'Completed'
+                            WHEN 4 THEN 'NoShow'
+                        END AS Status,
+                        CASE b.PaymentStatus
+                            WHEN 0 THEN 'Pending'
+                            WHEN 1 THEN 'Paid'
+                            WHEN 2 THEN 'Refunded'
+                            WHEN 3 THEN 'Failed'
+                        END AS PaymentStatus
+                    FROM Booking b
+                    ORDER BY b.BookingDate DESC";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
                     DataTable dt = new DataTable();
@@ -78,11 +78,13 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                     if (ShowdataGridView.Columns.Contains("DepositPaid"))
                         ShowdataGridView.Columns["DepositPaid"].DefaultCellStyle.Format = "C2";
                     if (ShowdataGridView.Columns.Contains("CheckInDate"))
-                        ShowdataGridView.Columns["CheckInDate"].DefaultCellStyle.Format = "dd MMM yyyy";
+                        ShowdataGridView.Columns["CheckInDate"].DefaultCellStyle.Format = "YYYY-MM-DD";
                     if (ShowdataGridView.Columns.Contains("CheckOutDate"))
-                        ShowdataGridView.Columns["CheckOutDate"].DefaultCellStyle.Format = "dd MMM yyyy";
+                        ShowdataGridView.Columns["CheckOutDate"].DefaultCellStyle.Format = "YYYY-MM-DD";
 
                     ShowdataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+                        
                 }
             }
             catch (Exception ex)

@@ -58,21 +58,42 @@ namespace Phumla_Kamnandi_GRP_12.Database
         {
             using var cn = new SqlConnection(connectionString);
             var cmd = new SqlCommand(@"
-                INSERT INTO Guest (GuestId, FirstName, LastName, Email, Phone, Address, CreditCardLastFourDigits, DateRegistered, IsInGoodStanding)
-                VALUES (@id, @first, @last, @email, @phone, @address, @card, @date, @status)", cn);
+            INSERT INTO Guest (
+                GuestId,
+                FirstName,
+                LastName,
+                Email,
+                Phone,
+                Address,
+                CreditCardLastFourDigits,
+                DateRegistered,
+                IsInGoodStanding
+            )
+            VALUES (
+                @id,
+                @first,
+                @last,
+                @email,
+                @phone,
+                @address,
+                @card,
+                @date,
+                @status
+            )", cn);
 
             cmd.Parameters.AddWithValue("@id", guest.GuestId);
             cmd.Parameters.AddWithValue("@first", guest.FirstName);
             cmd.Parameters.AddWithValue("@last", guest.LastName);
-            cmd.Parameters.AddWithValue("@email", guest.Email);
-            cmd.Parameters.AddWithValue("@phone", guest.Phone);
-            cmd.Parameters.AddWithValue("@address", guest.Address);
+            cmd.Parameters.AddWithValue("@email", guest.Email ?? string.Empty);
+            cmd.Parameters.AddWithValue("@phone", guest.Phone ?? string.Empty);
+            cmd.Parameters.AddWithValue("@address", guest.Address ?? string.Empty);
             cmd.Parameters.AddWithValue("@card", guest.CreditCardLastFourDigits ?? string.Empty);
             cmd.Parameters.AddWithValue("@date", guest.DateRegistered);
             cmd.Parameters.AddWithValue("@status", guest.IsInGoodStanding);
 
             cn.Open();
             cmd.ExecuteNonQuery();
+
         }
 
         public void Update(Guest guest)
