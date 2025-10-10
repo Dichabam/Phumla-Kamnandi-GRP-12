@@ -30,6 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             this.ShowdataGridView = new System.Windows.Forms.DataGridView();
+            this.phumlaKamnandiDBDataSetBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.phumlaKamnandiDBDataSet = new Phumla_Kamnandi_GRP_12.PhumlaKamnandiDBDataSet();
             this.PhoneNumberLabel = new System.Windows.Forms.Label();
             this.NameLabel = new System.Windows.Forms.Label();
             this.AddressLabel = new System.Windows.Forms.Label();
@@ -39,7 +41,6 @@
             this.SurnameLabel = new System.Windows.Forms.Label();
             this.EmailLabel = new System.Windows.Forms.Label();
             this.CreditCardlabel = new System.Windows.Forms.Label();
-            this.phumlaKamnandiDBDataSet = new Phumla_Kamnandi_GRP_12.PhumlaKamnandiDBDataSet();
             this.phumlaKamnandiDBDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.NoOfAdultsLabel = new System.Windows.Forms.Label();
             this.YesNoComboBox = new Guna.UI2.WinForms.Guna2ComboBox();
@@ -60,11 +61,10 @@
             this.MakeBookingButton = new Guna.UI2.WinForms.Guna2Button();
             this.CancelBookingButton = new Guna.UI2.WinForms.Guna2Button();
             this.UpdatebookingButton = new Guna.UI2.WinForms.Guna2Button();
-            this.phumlaKamnandiDBDataSetBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.ShowdataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.phumlaKamnandiDBDataSetBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.phumlaKamnandiDBDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.phumlaKamnandiDBDataSetBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.phumlaKamnandiDBDataSetBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // ShowdataGridView
@@ -82,6 +82,16 @@
             this.ShowdataGridView.Size = new System.Drawing.Size(844, 236);
             this.ShowdataGridView.TabIndex = 27;
             this.ShowdataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // phumlaKamnandiDBDataSetBindingSource1
+            // 
+            this.phumlaKamnandiDBDataSetBindingSource1.DataSource = this.phumlaKamnandiDBDataSet;
+            this.phumlaKamnandiDBDataSetBindingSource1.Position = 0;
+            // 
+            // phumlaKamnandiDBDataSet
+            // 
+            this.phumlaKamnandiDBDataSet.DataSetName = "PhumlaKamnandiDBDataSet";
+            this.phumlaKamnandiDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // PhoneNumberLabel
             // 
@@ -181,11 +191,6 @@
             this.CreditCardlabel.Size = new System.Drawing.Size(125, 17);
             this.CreditCardlabel.TabIndex = 61;
             this.CreditCardlabel.Text = "credit card number";
-            // 
-            // phumlaKamnandiDBDataSet
-            // 
-            this.phumlaKamnandiDBDataSet.DataSetName = "PhumlaKamnandiDBDataSet";
-            this.phumlaKamnandiDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // phumlaKamnandiDBDataSetBindingSource
             // 
@@ -534,11 +539,6 @@
             this.UpdatebookingButton.Text = "UPDATE BOOKING";
             this.UpdatebookingButton.Click += new System.EventHandler(this.UpdatebookingButton_Click_1);
             // 
-            // phumlaKamnandiDBDataSetBindingSource1
-            // 
-            this.phumlaKamnandiDBDataSetBindingSource1.DataSource = this.phumlaKamnandiDBDataSet;
-            this.phumlaKamnandiDBDataSetBindingSource1.Position = 0;
-            // 
             // FrmBookings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -580,9 +580,9 @@
             this.Text = "FrmBookings";
             this.Load += new System.EventHandler(this.FrmBookings_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ShowdataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.phumlaKamnandiDBDataSetBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.phumlaKamnandiDBDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.phumlaKamnandiDBDataSetBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.phumlaKamnandiDBDataSetBindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -71,7 +71,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                         END AS PaymentStatus,
                         b.BookingDate
                     FROM Booking b
-                    INNER JOIN Guest g ON b.GuestId = g.GuestId
+                    INNER JOIN Guest g ON b.GuestId = g.Id
                     ORDER BY b.BookingDate DESC";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, connection);

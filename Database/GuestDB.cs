@@ -15,7 +15,7 @@ namespace Phumla_Kamnandi_GRP_12.Database
         public Guest GetById(string guestId)
         {
             using var cn = new SqlConnection(connectionString);
-            var cmd = new SqlCommand("SELECT * FROM Guest WHERE GuestId = @id", cn);
+            var cmd = new SqlCommand("SELECT * FROM Guest WHERE Id = @id", cn);
             cmd.Parameters.AddWithValue("@id", guestId);
             cn.Open();
             using var reader = cmd.ExecuteReader();
@@ -59,13 +59,13 @@ namespace Phumla_Kamnandi_GRP_12.Database
             using var cn = new SqlConnection(connectionString);
             var cmd = new SqlCommand(@"
             INSERT INTO Guest (
-                GuestId,
+                Id,
                 FirstName,
                 LastName,
                 Email,
                 Phone,
                 Address,
-                CreditCardLastFourDigits,
+                CreditCardNum,
                 DateRegistered,
                 IsInGoodStanding
             )
@@ -100,8 +100,8 @@ namespace Phumla_Kamnandi_GRP_12.Database
         {
             using var cn = new SqlConnection(connectionString);
             var cmd = new SqlCommand(@"
-                UPDATE Guest SET FirstName = @first, LastName = @last, Email = @email, Phone = @phone, Address = @address, CreditCardLastFourDigits = @card, IsInGoodStanding = @status
-                WHERE GuestId = @id", cn);
+                UPDATE Guest SET FirstName = @first, LastName = @last, Email = @email, Phone = @phone, Address = @address, CreditCardNum = @card, IsInGoodStanding = @status
+                WHERE Id = @id", cn);
 
             cmd.Parameters.AddWithValue("@id", guest.GuestId);
             cmd.Parameters.AddWithValue("@first", guest.FirstName);
@@ -119,7 +119,7 @@ namespace Phumla_Kamnandi_GRP_12.Database
         public bool Exists(string guestId)
         {
             using var cn = new SqlConnection(connectionString);
-            var cmd = new SqlCommand("SELECT COUNT(*) FROM Guest WHERE GuestId = @id", cn);
+            var cmd = new SqlCommand("SELECT COUNT(*) FROM Guest WHERE Id = @id", cn);
             cmd.Parameters.AddWithValue("@id", guestId);
             cn.Open();
             int count = (int)cmd.ExecuteScalar();
@@ -137,12 +137,12 @@ namespace Phumla_Kamnandi_GRP_12.Database
             );
 
             // Use reflection to set the private GuestId property
-            var guestIdProperty = typeof(Guest).GetProperty("GuestId",
+            var guestIdProperty = typeof(Guest).GetProperty("Id",
                 System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance);
 
             if (guestIdProperty != null && guestIdProperty.CanWrite)
             {
-                guestIdProperty.SetValue(guest, reader["GuestId"].ToString().Trim());
+                guestIdProperty.SetValue(guest, reader["Id"].ToString().Trim());
             }
 
             // Use reflection to set DateRegistered
@@ -156,9 +156,9 @@ namespace Phumla_Kamnandi_GRP_12.Database
 
             guest.IsInGoodStanding = Convert.ToBoolean(reader["IsInGoodStanding"]);
 
-            if (reader["CreditCardLastFourDigits"] != DBNull.Value)
+            if (reader["CreditCardNum"] != DBNull.Value)
             {
-                string cardDigits = reader["CreditCardLastFourDigits"].ToString().Trim();
+                string cardDigits = reader["CreditCardNum"].ToString().Trim();
                 if (!string.IsNullOrEmpty(cardDigits))
                 {
                     guest.UpdateCreditCard(cardDigits);
