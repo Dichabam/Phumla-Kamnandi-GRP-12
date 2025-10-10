@@ -136,17 +136,33 @@ namespace Phumla_Kamnandi_GRP_12.Database
                 reader["Address"].ToString().Trim()
             );
 
-            guest.GetType().GetProperty("GuestId")
-                .SetValue(guest, reader["GuestId"].ToString().Trim());
+            // Use reflection to set the private GuestId property
+            var guestIdProperty = typeof(Guest).GetProperty("GuestId",
+                System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance);
 
-            guest.GetType().GetProperty("DateRegistered")
-                .SetValue(guest, Convert.ToDateTime(reader["DateRegistered"]));
+            if (guestIdProperty != null && guestIdProperty.CanWrite)
+            {
+                guestIdProperty.SetValue(guest, reader["GuestId"].ToString().Trim());
+            }
+
+            // Use reflection to set DateRegistered
+            var dateProperty = typeof(Guest).GetProperty("DateRegistered",
+                System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance);
+
+            if (dateProperty != null && dateProperty.CanWrite)
+            {
+                dateProperty.SetValue(guest, Convert.ToDateTime(reader["DateRegistered"]));
+            }
 
             guest.IsInGoodStanding = Convert.ToBoolean(reader["IsInGoodStanding"]);
 
             if (reader["CreditCardLastFourDigits"] != DBNull.Value)
             {
-                guest.UpdateCreditCard(reader["CreditCardLastFourDigits"].ToString().Trim());
+                string cardDigits = reader["CreditCardLastFourDigits"].ToString().Trim();
+                if (!string.IsNullOrEmpty(cardDigits))
+                {
+                    guest.UpdateCreditCard(cardDigits);
+                }
             }
 
             return guest;

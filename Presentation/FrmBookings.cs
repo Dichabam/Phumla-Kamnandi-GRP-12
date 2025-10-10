@@ -4,6 +4,7 @@ using System;
 using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
+using System.Drawing;
 
 namespace Phumla_Kamnandi_GRP_12.Presentation
 {
@@ -13,6 +14,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
         private ServiceLocator _services;
         private bool isInMakeBookingMode = false;
         private bool isInUpdateMode = false;
+        private string selectedBookingRef = null;
 
         public FrmBookings()
         {
@@ -39,16 +41,20 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             {
                 using (var connection = new SqlConnection(connectionString))
                 {
-                    // First, let's try a simpler query to see what columns exist
+                    // Updated query to include GuestId and proper joins
                     string query = @"
                     SELECT 
                         b.BookingReference,
+                        b.GuestId,
+                        g.FirstName + ' ' + g.LastName AS GuestName,
+                        g.Email AS GuestEmail,
                         b.CheckInDate,
                         b.CheckOutDate,
                         b.RoomNumber,
                         b.NumberOfAdults,
                         b.NumberOfChildren,
                         b.TotalAmount,
+                        b.DepositAmount,
                         b.DepositPaid,
                         CASE b.Status 
                             WHEN 0 THEN 'Unconfirmed'
@@ -62,8 +68,10 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                             WHEN 1 THEN 'Paid'
                             WHEN 2 THEN 'Refunded'
                             WHEN 3 THEN 'Failed'
-                        END AS PaymentStatus
+                        END AS PaymentStatus,
+                        b.BookingDate
                     FROM Booking b
+                    INNER JOIN Guest g ON b.GuestId = g.GuestId
                     ORDER BY b.BookingDate DESC";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
@@ -72,19 +80,25 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
 
                     ShowdataGridView.DataSource = dt;
 
-                    // Format columns if they exist
+                    // Hide GuestId column but keep it in the DataTable
+                    if (ShowdataGridView.Columns.Contains("GuestId"))
+                        ShowdataGridView.Columns["GuestId"].Visible = false;
+
+                    // Format columns
                     if (ShowdataGridView.Columns.Contains("TotalAmount"))
                         ShowdataGridView.Columns["TotalAmount"].DefaultCellStyle.Format = "C2";
+                    if (ShowdataGridView.Columns.Contains("DepositAmount"))
+                        ShowdataGridView.Columns["DepositAmount"].DefaultCellStyle.Format = "C2";
                     if (ShowdataGridView.Columns.Contains("DepositPaid"))
                         ShowdataGridView.Columns["DepositPaid"].DefaultCellStyle.Format = "C2";
                     if (ShowdataGridView.Columns.Contains("CheckInDate"))
-                        ShowdataGridView.Columns["CheckInDate"].DefaultCellStyle.Format = "YYYY-MM-DD";
+                        ShowdataGridView.Columns["CheckInDate"].DefaultCellStyle.Format = "yyyy-MM-dd";
                     if (ShowdataGridView.Columns.Contains("CheckOutDate"))
-                        ShowdataGridView.Columns["CheckOutDate"].DefaultCellStyle.Format = "YYYY-MM-DD";
+                        ShowdataGridView.Columns["CheckOutDate"].DefaultCellStyle.Format = "yyyy-MM-dd";
+                    if (ShowdataGridView.Columns.Contains("BookingDate"))
+                        ShowdataGridView.Columns["BookingDate"].DefaultCellStyle.Format = "yyyy-MM-dd HH:mm";
 
                     ShowdataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-
-                        
                 }
             }
             catch (Exception ex)
@@ -166,6 +180,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             YesNoComboBox.SelectedIndex = -1;
             specialrequestTextbox.Clear();
             creditTextbox.Clear();
+            selectedBookingRef = null;
         }
 
         private void MakeBookingButton_Click_1(object sender, EventArgs e)
@@ -175,7 +190,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             ClearAllFields();
             ShowAllInputFields();
             SubmitButton.Text = "Submit Booking";
-            SubmitButton.FillColor = System.Drawing.Color.Lime;
+            SubmitButton.FillColor = Color.Lime;
         }
 
         private void SubmitButton_Click(object sender, EventArgs e)
@@ -213,9 +228,13 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                 }
 
                 // 2. Update credit card if provided
-                if (!string.IsNullOrEmpty(creditTextbox.Text.Trim()))
+                if (!string.IsNullOrEmpty(creditTextbox.Text.Trim()) && creditTextbox.Text.Trim().Length >= 4)
                 {
-                    _services.GuestService.UpdateGuestCreditCard(guest.GuestId, creditTextbox.Text.Trim());
+                    string lastFour = creditTextbox.Text.Trim();
+                    if (lastFour.Length > 4)
+                        lastFour = lastFour.Substring(lastFour.Length - 4);
+
+                    _services.GuestService.UpdateGuestCreditCard(guest.GuestId, lastFour);
                 }
 
                 // 3. Make booking
@@ -236,7 +255,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                 if (result.Success)
                 {
                     // 4. Confirm booking with deposit if credit card provided
-                    if (!string.IsNullOrEmpty(creditTextbox.Text.Trim()))
+                    if (!string.IsNullOrEmpty(creditTextbox.Text.Trim()) && creditTextbox.Text.Trim().Length >= 4)
                     {
                         _services.BookingService.ConfirmBookingWithDeposit(
                             result.BookingReference,
@@ -265,7 +284,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error creating booking: {ex.Message}", "Error",
+                MessageBox.Show($"Error creating booking: {ex.Message}\n\nStack: {ex.StackTrace}", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -328,26 +347,145 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
 
         private void HandleUpdateBooking()
         {
-            // This will be implemented based on your decision
-            MessageBox.Show("Update booking functionality - to be implemented based on requirements",
-                "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            try
+            {
+                if (string.IsNullOrEmpty(selectedBookingRef))
+                {
+                    MessageBox.Show("No booking selected for update", "Error");
+                    return;
+                }
+
+                if (!ValidateInputs()) return;
+
+                // Get the booking
+                var booking = _services.BookingService.GetBookingDetails(selectedBookingRef);
+                if (booking == null)
+                {
+                    MessageBox.Show("Booking not found", "Error");
+                    return;
+                }
+
+                // Update dates
+                bool success = _services.BookingService.ChangeBooking(
+                    selectedBookingRef,
+                    checkindp.Value.Date,
+                    checkoutdp.Value.Date
+                );
+
+                if (success)
+                {
+                    MessageBox.Show("Booking updated successfully!", "Success",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    // Refresh grid and reset UI
+                    LoadBookingsGrid();
+                    HideAllInputFields();
+                    ClearAllFields();
+                    isInUpdateMode = false;
+
+                    // Reset button colors
+                    UpdatebookingButton.Text = "UPDATE BOOKING";
+                    UpdatebookingButton.FillColor = Color.FromArgb(0, 126, 249);
+                    CancelBookingButton.Text = "CANCEL";
+                    CancelBookingButton.FillColor = Color.FromArgb(0, 126, 249);
+                }
+                else
+                {
+                    MessageBox.Show("Failed to update booking. Room may not be available for new dates.",
+                        "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error updating booking: {ex.Message}", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void UpdatebookingButton_Click_1(object sender, EventArgs e)
         {
-            // TODO: Implement update booking logic
-            MessageBox.Show("Select a booking from the grid, then decide what aspects you want to update:\n\n" +
-                "Options could include:\n" +
-                "- Update payment status (deposit paid, fully paid)\n" +
-                "- Update dates\n" +
-                "- Update guest count\n" +
-                "- Update special requests\n" +
-                "- Change booking status",
-                "Update Booking", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            if (ShowdataGridView.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Please select a booking to update", "No Selection",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            try
+            {
+                // Get selected booking details
+                DataGridViewRow row = ShowdataGridView.SelectedRows[0];
+                selectedBookingRef = row.Cells["BookingReference"].Value.ToString();
+
+                // Get full booking details
+                var booking = _services.BookingService.GetBookingDetails(selectedBookingRef);
+                if (booking == null)
+                {
+                    MessageBox.Show("Could not load booking details", "Error");
+                    return;
+                }
+
+                // Get guest details
+                var guest = _services.GuestService.GetGuestById(booking.GuestId);
+                if (guest == null)
+                {
+                    MessageBox.Show("Could not load guest details", "Error");
+                    return;
+                }
+
+                // Populate fields with current data
+                NameTextBox.Text = guest.FirstName;
+                surnametextbox.Text = guest.LastName;
+                emailtextbox.Text = guest.Email;
+                phonetextbox.Text = guest.Phone;
+                addresstextbox.Text = guest.Address;
+                checkindp.Value = booking.CheckInDate;
+                checkoutdp.Value = booking.CheckOutDate;
+                adultstextbox.Text = booking.NumberOfAdults.ToString();
+                childrentextbox.Text = booking.NumberOfChildren.ToString();
+                YesNoComboBox.SelectedItem = booking.IsSingleOccupancy ? "Yes" : "No";
+                specialrequestTextbox.Text = booking.SpecialRequests ?? "";
+                creditTextbox.Text = guest.CreditCardLastFourDigits ?? "";
+
+                // Show fields and set mode
+                ShowAllInputFields();
+                isInUpdateMode = true;
+                isInMakeBookingMode = false;
+
+                // Change button appearance
+                SubmitButton.Text = "Save Changes";
+                SubmitButton.FillColor = Color.Green;
+                UpdatebookingButton.Text = "SAVE";
+                UpdatebookingButton.FillColor = Color.Green;
+                CancelBookingButton.Text = "CANCEL EDIT";
+                CancelBookingButton.FillColor = Color.Red;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error loading booking for update: {ex.Message}", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void CancelBookingButton_Click_1(object sender, EventArgs e)
         {
+            // Check if we're in edit mode
+            if (isInUpdateMode)
+            {
+                // Cancel the edit operation
+                HideAllInputFields();
+                ClearAllFields();
+                isInUpdateMode = false;
+
+                // Reset button colors
+                UpdatebookingButton.Text = "UPDATE BOOKING";
+                UpdatebookingButton.FillColor = Color.FromArgb(0, 126, 249);
+                CancelBookingButton.Text = "CANCEL";
+                CancelBookingButton.FillColor = Color.FromArgb(0, 126, 249);
+                return;
+            }
+
+            // Otherwise, cancel a booking
             if (ShowdataGridView.SelectedRows.Count == 0)
             {
                 MessageBox.Show("Please select a booking to cancel", "No Selection",
@@ -396,7 +534,6 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             // Validation handled by checkindp_ValueChanged
         }
 
-        // Search functionality - called from Dashboard
         public void SearchBookings(string searchText)
         {
             if (string.IsNullOrWhiteSpace(searchText))
@@ -410,10 +547,8 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                 DataTable dt = (DataTable)ShowdataGridView.DataSource;
                 if (dt != null)
                 {
-                    // Build filter based on available columns
                     string filter = $"BookingReference LIKE '%{searchText}%'";
 
-                    // Add other columns if they exist
                     if (dt.Columns.Contains("GuestName"))
                         filter += $" OR GuestName LIKE '%{searchText}%'";
                     if (dt.Columns.Contains("GuestEmail"))
@@ -425,7 +560,6 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
 
                     dt.DefaultView.RowFilter = filter;
 
-                    // Highlight found rows
                     foreach (DataGridViewRow row in ShowdataGridView.Rows)
                     {
                         bool matchFound = false;
@@ -437,7 +571,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                                 break;
                             }
                         }
-                        row.DefaultCellStyle.BackColor = matchFound ? System.Drawing.Color.LightYellow : System.Drawing.Color.White;
+                        row.DefaultCellStyle.BackColor = matchFound ? Color.LightYellow : Color.White;
                     }
                 }
             }
@@ -447,7 +581,6 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e) { }
         private void NameTextBox_TextChanged(object sender, EventArgs e) { }

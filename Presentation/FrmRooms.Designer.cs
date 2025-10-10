@@ -33,16 +33,19 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.roomsDateview = new Guna.UI2.WinForms.Guna2DataGridView();
+            this.phumlaKamnandiDBDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.phumlaKamnandiDBDataSet = new Phumla_Kamnandi_GRP_12.PhumlaKamnandiDBDataSet();
             this.ShowAllRoomsButton = new Guna.UI2.WinForms.Guna2Button();
             this.ShowUnavailableRoomsButton = new Guna.UI2.WinForms.Guna2Button();
             this.showAvailableRoomsButton = new Guna.UI2.WinForms.Guna2Button();
-            this.phumlaKamnandiDBDataSet = new Phumla_Kamnandi_GRP_12.PhumlaKamnandiDBDataSet();
-            this.phumlaKamnandiDBDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.roomBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.roomTableAdapter = new Phumla_Kamnandi_GRP_12.PhumlaKamnandiDBDataSetTableAdapters.RoomTableAdapter();
+            this.roomNumDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.maxOccupancyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.availabilityDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.roomsDateview)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.phumlaKamnandiDBDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.phumlaKamnandiDBDataSetBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.phumlaKamnandiDBDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.roomBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -63,7 +66,11 @@
             this.roomsDateview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.roomsDateview.ColumnHeadersHeight = 4;
             this.roomsDateview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            this.roomsDateview.DataSource = this.phumlaKamnandiDBDataSetBindingSource;
+            this.roomsDateview.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.roomNumDataGridViewTextBoxColumn,
+            this.maxOccupancyDataGridViewTextBoxColumn,
+            this.availabilityDataGridViewCheckBoxColumn});
+            this.roomsDateview.DataSource = this.roomBindingSource;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -102,6 +109,16 @@
             this.roomsDateview.ThemeStyle.RowsStyle.Height = 24;
             this.roomsDateview.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.roomsDateview.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            // 
+            // phumlaKamnandiDBDataSetBindingSource
+            // 
+            this.phumlaKamnandiDBDataSetBindingSource.DataSource = this.phumlaKamnandiDBDataSet;
+            this.phumlaKamnandiDBDataSetBindingSource.Position = 0;
+            // 
+            // phumlaKamnandiDBDataSet
+            // 
+            this.phumlaKamnandiDBDataSet.DataSetName = "PhumlaKamnandiDBDataSet";
+            this.phumlaKamnandiDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // ShowAllRoomsButton
             // 
@@ -160,16 +177,6 @@
             this.showAvailableRoomsButton.Text = "Available Rooms";
             this.showAvailableRoomsButton.Click += new System.EventHandler(this.showAvailableRoomsButton_Click);
             // 
-            // phumlaKamnandiDBDataSet
-            // 
-            this.phumlaKamnandiDBDataSet.DataSetName = "PhumlaKamnandiDBDataSet";
-            this.phumlaKamnandiDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // phumlaKamnandiDBDataSetBindingSource
-            // 
-            this.phumlaKamnandiDBDataSetBindingSource.DataSource = this.phumlaKamnandiDBDataSet;
-            this.phumlaKamnandiDBDataSetBindingSource.Position = 0;
-            // 
             // roomBindingSource
             // 
             this.roomBindingSource.DataMember = "Room";
@@ -178,6 +185,30 @@
             // roomTableAdapter
             // 
             this.roomTableAdapter.ClearBeforeFill = true;
+            // 
+            // roomNumDataGridViewTextBoxColumn
+            // 
+            this.roomNumDataGridViewTextBoxColumn.DataPropertyName = "RoomNum";
+            this.roomNumDataGridViewTextBoxColumn.HeaderText = "RoomNum";
+            this.roomNumDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.roomNumDataGridViewTextBoxColumn.Name = "roomNumDataGridViewTextBoxColumn";
+            this.roomNumDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // maxOccupancyDataGridViewTextBoxColumn
+            // 
+            this.maxOccupancyDataGridViewTextBoxColumn.DataPropertyName = "MaxOccupancy";
+            this.maxOccupancyDataGridViewTextBoxColumn.HeaderText = "MaxOccupancy";
+            this.maxOccupancyDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.maxOccupancyDataGridViewTextBoxColumn.Name = "maxOccupancyDataGridViewTextBoxColumn";
+            this.maxOccupancyDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // availabilityDataGridViewCheckBoxColumn
+            // 
+            this.availabilityDataGridViewCheckBoxColumn.DataPropertyName = "Availability";
+            this.availabilityDataGridViewCheckBoxColumn.HeaderText = "Availability";
+            this.availabilityDataGridViewCheckBoxColumn.MinimumWidth = 6;
+            this.availabilityDataGridViewCheckBoxColumn.Name = "availabilityDataGridViewCheckBoxColumn";
+            this.availabilityDataGridViewCheckBoxColumn.ReadOnly = true;
             // 
             // FrmRooms
             // 
@@ -194,8 +225,8 @@
             this.Text = "FrmRooms";
             this.Load += new System.EventHandler(this.FrmRooms_Load);
             ((System.ComponentModel.ISupportInitialize)(this.roomsDateview)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.phumlaKamnandiDBDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.phumlaKamnandiDBDataSetBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.phumlaKamnandiDBDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.roomBindingSource)).EndInit();
             this.ResumeLayout(false);
 
@@ -211,5 +242,8 @@
         private PhumlaKamnandiDBDataSet phumlaKamnandiDBDataSet;
         private System.Windows.Forms.BindingSource roomBindingSource;
         private PhumlaKamnandiDBDataSetTableAdapters.RoomTableAdapter roomTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn roomNumDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn maxOccupancyDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn availabilityDataGridViewCheckBoxColumn;
     }
 }
