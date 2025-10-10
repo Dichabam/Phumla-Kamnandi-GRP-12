@@ -193,6 +193,9 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             this.Close();
         }
 
+        private void EnterAdminCodeLabel_Click(object sender, EventArgs e)
+        {
 
+        }
     }
 }

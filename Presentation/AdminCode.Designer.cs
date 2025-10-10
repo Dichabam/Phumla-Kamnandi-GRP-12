@@ -153,6 +153,7 @@
             this.EnterAdminCodeLabel.Size = new System.Drawing.Size(318, 40);
             this.EnterAdminCodeLabel.TabIndex = 8;
             this.EnterAdminCodeLabel.Text = "Enter Admin Code";
+            this.EnterAdminCodeLabel.Click += new System.EventHandler(this.EnterAdminCodeLabel_Click);
             // 
             // AdminCode
             // 
