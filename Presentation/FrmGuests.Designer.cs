@@ -51,14 +51,15 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             this.SurnameTxtbox = new Guna.UI2.WinForms.Guna2TextBox();
             this.CreditcardNumTxtbox = new Guna.UI2.WinForms.Guna2TextBox();
             this.UpdatebuttonPanel = new System.Windows.Forms.Panel();
-            this.NameL = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.SaveButton = new Guna.UI2.WinForms.Guna2Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.SaveButton = new Guna.UI2.WinForms.Guna2Button();
-            this.label6 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.NameL = new System.Windows.Forms.Label();
+            this.terminateButton = new Guna.UI2.WinForms.Guna2Button();
             ((System.ComponentModel.ISupportInitialize)(this.GuestDataView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.phumlaKamnandiDBDataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.phumlaKamnandiDBDataSet)).BeginInit();
@@ -372,6 +373,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             // 
             // UpdatebuttonPanel
             // 
+            this.UpdatebuttonPanel.Controls.Add(this.terminateButton);
             this.UpdatebuttonPanel.Controls.Add(this.SaveButton);
             this.UpdatebuttonPanel.Controls.Add(this.label2);
             this.UpdatebuttonPanel.Controls.Add(this.label6);
@@ -386,32 +388,27 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             this.UpdatebuttonPanel.Controls.Add(this.AdressTxtBox);
             this.UpdatebuttonPanel.Controls.Add(this.SurnameTxtbox);
             this.UpdatebuttonPanel.Controls.Add(this.NameTxtBox);
-            this.UpdatebuttonPanel.Location = new System.Drawing.Point(49, 414);
+            this.UpdatebuttonPanel.Location = new System.Drawing.Point(35, 414);
             this.UpdatebuttonPanel.Name = "UpdatebuttonPanel";
-            this.UpdatebuttonPanel.Size = new System.Drawing.Size(876, 273);
+            this.UpdatebuttonPanel.Size = new System.Drawing.Size(890, 273);
             this.UpdatebuttonPanel.TabIndex = 29;
             // 
-            // NameL
+            // SaveButton
             // 
-            this.NameL.AutoSize = true;
-            this.NameL.Font = new System.Drawing.Font("Nirmala UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NameL.ForeColor = System.Drawing.Color.White;
-            this.NameL.Location = new System.Drawing.Point(6, 56);
-            this.NameL.Name = "NameL";
-            this.NameL.Size = new System.Drawing.Size(57, 23);
-            this.NameL.TabIndex = 28;
-            this.NameL.Text = "Name";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Nirmala UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(388, 56);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(81, 23);
-            this.label1.TabIndex = 28;
-            this.label1.Text = "Surname";
+            this.SaveButton.Animated = true;
+            this.SaveButton.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.SaveButton.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.SaveButton.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.SaveButton.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.SaveButton.FillColor = System.Drawing.Color.LimeGreen;
+            this.SaveButton.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.SaveButton.ForeColor = System.Drawing.Color.White;
+            this.SaveButton.Location = new System.Drawing.Point(671, 215);
+            this.SaveButton.Name = "SaveButton";
+            this.SaveButton.Size = new System.Drawing.Size(180, 45);
+            this.SaveButton.TabIndex = 29;
+            this.SaveButton.Text = "Save Updates";
+            this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
             // 
             // label2
             // 
@@ -424,27 +421,38 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             this.label2.TabIndex = 28;
             this.label2.Text = "Phone Number";
             // 
-            // label3
+            // label6
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Nirmala UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(398, 104);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(54, 23);
-            this.label3.TabIndex = 28;
-            this.label3.Text = "Email";
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Nirmala UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
+            this.label6.Location = new System.Drawing.Point(315, 13);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(208, 23);
+            this.label6.TabIndex = 28;
+            this.label6.Text = "CHANGE ONE OR MORE ";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Nirmala UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(388, 56);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(81, 23);
+            this.label1.TabIndex = 28;
+            this.label1.Text = "Surname";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Nirmala UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(6, 158);
+            this.label4.Location = new System.Drawing.Point(2, 158);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(131, 23);
+            this.label4.Size = new System.Drawing.Size(142, 23);
             this.label4.TabIndex = 28;
-            this.label4.Text = "Physical Adress";
+            this.label4.Text = "Physical Address";
             // 
             // label5
             // 
@@ -457,32 +465,45 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             this.label5.TabIndex = 28;
             this.label5.Text = "Credit Card Number";
             // 
-            // SaveButton
+            // label3
             // 
-            this.SaveButton.Animated = true;
-            this.SaveButton.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.SaveButton.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.SaveButton.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.SaveButton.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.SaveButton.FillColor = System.Drawing.Color.LimeGreen;
-            this.SaveButton.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.SaveButton.ForeColor = System.Drawing.Color.White;
-            this.SaveButton.Location = new System.Drawing.Point(650, 211);
-            this.SaveButton.Name = "SaveButton";
-            this.SaveButton.Size = new System.Drawing.Size(180, 45);
-            this.SaveButton.TabIndex = 29;
-            this.SaveButton.Text = "Save Updates";
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Nirmala UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(398, 104);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(54, 23);
+            this.label3.TabIndex = 28;
+            this.label3.Text = "Email";
             // 
-            // label6
+            // NameL
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Nirmala UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
-            this.label6.Location = new System.Drawing.Point(315, 13);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(208, 23);
-            this.label6.TabIndex = 28;
-            this.label6.Text = "CHANGE ONE OR MORE ";
+            this.NameL.AutoSize = true;
+            this.NameL.Font = new System.Drawing.Font("Nirmala UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NameL.ForeColor = System.Drawing.Color.White;
+            this.NameL.Location = new System.Drawing.Point(3, 56);
+            this.NameL.Name = "NameL";
+            this.NameL.Size = new System.Drawing.Size(57, 23);
+            this.NameL.TabIndex = 28;
+            this.NameL.Text = "Name";
+            // 
+            // terminateButton
+            // 
+            this.terminateButton.Animated = true;
+            this.terminateButton.AutoRoundedCorners = true;
+            this.terminateButton.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.terminateButton.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.terminateButton.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.terminateButton.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.terminateButton.FillColor = System.Drawing.Color.Red;
+            this.terminateButton.Font = new System.Drawing.Font("Nirmala Text", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.terminateButton.ForeColor = System.Drawing.Color.White;
+            this.terminateButton.Location = new System.Drawing.Point(810, 3);
+            this.terminateButton.Name = "terminateButton";
+            this.terminateButton.Size = new System.Drawing.Size(77, 33);
+            this.terminateButton.TabIndex = 29;
+            this.terminateButton.Text = "close";
+            this.terminateButton.Click += new System.EventHandler(this.terminateButton_Click);
             // 
             // FrmGuests
             // 
@@ -543,5 +564,6 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
         private Guna.UI2.WinForms.Guna2Button SaveButton;
         private Label label5;
         private Label label6;
+        private Guna.UI2.WinForms.Guna2Button terminateButton;
     }
 }
