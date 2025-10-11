@@ -40,6 +40,9 @@
             this.EditUpdateButton = new Guna.UI2.WinForms.Guna2Button();
             this.CHnagepasswordButton = new Guna.UI2.WinForms.Guna2Button();
             this.Errorsuccessmessage = new System.Windows.Forms.Label();
+            this.viewPasswordButton = new Guna.UI2.WinForms.Guna2Button();
+            this.viewPasswordButton2 = new Guna.UI2.WinForms.Guna2Button();
+            this.viewPasswordButton3 = new Guna.UI2.WinForms.Guna2Button();
             this.SuspendLayout();
             // 
             // NametextEm
@@ -258,12 +261,66 @@
             this.Errorsuccessmessage.TabIndex = 16;
             this.Errorsuccessmessage.Text = "current password is wrong";
             // 
+            // viewPasswordButton
+            // 
+            this.viewPasswordButton.BackColor = System.Drawing.Color.Transparent;
+            this.viewPasswordButton.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.viewPasswordButton.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.viewPasswordButton.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.viewPasswordButton.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.viewPasswordButton.FillColor = System.Drawing.Color.White;
+            this.viewPasswordButton.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.viewPasswordButton.ForeColor = System.Drawing.Color.White;
+            this.viewPasswordButton.Image = global::Phumla_Kamnandi_GRP_12.Properties.Resources.visibility_50dp_000000_FILL0_wght400_GRAD0_opsz48;
+            this.viewPasswordButton.Location = new System.Drawing.Point(398, 401);
+            this.viewPasswordButton.Name = "viewPasswordButton";
+            this.viewPasswordButton.Size = new System.Drawing.Size(56, 30);
+            this.viewPasswordButton.TabIndex = 17;
+            this.viewPasswordButton.Click += new System.EventHandler(this.viewPasswordButton_Click);
+            // 
+            // viewPasswordButton2
+            // 
+            this.viewPasswordButton2.BackColor = System.Drawing.Color.Transparent;
+            this.viewPasswordButton2.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.viewPasswordButton2.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.viewPasswordButton2.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.viewPasswordButton2.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.viewPasswordButton2.FillColor = System.Drawing.Color.White;
+            this.viewPasswordButton2.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.viewPasswordButton2.ForeColor = System.Drawing.Color.White;
+            this.viewPasswordButton2.Image = global::Phumla_Kamnandi_GRP_12.Properties.Resources.visibility_50dp_000000_FILL0_wght400_GRAD0_opsz48;
+            this.viewPasswordButton2.Location = new System.Drawing.Point(398, 484);
+            this.viewPasswordButton2.Name = "viewPasswordButton2";
+            this.viewPasswordButton2.Size = new System.Drawing.Size(56, 30);
+            this.viewPasswordButton2.TabIndex = 17;
+            this.viewPasswordButton2.Click += new System.EventHandler(this.viewPasswordButton2_Click);
+            // 
+            // viewPasswordButton3
+            // 
+            this.viewPasswordButton3.BackColor = System.Drawing.Color.Transparent;
+            this.viewPasswordButton3.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.viewPasswordButton3.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.viewPasswordButton3.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.viewPasswordButton3.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.viewPasswordButton3.FillColor = System.Drawing.Color.White;
+            this.viewPasswordButton3.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.viewPasswordButton3.ForeColor = System.Drawing.Color.White;
+            this.viewPasswordButton3.Image = global::Phumla_Kamnandi_GRP_12.Properties.Resources.visibility_50dp_000000_FILL0_wght400_GRAD0_opsz48;
+            this.viewPasswordButton3.Location = new System.Drawing.Point(398, 574);
+            this.viewPasswordButton3.Name = "viewPasswordButton3";
+            this.viewPasswordButton3.Size = new System.Drawing.Size(56, 30);
+            this.viewPasswordButton3.TabIndex = 17;
+            this.viewPasswordButton3.Click += new System.EventHandler(this.viewPasswordButton3_Click);
+            // 
             // FrmSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
             this.ClientSize = new System.Drawing.Size(954, 709);
+            this.Controls.Add(this.viewPasswordButton3);
+            this.Controls.Add(this.viewPasswordButton2);
+            this.Controls.Add(this.viewPasswordButton);
             this.Controls.Add(this.Errorsuccessmessage);
             this.Controls.Add(this.CHnagepasswordButton);
             this.Controls.Add(this.EditUpdateButton);
@@ -298,5 +355,8 @@
         private Guna.UI2.WinForms.Guna2Button EditUpdateButton;
         private Guna.UI2.WinForms.Guna2Button CHnagepasswordButton;
         private System.Windows.Forms.Label Errorsuccessmessage;
+        private Guna.UI2.WinForms.Guna2Button viewPasswordButton;
+        private Guna.UI2.WinForms.Guna2Button viewPasswordButton2;
+        private Guna.UI2.WinForms.Guna2Button viewPasswordButton3;
     }
 }
