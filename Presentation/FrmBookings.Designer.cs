@@ -30,8 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             this.ShowdataGridView = new System.Windows.Forms.DataGridView();
-            this.phumlaKamnandiDBDataSetBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.phumlaKamnandiDBDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.phumlaKamnandiDBDataSet = new Phumla_Kamnandi_GRP_12.PhumlaKamnandiDBDataSet();
+            this.phumlaKamnandiDBDataSetBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.PhoneNumberLabel = new System.Windows.Forms.Label();
             this.NameLabel = new System.Windows.Forms.Label();
             this.AddressLabel = new System.Windows.Forms.Label();
@@ -41,7 +42,6 @@
             this.SurnameLabel = new System.Windows.Forms.Label();
             this.EmailLabel = new System.Windows.Forms.Label();
             this.CreditCardlabel = new System.Windows.Forms.Label();
-            this.phumlaKamnandiDBDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.NoOfAdultsLabel = new System.Windows.Forms.Label();
             this.YesNoComboBox = new Guna.UI2.WinForms.Guna2ComboBox();
             this.NameTextBox = new Guna.UI2.WinForms.Guna2TextBox();
@@ -61,10 +61,12 @@
             this.MakeBookingButton = new Guna.UI2.WinForms.Guna2Button();
             this.CancelBookingButton = new Guna.UI2.WinForms.Guna2Button();
             this.UpdatebookingButton = new Guna.UI2.WinForms.Guna2Button();
+            this.guna2TextBox1 = new Guna.UI2.WinForms.Guna2TextBox();
+            this.IdNumLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.ShowdataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.phumlaKamnandiDBDataSetBindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.phumlaKamnandiDBDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.phumlaKamnandiDBDataSetBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.phumlaKamnandiDBDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.phumlaKamnandiDBDataSetBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // ShowdataGridView
@@ -72,9 +74,7 @@
             this.ShowdataGridView.AllowDrop = true;
             this.ShowdataGridView.AllowUserToAddRows = false;
             this.ShowdataGridView.AllowUserToDeleteRows = false;
-            this.ShowdataGridView.AutoGenerateColumns = false;
             this.ShowdataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.ShowdataGridView.DataSource = this.phumlaKamnandiDBDataSetBindingSource;
             this.ShowdataGridView.Location = new System.Drawing.Point(53, 6);
             this.ShowdataGridView.Name = "ShowdataGridView";
             this.ShowdataGridView.ReadOnly = true;
@@ -84,33 +84,38 @@
             this.ShowdataGridView.TabIndex = 27;
             this.ShowdataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
-            // phumlaKamnandiDBDataSetBindingSource1
+            // phumlaKamnandiDBDataSetBindingSource
             // 
-            this.phumlaKamnandiDBDataSetBindingSource1.DataSource = this.phumlaKamnandiDBDataSet;
-            this.phumlaKamnandiDBDataSetBindingSource1.Position = 0;
+            this.phumlaKamnandiDBDataSetBindingSource.DataSource = this.phumlaKamnandiDBDataSet;
+            this.phumlaKamnandiDBDataSetBindingSource.Position = 0;
             // 
             // phumlaKamnandiDBDataSet
             // 
             this.phumlaKamnandiDBDataSet.DataSetName = "PhumlaKamnandiDBDataSet";
             this.phumlaKamnandiDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
+            // phumlaKamnandiDBDataSetBindingSource1
+            // 
+            this.phumlaKamnandiDBDataSetBindingSource1.DataSource = this.phumlaKamnandiDBDataSet;
+            this.phumlaKamnandiDBDataSetBindingSource1.Position = 0;
+            // 
             // PhoneNumberLabel
             // 
             this.PhoneNumberLabel.AutoSize = true;
             this.PhoneNumberLabel.Font = new System.Drawing.Font("Nirmala UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PhoneNumberLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.PhoneNumberLabel.Location = new System.Drawing.Point(547, 388);
+            this.PhoneNumberLabel.Location = new System.Drawing.Point(532, 436);
             this.PhoneNumberLabel.Name = "PhoneNumberLabel";
-            this.PhoneNumberLabel.Size = new System.Drawing.Size(101, 17);
+            this.PhoneNumberLabel.Size = new System.Drawing.Size(31, 17);
             this.PhoneNumberLabel.TabIndex = 33;
-            this.PhoneNumberLabel.Text = "Phone Number";
+            this.PhoneNumberLabel.Text = "Cell";
             // 
             // NameLabel
             // 
             this.NameLabel.AutoSize = true;
             this.NameLabel.Font = new System.Drawing.Font("Nirmala UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.NameLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.NameLabel.Location = new System.Drawing.Point(36, 336);
+            this.NameLabel.Location = new System.Drawing.Point(38, 336);
             this.NameLabel.Name = "NameLabel";
             this.NameLabel.Size = new System.Drawing.Size(44, 17);
             this.NameLabel.TabIndex = 34;
@@ -154,7 +159,7 @@
             this.Occupancylabel.AutoSize = true;
             this.Occupancylabel.Font = new System.Drawing.Font("Nirmala UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Occupancylabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.Occupancylabel.Location = new System.Drawing.Point(612, 488);
+            this.Occupancylabel.Location = new System.Drawing.Point(629, 504);
             this.Occupancylabel.Name = "Occupancylabel";
             this.Occupancylabel.Size = new System.Drawing.Size(122, 17);
             this.Occupancylabel.TabIndex = 65;
@@ -165,7 +170,7 @@
             this.SurnameLabel.AutoSize = true;
             this.SurnameLabel.Font = new System.Drawing.Font("Nirmala UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SurnameLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.SurnameLabel.Location = new System.Drawing.Point(417, 336);
+            this.SurnameLabel.Location = new System.Drawing.Point(415, 336);
             this.SurnameLabel.Name = "SurnameLabel";
             this.SurnameLabel.Size = new System.Drawing.Size(62, 17);
             this.SurnameLabel.TabIndex = 34;
@@ -192,11 +197,6 @@
             this.CreditCardlabel.Size = new System.Drawing.Size(125, 17);
             this.CreditCardlabel.TabIndex = 61;
             this.CreditCardlabel.Text = "credit card number";
-            // 
-            // phumlaKamnandiDBDataSetBindingSource
-            // 
-            this.phumlaKamnandiDBDataSetBindingSource.DataSource = this.phumlaKamnandiDBDataSet;
-            this.phumlaKamnandiDBDataSetBindingSource.Position = 0;
             // 
             // NoOfAdultsLabel
             // 
@@ -241,7 +241,7 @@
             this.NameTextBox.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.NameTextBox.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.NameTextBox.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.NameTextBox.Location = new System.Drawing.Point(97, 336);
+            this.NameTextBox.Location = new System.Drawing.Point(97, 327);
             this.NameTextBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.NameTextBox.Name = "NameTextBox";
             this.NameTextBox.PlaceholderText = "";
@@ -283,7 +283,7 @@
             this.surnametextbox.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.surnametextbox.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.surnametextbox.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.surnametextbox.Location = new System.Drawing.Point(506, 336);
+            this.surnametextbox.Location = new System.Drawing.Point(504, 327);
             this.surnametextbox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.surnametextbox.Name = "surnametextbox";
             this.surnametextbox.PlaceholderText = "";
@@ -304,7 +304,7 @@
             this.phonetextbox.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.phonetextbox.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.phonetextbox.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.phonetextbox.Location = new System.Drawing.Point(672, 377);
+            this.phonetextbox.Location = new System.Drawing.Point(582, 436);
             this.phonetextbox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.phonetextbox.Name = "phonetextbox";
             this.phonetextbox.PlaceholderText = "";
@@ -325,12 +325,12 @@
             this.addresstextbox.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.addresstextbox.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.addresstextbox.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.addresstextbox.Location = new System.Drawing.Point(185, 436);
+            this.addresstextbox.Location = new System.Drawing.Point(181, 436);
             this.addresstextbox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.addresstextbox.Name = "addresstextbox";
             this.addresstextbox.PlaceholderText = "";
             this.addresstextbox.SelectedText = "";
-            this.addresstextbox.Size = new System.Drawing.Size(716, 33);
+            this.addresstextbox.Size = new System.Drawing.Size(319, 33);
             this.addresstextbox.TabIndex = 71;
             this.addresstextbox.TextChanged += new System.EventHandler(this.addresstextbox_TextChanged);
             // 
@@ -540,6 +540,38 @@
             this.UpdatebookingButton.Text = "UPDATE BOOKING";
             this.UpdatebookingButton.Click += new System.EventHandler(this.UpdatebookingButton_Click_1);
             // 
+            // guna2TextBox1
+            // 
+            this.guna2TextBox1.AutoRoundedCorners = true;
+            this.guna2TextBox1.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.guna2TextBox1.DefaultText = "";
+            this.guna2TextBox1.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.guna2TextBox1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.guna2TextBox1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.guna2TextBox1.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.guna2TextBox1.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.guna2TextBox1.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.guna2TextBox1.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.guna2TextBox1.Location = new System.Drawing.Point(648, 377);
+            this.guna2TextBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.guna2TextBox1.Name = "guna2TextBox1";
+            this.guna2TextBox1.PlaceholderText = "";
+            this.guna2TextBox1.SelectedText = "";
+            this.guna2TextBox1.Size = new System.Drawing.Size(229, 33);
+            this.guna2TextBox1.TabIndex = 71;
+            this.guna2TextBox1.TextChanged += new System.EventHandler(this.phoneNumberTextbox_TextChanged);
+            // 
+            // IdNumLabel
+            // 
+            this.IdNumLabel.AutoSize = true;
+            this.IdNumLabel.Font = new System.Drawing.Font("Nirmala UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.IdNumLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.IdNumLabel.Location = new System.Drawing.Point(566, 388);
+            this.IdNumLabel.Name = "IdNumLabel";
+            this.IdNumLabel.Size = new System.Drawing.Size(76, 17);
+            this.IdNumLabel.TabIndex = 33;
+            this.IdNumLabel.Text = "ID Number";
+            // 
             // FrmBookings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -551,6 +583,7 @@
             this.Controls.Add(this.checkindp);
             this.Controls.Add(this.addresstextbox);
             this.Controls.Add(this.emailtextbox);
+            this.Controls.Add(this.guna2TextBox1);
             this.Controls.Add(this.phonetextbox);
             this.Controls.Add(this.surnametextbox);
             this.Controls.Add(this.childrentextbox);
@@ -574,6 +607,7 @@
             this.Controls.Add(this.EmailLabel);
             this.Controls.Add(this.SurnameLabel);
             this.Controls.Add(this.NameLabel);
+            this.Controls.Add(this.IdNumLabel);
             this.Controls.Add(this.PhoneNumberLabel);
             this.Controls.Add(this.ShowdataGridView);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -581,9 +615,9 @@
             this.Text = "FrmBookings";
             this.Load += new System.EventHandler(this.FrmBookings_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ShowdataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.phumlaKamnandiDBDataSetBindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.phumlaKamnandiDBDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.phumlaKamnandiDBDataSetBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.phumlaKamnandiDBDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.phumlaKamnandiDBDataSetBindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -622,5 +656,7 @@
         private Guna.UI2.WinForms.Guna2DateTimePicker checkindp;
         private Guna.UI2.WinForms.Guna2DateTimePicker checkoutdp;
         private System.Windows.Forms.BindingSource phumlaKamnandiDBDataSetBindingSource1;
+        private Guna.UI2.WinForms.Guna2TextBox guna2TextBox1;
+        private System.Windows.Forms.Label IdNumLabel;
     }
 }

@@ -21,10 +21,9 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             InitializeComponent();
             _services = ServiceLocator.Instance;
 
-            // Hide all input fields initially
             HideAllInputFields();
 
-            // Load bookings into grid
+          
             LoadBookingsGrid();
         }
 
@@ -79,7 +78,11 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                     DataTable dt = new DataTable();
                     adapter.Fill(dt);
 
+                    ShowdataGridView.DataSource = null;
                     ShowdataGridView.DataSource = dt;
+                    ShowdataGridView.Refresh();
+                    ShowdataGridView.ScrollBars = ScrollBars.Horizontal;
+                    ShowdataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
 
                     // Hide GuestId column but keep it in the DataTable
                     if (ShowdataGridView.Columns.Contains("GuestId"))
@@ -108,7 +111,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
+        #region showing and hiding of fields
         private void HideAllInputFields()
         {
             NameLabel.Visible = false;
@@ -166,6 +169,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             creditTextbox.Visible = true;
             SubmitButton.Visible = true;
         }
+        #endregion
 
         private void ClearAllFields()
         {
@@ -558,6 +562,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             }
         }
 
+        #region irrelevant things
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e) { }
         private void NameTextBox_TextChanged(object sender, EventArgs e) { }
         private void surnametextBox_TextChanged(object sender, EventArgs e) { }
@@ -569,5 +574,8 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
         private void specialrequestTextbox_TextChanged(object sender, EventArgs e) { }
         private void creditTextbox_TextChanged(object sender, EventArgs e) { }
         private void YesNoComboBox_SelectedIndexChanged(object sender, EventArgs e) { }
+        #endregion
+
+        
     }
 }

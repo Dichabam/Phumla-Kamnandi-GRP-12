@@ -242,6 +242,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
         private void CloseButtonLogin_Click(object sender, EventArgs e)
         {
             this.Close();
+
         }
     }
 }

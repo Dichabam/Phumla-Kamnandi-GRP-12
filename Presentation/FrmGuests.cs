@@ -10,7 +10,6 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
     public partial class FrmGuests : Form
     {
         private ServiceLocator _services;
-        private bool _isUpdateMode = false;
         private Guest _selectedGuestForUpdate = null;
 
         public FrmGuests()
@@ -28,6 +27,8 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             emailConfirmtextbox.Visible = false;
             ConfirmButtonVBH.Visible = false;
             ErrorLableVBH.Visible = false;
+
+            // Hide update panel by default
             UpdatebuttonPanel.Visible = false;
 
             GuestDataView.ReadOnly = true;
@@ -90,10 +91,10 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             AddGuestButton.Click += AddGuestButton_Click;
             UpdateGuestButton.Click += UpdateGuestButton_Click;
             ConfirmButtonVBH.Click += ConfirmButtonVBH_Click;
-            SaveButton.Click += SaveButton_Click;  
-            GuestDataView.CellClick += GuestDataView_CellContentClick;  
-            emailConfirmtextbox.TextChanged += (s, e) => ErrorLableVBH.Visible = false;
+            SaveButton.Click += SaveButton_Click;
             terminateButton.Click += terminateButton_Click;
+            GuestDataView.CellClick += GuestDataView_CellClick;
+            emailConfirmtextbox.TextChanged += (s, e) => ErrorLableVBH.Visible = false;
         }
 
         private void LoadAllGuests()
@@ -192,7 +193,6 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
         {
             try
             {
-               
                 bool isInGoodStanding = _services.GuestService.CheckAndUpdateGuestStanding(guest.GuestId);
 
                 string status = isInGoodStanding ? "Good Standing" : "Not in Good Standing";
@@ -222,10 +222,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                     MessageBoxButtons.OK,
                     isInGoodStanding ? MessageBoxIcon.Information : MessageBoxIcon.Warning);
 
-                // Refresh the grid to show updated standing
                 LoadAllGuests();
-
-                // Hide controls
                 HideBookingHistoryControls();
             }
             catch (Exception ex)
@@ -240,12 +237,8 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             try
             {
                 var bookings = _services.GuestService.GetGuestBookings(guest.GuestId);
-
-                
                 BookingHistory historyForm = new BookingHistory(guest, bookings);
                 historyForm.ShowDialog();
-
-                
                 HideBookingHistoryControls();
             }
             catch (Exception ex)
@@ -257,20 +250,17 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
 
         private void AddGuestButton_Click(object sender, EventArgs e)
         {
-            
             if (enterEmailTextbox.Visible || emailConfirmtextbox.Visible || ConfirmButtonVBH.Visible)
             {
-                enterEmailTextbox.Visible = false;
-                emailConfirmtextbox.Visible = false;
-                ConfirmButtonVBH.Visible = false;
+                HideBookingHistoryControls();
             }
+
             var dashboard = Application.OpenForms.OfType<Dashboard>().FirstOrDefault();
             if (dashboard != null)
             {
                 dashboard.NavigateToBookings();
             }
         }
-
 
         private void UpdateGuestButton_Click(object sender, EventArgs e)
         {
@@ -302,27 +292,6 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             ShowUpdatePanel(_selectedGuestForUpdate);
         }
 
-        private void HideBookingHistoryControls()
-        {
-            enterEmailTextbox.Visible = false;
-            emailConfirmtextbox.Visible = false;
-            ConfirmButtonVBH.Visible = false;
-            ErrorLableVBH.Visible = false;
-            emailConfirmtextbox.Clear();
-        }
-
-        private void GuestDataView_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            
-        }
-
-        private void emailConfirmtextbox_TextChanged(object sender, EventArgs e)
-        {
-            
-            ErrorLableVBH.Visible = false;
-        }
-
-
         private void ShowUpdatePanel(Guest guest)
         {
             // Populate textboxes with current guest data
@@ -330,8 +299,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             SurnameTxtbox.Text = guest.LastName;
             PhoneTxtbox.Text = guest.Phone;
             EmailTxtbox.Text = guest.Email;
-            AdressTxtBox.Text = guest.Address;
-            CreditcardNumTxtbox.Text = guest.CreditCardLastFourDigits ?? "";
+            
 
             // Show the panel
             UpdatebuttonPanel.Visible = true;
@@ -352,80 +320,68 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                 return;
             }
 
-            // Validate that at least one field has been modified
-            bool hasChanges = false;
-            string errorMessage = "";
-
             try
             {
-                // Check and update First Name
-                if (!string.IsNullOrWhiteSpace(NameTxtBox.Text) &&
-                    NameTxtBox.Text.Trim() != _selectedGuestForUpdate.FirstName)
+                // Get the values from textboxes
+                string newFirstName = NameTxtBox.Text.Trim();
+                string newLastName = SurnameTxtbox.Text.Trim();
+                string newPhone = PhoneTxtbox.Text.Trim();
+                string newEmail = EmailTxtbox.Text.Trim();
+                
+
+                // Track if any changes were made
+                bool hasChanges = false;
+
+                // Validate required fields
+                if (string.IsNullOrWhiteSpace(newFirstName))
+                {
+                    MessageBox.Show("First name cannot be empty.", "Validation Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                if (string.IsNullOrWhiteSpace(newLastName))
+                {
+                    MessageBox.Show("Last name cannot be empty.", "Validation Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                if (string.IsNullOrWhiteSpace(newEmail))
+                {
+                    MessageBox.Show("Email cannot be empty.", "Validation Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                // Validate email format
+                if (!IsValidEmail(newEmail))
+                {
+                    MessageBox.Show("Invalid email format.", "Validation Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                // Check for changes
+                if (newFirstName != _selectedGuestForUpdate.FirstName ||
+                    newLastName != _selectedGuestForUpdate.LastName ||
+                    newPhone != _selectedGuestForUpdate.Phone ||
+                    newEmail != _selectedGuestForUpdate.Email
+                    )
                 {
                     hasChanges = true;
                 }
 
-                // Check and update Last Name
-                if (!string.IsNullOrWhiteSpace(SurnameTxtbox.Text) &&
-                    SurnameTxtbox.Text.Trim() != _selectedGuestForUpdate.LastName)
-                {
-                    hasChanges = true;
-                }
-
-                // Check and update Phone
-                if (!string.IsNullOrWhiteSpace(PhoneTxtbox.Text) &&
-                    PhoneTxtbox.Text.Trim() != _selectedGuestForUpdate.Phone)
-                {
-                    hasChanges = true;
-                }
-
-                // Check and update Email
-                if (!string.IsNullOrWhiteSpace(EmailTxtbox.Text) &&
-                    EmailTxtbox.Text.Trim() != _selectedGuestForUpdate.Email)
-                {
-                    // Validate email format
-                    if (!IsValidEmail(EmailTxtbox.Text.Trim()))
-                    {
-                        errorMessage = "Invalid email format.";
-                        throw new Exception(errorMessage);
-                    }
-                    hasChanges = true;
-                }
-
-                // Check and update Address
-                if (!string.IsNullOrWhiteSpace(AdressTxtBox.Text) &&
-                    AdressTxtBox.Text.Trim() != _selectedGuestForUpdate.Address)
-                {
-                    hasChanges = true;
-                }
-
-                // Check and update Credit Card
-                if (!string.IsNullOrWhiteSpace(CreditcardNumTxtbox.Text))
-                {
-                    string creditCardInput = CreditcardNumTxtbox.Text.Trim();
-                    if (creditCardInput != (_selectedGuestForUpdate.CreditCardLastFourDigits ?? ""))
-                    {
-                        // Validate credit card number (should be at least 4 digits)
-                        if (creditCardInput.Length < 4 || !creditCardInput.All(char.IsDigit))
-                        {
-                            errorMessage = "Credit card number must contain at least 4 digits.";
-                            throw new Exception(errorMessage);
-                        }
-                        hasChanges = true;
-                    }
-                }
-
-                // Check if any changes were made
                 if (!hasChanges)
                 {
-                    MessageBox.Show("No changes detected. Please modify at least one field.",
-                        "No Changes", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("No changes detected.", "No Changes",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
 
                 // Confirm update
                 DialogResult result = MessageBox.Show(
-                    $"Are you sure you want to update information for {_selectedGuestForUpdate.FullName}?",
+                    $"Update information for {_selectedGuestForUpdate.FullName}?",
                     "Confirm Update",
                     MessageBoxButtons.YesNo,
                     MessageBoxIcon.Question);
@@ -435,48 +391,23 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                     return;
                 }
 
-                // Perform updates
-                // Update contact information (email, phone, address)
-                string updatedEmail = string.IsNullOrWhiteSpace(EmailTxtbox.Text) ?
-                    _selectedGuestForUpdate.Email : EmailTxtbox.Text.Trim();
-                string updatedPhone = string.IsNullOrWhiteSpace(PhoneTxtbox.Text) ?
-                    _selectedGuestForUpdate.Phone : PhoneTxtbox.Text.Trim();
-                string updatedAddress = string.IsNullOrWhiteSpace(AdressTxtBox.Text) ?
-                    _selectedGuestForUpdate.Address : AdressTxtBox.Text.Trim();
-
-                bool contactUpdateSuccess = _services.GuestService.UpdateGuestContactInfo(
+                // Update contact information
+                bool updateSuccess = _services.GuestService.UpdateGuestContactInfo(
                     _selectedGuestForUpdate.GuestId,
-                    updatedEmail,
-                    updatedPhone,
-                    updatedAddress
+                    newEmail,
+                    newPhone,
+                    newFirstName
+                    
                 );
 
-                // Update credit card if changed
-                if (!string.IsNullOrWhiteSpace(CreditcardNumTxtbox.Text) &&
-                    CreditcardNumTxtbox.Text.Trim() != (_selectedGuestForUpdate.CreditCardLastFourDigits ?? ""))
-                {
-                    string creditCardInput = CreditcardNumTxtbox.Text.Trim();
-                    bool creditCardUpdateSuccess = _services.GuestService.UpdateGuestCreditCard(
-                        _selectedGuestForUpdate.GuestId,
-                        creditCardInput
-                    );
+                
 
-                    if (!creditCardUpdateSuccess)
-                    {
-                        MessageBox.Show("Failed to update credit card information.",
-                            "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
-                }
-
-                if (contactUpdateSuccess)
+                if (updateSuccess)
                 {
                     MessageBox.Show("Guest information updated successfully!",
                         "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    // Hide the panel and clear selection
                     HideUpdatePanel();
-
-                    // Reload guests to show updated information
                     LoadAllGuests();
                 }
                 else
@@ -492,6 +423,20 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             }
         }
 
+        private void terminateButton_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show(
+                "Cancel editing? All unsaved changes will be lost.",
+                "Confirm Cancel",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                HideUpdatePanel();
+            }
+        }
+
         private void HideUpdatePanel()
         {
             // Clear all textboxes
@@ -499,8 +444,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             SurnameTxtbox.Clear();
             PhoneTxtbox.Clear();
             EmailTxtbox.Clear();
-            AdressTxtBox.Clear();
-            CreditcardNumTxtbox.Clear();
+            
 
             // Hide the panel
             UpdatebuttonPanel.Visible = false;
@@ -515,13 +459,30 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             _selectedGuestForUpdate = null;
         }
 
+        private void HideBookingHistoryControls()
+        {
+            enterEmailTextbox.Visible = false;
+            emailConfirmtextbox.Visible = false;
+            ConfirmButtonVBH.Visible = false;
+            ErrorLableVBH.Visible = false;
+            emailConfirmtextbox.Clear();
+        }
+
         private void GuestDataView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            // Highlight the selected row for better user experience
             if (e.RowIndex >= 0)
             {
                 GuestDataView.Rows[e.RowIndex].Selected = true;
             }
+        }
+
+        private void GuestDataView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+        }
+
+        private void emailConfirmtextbox_TextChanged(object sender, EventArgs e)
+        {
+            ErrorLableVBH.Visible = false;
         }
 
         private bool IsValidEmail(string email)
@@ -534,20 +495,6 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             catch
             {
                 return false;
-            }
-        }
-
-        private void terminateButton_Click(object sender, EventArgs e)
-        {
-            DialogResult result = MessageBox.Show(
-                "Cancel editing? All unsaved changes will be lost.",
-                "Confirm Cancel",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question);
-
-            if (result == DialogResult.Yes)
-            {
-                HideUpdatePanel();
             }
         }
     }
