@@ -28,30 +28,30 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.guna2GradientPanel1 = new Guna.UI2.WinForms.Guna2GradientPanel();
+            this.el1 = new Guna.UI2.WinForms.Guna2GradientPanel();
             this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             this.IDLabel = new System.Windows.Forms.Label();
             this.IDNumberTextBox = new Guna.UI2.WinForms.Guna2TextBox();
             this.IDNotFoundLabel = new System.Windows.Forms.Label();
             this.exitButton = new Guna.UI2.WinForms.Guna2CircleButton();
-            this.guna2GradientPanel1.SuspendLayout();
+            this.el1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // guna2GradientPanel1
+            // el1
             // 
-            this.guna2GradientPanel1.Controls.Add(this.exitButton);
-            this.guna2GradientPanel1.Controls.Add(this.IDNumberTextBox);
-            this.guna2GradientPanel1.Controls.Add(this.IDNotFoundLabel);
-            this.guna2GradientPanel1.Controls.Add(this.IDLabel);
-            this.guna2GradientPanel1.Controls.Add(this.guna2Button1);
-            this.guna2GradientPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.guna2GradientPanel1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
-            this.guna2GradientPanel1.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
-            this.guna2GradientPanel1.Location = new System.Drawing.Point(0, 0);
-            this.guna2GradientPanel1.Name = "guna2GradientPanel1";
-            this.guna2GradientPanel1.Size = new System.Drawing.Size(588, 234);
-            this.guna2GradientPanel1.TabIndex = 0;
-            this.guna2GradientPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.guna2GradientPanel1_Paint);
+            this.el1.Controls.Add(this.exitButton);
+            this.el1.Controls.Add(this.IDNumberTextBox);
+            this.el1.Controls.Add(this.IDNotFoundLabel);
+            this.el1.Controls.Add(this.IDLabel);
+            this.el1.Controls.Add(this.guna2Button1);
+            this.el1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.el1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
+            this.el1.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
+            this.el1.Location = new System.Drawing.Point(0, 0);
+            this.el1.Name = "el1";
+            this.el1.Size = new System.Drawing.Size(588, 234);
+            this.el1.TabIndex = 0;
+            this.el1.Paint += new System.Windows.Forms.PaintEventHandler(this.guna2GradientPanel1_Paint);
             // 
             // guna2Button1
             // 
@@ -149,20 +149,20 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(588, 234);
-            this.Controls.Add(this.guna2GradientPanel1);
+            this.Controls.Add(this.el1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "MakeBookingConf";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MakeBookingConf";
-            this.guna2GradientPanel1.ResumeLayout(false);
-            this.guna2GradientPanel1.PerformLayout();
+            this.el1.ResumeLayout(false);
+            this.el1.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private Guna.UI2.WinForms.Guna2GradientPanel guna2GradientPanel1;
+        private Guna.UI2.WinForms.Guna2GradientPanel el1;
         private Guna.UI2.WinForms.Guna2Button guna2Button1;
         private Guna.UI2.WinForms.Guna2TextBox IDNumberTextBox;
         private System.Windows.Forms.Label IDLabel;

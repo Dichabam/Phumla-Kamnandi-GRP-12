@@ -28,25 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.guna2GradientPanel1 = new Guna.UI2.WinForms.Guna2GradientPanel();
+            this.exPanel = new Guna.UI2.WinForms.Guna2GradientPanel();
             this.NewGuestBut = new Guna.UI2.WinForms.Guna2Button();
             this.exitButton = new Guna.UI2.WinForms.Guna2CircleButton();
             this.ExistingguestBut = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2GradientPanel1.SuspendLayout();
+            this.exPanel.SuspendLayout();
             this.SuspendLayout();
             // 
-            // guna2GradientPanel1
+            // exPanel
             // 
-            this.guna2GradientPanel1.Controls.Add(this.exitButton);
-            this.guna2GradientPanel1.Controls.Add(this.ExistingguestBut);
-            this.guna2GradientPanel1.Controls.Add(this.NewGuestBut);
-            this.guna2GradientPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.guna2GradientPanel1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
-            this.guna2GradientPanel1.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
-            this.guna2GradientPanel1.Location = new System.Drawing.Point(0, 0);
-            this.guna2GradientPanel1.Name = "guna2GradientPanel1";
-            this.guna2GradientPanel1.Size = new System.Drawing.Size(570, 187);
-            this.guna2GradientPanel1.TabIndex = 1;
+            this.exPanel.Controls.Add(this.exitButton);
+            this.exPanel.Controls.Add(this.ExistingguestBut);
+            this.exPanel.Controls.Add(this.NewGuestBut);
+            this.exPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.exPanel.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
+            this.exPanel.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
+            this.exPanel.Location = new System.Drawing.Point(0, 0);
+            this.exPanel.Name = "exPanel";
+            this.exPanel.Size = new System.Drawing.Size(570, 187);
+            this.exPanel.TabIndex = 1;
             // 
             // NewGuestBut
             // 
@@ -109,19 +109,19 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(570, 187);
-            this.Controls.Add(this.guna2GradientPanel1);
+            this.Controls.Add(this.exPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "NewExistGuest";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "NewExistGuest";
-            this.guna2GradientPanel1.ResumeLayout(false);
+            this.exPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private Guna.UI2.WinForms.Guna2GradientPanel guna2GradientPanel1;
+        private Guna.UI2.WinForms.Guna2GradientPanel exPanel;
         private Guna.UI2.WinForms.Guna2Button NewGuestBut;
         private Guna.UI2.WinForms.Guna2CircleButton exitButton;
         private Guna.UI2.WinForms.Guna2Button ExistingguestBut;
