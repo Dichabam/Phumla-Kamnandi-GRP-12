@@ -65,6 +65,7 @@
             this.depositsOverdue = new System.Windows.Forms.Label();
             this.makeBookingButton = new Guna.UI2.WinForms.Guna2Button();
             this.ViewGuestButton = new Guna.UI2.WinForms.Guna2Button();
+            this.EnquiryButton = new Guna.UI2.WinForms.Guna2Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -451,7 +452,7 @@
             this.makeBookingButton.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
             this.makeBookingButton.Font = new System.Drawing.Font("Nirmala UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.makeBookingButton.ForeColor = System.Drawing.Color.White;
-            this.makeBookingButton.Location = new System.Drawing.Point(89, 581);
+            this.makeBookingButton.Location = new System.Drawing.Point(32, 581);
             this.makeBookingButton.Name = "makeBookingButton";
             this.makeBookingButton.Size = new System.Drawing.Size(249, 45);
             this.makeBookingButton.TabIndex = 5;
@@ -469,12 +470,30 @@
             this.ViewGuestButton.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
             this.ViewGuestButton.Font = new System.Drawing.Font("Nirmala UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ViewGuestButton.ForeColor = System.Drawing.Color.White;
-            this.ViewGuestButton.Location = new System.Drawing.Point(558, 581);
+            this.ViewGuestButton.Location = new System.Drawing.Point(355, 581);
             this.ViewGuestButton.Name = "ViewGuestButton";
             this.ViewGuestButton.Size = new System.Drawing.Size(249, 45);
             this.ViewGuestButton.TabIndex = 5;
             this.ViewGuestButton.Text = "View Guests";
             this.ViewGuestButton.Click += new System.EventHandler(this.ViewGuestButton_Click);
+            // 
+            // EnquiryButton
+            // 
+            this.EnquiryButton.Animated = true;
+            this.EnquiryButton.AutoRoundedCorners = true;
+            this.EnquiryButton.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.EnquiryButton.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.EnquiryButton.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.EnquiryButton.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.EnquiryButton.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
+            this.EnquiryButton.Font = new System.Drawing.Font("Nirmala UI", 10.2F, System.Drawing.FontStyle.Bold);
+            this.EnquiryButton.ForeColor = System.Drawing.Color.White;
+            this.EnquiryButton.Location = new System.Drawing.Point(669, 581);
+            this.EnquiryButton.Name = "EnquiryButton";
+            this.EnquiryButton.Size = new System.Drawing.Size(249, 45);
+            this.EnquiryButton.TabIndex = 6;
+            this.EnquiryButton.Text = "Enquiry";
+            this.EnquiryButton.Click += new System.EventHandler(this.EnquiryButton_Click);
             // 
             // FrmHome
             // 
@@ -482,6 +501,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
             this.ClientSize = new System.Drawing.Size(954, 709);
+            this.Controls.Add(this.EnquiryButton);
             this.Controls.Add(this.ViewGuestButton);
             this.Controls.Add(this.makeBookingButton);
             this.Controls.Add(this.panel5);
@@ -555,5 +575,6 @@
         private System.Windows.Forms.PictureBox pictureBox6;
         private Guna.UI2.WinForms.Guna2Button ViewGuestButton;
         private Guna.UI2.WinForms.Guna2Button makeBookingButton;
+        private Guna.UI2.WinForms.Guna2Button EnquiryButton;
     }
 }
