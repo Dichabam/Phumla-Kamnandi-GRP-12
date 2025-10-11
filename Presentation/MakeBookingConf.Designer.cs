@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.el1 = new Guna.UI2.WinForms.Guna2GradientPanel();
-            this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
-            this.IDLabel = new System.Windows.Forms.Label();
+            this.exitButton = new Guna.UI2.WinForms.Guna2CircleButton();
             this.IDNumberTextBox = new Guna.UI2.WinForms.Guna2TextBox();
             this.IDNotFoundLabel = new System.Windows.Forms.Label();
-            this.exitButton = new Guna.UI2.WinForms.Guna2CircleButton();
+            this.IDLabel = new System.Windows.Forms.Label();
+            this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             this.el1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -45,51 +45,39 @@
             this.el1.Controls.Add(this.IDLabel);
             this.el1.Controls.Add(this.guna2Button1);
             this.el1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.el1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
-            this.el1.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
+            this.el1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(150)))));
+            this.el1.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(150)))));
             this.el1.Location = new System.Drawing.Point(0, 0);
             this.el1.Name = "el1";
             this.el1.Size = new System.Drawing.Size(588, 234);
             this.el1.TabIndex = 0;
             this.el1.Paint += new System.Windows.Forms.PaintEventHandler(this.guna2GradientPanel1_Paint);
             // 
-            // guna2Button1
+            // exitButton
             // 
-            this.guna2Button1.Animated = true;
-            this.guna2Button1.AutoRoundedCorners = true;
-            this.guna2Button1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2Button1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2Button1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button1.Font = new System.Drawing.Font("Nirmala Text", 10.2F, System.Drawing.FontStyle.Bold);
-            this.guna2Button1.ForeColor = System.Drawing.Color.White;
-            this.guna2Button1.Location = new System.Drawing.Point(419, 105);
-            this.guna2Button1.Name = "guna2Button1";
-            this.guna2Button1.Size = new System.Drawing.Size(138, 48);
-            this.guna2Button1.TabIndex = 0;
-            this.guna2Button1.Text = "Next";
-            this.guna2Button1.UseTransparentBackground = true;
-            this.guna2Button1.Click += new System.EventHandler(this.guna2Button1_Click);
-            // 
-            // IDLabel
-            // 
-            this.IDLabel.AutoSize = true;
-            this.IDLabel.BackColor = System.Drawing.Color.Transparent;
-            this.IDLabel.Font = new System.Drawing.Font("Nirmala UI", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.IDLabel.ForeColor = System.Drawing.Color.White;
-            this.IDLabel.Location = new System.Drawing.Point(12, 9);
-            this.IDLabel.Name = "IDLabel";
-            this.IDLabel.Size = new System.Drawing.Size(290, 46);
-            this.IDLabel.TabIndex = 1;
-            this.IDLabel.Text = "Enter ID Number";
-            this.IDLabel.Click += new System.EventHandler(this.IDLabel_Click);
+            this.exitButton.Animated = true;
+            this.exitButton.BackColor = System.Drawing.Color.Transparent;
+            this.exitButton.BorderColor = System.Drawing.Color.White;
+            this.exitButton.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.exitButton.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.exitButton.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.exitButton.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.exitButton.FillColor = System.Drawing.Color.Transparent;
+            this.exitButton.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.exitButton.ForeColor = System.Drawing.Color.DarkGray;
+            this.exitButton.Image = global::Phumla_Kamnandi_GRP_12.Properties.Resources.close_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24;
+            this.exitButton.Location = new System.Drawing.Point(513, 0);
+            this.exitButton.Name = "exitButton";
+            this.exitButton.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            this.exitButton.Size = new System.Drawing.Size(75, 49);
+            this.exitButton.TabIndex = 16;
+            this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
             // 
             // IDNumberTextBox
             // 
             this.IDNumberTextBox.Animated = true;
             this.IDNumberTextBox.AutoRoundedCorners = true;
-            this.IDNumberTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
+            this.IDNumberTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(150)))));
             this.IDNumberTextBox.BorderColor = System.Drawing.Color.Transparent;
             this.IDNumberTextBox.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.IDNumberTextBox.DefaultText = "";
@@ -124,25 +112,37 @@
             this.IDNotFoundLabel.Text = "ID Number Not Found";
             this.IDNotFoundLabel.Click += new System.EventHandler(this.IDNotFoundLabel_Click);
             // 
-            // exitButton
+            // IDLabel
             // 
-            this.exitButton.Animated = true;
-            this.exitButton.BackColor = System.Drawing.Color.Transparent;
-            this.exitButton.BorderColor = System.Drawing.Color.White;
-            this.exitButton.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.exitButton.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.exitButton.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.exitButton.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.exitButton.FillColor = System.Drawing.Color.Transparent;
-            this.exitButton.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.exitButton.ForeColor = System.Drawing.Color.DarkGray;
-            this.exitButton.Image = global::Phumla_Kamnandi_GRP_12.Properties.Resources.close_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24;
-            this.exitButton.Location = new System.Drawing.Point(513, 0);
-            this.exitButton.Name = "exitButton";
-            this.exitButton.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            this.exitButton.Size = new System.Drawing.Size(75, 49);
-            this.exitButton.TabIndex = 16;
-            this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
+            this.IDLabel.AutoSize = true;
+            this.IDLabel.BackColor = System.Drawing.Color.Transparent;
+            this.IDLabel.Font = new System.Drawing.Font("Nirmala UI", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.IDLabel.ForeColor = System.Drawing.Color.White;
+            this.IDLabel.Location = new System.Drawing.Point(12, 9);
+            this.IDLabel.Name = "IDLabel";
+            this.IDLabel.Size = new System.Drawing.Size(281, 45);
+            this.IDLabel.TabIndex = 1;
+            this.IDLabel.Text = "Enter ID Number";
+            this.IDLabel.Click += new System.EventHandler(this.IDLabel_Click);
+            // 
+            // guna2Button1
+            // 
+            this.guna2Button1.Animated = true;
+            this.guna2Button1.AutoRoundedCorners = true;
+            this.guna2Button1.BackColor = System.Drawing.Color.Transparent;
+            this.guna2Button1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.guna2Button1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.guna2Button1.Font = new System.Drawing.Font("Nirmala Text", 10.2F, System.Drawing.FontStyle.Bold);
+            this.guna2Button1.ForeColor = System.Drawing.Color.White;
+            this.guna2Button1.Location = new System.Drawing.Point(419, 105);
+            this.guna2Button1.Name = "guna2Button1";
+            this.guna2Button1.Size = new System.Drawing.Size(138, 48);
+            this.guna2Button1.TabIndex = 0;
+            this.guna2Button1.Text = "Next";
+            this.guna2Button1.UseTransparentBackground = true;
+            this.guna2Button1.Click += new System.EventHandler(this.guna2Button1_Click);
             // 
             // MakeBookingConf
             // 

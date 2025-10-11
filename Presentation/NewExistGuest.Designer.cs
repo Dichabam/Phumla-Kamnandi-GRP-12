@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.exPanel = new Guna.UI2.WinForms.Guna2GradientPanel();
-            this.NewGuestBut = new Guna.UI2.WinForms.Guna2Button();
             this.exitButton = new Guna.UI2.WinForms.Guna2CircleButton();
             this.ExistingguestBut = new Guna.UI2.WinForms.Guna2Button();
+            this.NewGuestBut = new Guna.UI2.WinForms.Guna2Button();
             this.exPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -41,30 +41,12 @@
             this.exPanel.Controls.Add(this.ExistingguestBut);
             this.exPanel.Controls.Add(this.NewGuestBut);
             this.exPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.exPanel.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
-            this.exPanel.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
+            this.exPanel.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(150)))));
+            this.exPanel.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(150)))));
             this.exPanel.Location = new System.Drawing.Point(0, 0);
             this.exPanel.Name = "exPanel";
             this.exPanel.Size = new System.Drawing.Size(570, 187);
             this.exPanel.TabIndex = 1;
-            // 
-            // NewGuestBut
-            // 
-            this.NewGuestBut.Animated = true;
-            this.NewGuestBut.AutoRoundedCorners = true;
-            this.NewGuestBut.BackColor = System.Drawing.Color.Transparent;
-            this.NewGuestBut.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.NewGuestBut.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.NewGuestBut.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.NewGuestBut.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.NewGuestBut.Font = new System.Drawing.Font("Nirmala Text", 10.2F, System.Drawing.FontStyle.Bold);
-            this.NewGuestBut.ForeColor = System.Drawing.Color.White;
-            this.NewGuestBut.Location = new System.Drawing.Point(81, 79);
-            this.NewGuestBut.Name = "NewGuestBut";
-            this.NewGuestBut.Size = new System.Drawing.Size(163, 48);
-            this.NewGuestBut.TabIndex = 0;
-            this.NewGuestBut.Text = "New Guest";
-            this.NewGuestBut.UseTransparentBackground = true;
             // 
             // exitButton
             // 
@@ -103,6 +85,24 @@
             this.ExistingguestBut.TabIndex = 0;
             this.ExistingguestBut.Text = "Existing Guest";
             this.ExistingguestBut.UseTransparentBackground = true;
+            // 
+            // NewGuestBut
+            // 
+            this.NewGuestBut.Animated = true;
+            this.NewGuestBut.AutoRoundedCorners = true;
+            this.NewGuestBut.BackColor = System.Drawing.Color.Transparent;
+            this.NewGuestBut.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.NewGuestBut.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.NewGuestBut.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.NewGuestBut.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.NewGuestBut.Font = new System.Drawing.Font("Nirmala Text", 10.2F, System.Drawing.FontStyle.Bold);
+            this.NewGuestBut.ForeColor = System.Drawing.Color.White;
+            this.NewGuestBut.Location = new System.Drawing.Point(81, 79);
+            this.NewGuestBut.Name = "NewGuestBut";
+            this.NewGuestBut.Size = new System.Drawing.Size(163, 48);
+            this.NewGuestBut.TabIndex = 0;
+            this.NewGuestBut.Text = "New Guest";
+            this.NewGuestBut.UseTransparentBackground = true;
             // 
             // NewExistGuest
             // 
