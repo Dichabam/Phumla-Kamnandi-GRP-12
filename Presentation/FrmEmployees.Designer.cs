@@ -208,9 +208,9 @@
             this.Name.ForeColor = System.Drawing.Color.White;
             this.Name.Location = new System.Drawing.Point(61, 419);
             this.Name.Name = "Name";
-            this.Name.Size = new System.Drawing.Size(57, 23);
+            this.Name.Size = new System.Drawing.Size(127, 23);
             this.Name.TabIndex = 3;
-            this.Name.Text = "Name";
+            this.Name.Text = "FrmEmployees";
             // 
             // Surname
             // 
@@ -262,7 +262,7 @@
             this.guna2ComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.guna2ComboBox1.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.guna2ComboBox1.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2ComboBox1.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2ComboBox1.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2ComboBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.guna2ComboBox1.ItemHeight = 30;
             this.guna2ComboBox1.Items.AddRange(new object[] {
@@ -311,7 +311,7 @@
             this.Controls.Add(this.AddEmployeeButton);
             this.Controls.Add(this.EmployeeDataGridViiew);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name.Text = "FrmEmployees";
+            this.Name = "FrmEmployees";
             this.Text = "FrmEmployees";
             this.Load += new System.EventHandler(this.FrmEmployees_Load_1);
             ((System.ComponentModel.ISupportInitialize)(this.EmployeeDataGridViiew)).EndInit();
