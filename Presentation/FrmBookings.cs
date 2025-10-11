@@ -141,6 +141,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             creditTextbox.Visible = false;
             SubmitButton.Visible = false;
             guna2TextBox1.Visible = false;
+            IdNumLabel.Visible = false;
         }
 
         private void ShowAllInputFields()
@@ -171,6 +172,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             creditTextbox.Visible = true;
             SubmitButton.Visible = true;
             guna2TextBox1.Visible = true;
+            IdNumLabel.Visible = true;
         }
         #endregion
 

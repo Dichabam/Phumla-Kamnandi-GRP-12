@@ -20,6 +20,10 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             {
                 this.Controls.Add(AddGuestPanel);
             }
+
+           
+            AddGuestPanel.Visible = false;
+         
             InitializeForm();
             LoadAllGuests();
         }
@@ -675,6 +679,11 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             viewBookingHostoryButton.Enabled = true;
             GuestStandingButton.Enabled = true;
             AddGuestButton.Enabled = true;
+        }
+
+        private void AddGuestPanel_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
