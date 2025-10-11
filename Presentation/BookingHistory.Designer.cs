@@ -36,6 +36,7 @@
             this.DetailsLabel = new System.Windows.Forms.Label();
             this.guna2Separator1 = new Guna.UI2.WinForms.Guna2Separator();
             this.PhoneLabel = new System.Windows.Forms.Label();
+            this.CloseButtonLogin = new Guna.UI2.WinForms.Guna2Button();
             this.SuspendLayout();
             // 
             // Namelabel
@@ -118,12 +119,34 @@
             this.PhoneLabel.TabIndex = 0;
             this.PhoneLabel.Text = "Phone:";
             // 
+            // CloseButtonLogin
+            // 
+            this.CloseButtonLogin.Animated = true;
+            this.CloseButtonLogin.AutoRoundedCorners = true;
+            this.CloseButtonLogin.BackColor = System.Drawing.Color.Transparent;
+            this.CloseButtonLogin.BorderColor = System.Drawing.Color.Transparent;
+            this.CloseButtonLogin.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.CloseButtonLogin.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.CloseButtonLogin.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.CloseButtonLogin.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.CloseButtonLogin.FillColor = System.Drawing.Color.Transparent;
+            this.CloseButtonLogin.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.CloseButtonLogin.ForeColor = System.Drawing.Color.White;
+            this.CloseButtonLogin.Image = global::Phumla_Kamnandi_GRP_12.Properties.Resources.close_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24;
+            this.CloseButtonLogin.Location = new System.Drawing.Point(880, 0);
+            this.CloseButtonLogin.Name = "CloseButtonLogin";
+            this.CloseButtonLogin.Size = new System.Drawing.Size(57, 30);
+            this.CloseButtonLogin.TabIndex = 13;
+            this.CloseButtonLogin.UseTransparentBackground = true;
+            this.CloseButtonLogin.Click += new System.EventHandler(this.CloseButtonLogin_Click);
+            // 
             // BookingHistory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
             this.ClientSize = new System.Drawing.Size(936, 662);
+            this.Controls.Add(this.CloseButtonLogin);
             this.Controls.Add(this.guna2Separator1);
             this.Controls.Add(this.guna2Separator2);
             this.Controls.Add(this.GuestHistoryLabel);
@@ -151,5 +174,6 @@
         private System.Windows.Forms.Label DetailsLabel;
         private Guna.UI2.WinForms.Guna2Separator guna2Separator1;
         private System.Windows.Forms.Label PhoneLabel;
+        private Guna.UI2.WinForms.Guna2Button CloseButtonLogin;
     }
 }

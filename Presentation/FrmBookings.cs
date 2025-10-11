@@ -41,7 +41,6 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             {
                 using (var connection = new SqlConnection(connectionString))
                 {
-                    // Updated query to include GuestId and proper joins
                     string query = @"
                     SELECT 
                         b.BookingReference,
@@ -69,7 +68,9 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                             WHEN 2 THEN 'Refunded'
                             WHEN 3 THEN 'Failed'
                         END AS PaymentStatus,
-                        b.BookingDate
+                        b.BookingDate,
+                        b.IsSingleOccupancy,
+                        b.SpecialRequests
                     FROM Booking b
                     INNER JOIN Guest g ON b.GuestId = g.Id
                     ORDER BY b.BookingDate DESC";
@@ -209,15 +210,12 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
         {
             try
             {
-                // Validate inputs
                 if (!ValidateInputs()) return;
 
-                // 1. Register or get existing guest
                 var guest = _services.GuestService.GetGuestByEmail(emailtextbox.Text.Trim());
 
                 if (guest == null)
                 {
-                    // Register new guest
                     guest = _services.GuestService.RegisterNewGuest(
                         NameTextBox.Text.Trim(),
                         surnametextbox.Text.Trim(),
@@ -227,7 +225,6 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                     );
                 }
 
-                // 2. Update credit card if provided
                 if (!string.IsNullOrEmpty(creditTextbox.Text.Trim()) && creditTextbox.Text.Trim().Length >= 4)
                 {
                     string lastFour = creditTextbox.Text.Trim();
@@ -237,7 +234,6 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                     _services.GuestService.UpdateGuestCreditCard(guest.GuestId, lastFour);
                 }
 
-                // 3. Make booking
                 int adults = int.Parse(adultstextbox.Text.Trim());
                 int children = string.IsNullOrEmpty(childrentextbox.Text) ? 0 : int.Parse(childrentextbox.Text.Trim());
                 bool singleOccupancy = YesNoComboBox.SelectedItem?.ToString() == "Yes";
@@ -254,7 +250,6 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
 
                 if (result.Success)
                 {
-                    // 4. Confirm booking with deposit if credit card provided
                     if (!string.IsNullOrEmpty(creditTextbox.Text.Trim()) && creditTextbox.Text.Trim().Length >= 4)
                     {
                         _services.BookingService.ConfirmBookingWithDeposit(
@@ -264,13 +259,11 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                         );
                     }
 
-                    // 5. Generate and show confirmation letter
                     string confirmationLetter = _services.BookingService.GenerateConfirmationLetter(result.BookingReference);
 
                     MessageBox.Show(confirmationLetter, "Booking Confirmed!",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    // Refresh grid and hide fields
                     LoadBookingsGrid();
                     HideAllInputFields();
                     ClearAllFields();
@@ -284,7 +277,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error creating booking: {ex.Message}\n\nStack: {ex.StackTrace}", "Error",
+                MessageBox.Show($"Error creating booking: {ex.Message}", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -357,7 +350,6 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
 
                 if (!ValidateInputs()) return;
 
-                // Get the booking
                 var booking = _services.BookingService.GetBookingDetails(selectedBookingRef);
                 if (booking == null)
                 {
@@ -365,7 +357,6 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                     return;
                 }
 
-                // Update dates
                 bool success = _services.BookingService.ChangeBooking(
                     selectedBookingRef,
                     checkindp.Value.Date,
@@ -377,13 +368,11 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                     MessageBox.Show("Booking updated successfully!", "Success",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    // Refresh grid and reset UI
                     LoadBookingsGrid();
                     HideAllInputFields();
                     ClearAllFields();
                     isInUpdateMode = false;
 
-                    // Reset button colors
                     UpdatebookingButton.Text = "UPDATE BOOKING";
                     UpdatebookingButton.FillColor = Color.FromArgb(0, 126, 249);
                     CancelBookingButton.Text = "CANCEL";
@@ -413,11 +402,9 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
 
             try
             {
-                // Get selected booking details
                 DataGridViewRow row = ShowdataGridView.SelectedRows[0];
                 selectedBookingRef = row.Cells["BookingReference"].Value.ToString();
 
-                // Get full booking details
                 var booking = _services.BookingService.GetBookingDetails(selectedBookingRef);
                 if (booking == null)
                 {
@@ -425,7 +412,6 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                     return;
                 }
 
-                // Get guest details
                 var guest = _services.GuestService.GetGuestById(booking.GuestId);
                 if (guest == null)
                 {
@@ -433,7 +419,6 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                     return;
                 }
 
-                // Populate fields with current data
                 NameTextBox.Text = guest.FirstName;
                 surnametextbox.Text = guest.LastName;
                 emailtextbox.Text = guest.Email;
@@ -447,12 +432,10 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                 specialrequestTextbox.Text = booking.SpecialRequests ?? "";
                 creditTextbox.Text = guest.CreditCardLastFourDigits ?? "";
 
-                // Show fields and set mode
                 ShowAllInputFields();
                 isInUpdateMode = true;
                 isInMakeBookingMode = false;
 
-                // Change button appearance
                 SubmitButton.Text = "Save Changes";
                 SubmitButton.FillColor = Color.Green;
                 UpdatebookingButton.Text = "SAVE";
@@ -469,15 +452,13 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
 
         private void CancelBookingButton_Click_1(object sender, EventArgs e)
         {
-            // Check if we're in edit mode
-            if (isInUpdateMode)
+            if (isInUpdateMode || isInMakeBookingMode)
             {
-                // Cancel the edit operation
                 HideAllInputFields();
                 ClearAllFields();
                 isInUpdateMode = false;
+                isInMakeBookingMode = false;
 
-                // Reset button colors
                 UpdatebookingButton.Text = "UPDATE BOOKING";
                 UpdatebookingButton.FillColor = Color.FromArgb(0, 126, 249);
                 CancelBookingButton.Text = "CANCEL";
@@ -485,7 +466,6 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                 return;
             }
 
-            // Otherwise, cancel a booking
             if (ShowdataGridView.SelectedRows.Count == 0)
             {
                 MessageBox.Show("Please select a booking to cancel", "No Selection",
@@ -521,7 +501,6 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
 
         private void checkindp_ValueChanged(object sender, EventArgs e)
         {
-            // Ensure checkout is at least 1 day after checkin
             if (checkoutdp.Value.Date <= checkindp.Value.Date)
             {
                 checkoutdp.Value = checkindp.Value.AddDays(1);
@@ -529,10 +508,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             checkoutdp.MinDate = checkindp.Value.AddDays(1);
         }
 
-        private void checkoutdp_ValueChanged(object sender, EventArgs e)
-        {
-            // Validation handled by checkindp_ValueChanged
-        }
+        private void checkoutdp_ValueChanged(object sender, EventArgs e) { }
 
         public void SearchBookings(string searchText)
         {

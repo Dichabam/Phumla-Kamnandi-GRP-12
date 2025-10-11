@@ -74,9 +74,10 @@
             this.ShowdataGridView.AllowUserToDeleteRows = false;
             this.ShowdataGridView.AutoGenerateColumns = false;
             this.ShowdataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.ShowdataGridView.DataSource = this.phumlaKamnandiDBDataSetBindingSource1;
+            this.ShowdataGridView.DataSource = this.phumlaKamnandiDBDataSetBindingSource;
             this.ShowdataGridView.Location = new System.Drawing.Point(53, 6);
             this.ShowdataGridView.Name = "ShowdataGridView";
+            this.ShowdataGridView.ReadOnly = true;
             this.ShowdataGridView.RowHeadersWidth = 51;
             this.ShowdataGridView.RowTemplate.Height = 24;
             this.ShowdataGridView.Size = new System.Drawing.Size(844, 236);
@@ -98,7 +99,7 @@
             this.PhoneNumberLabel.AutoSize = true;
             this.PhoneNumberLabel.Font = new System.Drawing.Font("Nirmala UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PhoneNumberLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.PhoneNumberLabel.Location = new System.Drawing.Point(566, 388);
+            this.PhoneNumberLabel.Location = new System.Drawing.Point(547, 388);
             this.PhoneNumberLabel.Name = "PhoneNumberLabel";
             this.PhoneNumberLabel.Size = new System.Drawing.Size(101, 17);
             this.PhoneNumberLabel.TabIndex = 33;
@@ -164,7 +165,7 @@
             this.SurnameLabel.AutoSize = true;
             this.SurnameLabel.Font = new System.Drawing.Font("Nirmala UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SurnameLabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.SurnameLabel.Location = new System.Drawing.Point(461, 336);
+            this.SurnameLabel.Location = new System.Drawing.Point(417, 336);
             this.SurnameLabel.Name = "SurnameLabel";
             this.SurnameLabel.Size = new System.Drawing.Size(62, 17);
             this.SurnameLabel.TabIndex = 34;
@@ -245,7 +246,7 @@
             this.NameTextBox.Name = "NameTextBox";
             this.NameTextBox.PlaceholderText = "";
             this.NameTextBox.SelectedText = "";
-            this.NameTextBox.Size = new System.Drawing.Size(229, 33);
+            this.NameTextBox.Size = new System.Drawing.Size(277, 33);
             this.NameTextBox.TabIndex = 71;
             this.NameTextBox.TextChanged += new System.EventHandler(this.NameTextBox_TextChanged);
             // 
@@ -282,7 +283,7 @@
             this.surnametextbox.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.surnametextbox.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.surnametextbox.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.surnametextbox.Location = new System.Drawing.Point(569, 336);
+            this.surnametextbox.Location = new System.Drawing.Point(506, 336);
             this.surnametextbox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.surnametextbox.Name = "surnametextbox";
             this.surnametextbox.PlaceholderText = "";
@@ -303,7 +304,7 @@
             this.phonetextbox.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.phonetextbox.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.phonetextbox.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.phonetextbox.Location = new System.Drawing.Point(673, 377);
+            this.phonetextbox.Location = new System.Drawing.Point(672, 377);
             this.phonetextbox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.phonetextbox.Name = "phonetextbox";
             this.phonetextbox.PlaceholderText = "";
