@@ -3,6 +3,7 @@ using System.Data;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Phumla_Kamnandi_GRP_12.Presentation
@@ -109,102 +110,162 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private void GenerateOccupancyReport(DateTime startDate, DateTime endDate)
         {
-            try
+            ReportDataview.DataSource = null; // Clear grid early
+
+            // Cap extreme ranges to avoid freezing
+            if ((endDate - startDate).TotalDays > 1000)
             {
-                var report = _services.ReportingService.GenerateOccupancyReport(startDate, endDate);
-
-               
-                DataTable dt = new DataTable();
-                dt.Columns.Add("Date", typeof(string));
-                dt.Columns.Add("Total Rooms", typeof(int));
-                dt.Columns.Add("Occupied Rooms", typeof(int));
-                dt.Columns.Add("Available Rooms", typeof(int));
-                dt.Columns.Add("Occupancy %", typeof(string));
-
-                foreach (var daily in report.DailyOccupancies)
-                {
-                    dt.Rows.Add(
-                        daily.Date.ToString("yyyy-MM-dd"),
-                        daily.TotalRooms,
-                        daily.OccupiedRooms,
-                        daily.AvailableRooms,
-                        daily.OccupancyPercentage.ToString("F2") + "%"
-                    );
-                }
-
-                
-                dt.Rows.Add(
-                    "AVERAGE",
-                    report.DailyOccupancies.First().TotalRooms,
-                    "",
-                    "",
-                    report.AverageOccupancy.ToString("F2") + "%"
-                );
-
-                ReportDataview.DataSource = dt;
-
-               
-                if (ReportDataview.Rows.Count > 0)
-                {
-                    var lastRow = ReportDataview.Rows[ReportDataview.Rows.Count - 1];
-                    lastRow.DefaultCellStyle.Font = new System.Drawing.Font(ReportDataview.Font, System.Drawing.FontStyle.Bold);
-                    lastRow.DefaultCellStyle.BackColor = System.Drawing.Color.LightBlue;
-                }
-
-                MessageBox.Show($"Occupancy Report Generated\n\n" +
-                    $"Period: {startDate:yyyy-MM-dd} to {endDate:yyyy-MM-dd}\n" +
-                    $"Average Occupancy: {report.AverageOccupancy:F2}%\n" +
-                    $"Total Room Nights: {report.TotalRoomNights}",
-                    "Report Generated", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Selected date range is too large. Please narrow it down to 2 years or less.", "Warning",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
-            catch (Exception ex)
+
+            Task.Run(() =>
             {
-                MessageBox.Show($"Error generating occupancy report: {ex.Message}", "Error",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+                try
+                {
+                    var report = _services.ReportingService.GenerateOccupancyReport(startDate, endDate);
+                    int fallbackTotalRooms = _services.RoomRepository.GetAll().Count;
+
+                    DataTable dt = new DataTable();
+                    dt.Columns.Add("Date", typeof(string));
+                    dt.Columns.Add("Total Rooms", typeof(int));
+                    dt.Columns.Add("Occupied Rooms", typeof(int));
+                    dt.Columns.Add("Available Rooms", typeof(int));
+                    dt.Columns.Add("Occupancy %", typeof(string));
+
+                    foreach (var daily in report.DailyOccupancies)
+                    {
+                        dt.Rows.Add(
+                            daily.Date.ToString("yyyy-MM-dd"),
+                            daily.TotalRooms,
+                            daily.OccupiedRooms,
+                            daily.AvailableRooms,
+                            daily.OccupancyPercentage.ToString("F2") + "%"
+                        );
+                    }
+
+                    if (report.DailyOccupancies.Any())
+                    {
+                        int totalRoomsForAverage = report.DailyOccupancies.FirstOrDefault()?.TotalRooms ?? fallbackTotalRooms;
+
+                        
+                        dt.Rows.Add(
+                           "AVERAGE",
+                            totalRoomsForAverage,
+                            DBNull.Value,
+                            DBNull.Value,
+                            report.AverageOccupancy.ToString("F2") + "%"
+                       );
+                    }
+                    else
+                    {
+                        this.Invoke((MethodInvoker)delegate
+                        {
+                            MessageBox.Show("No occupancy data found for the selected period.", "No Data",
+                                MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        });
+                        return;
+                    }
+
+                    this.Invoke((MethodInvoker)delegate
+                    {
+                        ReportDataview.DataSource = dt;
+
+                        if (ReportDataview.Rows.Count > 0)
+                        {
+                            var lastRow = ReportDataview.Rows[ReportDataview.Rows.Count - 1];
+                            lastRow.DefaultCellStyle.Font = new System.Drawing.Font(ReportDataview.Font, System.Drawing.FontStyle.Bold);
+                            lastRow.DefaultCellStyle.BackColor = System.Drawing.Color.LightBlue;
+                        }
+
+                        MessageBox.Show($"Occupancy Report Generated\n\n" +
+                            $"Period: {startDate:yyyy-MM-dd} to {endDate:yyyy-MM-dd}\n" +
+                            $"Average Occupancy: {report.AverageOccupancy:F2}%\n" +
+                            $"Total Room Nights: {report.TotalRoomNights}",
+                            "Report Generated", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    });
+                }
+                catch (Exception ex)
+                {
+                    this.Invoke((MethodInvoker)delegate
+                    {
+                        MessageBox.Show($"Error generating occupancy report: {ex.Message}", "Error",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    });
+                }
+            });
         }
-
         private void GenerateRevenueReport(DateTime startDate, DateTime endDate)
         {
-            try
+            ReportDataview.DataSource = null; // Clear grid early
+
+            // Cap extreme ranges to avoid freezing
+            if ((endDate - startDate).TotalDays > 1000)
             {
-                var report = _services.ReportingService.GenerateRevenueReport(startDate, endDate);
-
-                
-                DataTable dt = new DataTable();
-                dt.Columns.Add("Metric", typeof(string));
-                dt.Columns.Add("Value", typeof(string));
-
-                dt.Rows.Add("Report Period", $"{startDate:yyyy-MM-dd} to {endDate:yyyy-MM-dd}");
-                dt.Rows.Add("Total Bookings", report.TotalBookings.ToString());
-                dt.Rows.Add("Total Revenue", report.TotalRevenue.ToString("C2"));
-                dt.Rows.Add("Total Deposits Received", report.TotalDepositsReceived.ToString("C2"));
-                dt.Rows.Add("Average Booking Value", report.AverageBookingValue.ToString("C2"));
-
-                ReportDataview.DataSource = dt;
-
-              
-                ReportDataview.Columns[0].Width = 250;
-                ReportDataview.Columns[1].Width = 200;
-                ReportDataview.Columns[0].DefaultCellStyle.Font =
-                    new System.Drawing.Font(ReportDataview.Font, System.Drawing.FontStyle.Bold);
-
-                MessageBox.Show($"Revenue Report Generated\n\n" +
-                    $"Total Bookings: {report.TotalBookings}\n" +
-                    $"Total Revenue: {report.TotalRevenue:C2}\n" +
-                    $"Average Booking: {report.AverageBookingValue:C2}",
-                    "Report Generated", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Selected date range is too large. Please narrow it down to 2 years or less.", "Warning",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
-            catch (Exception ex)
+
+            Task.Run(() =>
             {
-                MessageBox.Show($"Error generating revenue report: {ex.Message}", "Error",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+                try
+                {
+                    var report = _services.ReportingService.GenerateRevenueReport(startDate, endDate);
+
+                    if (report.TotalBookings == 0)
+                    {
+                        this.Invoke((MethodInvoker)delegate
+                        {
+                            MessageBox.Show("No bookings found for the selected period.", "No Data",
+                                MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        });
+                        return;
+                    }
+
+                    DataTable dt = new DataTable();
+                    dt.Columns.Add("Metric", typeof(string));
+                    dt.Columns.Add("Value", typeof(string));
+
+                    dt.Rows.Add("Report Period", $"{startDate:yyyy-MM-dd} to {endDate:yyyy-MM-dd}");
+                    dt.Rows.Add("Total Bookings", report.TotalBookings.ToString());
+                    dt.Rows.Add("Total Revenue", report.TotalRevenue.ToString("C2"));
+                    dt.Rows.Add("Total Deposits Received", report.TotalDepositsReceived.ToString("C2"));
+                    dt.Rows.Add("Average Booking Value", report.AverageBookingValue.ToString("C2"));
+
+                    this.Invoke((MethodInvoker)delegate
+                    {
+                        ReportDataview.DataSource = dt;
+
+                        
+                        if (ReportDataview.Columns.Count >= 2)
+                        {
+                            ReportDataview.Columns[0].Width = 250;
+                            ReportDataview.Columns[1].Width = 200;
+                            ReportDataview.Columns[0].DefaultCellStyle.Font =
+                                new System.Drawing.Font(ReportDataview.Font, System.Drawing.FontStyle.Bold);
+                        }
+
+                        MessageBox.Show($"Revenue Report Generated\n\n" +
+                            $"Total Bookings: {report.TotalBookings}\n" +
+                            $"Total Revenue: {report.TotalRevenue:C2}\n" +
+                            $"Average Booking: {report.AverageBookingValue:C2}",
+                            "Report Generated", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    });
+                }
+                catch (Exception ex)
+                {
+                    this.Invoke((MethodInvoker)delegate
+                    {
+                        MessageBox.Show($"Error generating revenue report: {ex.Message}", "Error",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    });
+                }
+            });
         }
-
         private void saveButton_Click(object sender, EventArgs e)
         {
             if (ReportDataview.DataSource == null || ReportDataview.Rows.Count == 0)
@@ -293,6 +354,9 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             
         }
 
-        
+        private void FrmReports_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

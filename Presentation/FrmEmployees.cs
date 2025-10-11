@@ -142,9 +142,9 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             {
        
                 if (string.IsNullOrWhiteSpace(NametextEm.Text) ||
-                    string.IsNullOrWhiteSpace(guna2TextBox1.Text) ||
-                    string.IsNullOrWhiteSpace(guna2TextBox2.Text) ||
-                    string.IsNullOrWhiteSpace(guna2TextBox3.Text))
+                    string.IsNullOrWhiteSpace(surnameTxtEm.Text) ||
+                    string.IsNullOrWhiteSpace(phonetxtEm.Text) ||
+                    string.IsNullOrWhiteSpace(EmailTextEm.Text))
                 {
                     MessageBox.Show("Please fill in all fields.",
                         "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -152,7 +152,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                 }
 
      
-                if (!IsValidEmail(guna2TextBox3.Text.Trim()))
+                if (!IsValidEmail(EmailTextEm.Text.Trim()))
                 {
                     MessageBox.Show("Please enter a valid email address.",
                         "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -160,7 +160,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                 }
 
    
-                if (guna2TextBox2.Text.Trim().Length < 10)
+                if (phonetxtEm.Text.Trim().Length < 10)
                 {
                     MessageBox.Show("Please enter a valid phone number (at least 10 digits).",
                         "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -168,7 +168,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                 }
 
                 // Generate work email: firstname.lastname@phumlakamnandi.co.za
-                string workEmail = $"{NametextEm.Text.Trim().ToLower()}.{guna2TextBox1.Text.Trim().ToLower()}@phumlakamnandi.co.za";
+                string workEmail = $"{NametextEm.Text.Trim().ToLower()}.{surnameTxtEm.Text.Trim().ToLower()}@phumlakamnandi.co.za";
 
                 // Generate temporary password (employee must change on first login)
                 string tempPassword = "TempPass123!";
@@ -176,9 +176,9 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                 // Register employee
                 var newEmployee = _employeeService.RegisterEmployee(
                     NametextEm.Text.Trim(),
-                    guna2TextBox1.Text.Trim(),
+                    surnameTxtEm.Text.Trim(),
                     workEmail,
-                    guna2TextBox2.Text.Trim(),
+                    phonetxtEm.Text.Trim(),
                     tempPassword,
                     EmployeeRole.Employee,
                     _currentEmployee?.EmployeeId
@@ -408,9 +408,9 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
         private void ShowInputFields()
         {
             NametextEm.Visible = true;
-            guna2TextBox1.Visible = true; // Surname
-            guna2TextBox2.Visible = true; // Phone
-            guna2TextBox3.Visible = true; // Email
+            surnameTxtEm.Visible = true; // Surname
+            phonetxtEm.Visible = true; // Phone
+            EmailTextEm.Visible = true; // Email
             Name.Visible = true;
             Surname.Visible = true;
             label1.Visible = true; // Cell label
@@ -420,9 +420,9 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
         private void HideInputFields()
         {
             NametextEm.Visible = false;
-            guna2TextBox1.Visible = false;
-            guna2TextBox2.Visible = false;
-            guna2TextBox3.Visible = false;
+            surnameTxtEm.Visible = false;
+            phonetxtEm.Visible = false;
+            EmailTextEm.Visible = false;
             Name.Visible = false;
             Surname.Visible = false;
             label1.Visible = false;
@@ -432,9 +432,9 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
         private void ClearInputFields()
         {
             NametextEm.Clear();
-            guna2TextBox1.Clear();
-            guna2TextBox2.Clear();
-            guna2TextBox3.Clear();
+            surnameTxtEm.Clear();
+            phonetxtEm.Clear();
+            EmailTextEm.Clear();
         }
 
         private bool IsValidEmail(string email)
@@ -448,6 +448,11 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             {
                 return false;
             }
+        }
+
+        private void FrmEmployees_Load_1(object sender, EventArgs e)
+        {
+
         }
     }
 }

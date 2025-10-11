@@ -43,19 +43,19 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             this.ToLabel = new System.Windows.Forms.Label();
             this.GenerateReportButton = new Guna.UI2.WinForms.Guna2Button();
             this.ReportDataview = new System.Windows.Forms.DataGridView();
-            this.phumlaKamnandiDBDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.phumlaKamnandiDBDataSetBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.phumlaKamnandiDBDataSet = new Phumla_Kamnandi_GRP_12.PhumlaKamnandiDBDataSet();
+            this.phumlaKamnandiDBDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.saveButton = new Guna.UI2.WinForms.Guna2Button();
             this.AlltimeRB = new System.Windows.Forms.RadioButton();
             this.todayRB = new System.Windows.Forms.RadioButton();
             this.SpecificRB = new System.Windows.Forms.RadioButton();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.phumlaKamnandiDBDataSetBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.ReportDataview)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.phumlaKamnandiDBDataSetBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.phumlaKamnandiDBDataSet)).BeginInit();
-            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.phumlaKamnandiDBDataSetBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.phumlaKamnandiDBDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.phumlaKamnandiDBDataSetBindingSource)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // DatePickerStart
@@ -135,7 +135,6 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             this.OccupancyReportRadioButton.TabStop = true;
             this.OccupancyReportRadioButton.Text = "Occupancy Report";
             this.OccupancyReportRadioButton.UseVisualStyleBackColor = true;
-
             // 
             // RevenueRadioButton
             // 
@@ -149,7 +148,6 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             this.RevenueRadioButton.TabStop = true;
             this.RevenueRadioButton.Text = "Revenue Report";
             this.RevenueRadioButton.UseVisualStyleBackColor = true;
-            
             // 
             // SelectDateLabel
             // 
@@ -215,15 +213,20 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             this.ReportDataview.Size = new System.Drawing.Size(903, 262);
             this.ReportDataview.TabIndex = 12;
             // 
-            // phumlaKamnandiDBDataSetBindingSource
+            // phumlaKamnandiDBDataSetBindingSource1
             // 
-            this.phumlaKamnandiDBDataSetBindingSource.DataSource = this.phumlaKamnandiDBDataSet;
-            this.phumlaKamnandiDBDataSetBindingSource.Position = 0;
+            this.phumlaKamnandiDBDataSetBindingSource1.DataSource = this.phumlaKamnandiDBDataSet;
+            this.phumlaKamnandiDBDataSetBindingSource1.Position = 0;
             // 
             // phumlaKamnandiDBDataSet
             // 
             this.phumlaKamnandiDBDataSet.DataSetName = "PhumlaKamnandiDBDataSet";
             this.phumlaKamnandiDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // phumlaKamnandiDBDataSetBindingSource
+            // 
+            this.phumlaKamnandiDBDataSetBindingSource.DataSource = this.phumlaKamnandiDBDataSet;
+            this.phumlaKamnandiDBDataSetBindingSource.Position = 0;
             // 
             // saveButton
             // 
@@ -296,11 +299,6 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             this.panel1.Size = new System.Drawing.Size(827, 30);
             this.panel1.TabIndex = 15;
             // 
-            // phumlaKamnandiDBDataSetBindingSource1
-            // 
-            this.phumlaKamnandiDBDataSetBindingSource1.DataSource = this.phumlaKamnandiDBDataSet;
-            this.phumlaKamnandiDBDataSetBindingSource1.Position = 0;
-            // 
             // FrmReports
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -323,12 +321,13 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmReports";
             this.Text = "FrmReports";
+            this.Load += new System.EventHandler(this.FrmReports_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ReportDataview)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.phumlaKamnandiDBDataSetBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.phumlaKamnandiDBDataSetBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.phumlaKamnandiDBDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.phumlaKamnandiDBDataSetBindingSource)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.phumlaKamnandiDBDataSetBindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

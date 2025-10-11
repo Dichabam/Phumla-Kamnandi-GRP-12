@@ -71,7 +71,7 @@
             this.AddEmployeeButton.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.AddEmployeeButton.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AddEmployeeButton.ForeColor = System.Drawing.Color.White;
-            this.AddEmployeeButton.Location = new System.Drawing.Point(25, 323);
+            this.AddEmployeeButton.Location = new System.Drawing.Point(65, 323);
             this.AddEmployeeButton.Name = "AddEmployeeButton";
             this.AddEmployeeButton.Size = new System.Drawing.Size(180, 45);
             this.AddEmployeeButton.TabIndex = 1;
@@ -311,8 +311,9 @@
             this.Controls.Add(this.AddEmployeeButton);
             this.Controls.Add(this.EmployeeDataGridViiew);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-    
+            this.Name.Text = "FrmEmployees";
             this.Text = "FrmEmployees";
+            this.Load += new System.EventHandler(this.FrmEmployees_Load_1);
             ((System.ComponentModel.ISupportInitialize)(this.EmployeeDataGridViiew)).EndInit();
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
