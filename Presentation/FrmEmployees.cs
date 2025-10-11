@@ -19,8 +19,8 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
     public partial class FrmEmployees : Form
     {
         private readonly EmployeeServiceInterface _employeeService;
-        private Employee _currentEmployee; // The logged-in admin
-        private Employee _selectedEmployee; // The employee selected in the grid
+        private Employee _currentEmployee; 
+        private Employee _selectedEmployee; 
         private bool _isAddingEmployee = false;
 
         public FrmEmployees()
@@ -33,6 +33,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
 
            
             InitializeFormSetup();
+            LoadEmployees();
         }
 
       
@@ -206,7 +207,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                     ChangeRoleButton.Enabled = true;
                     DeactivateEmployeeButton.Enabled = true;
 
-                    // Reload grid
+                   
                     LoadEmployees();
                 }
                 else
@@ -379,42 +380,49 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             }
         }
 
+        #region Irrelevant methods 
         private void guna2ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            // Optional: Handle role selection change if needed
+            
         }
 
         private void EmailTextEm_TextChanged(object sender, EventArgs e)
         {
-            // Optional: Real-time email validation
+           
         }
 
         private void phonetxtEm_TextChanged(object sender, EventArgs e)
         {
-            // Optional: Real-time phone validation
+            
         }
 
         private void surnameTxtEm_TextChanged(object sender, EventArgs e)
         {
-            // Optional: Real-time surname validation
+           
         }
 
         private void NametextEm_TextChanged(object sender, EventArgs e)
         {
-            // Optional: Real-time name validation
+          
         }
 
-        // Helper methods
+        private void FrmEmployees_Load_1(object sender, EventArgs e)
+        {
+
+        }
+        #endregion 
+
+        #region Helper methods
         private void ShowInputFields()
         {
             NametextEm.Visible = true;
-            surnameTxtEm.Visible = true; // Surname
-            phonetxtEm.Visible = true; // Phone
-            EmailTextEm.Visible = true; // Email
+            surnameTxtEm.Visible = true;
+            phonetxtEm.Visible = true; 
+            EmailTextEm.Visible = true; 
             Name.Visible = true;
             Surname.Visible = true;
-            label1.Visible = true; // Cell label
-            label2.Visible = true; // Email label
+            label1.Visible = true; 
+            label2.Visible = true; 
         }
 
         private void HideInputFields()
@@ -449,10 +457,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                 return false;
             }
         }
-
-        private void FrmEmployees_Load_1(object sender, EventArgs e)
-        {
-
-        }
+#endregion
+        
     }
 }
