@@ -16,5 +16,10 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
         {
             InitializeComponent();
         }
+
+        private void DeactivateEmployeeButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

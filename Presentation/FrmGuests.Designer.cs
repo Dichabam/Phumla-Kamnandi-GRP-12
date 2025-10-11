@@ -286,7 +286,6 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             // 
             // UpdatebuttonPanel
             // 
-            this.UpdatebuttonPanel.Controls.Add(this.AddGuestPanel);
             this.UpdatebuttonPanel.Controls.Add(this.standingcomobox);
             this.UpdatebuttonPanel.Controls.Add(this.terminateButton);
             this.UpdatebuttonPanel.Controls.Add(this.SaveButton);
@@ -320,8 +319,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             this.AddGuestPanel.Controls.Add(this.email);
             this.AddGuestPanel.Controls.Add(this.surname);
             this.AddGuestPanel.Controls.Add(this.Name);
-            this.AddGuestPanel.Location = new System.Drawing.Point(0, 0);
-           
+            this.AddGuestPanel.Location = new System.Drawing.Point(40, 406);
             this.AddGuestPanel.Name = "AddGuestPanel";
             this.AddGuestPanel.Size = new System.Drawing.Size(890, 288);
             this.AddGuestPanel.TabIndex = 29;
@@ -725,6 +723,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
             this.ClientSize = new System.Drawing.Size(954, 709);
+            this.Controls.Add(this.AddGuestPanel);
             this.Controls.Add(this.UpdatebuttonPanel);
             this.Controls.Add(this.GuestStandingButton);
             this.Controls.Add(this.ConfirmButtonVBH);
@@ -736,7 +735,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             this.Controls.Add(this.enterEmailTextbox);
             this.Controls.Add(this.ErrorLableVBH);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            
+         
             this.Text = "FrmGuests";
             ((System.ComponentModel.ISupportInitialize)(this.GuestDataView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.phumlaKamnandiDBDataSetBindingSource)).EndInit();

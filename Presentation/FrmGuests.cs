@@ -21,9 +21,9 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                 this.Controls.Add(AddGuestPanel);
             }
 
-            AddGuestPanel.Location = new Point(40, 409);
+           
             AddGuestPanel.Visible = false;
-            AddGuestPanel.BringToFront();
+         
             InitializeForm();
             LoadAllGuests();
         }
