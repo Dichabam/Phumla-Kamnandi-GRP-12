@@ -16,6 +16,10 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
         {
             InitializeComponent();
             _services = ServiceLocator.Instance;
+            if (!this.Controls.Contains(AddGuestPanel))
+            {
+                this.Controls.Add(AddGuestPanel);
+            }
             InitializeForm();
             LoadAllGuests();
         }
@@ -27,6 +31,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             emailConfirmtextbox.Visible = false;
             ConfirmButtonVBH.Visible = false;
             ErrorLableVBH.Visible = false;
+            AddGuestPanel.Visible = false;
 
             // Hide update panel by default
             UpdatebuttonPanel.Visible = false;
@@ -250,16 +255,34 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
 
         private void AddGuestButton_Click(object sender, EventArgs e)
         {
+            // Hide email verification controls if visible
             if (enterEmailTextbox.Visible || emailConfirmtextbox.Visible || ConfirmButtonVBH.Visible)
             {
                 HideBookingHistoryControls();
             }
 
-            var dashboard = Application.OpenForms.OfType<Dashboard>().FirstOrDefault();
-            if (dashboard != null)
+            // Hide UpdatebuttonPanel if visible
+            if (UpdatebuttonPanel.Visible)
             {
-                dashboard.NavigateToBookings();
+                HideUpdatePanel();
             }
+
+            // Clear all textboxes in AddGuestPanel
+            IDNumTxtBox.Clear();
+            Name.Clear();
+            surname.Clear();
+            cell.Clear();
+            email.Clear();
+
+            // Show the AddGuestPanel
+            AddGuestPanel.Visible = true;
+            AddGuestPanel.BringToFront();
+
+            // Disable other buttons while adding
+            UpdateGuestButton.Enabled = false;
+            viewBookingHostoryButton.Enabled = false;
+            GuestStandingButton.Enabled = false;
+            AddGuestButton.Enabled = false;
         }
 
         private void UpdateGuestButton_Click(object sender, EventArgs e)
@@ -500,7 +523,120 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
 
         private void CreateButton_Click(object sender, EventArgs e)
         {
+            try
+            {
+                // Validate all fields
+                if (string.IsNullOrWhiteSpace(IDNumTxtBox.Text))
+                {
+                    MessageBox.Show("ID Number is required.", "Validation Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    IDNumTxtBox.Focus();
+                    return;
+                }
 
+                if (string.IsNullOrWhiteSpace(Name.Text))
+                {
+                    MessageBox.Show("First Name is required.", "Validation Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    Name.Focus();
+                    return;
+                }
+
+                if (string.IsNullOrWhiteSpace(surname.Text))
+                {
+                    MessageBox.Show("Last Name is required.", "Validation Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    surname.Focus();
+                    return;
+                }
+
+                if (string.IsNullOrWhiteSpace(cell.Text))
+                {
+                    MessageBox.Show("Phone number is required.", "Validation Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    cell.Focus();
+                    return;
+                }
+
+                if (string.IsNullOrWhiteSpace(email.Text))
+                {
+                    MessageBox.Show("Email is required.", "Validation Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    email.Focus();
+                    return;
+                }
+
+                // Validate email format
+                if (!IsValidEmail(email.Text.Trim()))
+                {
+                    MessageBox.Show("Invalid email format.", "Validation Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    email.Focus();
+                    return;
+                }
+
+                // Check if guest with this email already exists
+                var existingGuest = _services.GuestService.GetGuestByEmail(email.Text.Trim());
+                if (existingGuest != null)
+                {
+                    MessageBox.Show("A guest with this email already exists.", "Duplicate Guest",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    email.Focus();
+                    return;
+                }
+
+                // Confirm creation
+                DialogResult result = MessageBox.Show(
+                    $"Create new guest:\n\n" +
+                    $"Name: {Name.Text.Trim()} {surname.Text.Trim()}\n" +
+                    $"ID: {IDNumTxtBox.Text.Trim()}\n" +
+                    $"Email: {email.Text.Trim()}\n" +
+                    $"Phone: {cell.Text.Trim()}\n\n" +
+                    $"Continue?",
+                    "Confirm Guest Creation",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question);
+
+                if (result == DialogResult.No)
+                {
+                    return;
+                }
+
+                // Create the guest (address is ID Number for now)
+                var newGuest = _services.GuestService.RegisterNewGuest(
+                    Name.Text.Trim(),
+                    surname.Text.Trim(),
+                    email.Text.Trim(),
+                    cell.Text.Trim(),
+                    IDNumTxtBox.Text.Trim() // Using ID as address
+                );
+
+                if (newGuest != null)
+                {
+                    MessageBox.Show(
+                        $"Guest created successfully!\n\n" +
+                        $"Guest ID: {newGuest.GuestId}\n" +
+                        $"Name: {newGuest.FullName}\n" +
+                        $"Email: {newGuest.Email}",
+                        "Success",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
+
+                    // Hide the panel and refresh
+                    HideAddGuestPanel();
+                    LoadAllGuests();
+                }
+                else
+                {
+                    MessageBox.Show("Failed to create guest.", "Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error creating guest: {ex.Message}", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void IDNumTxtBox_TextChanged(object sender, EventArgs e)
@@ -511,15 +647,34 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
         private void terminateButton1_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show(
-                "Cancel adding guest? All unsaved changes will be lost.",
-                "Confirm Cancel",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question);
+        "Cancel adding guest? All unsaved changes will be lost.",
+        "Confirm Cancel",
+        MessageBoxButtons.YesNo,
+        MessageBoxIcon.Question);
 
             if (result == DialogResult.Yes)
             {
-                HideUpdatePanel();
+                HideAddGuestPanel();
             }
+        }
+
+        private void HideAddGuestPanel()
+        {
+            // Clear all textboxes
+            IDNumTxtBox.Clear();
+            Name.Clear();
+            surname.Clear();
+            cell.Clear();
+            email.Clear();
+
+            // Hide the panel
+            AddGuestPanel.Visible = false;
+
+            // Re-enable other buttons
+            UpdateGuestButton.Enabled = true;
+            viewBookingHostoryButton.Enabled = true;
+            GuestStandingButton.Enabled = true;
+            AddGuestButton.Enabled = true;
         }
     }
 }
