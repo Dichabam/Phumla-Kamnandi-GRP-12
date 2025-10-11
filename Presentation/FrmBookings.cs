@@ -140,6 +140,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             CreditCardlabel.Visible = false;
             creditTextbox.Visible = false;
             SubmitButton.Visible = false;
+            guna2TextBox1.Visible = false;
         }
 
         private void ShowAllInputFields()
@@ -169,6 +170,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             CreditCardlabel.Visible = true;
             creditTextbox.Visible = true;
             SubmitButton.Visible = true;
+            guna2TextBox1.Visible = true;
         }
         #endregion
 
@@ -187,16 +189,22 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             specialrequestTextbox.Clear();
             creditTextbox.Clear();
             selectedBookingRef = null;
+
+            // Reset readonly states
+            NameTextBox.ReadOnly = false;
+            surnametextbox.ReadOnly = false;
+            emailtextbox.ReadOnly = false;
+            phonetextbox.ReadOnly = false;
+            addresstextbox.ReadOnly = false;
         }
 
         private void MakeBookingButton_Click_1(object sender, EventArgs e)
         {
-            isInMakeBookingMode = true;
-            isInUpdateMode = false;
-            ClearAllFields();
-            ShowAllInputFields();
-            SubmitButton.Text = "Submit Booking";
-            SubmitButton.FillColor = Color.Lime;
+            
+            using (NewExistGuest choiceForm = new NewExistGuest(this))
+            {
+                choiceForm.ShowDialog();
+            }
         }
 
         private void SubmitButton_Click(object sender, EventArgs e)
@@ -217,19 +225,40 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             {
                 if (!ValidateInputs()) return;
 
-                var guest = _services.GuestService.GetGuestByEmail(emailtextbox.Text.Trim());
+                // Check if fields are readonly (existing guest) or new guest
+                bool isExistingGuest = NameTextBox.ReadOnly;
+                Guest guest;
 
-                if (guest == null)
+                if (isExistingGuest)
                 {
-                    guest = _services.GuestService.RegisterNewGuest(
-                        NameTextBox.Text.Trim(),
-                        surnametextbox.Text.Trim(),
-                        emailtextbox.Text.Trim(),
-                        phonetextbox.Text.Trim(),
-                        addresstextbox.Text.Trim()
-                    );
+                    // Get existing guest by email
+                    guest = _services.GuestService.GetGuestByEmail(emailtextbox.Text.Trim());
+                    if (guest == null)
+                    {
+                        MessageBox.Show("Error: Could not find guest information.", "Error",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                }
+                else
+                {
+                    // Check if guest exists
+                    guest = _services.GuestService.GetGuestByEmail(emailtextbox.Text.Trim());
+
+                    if (guest == null)
+                    {
+                        // Create new guest
+                        guest = _services.GuestService.RegisterNewGuest(
+                            NameTextBox.Text.Trim(),
+                            surnametextbox.Text.Trim(),
+                            emailtextbox.Text.Trim(),
+                            phonetextbox.Text.Trim(),
+                            addresstextbox.Text.Trim()
+                        );
+                    }
                 }
 
+                // Update credit card if provided
                 if (!string.IsNullOrEmpty(creditTextbox.Text.Trim()) && creditTextbox.Text.Trim().Length >= 4)
                 {
                     string lastFour = creditTextbox.Text.Trim();
@@ -255,13 +284,29 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
 
                 if (result.Success)
                 {
+                    // Automatically confirm booking with deposit if credit card provided
                     if (!string.IsNullOrEmpty(creditTextbox.Text.Trim()) && creditTextbox.Text.Trim().Length >= 4)
                     {
-                        _services.BookingService.ConfirmBookingWithDeposit(
+                        bool confirmed = _services.BookingService.ConfirmBookingWithDeposit(
                             result.BookingReference,
                             result.DepositRequired,
                             creditTextbox.Text.Trim()
                         );
+
+                        if (confirmed)
+                        {
+                            // Update booking to store last 4 digits
+                            var booking = _services.BookingService.GetBookingDetails(result.BookingReference);
+                            if (booking != null)
+                            {
+                                string lastFour = creditTextbox.Text.Trim();
+                                if (lastFour.Length > 4)
+                                    lastFour = lastFour.Substring(lastFour.Length - 4);
+
+                                booking.SetCreditCardInfo(lastFour);
+                                _services.BookingRepository.Update(booking);
+                            }
+                        }
                     }
 
                     string confirmationLetter = _services.BookingService.GenerateConfirmationLetter(result.BookingReference);
@@ -577,6 +622,43 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
         private void YesNoComboBox_SelectedIndexChanged(object sender, EventArgs e) { }
         #endregion
 
-        
+        public void StartNewGuestBooking()
+        {
+            isInMakeBookingMode = true;
+            isInUpdateMode = false;
+            ClearAllFields();
+            ShowAllInputFields();
+            SubmitButton.Text = "Submit Booking";
+            SubmitButton.FillColor = Color.Lime;
+        }
+
+        public void StartExistingGuestBooking(Guest guest)
+        {
+            isInMakeBookingMode = true;
+            isInUpdateMode = false;
+
+            // Pre-fill guest details
+            NameTextBox.Text = guest.FirstName;
+            surnametextbox.Text = guest.LastName;
+            emailtextbox.Text = guest.Email;
+            phonetextbox.Text = guest.Phone;
+            addresstextbox.Text = guest.Address;
+
+            // Disable guest info fields
+            NameTextBox.ReadOnly = true;
+            surnametextbox.ReadOnly = true;
+            emailtextbox.ReadOnly = true;
+            phonetextbox.ReadOnly = true;
+            addresstextbox.ReadOnly = true;
+
+            ShowAllInputFields();
+            SubmitButton.Text = "Submit Booking";
+            SubmitButton.FillColor = Color.Lime;
+
+            // Focus on booking-specific fields
+            checkindp.Focus();
+        }
+
+
     }
 }
