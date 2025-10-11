@@ -41,6 +41,8 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             if (!string.IsNullOrEmpty(_services.CurrentUserName))
             {
                 WelcomLabel.Text = $"{_services.CurrentUserName.ToUpper()}";
+                WelcomLabel.TextAlign = ContentAlignment.MiddleCenter;
+
             }
             else
             {
