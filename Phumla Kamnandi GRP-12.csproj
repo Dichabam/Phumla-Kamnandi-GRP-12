@@ -178,6 +178,12 @@
     <Compile Include="Presentation\Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
+    <Compile Include="Presentation\MakeBookingConf.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation\MakeBookingConf.Designer.cs">
+      <DependentUpon>MakeBookingConf.cs</DependentUpon>
+    </Compile>
     <Compile Include="Presentation\MDIParent.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -189,6 +195,12 @@
     </Compile>
     <Compile Include="Presentation\NewAccount.Designer.cs">
       <DependentUpon>NewAccount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presentation\NewExistGuest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Presentation\NewExistGuest.Designer.cs">
+      <DependentUpon>NewExistGuest.cs</DependentUpon>
     </Compile>
     <Compile Include="Presentation\PasswordForm.cs">
       <SubType>Form</SubType>
@@ -235,11 +247,17 @@
     <EmbeddedResource Include="Presentation\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Presentation\MakeBookingConf.resx">
+      <DependentUpon>MakeBookingConf.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Presentation\MDIParent.resx">
       <DependentUpon>MDIParent.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentation\NewAccount.resx">
       <DependentUpon>NewAccount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Presentation\NewExistGuest.resx">
+      <DependentUpon>NewExistGuest.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Presentation\PasswordForm.resx">
       <DependentUpon>PasswordForm.cs</DependentUpon>

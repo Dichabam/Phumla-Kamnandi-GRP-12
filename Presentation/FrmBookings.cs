@@ -78,17 +78,18 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                     DataTable dt = new DataTable();
                     adapter.Fill(dt);
 
-                    ShowdataGridView.DataSource = null;
-                    ShowdataGridView.DataSource = dt;
-                    ShowdataGridView.Refresh();
                     ShowdataGridView.ScrollBars = ScrollBars.Horizontal;
                     ShowdataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
 
-                    // Hide GuestId column but keep it in the DataTable
+                    ShowdataGridView.DataSource = null;
+                    ShowdataGridView.DataSource = dt;
+                    ShowdataGridView.Refresh();
+                    
+                    
                     if (ShowdataGridView.Columns.Contains("GuestId"))
                         ShowdataGridView.Columns["GuestId"].Visible = false;
 
-                    // Format columns
+                   
                     if (ShowdataGridView.Columns.Contains("TotalAmount"))
                         ShowdataGridView.Columns["TotalAmount"].DefaultCellStyle.Format = "C2";
                     if (ShowdataGridView.Columns.Contains("DepositAmount"))
