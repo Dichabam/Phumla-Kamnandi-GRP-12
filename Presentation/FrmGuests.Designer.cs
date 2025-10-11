@@ -41,9 +41,6 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             this.ConfirmButtonVBH = new Guna.UI2.WinForms.Guna2Button();
             this.ErrorLableVBH = new System.Windows.Forms.Label();
             this.viewBookingHostoryButton = new Guna.UI2.WinForms.Guna2Button();
-            this.GuestStandingButton = new Guna.UI2.WinForms.Guna2Button();
-            this.AddGuestButton = new Guna.UI2.WinForms.Guna2Button();
-            this.UpdateGuestButton = new Guna.UI2.WinForms.Guna2Button();
             this.PhoneTxtbox = new Guna.UI2.WinForms.Guna2TextBox();
             this.NameTxtBox = new Guna.UI2.WinForms.Guna2TextBox();
             this.EmailTxtbox = new Guna.UI2.WinForms.Guna2TextBox();
@@ -67,11 +64,14 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             this.IDNumberLabel = new System.Windows.Forms.Label();
             this.mailmake = new System.Windows.Forms.Label();
             this.Namemake = new System.Windows.Forms.Label();
-            this.guna2TextBox1 = new Guna.UI2.WinForms.Guna2TextBox();
-            this.guna2TextBox2 = new Guna.UI2.WinForms.Guna2TextBox();
-            this.guna2TextBox3 = new Guna.UI2.WinForms.Guna2TextBox();
-            this.guna2TextBox4 = new Guna.UI2.WinForms.Guna2TextBox();
-            this.guna2TextBox5 = new Guna.UI2.WinForms.Guna2TextBox();
+            this.cell = new Guna.UI2.WinForms.Guna2TextBox();
+            this.email = new Guna.UI2.WinForms.Guna2TextBox();
+            this.surname = new Guna.UI2.WinForms.Guna2TextBox();
+            this.Name = new Guna.UI2.WinForms.Guna2TextBox();
+            this.IDNumTxtBox = new Guna.UI2.WinForms.Guna2TextBox();
+            this.GuestStandingButton = new Guna.UI2.WinForms.Guna2Button();
+            this.AddGuestButton = new Guna.UI2.WinForms.Guna2Button();
+            this.UpdateGuestButton = new Guna.UI2.WinForms.Guna2Button();
             ((System.ComponentModel.ISupportInitialize)(this.GuestDataView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.phumlaKamnandiDBDataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.phumlaKamnandiDBDataSet)).BeginInit();
@@ -191,60 +191,6 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             this.viewBookingHostoryButton.TabIndex = 26;
             this.viewBookingHostoryButton.Text = "View Booking History";
             this.viewBookingHostoryButton.Click += new System.EventHandler(this.ViewBookingHistoryButton_Click);
-            // 
-            // GuestStandingButton
-            // 
-            this.GuestStandingButton.AutoRoundedCorners = true;
-            this.GuestStandingButton.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.GuestStandingButton.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.GuestStandingButton.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.GuestStandingButton.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.GuestStandingButton.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
-            this.GuestStandingButton.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.GuestStandingButton.ForeColor = System.Drawing.Color.White;
-            this.GuestStandingButton.Image = global::Phumla_Kamnandi_GRP_12.Properties.Resources.man_4_50dp_FFFFFF_FILL0_wght400_GRAD0_opsz48;
-            this.GuestStandingButton.Location = new System.Drawing.Point(713, 349);
-            this.GuestStandingButton.Name = "GuestStandingButton";
-            this.GuestStandingButton.Size = new System.Drawing.Size(180, 45);
-            this.GuestStandingButton.TabIndex = 26;
-            this.GuestStandingButton.Text = "Guest standing";
-            this.GuestStandingButton.Click += new System.EventHandler(this.GuestStandingButton_Click);
-            // 
-            // AddGuestButton
-            // 
-            this.AddGuestButton.AutoRoundedCorners = true;
-            this.AddGuestButton.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.AddGuestButton.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.AddGuestButton.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.AddGuestButton.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.AddGuestButton.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
-            this.AddGuestButton.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AddGuestButton.ForeColor = System.Drawing.Color.White;
-            this.AddGuestButton.Image = global::Phumla_Kamnandi_GRP_12.Properties.Resources.add_50dp_FFFFFF_FILL0_wght400_GRAD0_opsz48;
-            this.AddGuestButton.Location = new System.Drawing.Point(285, 349);
-            this.AddGuestButton.Name = "AddGuestButton";
-            this.AddGuestButton.Size = new System.Drawing.Size(180, 45);
-            this.AddGuestButton.TabIndex = 26;
-            this.AddGuestButton.Text = "Add Guest";
-            this.AddGuestButton.Click += new System.EventHandler(this.AddGuestButton_Click);
-            // 
-            // UpdateGuestButton
-            // 
-            this.UpdateGuestButton.AutoRoundedCorners = true;
-            this.UpdateGuestButton.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.UpdateGuestButton.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.UpdateGuestButton.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.UpdateGuestButton.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.UpdateGuestButton.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
-            this.UpdateGuestButton.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.UpdateGuestButton.ForeColor = System.Drawing.Color.White;
-            this.UpdateGuestButton.Image = global::Phumla_Kamnandi_GRP_12.Properties.Resources.update_50dp_FFFFFF_FILL0_wght400_GRAD0_opsz48;
-            this.UpdateGuestButton.Location = new System.Drawing.Point(63, 349);
-            this.UpdateGuestButton.Name = "UpdateGuestButton";
-            this.UpdateGuestButton.Size = new System.Drawing.Size(180, 45);
-            this.UpdateGuestButton.TabIndex = 26;
-            this.UpdateGuestButton.Text = "Update Guest";
-            this.UpdateGuestButton.Click += new System.EventHandler(this.UpdateGuestButton_Click);
             // 
             // PhoneTxtbox
             // 
@@ -491,11 +437,11 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             this.AddGuestPanel.Controls.Add(this.IDNumberLabel);
             this.AddGuestPanel.Controls.Add(this.mailmake);
             this.AddGuestPanel.Controls.Add(this.Namemake);
-            this.AddGuestPanel.Controls.Add(this.guna2TextBox5);
-            this.AddGuestPanel.Controls.Add(this.guna2TextBox1);
-            this.AddGuestPanel.Controls.Add(this.guna2TextBox2);
-            this.AddGuestPanel.Controls.Add(this.guna2TextBox3);
-            this.AddGuestPanel.Controls.Add(this.guna2TextBox4);
+            this.AddGuestPanel.Controls.Add(this.IDNumTxtBox);
+            this.AddGuestPanel.Controls.Add(this.cell);
+            this.AddGuestPanel.Controls.Add(this.email);
+            this.AddGuestPanel.Controls.Add(this.surname);
+            this.AddGuestPanel.Controls.Add(this.Name);
             this.AddGuestPanel.Location = new System.Drawing.Point(0, 0);
             this.AddGuestPanel.Name = "AddGuestPanel";
             this.AddGuestPanel.Size = new System.Drawing.Size(890, 288);
@@ -517,7 +463,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             this.guna2Button1.Size = new System.Drawing.Size(77, 33);
             this.guna2Button1.TabIndex = 29;
             this.guna2Button1.Text = "close";
-            this.guna2Button1.Click += new System.EventHandler(this.terminateButton_Click);
+            this.guna2Button1.Click += new System.EventHandler(this.terminateButton1_Click);
             // 
             // Createbutton
             // 
@@ -534,7 +480,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             this.Createbutton.Size = new System.Drawing.Size(180, 45);
             this.Createbutton.TabIndex = 29;
             this.Createbutton.Text = "Create Guest";
-            this.Createbutton.Click += new System.EventHandler(this.SaveButton_Click);
+            this.Createbutton.Click += new System.EventHandler(this.CreateButton_Click);
             // 
             // nummaek
             // 
@@ -543,9 +489,9 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             this.nummaek.ForeColor = System.Drawing.Color.White;
             this.nummaek.Location = new System.Drawing.Point(3, 161);
             this.nummaek.Name = "nummaek";
-            this.nummaek.Size = new System.Drawing.Size(127, 23);
+            this.nummaek.Size = new System.Drawing.Size(35, 23);
             this.nummaek.TabIndex = 28;
-            this.nummaek.Text = "Phone Number";
+            this.nummaek.Text = "cell";
             // 
             // CreateNewGuestLabel
             // 
@@ -602,120 +548,174 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             this.Namemake.TabIndex = 28;
             this.Namemake.Text = "Name";
             // 
-            // guna2TextBox1
+            // cell
             // 
-            this.guna2TextBox1.AutoRoundedCorners = true;
-            this.guna2TextBox1.BorderColor = System.Drawing.Color.SlateGray;
-            this.guna2TextBox1.BorderThickness = 2;
-            this.guna2TextBox1.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.guna2TextBox1.DefaultText = "";
-            this.guna2TextBox1.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.guna2TextBox1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.guna2TextBox1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.guna2TextBox1.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.guna2TextBox1.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2TextBox1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.guna2TextBox1.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2TextBox1.Location = new System.Drawing.Point(160, 161);
-            this.guna2TextBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.guna2TextBox1.Name = "guna2TextBox1";
-            this.guna2TextBox1.PlaceholderText = "";
-            this.guna2TextBox1.SelectedText = "";
-            this.guna2TextBox1.Size = new System.Drawing.Size(210, 32);
-            this.guna2TextBox1.TabIndex = 27;
-            this.guna2TextBox1.TextChanged += new System.EventHandler(this.emailConfirmtextbox_TextChanged);
+            this.cell.AutoRoundedCorners = true;
+            this.cell.BorderColor = System.Drawing.Color.SlateGray;
+            this.cell.BorderThickness = 2;
+            this.cell.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.cell.DefaultText = "";
+            this.cell.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.cell.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.cell.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.cell.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.cell.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cell.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.cell.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cell.Location = new System.Drawing.Point(160, 161);
+            this.cell.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.cell.Name = "cell";
+            this.cell.PlaceholderText = "";
+            this.cell.SelectedText = "";
+            this.cell.Size = new System.Drawing.Size(210, 32);
+            this.cell.TabIndex = 27;
+            this.cell.TextChanged += new System.EventHandler(this.emailConfirmtextbox_TextChanged);
             // 
-            // guna2TextBox2
+            // email
             // 
-            this.guna2TextBox2.AutoRoundedCorners = true;
-            this.guna2TextBox2.BorderColor = System.Drawing.Color.SlateGray;
-            this.guna2TextBox2.BorderThickness = 2;
-            this.guna2TextBox2.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.guna2TextBox2.DefaultText = "";
-            this.guna2TextBox2.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.guna2TextBox2.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.guna2TextBox2.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.guna2TextBox2.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.guna2TextBox2.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2TextBox2.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.guna2TextBox2.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2TextBox2.Location = new System.Drawing.Point(475, 161);
-            this.guna2TextBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.guna2TextBox2.Name = "guna2TextBox2";
-            this.guna2TextBox2.PlaceholderText = "";
-            this.guna2TextBox2.SelectedText = "";
-            this.guna2TextBox2.Size = new System.Drawing.Size(393, 32);
-            this.guna2TextBox2.TabIndex = 27;
-            this.guna2TextBox2.TextChanged += new System.EventHandler(this.emailConfirmtextbox_TextChanged);
+            this.email.AutoRoundedCorners = true;
+            this.email.BorderColor = System.Drawing.Color.SlateGray;
+            this.email.BorderThickness = 2;
+            this.email.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.email.DefaultText = "";
+            this.email.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.email.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.email.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.email.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.email.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.email.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.email.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.email.Location = new System.Drawing.Point(475, 161);
+            this.email.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.email.Name = "email";
+            this.email.PlaceholderText = "";
+            this.email.SelectedText = "";
+            this.email.Size = new System.Drawing.Size(393, 32);
+            this.email.TabIndex = 27;
+            this.email.TextChanged += new System.EventHandler(this.emailConfirmtextbox_TextChanged);
             // 
-            // guna2TextBox3
+            // surname
             // 
-            this.guna2TextBox3.AutoRoundedCorners = true;
-            this.guna2TextBox3.BorderColor = System.Drawing.Color.SlateGray;
-            this.guna2TextBox3.BorderThickness = 2;
-            this.guna2TextBox3.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.guna2TextBox3.DefaultText = "";
-            this.guna2TextBox3.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.guna2TextBox3.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.guna2TextBox3.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.guna2TextBox3.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.guna2TextBox3.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2TextBox3.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.guna2TextBox3.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2TextBox3.Location = new System.Drawing.Point(475, 109);
-            this.guna2TextBox3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.guna2TextBox3.Name = "guna2TextBox3";
-            this.guna2TextBox3.PlaceholderText = "";
-            this.guna2TextBox3.SelectedText = "";
-            this.guna2TextBox3.Size = new System.Drawing.Size(233, 32);
-            this.guna2TextBox3.TabIndex = 27;
-            this.guna2TextBox3.TextChanged += new System.EventHandler(this.emailConfirmtextbox_TextChanged);
+            this.surname.AutoRoundedCorners = true;
+            this.surname.BorderColor = System.Drawing.Color.SlateGray;
+            this.surname.BorderThickness = 2;
+            this.surname.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.surname.DefaultText = "";
+            this.surname.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.surname.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.surname.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.surname.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.surname.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.surname.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.surname.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.surname.Location = new System.Drawing.Point(475, 109);
+            this.surname.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.surname.Name = "surname";
+            this.surname.PlaceholderText = "";
+            this.surname.SelectedText = "";
+            this.surname.Size = new System.Drawing.Size(233, 32);
+            this.surname.TabIndex = 27;
+            this.surname.TextChanged += new System.EventHandler(this.emailConfirmtextbox_TextChanged);
             // 
-            // guna2TextBox4
+            // Name
             // 
-            this.guna2TextBox4.AutoRoundedCorners = true;
-            this.guna2TextBox4.BorderColor = System.Drawing.Color.SlateGray;
-            this.guna2TextBox4.BorderThickness = 2;
-            this.guna2TextBox4.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.guna2TextBox4.DefaultText = "";
-            this.guna2TextBox4.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.guna2TextBox4.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.guna2TextBox4.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.guna2TextBox4.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.guna2TextBox4.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2TextBox4.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.guna2TextBox4.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2TextBox4.Location = new System.Drawing.Point(160, 109);
-            this.guna2TextBox4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.guna2TextBox4.Name = "guna2TextBox4";
-            this.guna2TextBox4.PlaceholderText = "";
-            this.guna2TextBox4.SelectedText = "";
-            this.guna2TextBox4.Size = new System.Drawing.Size(210, 32);
-            this.guna2TextBox4.TabIndex = 27;
-            this.guna2TextBox4.TextChanged += new System.EventHandler(this.emailConfirmtextbox_TextChanged);
+            this.Name.AutoRoundedCorners = true;
+            this.Name.BorderColor = System.Drawing.Color.SlateGray;
+            this.Name.BorderThickness = 2;
+            this.Name.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.Name.DefaultText = "";
+            this.Name.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.Name.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.Name.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.Name.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.Name.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.Name.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.Name.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.Name.Location = new System.Drawing.Point(160, 109);
+            this.Name.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Name.Name = "Name";
+            this.Name.PlaceholderText = "";
+            this.Name.SelectedText = "";
+            this.Name.Size = new System.Drawing.Size(210, 32);
+            this.Name.TabIndex = 27;
+            this.Name.TextChanged += new System.EventHandler(this.emailConfirmtextbox_TextChanged);
             // 
-            // guna2TextBox5
+            // IDNumTxtBox
             // 
-            this.guna2TextBox5.AutoRoundedCorners = true;
-            this.guna2TextBox5.BorderColor = System.Drawing.Color.SlateGray;
-            this.guna2TextBox5.BorderThickness = 2;
-            this.guna2TextBox5.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.guna2TextBox5.DefaultText = "";
-            this.guna2TextBox5.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.guna2TextBox5.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.guna2TextBox5.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.guna2TextBox5.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.guna2TextBox5.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2TextBox5.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.guna2TextBox5.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2TextBox5.Location = new System.Drawing.Point(160, 62);
-            this.guna2TextBox5.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.guna2TextBox5.Name = "guna2TextBox5";
-            this.guna2TextBox5.PlaceholderText = "";
-            this.guna2TextBox5.SelectedText = "";
-            this.guna2TextBox5.Size = new System.Drawing.Size(391, 32);
-            this.guna2TextBox5.TabIndex = 27;
-            this.guna2TextBox5.TextChanged += new System.EventHandler(this.emailConfirmtextbox_TextChanged);
+            this.IDNumTxtBox.AutoRoundedCorners = true;
+            this.IDNumTxtBox.BorderColor = System.Drawing.Color.SlateGray;
+            this.IDNumTxtBox.BorderThickness = 2;
+            this.IDNumTxtBox.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.IDNumTxtBox.DefaultText = "";
+            this.IDNumTxtBox.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.IDNumTxtBox.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.IDNumTxtBox.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.IDNumTxtBox.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.IDNumTxtBox.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.IDNumTxtBox.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.IDNumTxtBox.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.IDNumTxtBox.Location = new System.Drawing.Point(160, 62);
+            this.IDNumTxtBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.IDNumTxtBox.Name = "IDNumTxtBox";
+            this.IDNumTxtBox.PlaceholderText = "";
+            this.IDNumTxtBox.SelectedText = "";
+            this.IDNumTxtBox.Size = new System.Drawing.Size(391, 32);
+            this.IDNumTxtBox.TabIndex = 27;
+            this.IDNumTxtBox.TextChanged += new System.EventHandler(this.IDNumTxtBox_TextChanged);
+            // 
+            // GuestStandingButton
+            // 
+            this.GuestStandingButton.AutoRoundedCorners = true;
+            this.GuestStandingButton.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.GuestStandingButton.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.GuestStandingButton.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.GuestStandingButton.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.GuestStandingButton.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
+            this.GuestStandingButton.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.GuestStandingButton.ForeColor = System.Drawing.Color.White;
+            this.GuestStandingButton.Image = global::Phumla_Kamnandi_GRP_12.Properties.Resources.man_4_50dp_FFFFFF_FILL0_wght400_GRAD0_opsz48;
+            this.GuestStandingButton.Location = new System.Drawing.Point(713, 349);
+            this.GuestStandingButton.Name = "GuestStandingButton";
+            this.GuestStandingButton.Size = new System.Drawing.Size(180, 45);
+            this.GuestStandingButton.TabIndex = 26;
+            this.GuestStandingButton.Text = "Guest standing";
+            this.GuestStandingButton.Click += new System.EventHandler(this.GuestStandingButton_Click);
+            // 
+            // AddGuestButton
+            // 
+            this.AddGuestButton.AutoRoundedCorners = true;
+            this.AddGuestButton.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.AddGuestButton.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.AddGuestButton.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.AddGuestButton.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.AddGuestButton.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
+            this.AddGuestButton.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AddGuestButton.ForeColor = System.Drawing.Color.White;
+            this.AddGuestButton.Image = global::Phumla_Kamnandi_GRP_12.Properties.Resources.add_50dp_FFFFFF_FILL0_wght400_GRAD0_opsz48;
+            this.AddGuestButton.Location = new System.Drawing.Point(285, 349);
+            this.AddGuestButton.Name = "AddGuestButton";
+            this.AddGuestButton.Size = new System.Drawing.Size(180, 45);
+            this.AddGuestButton.TabIndex = 26;
+            this.AddGuestButton.Text = "Add Guest";
+            this.AddGuestButton.Click += new System.EventHandler(this.AddGuestButton_Click);
+            // 
+            // UpdateGuestButton
+            // 
+            this.UpdateGuestButton.AutoRoundedCorners = true;
+            this.UpdateGuestButton.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.UpdateGuestButton.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.UpdateGuestButton.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.UpdateGuestButton.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.UpdateGuestButton.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
+            this.UpdateGuestButton.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.UpdateGuestButton.ForeColor = System.Drawing.Color.White;
+            this.UpdateGuestButton.Image = global::Phumla_Kamnandi_GRP_12.Properties.Resources.update_50dp_FFFFFF_FILL0_wght400_GRAD0_opsz48;
+            this.UpdateGuestButton.Location = new System.Drawing.Point(63, 349);
+            this.UpdateGuestButton.Name = "UpdateGuestButton";
+            this.UpdateGuestButton.Size = new System.Drawing.Size(180, 45);
+            this.UpdateGuestButton.TabIndex = 26;
+            this.UpdateGuestButton.Text = "Update Guest";
+            this.UpdateGuestButton.Click += new System.EventHandler(this.UpdateGuestButton_Click);
             // 
             // FrmGuests
             // 
@@ -786,10 +786,10 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
         private Label IDNumberLabel;
         private Label mailmake;
         private Label Namemake;
-        private Guna.UI2.WinForms.Guna2TextBox guna2TextBox1;
-        private Guna.UI2.WinForms.Guna2TextBox guna2TextBox2;
-        private Guna.UI2.WinForms.Guna2TextBox guna2TextBox3;
-        private Guna.UI2.WinForms.Guna2TextBox guna2TextBox4;
-        private Guna.UI2.WinForms.Guna2TextBox guna2TextBox5;
+        private Guna.UI2.WinForms.Guna2TextBox cell;
+        private Guna.UI2.WinForms.Guna2TextBox email;
+        private Guna.UI2.WinForms.Guna2TextBox surname;
+        private Guna.UI2.WinForms.Guna2TextBox Name;
+        private Guna.UI2.WinForms.Guna2TextBox IDNumTxtBox;
     }
 }

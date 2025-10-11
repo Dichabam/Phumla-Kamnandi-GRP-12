@@ -497,5 +497,29 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                 return false;
             }
         }
+
+        private void CreateButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void IDNumTxtBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void terminateButton1_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show(
+                "Cancel adding guest? All unsaved changes will be lost.",
+                "Confirm Cancel",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                HideUpdatePanel();
+            }
+        }
     }
 }
