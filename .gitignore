@@ -264,7 +264,7 @@ ServiceFabricBackup/
 # SQL Server files
 #*.mdf
 #*.ldf
-*.ndf
+#*.ndf
 
 # Business Intelligence projects
 *.rdl.data
@@ -361,4 +361,4 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
-/PhumlaKamnandiDB.mdf
+#/PhumlaKamnandiDB.mdf
