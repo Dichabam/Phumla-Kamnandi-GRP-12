@@ -734,7 +734,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             this.Controls.Add(this.enterEmailTextbox);
             this.Controls.Add(this.ErrorLableVBH);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "FrmGuests";
+            
             this.Text = "FrmGuests";
             ((System.ComponentModel.ISupportInitialize)(this.GuestDataView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.phumlaKamnandiDBDataSetBindingSource)).EndInit();
