@@ -107,7 +107,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                 ShowInputFields();
                 ClearInputFields();
                 AddEmployeeButton.Text = "Save";
-                AddEmployeeButton.FillColor = Color.ForestGreen
+                AddEmployeeButton.FillColor = Color.ForestGreen;
                 ChangeRoleButton.Text = "Cancel";
                 ChangeRoleButton.FillColor = Color.Red;
                 _isAddingEmployee = true;

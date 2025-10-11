@@ -15,6 +15,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
 
         private ServiceLocator _services;
         private FrmRooms _currentRoomsForm;
+       
 
         public Dashboard()
         {
@@ -235,7 +236,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             if (_currentRoomsForm != null && lblTitle.Text == "ROOMS")
             {
                 _currentRoomsForm.SearchRooms(SearchBox.Text);
-            }
+            } 
         }
 
         
