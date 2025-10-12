@@ -22,7 +22,9 @@ namespace Phumla_Kamnandi_GRP_12.Business.Entities
         public DateTime DateRegistered { get; private set; }
         public bool IsInGoodStanding { get; set; }
 
-        public Guest(string firstName, string lastName, string email, string phone, string address)
+        public string IdNum { get; set; }
+
+        public Guest(string firstName, string lastName, string email, string phone, string address, string idNum)
         {
             // Generate unique ID for new guest
             GuestId = Guid.NewGuid().ToString("N").Substring(0, 8).ToUpper();
@@ -32,7 +34,8 @@ namespace Phumla_Kamnandi_GRP_12.Business.Entities
             Phone = phone;
             Address = address;
             DateRegistered = DateTime.Now;
-            IsInGoodStanding = true;    
+            IsInGoodStanding = true;
+            IdNum = idNum;
         }
 
         public string FullName => $"{FirstName} {LastName}";

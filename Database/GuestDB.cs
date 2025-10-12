@@ -68,6 +68,7 @@ namespace Phumla_Kamnandi_GRP_12.Database
                 CreditCardNum,
                 DateRegistered,
                 IsInGoodStanding
+                IdNum
             )
             VALUES (
                 @id,
@@ -79,6 +80,7 @@ namespace Phumla_Kamnandi_GRP_12.Database
                 @card,
                 @date,
                 @status
+                @idnum
             )", cn);
 
             cmd.Parameters.AddWithValue("@id", guest.GuestId);
@@ -87,7 +89,6 @@ namespace Phumla_Kamnandi_GRP_12.Database
             cmd.Parameters.AddWithValue("@email", guest.Email ?? string.Empty);
             cmd.Parameters.AddWithValue("@phone", guest.Phone ?? string.Empty);
             cmd.Parameters.AddWithValue("@address", guest.Address ?? string.Empty);
-            cmd.Parameters.AddWithValue("@card", guest.CreditCardLastFourDigits ?? string.Empty);
             cmd.Parameters.AddWithValue("@date", guest.DateRegistered);
             cmd.Parameters.AddWithValue("@status", guest.IsInGoodStanding);
 
@@ -106,8 +107,8 @@ namespace Phumla_Kamnandi_GRP_12.Database
             Email = @email, 
             Phone = @phone, 
             Address = @address, 
-            CreditCardNum = @card, 
             IsInGoodStanding = @status
+            IdNum = @idnumber
         WHERE Id = @id", cn);
 
             cmd.Parameters.AddWithValue("@id", guest.GuestId);
@@ -116,8 +117,8 @@ namespace Phumla_Kamnandi_GRP_12.Database
             cmd.Parameters.AddWithValue("@email", guest.Email ?? string.Empty);
             cmd.Parameters.AddWithValue("@phone", guest.Phone ?? string.Empty);
             cmd.Parameters.AddWithValue("@address", guest.Address ?? string.Empty);
-            cmd.Parameters.AddWithValue("@card", guest.CreditCardLastFourDigits ?? string.Empty);
             cmd.Parameters.AddWithValue("@status", guest.IsInGoodStanding);
+            cmd.Parameters.AddWithValue("@id", guest.IdNum);
 
             cn.Open();
             cmd.ExecuteNonQuery();
@@ -140,7 +141,8 @@ namespace Phumla_Kamnandi_GRP_12.Database
                 reader["LastName"].ToString().Trim(),
                 reader["Email"].ToString().Trim(),
                 reader["Phone"].ToString().Trim(),
-                reader["Address"].ToString().Trim()
+                reader["Address"].ToString().Trim(),
+                reader["IdNum"].ToString().Trim()
             );
 
         
@@ -162,14 +164,7 @@ namespace Phumla_Kamnandi_GRP_12.Database
 
             guest.IsInGoodStanding = Convert.ToBoolean(reader["IsInGoodStanding"]);
 
-            if (reader["CreditCardNum"] != DBNull.Value)
-            {
-                string cardDigits = reader["CreditCardNum"].ToString().Trim();
-                if (!string.IsNullOrEmpty(cardDigits))
-                {
-                    guest.UpdateCreditCard(cardDigits);
-                }
-            }
+            
 
             return guest;
         }

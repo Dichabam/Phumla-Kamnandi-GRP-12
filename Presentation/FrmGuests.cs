@@ -1,4 +1,4 @@
-﻿using System;
+﻿    using System;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -612,6 +612,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                     surname.Text.Trim(),
                     email.Text.Trim(),
                     cell.Text.Trim(),
+                    AddressTxtbox.Text.Trim(),
                     IDNumTxtBox.Text.Trim() 
                 );
 

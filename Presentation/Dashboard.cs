@@ -80,6 +80,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
         {
             UpdateNavigationPanel(BookingButton);
             lblTitle.Text = "BOOKINGS";
+            _currentBookingsForm = new FrmBookings();
             LoadForm(new FrmBookings());
 
             SearchBox.Visible = true;
@@ -91,6 +92,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
         {
             UpdateNavigationPanel(GuestButton);
             lblTitle.Text = "GUESTS";
+            _currentGuestsForm = new FrmGuests();
             LoadForm(new FrmGuests());
 
             SearchBox.ReadOnly = false;

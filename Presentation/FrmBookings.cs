@@ -250,7 +250,8 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                             surnametextbox.Text.Trim(),
                             emailtextbox.Text.Trim(),
                             phonetextbox.Text.Trim(),
-                            addresstextbox.Text.Trim()
+                            addresstextbox.Text.Trim(),
+                            guna2TextBox1.Text.Trim()
                         );
                     }
                 }

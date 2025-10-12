@@ -36,14 +36,14 @@ namespace Phumla_Kamnandi_GRP_12.Business.Services
         /// <param name="phone"></param>
         /// <param name="address"></param>
         /// <returns></returns>
-        public Guest RegisterNewGuest(string firstName, string lastName, string email,string phone, string address)
+        public Guest RegisterNewGuest(string firstName, string lastName, string email,string phone, string address, string idNum)
         {
             // Check if guest already exists
             var existingGuest = _guestRepository.GetByEmail(email);
             if (existingGuest != null)
                 return existingGuest;
 
-            var newGuest = new Guest(firstName, lastName, email, phone, address);
+            var newGuest = new Guest(firstName, lastName, email, phone, address, idNum);
             _guestRepository.Add(newGuest);
             return newGuest;
         }
