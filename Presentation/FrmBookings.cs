@@ -241,7 +241,6 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                 }
                 else
                 {
-
                     guest = _services.GuestService.GetGuestByEmail(emailtextbox.Text.Trim());
 
                     if (guest == null)
@@ -274,25 +273,37 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                     checkindp.Value.Date,
                     checkoutdp.Value.Date,
                     adults,
-                    children, 
+                    children,
                     singleOccupancy,
                     specialrequestTextbox.Text.Trim()
                 );
 
                 if (result.Success)
                 {
-                    if (!string.IsNullOrEmpty(creditTextbox.Text.Trim()) && creditTextbox.Text.Trim().Length >= 4)
-                    {
-                        bool confirmed = _services.BookingService.ConfirmBookingWithDeposit(
-                            result.BookingReference,
-                            result.DepositRequired,
-                            creditTextbox.Text.Trim()
-                        );
+                    // Get the booking to find which room was assigned
+                    var booking = _services.BookingService.GetBookingDetails(result.BookingReference);
 
-                        if (confirmed)
+                    if (booking != null)
+                    {
+                        // Update room availability
+                        var room = _services.RoomRepository.GetByNumber(booking.RoomNumber);
+                        if (room != null)
                         {
-                            var booking = _services.BookingService.GetBookingDetails(result.BookingReference);
-                            if (booking != null)
+                            // Note: Room availability is date-based, not a simple on/off
+                            // The system already handles this through the booking dates
+                            // No need to change room.IsAvailable here
+                        }
+
+                        // Handle credit card and deposit
+                        if (!string.IsNullOrEmpty(creditTextbox.Text.Trim()) && creditTextbox.Text.Trim().Length >= 4)
+                        {
+                            bool confirmed = _services.BookingService.ConfirmBookingWithDeposit(
+                                result.BookingReference,
+                                result.DepositRequired,
+                                creditTextbox.Text.Trim()
+                            );
+
+                            if (confirmed)
                             {
                                 string lastFour = creditTextbox.Text.Trim();
                                 if (lastFour.Length > 4)
@@ -683,7 +694,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             surnametextbox.Text = guest.LastName;
             emailtextbox.Text = guest.Email;
             phonetextbox.Text = guest.Phone;
-            addresstextbox.Text = guest.Address;
+            guna2TextBox1.Text = guest.GuestId;
 
             // Disable guest info fields
             NameTextBox.ReadOnly = true;

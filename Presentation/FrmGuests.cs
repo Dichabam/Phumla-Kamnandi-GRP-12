@@ -28,21 +28,21 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             LoadAllGuests();
         }
 
-        private void InitializeForm()
+        private void InitializeForm()   
         {
-            // Hide email verification controls by default
+          
             enterEmailTextbox.Visible = false;
             emailConfirmtextbox.Visible = false;
             ConfirmButtonVBH.Visible = false;
             ErrorLableVBH.Visible = false;
             AddGuestPanel.Visible = false;
 
-            // Hide update panel by default
+        
             UpdatebuttonPanel.Visible = false;
 
             GuestDataView.ReadOnly = true;
 
-            // Configure DataGridView
+         
             GuestDataView.AutoGenerateColumns = false;
             GuestDataView.Columns.Clear();
 
@@ -96,7 +96,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
 
             // Wire up events
             viewBookingHostoryButton.Click += ViewBookingHistoryButton_Click;
-            //GuestStandingButton.Click += GuestStandingButton_Click;
+            GuestStandingButton.Click += GuestStandingButton_Click;
             AddGuestButton.Click += AddGuestButton_Click;
             UpdateGuestButton.Click += UpdateGuestButton_Click;
             ConfirmButtonVBH.Click += ConfirmButtonVBH_Click;
@@ -133,11 +133,9 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             }
         }
 
-       
-
         private void ViewBookingHistoryButton_Click(object sender, EventArgs e)
         {
-            enterEmailTextbox.Text = "Enter Guest Email for Booking History";
+            enterEmailTextbox.Text = "Enter Guest Email";
             enterEmailTextbox.Visible = true;
             emailConfirmtextbox.Visible = true;
             ConfirmButtonVBH.Visible = true;
@@ -149,16 +147,17 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
         private void ConfirmButtonVBH_Click(object sender, EventArgs e)
         {
             string email = emailConfirmtextbox.Text.Trim();
-
             if (string.IsNullOrEmpty(email))
             {
-                ErrorLableVBH.Text = "Please enter an email address";
                 ErrorLableVBH.Visible = true;
+                ErrorLableVBH.Text = "Please enter an email address";
+
                 return;
             }
 
             try
             {
+                
                 var guest = _services.GuestService.GetGuestByEmail(email);
 
                 if (guest == null)
@@ -221,12 +220,14 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                     }
                 }
 
+               
+                HideBookingHistoryControls();
+
                 MessageBox.Show(message, "Guest Standing",
                     MessageBoxButtons.OK,
                     isInGoodStanding ? MessageBoxIcon.Information : MessageBoxIcon.Warning);
 
                 LoadAllGuests();
-                HideBookingHistoryControls();
             }
             catch (Exception ex)
             {
@@ -239,10 +240,11 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
         {
             try
             {
+                HideBookingHistoryControls();
                 var bookings = _services.GuestService.GetGuestBookings(guest.GuestId);
                 BookingHistory historyForm = new BookingHistory(guest, bookings);
                 historyForm.ShowDialog();
-                HideBookingHistoryControls();
+                
             }
             catch (Exception ex)
             {
@@ -736,6 +738,14 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
 
         private void AddGuestPanel_Paint(object sender, PaintEventArgs e) { }
 
-        private void GuestStandingButton_Click(object sender, EventArgs e) { }
+        private void GuestStandingButton_Click(object sender, EventArgs e) {
+            enterEmailTextbox.Text = "Enter Guest Email for Standing Check";
+            enterEmailTextbox.Visible = true;
+            emailConfirmtextbox.Visible = true;
+            ConfirmButtonVBH.Visible = true;
+            ErrorLableVBH.Visible = false;
+            emailConfirmtextbox.Clear();
+            emailConfirmtextbox.Focus();
+        }
     }
 }

@@ -49,20 +49,21 @@ namespace Phumla_Kamnandi_GRP_12.Business.Entities
             if (!string.IsNullOrEmpty(address)) Address = address;
         }
 
+
         public void UpdateName(string firstName, string lastName)
         {
-            if (!string.IsNullOrEmpty(firstName))
+            
+            var firstNameProp = typeof(Guest).GetProperty("FirstName");
+            var lastNameProp = typeof(Guest).GetProperty("LastName");
+
+            if (!string.IsNullOrEmpty(firstName) && firstNameProp != null)
             {
-                var firstNameField = typeof(Guest).GetField("<FirstName>k__BackingField",
-                    System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic);
-                firstNameField?.SetValue(this, firstName);
+                firstNameProp.SetValue(this, firstName);
             }
 
-            if (!string.IsNullOrEmpty(lastName))
+            if (!string.IsNullOrEmpty(lastName) && lastNameProp != null)
             {
-                var lastNameField = typeof(Guest).GetField("<LastName>k__BackingField",
-                    System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic);
-                lastNameField?.SetValue(this, lastName);
+                lastNameProp.SetValue(this, lastName);
             }
         }
     }

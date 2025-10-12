@@ -333,7 +333,8 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
 
         private void ClearButton_Click(object sender, EventArgs e)
         {
-            
+            ReportRichTextBox.Clear();
+            _lastGeneratedReport = string.Empty;
         }
     }
 }
