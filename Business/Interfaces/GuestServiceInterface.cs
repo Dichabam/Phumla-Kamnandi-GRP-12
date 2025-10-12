@@ -21,5 +21,7 @@ namespace Phumla_Kamnandi_GRP_12.Business.Interfaces
         List<Booking> GetGuestBookings(string guestId);
         bool UpdateGuestContactInfo(string guestId, string email, string phone, string address);
         bool CheckAndUpdateGuestStanding(string guestId);
+
+        bool UpdateGuestStanding(string guestId, bool isInGoodStanding, string reason = null);
     }
 }

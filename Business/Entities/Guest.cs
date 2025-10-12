@@ -48,5 +48,22 @@ namespace Phumla_Kamnandi_GRP_12.Business.Entities
             if (!string.IsNullOrEmpty(phone)) Phone = phone;
             if (!string.IsNullOrEmpty(address)) Address = address;
         }
+
+        public void UpdateName(string firstName, string lastName)
+        {
+            if (!string.IsNullOrEmpty(firstName))
+            {
+                var firstNameField = typeof(Guest).GetField("<FirstName>k__BackingField",
+                    System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic);
+                firstNameField?.SetValue(this, firstName);
+            }
+
+            if (!string.IsNullOrEmpty(lastName))
+            {
+                var lastNameField = typeof(Guest).GetField("<LastName>k__BackingField",
+                    System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic);
+                lastNameField?.SetValue(this, lastName);
+            }
+        }
     }
 }

@@ -15,7 +15,9 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
 
         private ServiceLocator _services;
         private FrmRooms _currentRoomsForm;
-       
+        private FrmGuests _currentGuestsForm;
+        private FrmBookings _currentBookingsForm;
+
 
         public Dashboard()
         {
@@ -23,7 +25,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             _services = ServiceLocator.Instance;
             Region = System.Drawing.Region.FromHrgn(CreateRountRectRgn(0, 0, Width, Height, 25, 25));
 
-            
+
             SetupUserInterface();
 
             PnlNav.Height = HomeButton.Height;
@@ -141,7 +143,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             {
                 _services.ClearSession();
 
-                
+
                 Login loginForm = new Login();
                 loginForm.Show();
 
@@ -243,18 +245,28 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
         }
         #endregion
 
-        
-        
+
+
         private void SearchBox_TextChanged(object sender, EventArgs e)
         {
+            string searchText = SearchBox.Text.Trim();
+
             if (_currentRoomsForm != null && lblTitle.Text == "ROOMS")
             {
-                _currentRoomsForm.SearchRooms(SearchBox.Text);
-            } 
-        }
+                _currentRoomsForm.SearchRooms(searchText);
+            }
+            else if (_currentBookingsForm != null && lblTitle.Text == "BOOKINGS")
+            {
+                _currentBookingsForm.SearchBookings(searchText);
+            }
+            else if (_currentGuestsForm != null && lblTitle.Text == "GUESTS")
+            {
+                _currentGuestsForm.SearchGuests(searchText);
+            }
 
-        
-       
+
+
+        }
     }
 
 

@@ -80,8 +80,7 @@ namespace Phumla_Kamnandi_GRP_12.Business.Services
             booking.SpecialRequests = specialRequests;
 
             // 6: Calculate total amount based on pricing rules
-            decimal totalAmount = _pricingService.CalculateTotalAmount(checkIn, checkOut,
-                adults, 0, children, singleOccupancy);
+            decimal totalAmount = _pricingService.CalculateTotalAmount(checkIn, checkOut, adults, 0, children, singleOccupancy);
             booking.SetTotalAmount(totalAmount);
 
             // 7: Save booking to repository

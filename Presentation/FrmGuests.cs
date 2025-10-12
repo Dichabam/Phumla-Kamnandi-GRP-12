@@ -96,7 +96,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
 
             // Wire up events
             viewBookingHostoryButton.Click += ViewBookingHistoryButton_Click;
-            GuestStandingButton.Click += GuestStandingButton_Click;
+            //GuestStandingButton.Click += GuestStandingButton_Click;
             AddGuestButton.Click += AddGuestButton_Click;
             UpdateGuestButton.Click += UpdateGuestButton_Click;
             ConfirmButtonVBH.Click += ConfirmButtonVBH_Click;
@@ -133,23 +133,11 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             }
         }
 
+       
+
         private void ViewBookingHistoryButton_Click(object sender, EventArgs e)
         {
-      
-            enterEmailTextbox.Text = "Enter Guest Email";
-            enterEmailTextbox.Visible = true;
-            emailConfirmtextbox.Visible = true;
-            ConfirmButtonVBH.Visible = true;
-            ErrorLableVBH.Visible = false;
-            emailConfirmtextbox.Clear();
-            emailConfirmtextbox.Focus();
-
-        }
-
-        private void GuestStandingButton_Click(object sender, EventArgs e)
-        {
-      
-            enterEmailTextbox.Text = "Enter Guest Email";
+            enterEmailTextbox.Text = "Enter Guest Email for Booking History";
             enterEmailTextbox.Visible = true;
             emailConfirmtextbox.Visible = true;
             ConfirmButtonVBH.Visible = true;
@@ -177,13 +165,15 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                 {
                     ErrorLableVBH.Text = "Guest not found";
                     ErrorLableVBH.Visible = true;
+                    emailConfirmtextbox.Focus();
                     return;
                 }
 
+                // Guest found - hide error and email controls
                 ErrorLableVBH.Visible = false;
 
-                // Determine which button was clicked based on visible controls
-                if (enterEmailTextbox.Text.Contains("Standing"))
+                // Determine action based on the label text
+                if (enterEmailTextbox.Text.Contains("Standing") || GuestStandingButton.Focused)
                 {
                     ShowGuestStanding(guest);
                 }
@@ -191,6 +181,9 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                 {
                     ShowBookingHistory(guest);
                 }
+
+                // After showing the form, hide the email input controls
+                HideBookingHistoryControls();
             }
             catch (Exception ex)
             {
@@ -322,17 +315,17 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
 
         private void ShowUpdatePanel(Guest guest)
         {
-         
             NameTxtBox.Text = guest.FirstName;
             SurnameTxtbox.Text = guest.LastName;
             PhoneTxtbox.Text = guest.Phone;
             EmailTxtbox.Text = guest.Email;
-            
 
-        
+            // Set standing combo box
+            standingcomobox.SelectedItem = guest.IsInGoodStanding ? "Yes" : "No";
+
             UpdatebuttonPanel.Visible = true;
+            UpdatebuttonPanel.BringToFront();
 
-         
             AddGuestButton.Enabled = false;
             viewBookingHostoryButton.Enabled = false;
             GuestStandingButton.Enabled = false;
@@ -350,14 +343,11 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
 
             try
             {
-                // Get the values from textboxes
                 string newFirstName = NameTxtBox.Text.Trim();
                 string newLastName = SurnameTxtbox.Text.Trim();
                 string newPhone = PhoneTxtbox.Text.Trim();
                 string newEmail = EmailTxtbox.Text.Trim();
-                
 
-                // Track if any changes were made
                 bool hasChanges = false;
 
                 // Validate required fields
@@ -382,7 +372,6 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                     return;
                 }
 
-                // Validate email format
                 if (!IsValidEmail(newEmail))
                 {
                     MessageBox.Show("Invalid email format.", "Validation Error",
@@ -390,12 +379,19 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                     return;
                 }
 
+                // Check standing combo box
+                bool? newStanding = null;
+                if (standingcomobox.SelectedItem != null)
+                {
+                    newStanding = standingcomobox.SelectedItem.ToString() == "Yes";
+                }
+
                 // Check for changes
                 if (newFirstName != _selectedGuestForUpdate.FirstName ||
                     newLastName != _selectedGuestForUpdate.LastName ||
                     newPhone != _selectedGuestForUpdate.Phone ||
-                    newEmail != _selectedGuestForUpdate.Email
-                    )
+                    newEmail != _selectedGuestForUpdate.Email ||
+                    (newStanding.HasValue && newStanding.Value != _selectedGuestForUpdate.IsInGoodStanding))
                 {
                     hasChanges = true;
                 }
@@ -407,7 +403,6 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                     return;
                 }
 
-                // Confirm update
                 DialogResult result = MessageBox.Show(
                     $"Update information for {_selectedGuestForUpdate.FullName}?",
                     "Confirm Update",
@@ -419,34 +414,36 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                     return;
                 }
 
-                // Update contact information
-                bool updateSuccess = _services.GuestService.UpdateGuestContactInfo(
-                    _selectedGuestForUpdate.GuestId,
-                    newEmail,
-                    newPhone,
-                    newFirstName
-                    
-                );
-
-                
-
-                if (updateSuccess)
+                // Get fresh guest object from repository
+                var guest = _services.GuestRepository.GetById(_selectedGuestForUpdate.GuestId);
+                if (guest == null)
                 {
-                    MessageBox.Show("Guest information updated successfully!",
-                        "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                    HideUpdatePanel();
-                    LoadAllGuests();
-                }
-                else
-                {
-                    MessageBox.Show("Failed to update guest information.",
+                    MessageBox.Show("Error retrieving guest information.",
                         "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
                 }
+
+                // Update all fields
+                guest.UpdateName(newFirstName, newLastName);
+                guest.UpdateContactInfo(newEmail, newPhone, guest.Address);
+
+                if (newStanding.HasValue)
+                {
+                    guest.IsInGoodStanding = newStanding.Value;
+                }
+
+                // Save to database
+                _services.GuestRepository.Update(guest);
+
+                MessageBox.Show("Guest information updated successfully!",
+                    "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                HideUpdatePanel();
+                LoadAllGuests();
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error updating guest: {ex.Message}",
+                MessageBox.Show($"Error updating guest: {ex.Message}\n\n{ex.StackTrace}",
                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -679,7 +676,66 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             AddGuestButton.Enabled = true;
         }
 
+        public void SearchGuests(string searchText)
+        {
+            if (string.IsNullOrWhiteSpace(searchText))
+            {
+                LoadAllGuests();
+                return;
+            }
+
+            try
+            {
+                var allGuests = _services.GuestRepository.GetAll();
+                var filteredGuests = allGuests.Where(g =>
+                    (g.FirstName?.ToLower().Contains(searchText.ToLower()) ?? false) ||
+                    (g.LastName?.ToLower().Contains(searchText.ToLower()) ?? false) ||
+                    (g.Email?.ToLower().Contains(searchText.ToLower()) ?? false) ||
+                    (g.Phone?.Contains(searchText) ?? false) ||
+                    (g.GuestId?.ToLower().Contains(searchText.ToLower()) ?? false)
+                ).ToList();
+
+                GuestDataView.DataSource = filteredGuests;
+
+                // Highlight matching rows
+                foreach (DataGridViewRow row in GuestDataView.Rows)
+                {
+                    if (row.DataBoundItem is Guest guest)
+                    {
+                        bool matchFound = false;
+                        foreach (DataGridViewCell cell in row.Cells)
+                        {
+                            if (cell.Value != null && cell.Value.ToString().ToLower().Contains(searchText.ToLower()))
+                            {
+                                matchFound = true;
+                                break;
+                            }
+                        }
+
+                        if (matchFound)
+                        {
+                            row.DefaultCellStyle.BackColor = Color.LightYellow;
+                        }
+                        else if (!guest.IsInGoodStanding)
+                        {
+                            row.DefaultCellStyle.BackColor = Color.LightCoral;
+                        }
+                        else
+                        {
+                            row.DefaultCellStyle.BackColor = Color.White;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Search error: {ex.Message}", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         private void AddGuestPanel_Paint(object sender, PaintEventArgs e) { }
-        
+
+        private void GuestStandingButton_Click(object sender, EventArgs e) { }
     }
 }

@@ -80,19 +80,41 @@ namespace Phumla_Kamnandi_GRP_12.Business.Services
             decimal total = 0m;
             int nights = (checkOut - checkIn).Days;
 
+            if (nights <= 0)
+            {
+                return 0m;
+            }
+
             for (int i = 0; i < nights; i++)
             {
                 DateTime currentDate = checkIn.AddDays(i);
                 decimal baseRate = GetRateForDate(currentDate);
 
-                // Room base rate
+                // Calculate room rate
                 decimal nightTotal = baseRate;
 
-                // Add single supplement if applicable
+                // Add single supplement if applicable (50% extra)
                 if (singleOccupancy)
                 {
                     nightTotal += baseRate * SINGLE_SUPPLEMENT_PERCENT;
                 }
+                // If not single occupancy, children under 5 are free
+                // Children over 5 pay half price (but this is per child, not affecting room rate)
+                // The base rate already covers 2 adults in a room
+
+                // Add charges for additional adults beyond 2
+                if (adults > 2)
+                {
+                    nightTotal += (adults - 2) * baseRate;
+                }
+
+                // Add charges for children over 5 (half price)
+                if (childrenOver5 > 0)
+                {
+                    nightTotal += childrenOver5 * (baseRate * CHILD_DISCOUNT_PERCENT);
+                }
+
+                // Children under 5 are free (no additional charge)
 
                 total += nightTotal;
             }

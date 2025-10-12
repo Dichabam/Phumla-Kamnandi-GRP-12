@@ -11,6 +11,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
     public partial class FrmReports : Form
     {
         private ServiceLocator _services;
+        private string _lastGeneratedReport = string.Empty;
 
         public FrmReports()
         {
@@ -49,8 +50,8 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             DatePickerEnd.Visible = showDatePickers;
         }
 
-        
 
+        
         private void GenerateReportButton_Click(object sender, EventArgs e)
         {
             
@@ -65,7 +66,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             DateTime startDate, endDate;
             if (AlltimeRB.Checked)
             {
-                startDate = new DateTime(1753, 1, 1);
+                startDate = new DateTime(2023, 5, 1);
                 endDate = DateTime.Today;
             }
             else if (todayRB.Checked)
@@ -110,11 +111,12 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        #region report generation
         private void GenerateOccupancyReport(DateTime startDate, DateTime endDate)
         {
-            ReportDataview.DataSource = null; 
+            ReportRichTextBox.Clear();
+            _lastGeneratedReport = string.Empty;
 
-            
             if ((endDate - startDate).TotalDays > 1000)
             {
                 MessageBox.Show("Selected date range is too large. Please narrow it down to 2 years or less.", "Warning",
@@ -124,41 +126,41 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
 
             Task.Run(() =>
             {
-                try
+            try
+            {
+                var report = _services.ReportingService.GenerateOccupancyReport(startDate, endDate);
+                int fallbackTotalRooms = _services.RoomRepository.GetAll().Count;
+
+                StringBuilder reportText = new StringBuilder();
+
+                reportText.AppendLine("═══════════════════════════════════════════════════════════════════════");
+                reportText.AppendLine("                        OCCUPANCY REPORT                               ");
+                reportText.AppendLine("═══════════════════════════════════════════════════════════════════════");
+                reportText.AppendLine();
+                reportText.AppendLine($"Period: {startDate:yyyy-MM-dd} to {endDate:yyyy-MM-dd}");
+                reportText.AppendLine($"Generated: {DateTime.Now:yyyy-MM-dd HH:mm:ss}");
+                reportText.AppendLine();
+                reportText.AppendLine("─────────────────────────────────────────────────────────────────────");
+                reportText.AppendLine($"{"Date",-15} {"Total Rooms",12} {"Occupied",10} {"Available",10} {"Occupancy %",15}");
+                reportText.AppendLine("─────────────────────────────────────────────────────────────────────");
+
+                foreach (var daily in report.DailyOccupancies)
                 {
-                    var report = _services.ReportingService.GenerateOccupancyReport(startDate, endDate);
-                    int fallbackTotalRooms = _services.RoomRepository.GetAll().Count;
+                    reportText.AppendLine($"{daily.Date:yyyy-MM-dd,-15} {daily.TotalRooms,12} {daily.OccupiedRooms,10} {daily.AvailableRooms,10} {daily.OccupancyPercentage,14:F2}%");
+                }
 
-                    DataTable dt = new DataTable();
-                    dt.Columns.Add("Date", typeof(string));
-                    dt.Columns.Add("Total Rooms", typeof(int));
-                    dt.Columns.Add("Occupied Rooms", typeof(int));
-                    dt.Columns.Add("Available Rooms", typeof(int));
-                    dt.Columns.Add("Occupancy %", typeof(string));
-
-                    foreach (var daily in report.DailyOccupancies)
-                    {
-                        dt.Rows.Add(
-                            daily.Date.ToString("yyyy-MM-dd"),
-                            daily.TotalRooms,
-                            daily.OccupiedRooms,
-                            daily.AvailableRooms,
-                            daily.OccupancyPercentage.ToString("F2") + "%"
-                        );
-                    }
-
+                reportText.AppendLine("─────────────────────────────────────────────────────────────────────");
                     if (report.DailyOccupancies.Any())
                     {
                         int totalRoomsForAverage = report.DailyOccupancies.FirstOrDefault()?.TotalRooms ?? fallbackTotalRooms;
 
-                        
-                        dt.Rows.Add(
-                           "AVERAGE",
-                            totalRoomsForAverage,
-                            DBNull.Value,
-                            DBNull.Value,
-                            report.AverageOccupancy.ToString("F2") + "%"
-                       );
+                        reportText.AppendLine();
+                        reportText.AppendLine("SUMMARY");
+                        reportText.AppendLine("─────────────────────────────────────────────────────────────────────");
+                        reportText.AppendLine($"Total Room Nights:     {report.TotalRoomNights}");
+                        reportText.AppendLine($"Average Occupancy:     {report.AverageOccupancy:F2}%");
+                        reportText.AppendLine($"Total Rooms:           {totalRoomsForAverage}");
+                        reportText.AppendLine("═══════════════════════════════════════════════════════════════════════");
                     }
                     else
                     {
@@ -170,16 +172,11 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                         return;
                     }
 
+                    _lastGeneratedReport = reportText.ToString();
+
                     this.Invoke((MethodInvoker)delegate
                     {
-                        ReportDataview.DataSource = dt;
-
-                        if (ReportDataview.Rows.Count > 0)
-                        {
-                            var lastRow = ReportDataview.Rows[ReportDataview.Rows.Count - 1];
-                            lastRow.DefaultCellStyle.Font = new System.Drawing.Font(ReportDataview.Font, System.Drawing.FontStyle.Bold);
-                            lastRow.DefaultCellStyle.BackColor = System.Drawing.Color.LightBlue;
-                        }
+                        ReportRichTextBox.Text = _lastGeneratedReport;
 
                         MessageBox.Show($"Occupancy Report Generated\n\n" +
                             $"Period: {startDate:yyyy-MM-dd} to {endDate:yyyy-MM-dd}\n" +
@@ -200,9 +197,9 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
         }
         private void GenerateRevenueReport(DateTime startDate, DateTime endDate)
         {
-            ReportDataview.DataSource = null; // Clear grid early
+            ReportRichTextBox.Clear();
+            _lastGeneratedReport = string.Empty;
 
-            // Cap extreme ranges to avoid freezing
             if ((endDate - startDate).TotalDays > 1000)
             {
                 MessageBox.Show("Selected date range is too large. Please narrow it down to 2 years or less.", "Warning",
@@ -226,28 +223,31 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                         return;
                     }
 
-                    DataTable dt = new DataTable();
-                    dt.Columns.Add("Metric", typeof(string));
-                    dt.Columns.Add("Value", typeof(string));
+                    StringBuilder reportText = new StringBuilder();
 
-                    dt.Rows.Add("Report Period", $"{startDate:yyyy-MM-dd} to {endDate:yyyy-MM-dd}");
-                    dt.Rows.Add("Total Bookings", report.TotalBookings.ToString());
-                    dt.Rows.Add("Total Revenue", report.TotalRevenue.ToString("C2"));
-                    dt.Rows.Add("Total Deposits Received", report.TotalDepositsReceived.ToString("C2"));
-                    dt.Rows.Add("Average Booking Value", report.AverageBookingValue.ToString("C2"));
+                    reportText.AppendLine("═══════════════════════════════════════════════════════════════════════");
+                    reportText.AppendLine("                         REVENUE REPORT                                ");
+                    reportText.AppendLine("═══════════════════════════════════════════════════════════════════════");
+                    reportText.AppendLine();
+                    reportText.AppendLine($"Report Period:              {startDate:yyyy-MM-dd} to {endDate:yyyy-MM-dd}");
+                    reportText.AppendLine($"Generated:                  {DateTime.Now:yyyy-MM-dd HH:mm:ss}");
+                    reportText.AppendLine();
+                    reportText.AppendLine("─────────────────────────────────────────────────────────────────────");
+                    reportText.AppendLine("FINANCIAL SUMMARY");
+                    reportText.AppendLine("─────────────────────────────────────────────────────────────────────");
+                    reportText.AppendLine();
+                    reportText.AppendLine($"Total Bookings:             {report.TotalBookings}");
+                    reportText.AppendLine($"Total Revenue:              {report.TotalRevenue:C2}");
+                    reportText.AppendLine($"Total Deposits Received:    {report.TotalDepositsReceived:C2}");
+                    reportText.AppendLine($"Average Booking Value:      {report.AverageBookingValue:C2}");
+                    reportText.AppendLine();
+                    reportText.AppendLine("═══════════════════════════════════════════════════════════════════════");
+
+                    _lastGeneratedReport = reportText.ToString();
 
                     this.Invoke((MethodInvoker)delegate
                     {
-                        ReportDataview.DataSource = dt;
-
-                        
-                        if (ReportDataview.Columns.Count >= 2)
-                        {
-                            ReportDataview.Columns[0].Width = 250;
-                            ReportDataview.Columns[1].Width = 200;
-                            ReportDataview.Columns[0].DefaultCellStyle.Font =
-                                new System.Drawing.Font(ReportDataview.Font, System.Drawing.FontStyle.Bold);
-                        }
+                        ReportRichTextBox.Text = _lastGeneratedReport;
 
                         MessageBox.Show($"Revenue Report Generated\n\n" +
                             $"Total Bookings: {report.TotalBookings}\n" +
@@ -266,11 +266,12 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                 }
             });
         }
+        #endregion
         private void saveButton_Click(object sender, EventArgs e)
         {
-            if (ReportDataview.DataSource == null || ReportDataview.Rows.Count == 0)
+            if (string.IsNullOrWhiteSpace(_lastGeneratedReport))
             {
-                MessageBox.Show("No report data to save", "Warning",
+                MessageBox.Show("No report data to save. Please generate a report first.", "Warning",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
@@ -286,36 +287,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             {
                 try
                 {
-                    StringBuilder sb = new StringBuilder();
-
-                   
-                    string reportType = OccupancyReportRadioButton.Checked ? "Occupancy" : "Revenue";
-                    sb.AppendLine($"=== {reportType} Report ===");
-                    sb.AppendLine($"Generated: {DateTime.Now:yyyy-MM-dd HH:mm:ss}");
-                    sb.AppendLine();
-
-                   
-                    foreach (DataGridViewColumn col in ReportDataview.Columns)
-                    {
-                        sb.Append(col.HeaderText.PadRight(20) + "\t");
-                    }
-                    sb.AppendLine();
-                    sb.AppendLine(new string('-', 80));
-
-                 
-                    foreach (DataGridViewRow row in ReportDataview.Rows)
-                    {
-                        if (!row.IsNewRow)
-                        {
-                            foreach (DataGridViewCell cell in row.Cells)
-                            {
-                                sb.Append((cell.Value?.ToString() ?? "").PadRight(20) + "\t");
-                            }
-                            sb.AppendLine();
-                        }
-                    }
-
-                    File.WriteAllText(saveDialog.FileName, sb.ToString());
+                    File.WriteAllText(saveDialog.FileName, _lastGeneratedReport);
 
                     MessageBox.Show($"Report saved successfully to:\n{saveDialog.FileName}",
                         "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -328,7 +300,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             }
         }
 
-      
+
         private void SpecificRB_CheckedChanged(object sender, EventArgs e)
         {
             DateRangeOption_CheckedChanged(sender, e);
@@ -357,6 +329,11 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
         private void FrmReports_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void ClearButton_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }
