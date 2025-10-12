@@ -174,6 +174,22 @@ namespace Phumla_Kamnandi_GRP_12.Business.Services
             return true;
         }
 
+        public bool ActivateEmployee(string employeeId, string activatedByEmployeeId)
+        {
+            var employee = _employeeRepository.GetById(employeeId);
+            var deactivatedBy = _employeeRepository.GetById(activatedByEmployeeId);
+            if (employee == null || deactivatedBy == null || !deactivatedBy.IsAdmin())
+            {
+                return false;
+            }
+
+            employee.IsActive = true;
+            _employeeRepository.Update(employee);
+
+            return true;
+
+        }
+
        /// <summary>
        /// Password hashing
        /// </summary>

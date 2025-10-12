@@ -51,6 +51,34 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                 var row = EmployeeDataGridViiew.SelectedRows[0];
                 string employeeId = row.Cells["Employee ID"].Value.ToString();
                 _selectedEmployee = _employeeService.GetEmployeeById(employeeId);
+
+                // 🔽 Update the button based on employee status
+                if (_selectedEmployee != null)
+                {
+                    if (_selectedEmployee.IsActive)
+                    {
+                        DeactivateEmployeeButton.Text = "Deactivate";
+                        DeactivateEmployeeButton.FillColor = Color.Firebrick; 
+                    }
+                    else
+                    {
+                        DeactivateEmployeeButton.Text = "Activate";
+                        DeactivateEmployeeButton.FillColor = Color.ForestGreen; 
+                    }
+
+                    DeactivateEmployeeButton.Enabled = true;
+                }
+                else
+                {
+                    DeactivateEmployeeButton.Enabled = false;
+                }
+            }
+            else
+            {
+                _selectedEmployee = null;
+                DeactivateEmployeeButton.Enabled = false;
+                DeactivateEmployeeButton.Text = "Deactivate";
+                DeactivateEmployeeButton.FillColor = Color.Gray; 
             }
         }
 
@@ -298,24 +326,26 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
 
             if (_selectedEmployee.EmployeeId == currentUserId)
             {
-                MessageBox.Show("You cannot deactivate your own account.",
+                MessageBox.Show("You cannot change your own activation status.",
                     "Invalid Action", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            if (!_selectedEmployee.IsActive)
-            {
-                MessageBox.Show("This employee is already deactivated.",
-                    "Already Inactive", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
+            // Determine whether we are activating or deactivating
+           
+            bool isCurrentlyActive = _selectedEmployee.IsActive;
+            
+            string action = isCurrentlyActive ? "deactivate" : "activate";
+            string actionPast = isCurrentlyActive ? "deactivated" : "activated";
 
             var result = MessageBox.Show(
-                $"Are you sure you want to deactivate this employee?\n\n" +
+                $"Are you sure you want to {action} this employee?\n\n" +
                 $"Employee: {_selectedEmployee.FullName}\n" +
                 $"Email: {_selectedEmployee.Email}\n\n" +
-                $"They will not be able to login after deactivation.",
-                "Confirm Deactivation",
+                (isCurrentlyActive
+                    ? "They will not be able to login after deactivation."
+                    : "They will regain login access after activation."),
+                $"Confirm {char.ToUpper(action[0]) + action.Substring(1)}",
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Warning
             );
@@ -324,33 +354,43 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             {
                 try
                 {
-                    bool success = _employeeService.DeactivateEmployee(
-                        _selectedEmployee.EmployeeId,
-                        currentUserId
-                    );
+                    bool success;
+
+                    if (isCurrentlyActive)
+                    {
+                        // Deactivate
+                        success = _employeeService.DeactivateEmployee(
+                            _selectedEmployee.EmployeeId, currentUserId);
+                    }
+                    else
+                    {
+                        // Activate
+                        success = _employeeService.ActivateEmployee(
+                            _selectedEmployee.EmployeeId, currentUserId);
+                    }
 
                     if (success)
                     {
                         MessageBox.Show(
-                            $"Employee deactivated successfully!\n\n" +
-                            $"{_selectedEmployee.FullName} can no longer login.",
+                            $"Employee {actionPast} successfully!\n\n" +
+                            $"{_selectedEmployee.FullName} has been {actionPast}.",
                             "Success",
                             MessageBoxButtons.OK,
                             MessageBoxIcon.Information
                         );
 
-                        LoadEmployees();
+                        LoadEmployees(); // refresh grid
                         _selectedEmployee = null;
                     }
                     else
                     {
-                        MessageBox.Show("Failed to deactivate employee. You may not have permission.",
+                        MessageBox.Show($"Failed to {action} employee. You may not have permission.",
                             "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"Error deactivating employee: {ex.Message}",
+                    MessageBox.Show($"Error trying to {action} employee: {ex.Message}",
                         "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }

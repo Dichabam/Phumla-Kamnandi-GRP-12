@@ -381,6 +381,8 @@
       <DependentUpon>PhumlaKamnandiDB.mdf</DependentUpon>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Resourses\BigIcons\account_circle_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png" />
+    <None Include="Resourses\BigIcons\account_circle_75dp_FFFFFF_FILL0_wght400_GRAD0_opsz48.png" />
     <None Include="Resourses\Icons\cancel_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.png" />
     <None Include="Resourses\BigIcons\door_back_75dp_FFFFFF_FILL0_wght400_GRAD0_opsz48.png" />
     <None Include="Resourses\BigIcons\event_busy_75dp_FFFFFF_FILL0_wght400_GRAD0_opsz48.png" />

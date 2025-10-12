@@ -25,5 +25,7 @@ namespace Phumla_Kamnandi_GRP_12.Business.Interfaces
         bool ValidateAdminCode(string adminCode);
         bool UpdateEmployeeRole(string employeeId, EmployeeRole newRole, string updatedByEmployeeId);
         bool DeactivateEmployee(string employeeId, string deactivatedByEmployeeId);
+
+        bool ActivateEmployee(string employeeId, string deactivatedByEmployeeId);
     }
 }
