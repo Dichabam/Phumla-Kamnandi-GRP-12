@@ -365,5 +365,5 @@ FodyWeavers.xsd
 /Presentation/PasswordForm.cs
 /Presentation/PasswordForm.Designer.cs
 /Presentation/PasswordForm.resx
-/PhumlaKamnandiDB.mdf
-/PhumlaKamnandiDB_log.ldf
+#/PhumlaKamnandiDB.mdf
+#/PhumlaKamnandiDB_log.ldf
