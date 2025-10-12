@@ -112,6 +112,7 @@
     <Compile Include="Presentation\AdminCode.Designer.cs">
       <DependentUpon>AdminCode.cs</DependentUpon>
     </Compile>
+    <Compile Include="App.cs" />
     <Compile Include="Presentation\BookingHistory.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -208,7 +209,6 @@
     <Compile Include="Presentation\PasswordForm.Designer.cs">
       <DependentUpon>PasswordForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Presentation\Test3.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceLocator.cs" />
     <EmbeddedResource Include="Presentation\AdminCode.resx">
