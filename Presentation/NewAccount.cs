@@ -20,7 +20,17 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             _services = ServiceLocator.Instance;
         }
 
+        #region irrelevant methods
         private void EmailTextboxCA_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+        private void CellLabelCAEMP_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void EmailLabelCAEMP_Click(object sender, EventArgs e)
         {
 
         }
@@ -79,6 +89,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
         {
 
         }
+        #endregion
 
         private void CloseButtonCAEMP_Click(object sender, EventArgs e)
         {
@@ -87,15 +98,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             this.Hide();
         }
 
-        private void CellLabelCAEMP_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void EmailLabelCAEMP_Click(object sender, EventArgs e)
-        {
-
-        }
+        
 
         private void NextButtonCAEMP_Click(object sender, EventArgs e)
         {
@@ -104,13 +107,13 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                 return;
             }
 
-            // Store the details temporarily and move to password form
+          
             var passwordForm = new PasswordForm(
                 NameTextboxCA.Text.Trim(),
                 SurnameTextboxCA.Text.Trim(),
                 CellTextboxCAEMP.Text.Trim(),
                 EmailTextboxCAEMP.Text.Trim(),
-                false // isPasswordReset = false
+                false 
             );
             passwordForm.FormClosed += (s, args) => this.Close();
             passwordForm.Show();
@@ -120,7 +123,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
 
         private bool ValidateInputs()
         {
-            // Validate Name
+        
             if (string.IsNullOrWhiteSpace(NameTextboxCA.Text))
             {
                 MessageBox.Show("Please enter your name", "Validation Error",
@@ -129,7 +132,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                 return false;
             }
 
-            // Validate Surname
+         
             if (string.IsNullOrWhiteSpace(SurnameTextboxCA.Text))
             {
                 MessageBox.Show("Please enter your surname", "Validation Error",
@@ -138,7 +141,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                 return false;
             }
 
-            // Validate Phone
+         
             if (string.IsNullOrWhiteSpace(CellTextboxCAEMP.Text))
             {
                 MessageBox.Show("Please enter your phone number", "Validation Error",
@@ -147,7 +150,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                 return false;
             }
 
-            // Validate phone format (South African format)
+         
             string phone = CellTextboxCAEMP.Text.Trim();
             if (!IsValidPhoneNumber(phone))
             {
@@ -157,7 +160,6 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                 return false;
             }
 
-            // Validate Email
             if (string.IsNullOrWhiteSpace(EmailTextboxCAEMP.Text))
             {
                 MessageBox.Show("Please enter your email address", "Validation Error",
@@ -174,7 +176,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                 return false;
             }
 
-            // Check if email already exists
+         
             Guest existingGuest = _services.GuestService.GetGuestByEmail(EmailTextboxCAEMP.Text.Trim());
             if (existingGuest != null)
             {
@@ -188,16 +190,16 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
 
         private bool IsValidPhoneNumber(string phone)
         {
-            // Remove spaces and special characters
+         
             string cleanPhone = phone.Replace(" ", "").Replace("-", "").Replace("(", "").Replace(")", "");
 
-            // Check if it's 10 digits (South African format)
+         
             if (cleanPhone.Length == 10 && cleanPhone.All(char.IsDigit))
             {
                 return true;
             }
 
-            // accept international format with +27
+         
             if (cleanPhone.StartsWith("+27") && cleanPhone.Length == 12 &&
                 cleanPhone.Substring(1).All(char.IsDigit))
             {
@@ -222,7 +224,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
 
         private string GenerateDefaultAddress()
         {
-            // Generate a default address - can be updated later by the guest
+          
             return "Address to be provided";
         }
 

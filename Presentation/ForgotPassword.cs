@@ -29,7 +29,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
 
         private void ForgotPassword_KeyDown(object sender, KeyEventArgs e)
         {
-            // Close form when Escape key is pressed
+            // press escape button to close form 
             if (e.KeyCode == Keys.Escape)
             {
                 this.Close();
@@ -55,7 +55,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                 return;
             }
 
-            // TODO: Add email validation
+         
             if (!IsValidEmail(email))
             {
                 MessageBox.Show("Please enter a valid email address", "Error",
@@ -63,18 +63,15 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                 return;
             }
 
-            // TODO: Implement password reset logic here
-            // For now, just show a message
             MessageBox.Show("Password reset instructions have been sent to your email",
                 "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            // Close form and return to login
             this.Close();
         }
 
         private bool IsValidEmail(string email)
         {
-            // Basic email validation
+
             try
             {
                 var addr = new System.Net.Mail.MailAddress(email);

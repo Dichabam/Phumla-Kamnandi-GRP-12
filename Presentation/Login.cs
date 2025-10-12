@@ -70,7 +70,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             string email = EmailTextbox.Text.Trim();
             string password = PasswordTextbox.Text.Trim();
 
-            // Basic validation
+         
             if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
             {
                 ErrorLoginLabel.Text = "Please enter both email and password";
@@ -85,7 +85,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                 return;
             }
 
-            // Check if it's a work email (employee login)
+           
             if (email.EndsWith("@pkhotel.com"))
             {
                
@@ -94,7 +94,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
 
                 if (employee != null)
                 {
-                    // Set employee session
+                  
                     _services.SetEmployeeSession(employee);
 
                     // Open Dashboard
@@ -107,13 +107,13 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             }
             else
             {
-                // Not a work email - inform user
+             
                 ErrorLoginLabel.Text = "Please use your work email (@pkhotel.com)";
                 ErrorLoginLabel.Visible = true;
                 return;
             }
 
-            // Login failed
+        
             ErrorLoginLabel.Text = "Email/Password is incorrect. Try again";
             ErrorLoginLabel.Visible = true;
         }
@@ -135,19 +135,6 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             }
         }
 
-        private string HashPassword(string password)
-        {
-            using (System.Security.Cryptography.SHA256 sha256 = System.Security.Cryptography.SHA256.Create())
-            {
-                byte[] bytes = sha256.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
-                System.Text.StringBuilder builder = new System.Text.StringBuilder();
-                foreach (byte b in bytes)
-                {
-                    builder.Append(b.ToString("x2"));
-                }
-                return builder.ToString();
-            }
-        }
 
     }
 }

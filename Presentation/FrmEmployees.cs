@@ -1,17 +1,11 @@
-﻿using Guna.UI2.WinForms;
-using Phumla_Kamnandi_GRP_12.Business.Entities;
+﻿using Phumla_Kamnandi_GRP_12.Business.Entities;
 using Phumla_Kamnandi_GRP_12.Business.Enums;
 using Phumla_Kamnandi_GRP_12.Business.Interfaces;
 using Phumla_Kamnandi_GRP_12.Business.Services;
 using Phumla_Kamnandi_GRP_12.Database;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Phumla_Kamnandi_GRP_12.Presentation
@@ -19,57 +13,77 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
     public partial class FrmEmployees : Form
     {
         private readonly EmployeeServiceInterface _employeeService;
-        private Employee _currentEmployee; // The logged-in admin
-        private Employee _selectedEmployee; // The employee selected in the grid
+        private Employee _selectedEmployee;
         private bool _isAddingEmployee = false;
+        private ServiceLocator _services;
 
         public FrmEmployees()
         {
             InitializeComponent();
 
-            
             var employeeRepo = new EmployeeDB();
             _employeeService = new EmployeeService(employeeRepo);
+            _services = ServiceLocator.Instance;
 
-           
             InitializeFormSetup();
-        }
-
-      
-        public FrmEmployees(Employee currentEmployee) : this()
-        {
-            _currentEmployee = currentEmployee;
-            LoadEmployees();
         }
 
         private void InitializeFormSetup()
         {
-    
             HideInputFields();
-
-       
             panel1.Visible = false;
 
-      
             EmployeeDataGridViiew.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             EmployeeDataGridViiew.MultiSelect = false;
             EmployeeDataGridViiew.ReadOnly = true;
             EmployeeDataGridViiew.AllowUserToAddRows = false;
 
-      
-            this.Load += FrmEmployees_Load;
+            // Add selection change event
+            EmployeeDataGridViiew.SelectionChanged += EmployeeDataGridViiew_SelectionChanged;
+
+            LoadEmployees();
+        }
+
+        private void EmployeeDataGridViiew_SelectionChanged(object sender, EventArgs e)
+        {
+            if (EmployeeDataGridViiew.SelectedRows.Count > 0)
+            {
+                var row = EmployeeDataGridViiew.SelectedRows[0];
+                string employeeId = row.Cells["Employee ID"].Value.ToString();
+                _selectedEmployee = _employeeService.GetEmployeeById(employeeId);
+
+
+                if (_selectedEmployee != null)
+                {
+                    if (_selectedEmployee.IsActive)
+                    {
+                        DeactivateEmployeeButton.Text = "Deactivate";
+                        DeactivateEmployeeButton.FillColor = Color.Firebrick; 
+                    }
+                    else
+                    {
+                        DeactivateEmployeeButton.Text = "Activate";
+                        DeactivateEmployeeButton.FillColor = Color.ForestGreen; 
+                    }
+
+                    DeactivateEmployeeButton.Enabled = true;
+                }
+                else
+                {
+                    DeactivateEmployeeButton.Enabled = false;
+                }
+            }
+            else
+            {
+                _selectedEmployee = null;
+                DeactivateEmployeeButton.Enabled = false;
+                DeactivateEmployeeButton.Text = "Deactivate";
+                DeactivateEmployeeButton.FillColor = Color.Gray; 
+            }
         }
 
         private void FrmEmployees_Load(object sender, EventArgs e)
         {
-       
-            if (_currentEmployee == null)
-            {
-                MessageBox.Show("No logged-in employee found. Please ensure you're logged in.",
-                    "Authentication Required", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
             LoadEmployees();
         }
 
@@ -104,8 +118,6 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                 }
 
                 EmployeeDataGridViiew.DataSource = dt;
-
-   
                 EmployeeDataGridViiew.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             }
             catch (Exception ex)
@@ -119,19 +131,21 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
         {
             if (!_isAddingEmployee)
             {
-    
+                
                 ShowInputFields();
                 ClearInputFields();
                 AddEmployeeButton.Text = "Save";
+                AddEmployeeButton.FillColor = Color.ForestGreen;
+                ChangeRoleButton.Text = "Cancel";
+                ChangeRoleButton.FillColor = Color.Red;
                 _isAddingEmployee = true;
 
-   
-                ChangeRoleButton.Enabled = false;
+              
                 DeactivateEmployeeButton.Enabled = false;
             }
             else
             {
-       
+                
                 SaveNewEmployee();
             }
         }
@@ -140,18 +154,13 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
         {
             try
             {
-       
-                if (string.IsNullOrWhiteSpace(NametextEm.Text) ||
-                    string.IsNullOrWhiteSpace(surnameTxtEm.Text) ||
-                    string.IsNullOrWhiteSpace(phonetxtEm.Text) ||
-                    string.IsNullOrWhiteSpace(EmailTextEm.Text))
+                if (string.IsNullOrWhiteSpace(NametextEm.Text) ||string.IsNullOrWhiteSpace(surnameTxtEm.Text) ||string.IsNullOrWhiteSpace(phonetxtEm.Text) ||string.IsNullOrWhiteSpace(EmailTextEm.Text))
                 {
                     MessageBox.Show("Please fill in all fields.",
                         "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
-     
                 if (!IsValidEmail(EmailTextEm.Text.Trim()))
                 {
                     MessageBox.Show("Please enter a valid email address.",
@@ -159,7 +168,6 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                     return;
                 }
 
-   
                 if (phonetxtEm.Text.Trim().Length < 10)
                 {
                     MessageBox.Show("Please enter a valid phone number (at least 10 digits).",
@@ -167,11 +175,14 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                     return;
                 }
 
-                // Generate work email: firstname.lastname@phumlakamnandi.co.za
-                string workEmail = $"{NametextEm.Text.Trim().ToLower()}.{surnameTxtEm.Text.Trim().ToLower()}@phumlakamnandi.co.za";
+                // Generate work email
+                string workEmail = $"{NametextEm.Text.Trim().ToLower()}.{surnameTxtEm.Text.Trim().ToLower()}@pkhotel.com";
 
-                // Generate temporary password (employee must change on first login)
+                // Generate temporary password
                 string tempPassword = "TempPass123!";
+
+                // Get current user ID from ServiceLocator
+                string currentUserId = _services.CurrentUserId;
 
                 // Register employee
                 var newEmployee = _employeeService.RegisterEmployee(
@@ -181,7 +192,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                     phonetxtEm.Text.Trim(),
                     tempPassword,
                     EmployeeRole.Employee,
-                    _currentEmployee?.EmployeeId
+                    currentUserId
                 );
 
                 if (newEmployee != null)
@@ -196,17 +207,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                         MessageBoxIcon.Information
                     );
 
-                    // Reset form
-                    HideInputFields();
-                    ClearInputFields();
-                    AddEmployeeButton.Text = "Add Employee";
-                    _isAddingEmployee = false;
-
-                    // Re-enable buttons
-                    ChangeRoleButton.Enabled = true;
-                    DeactivateEmployeeButton.Enabled = true;
-
-                    // Reload grid
+                    ResetAddEmployeeMode();
                     LoadEmployees();
                 }
                 else
@@ -224,6 +225,15 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
 
         private void ChangeRoleButton_Click(object sender, EventArgs e)
         {
+            // If in add mode, this acts as cancel button
+            if (_isAddingEmployee)
+            {
+                ResetAddEmployeeMode();
+                
+                return;
+            }
+
+            // Normal change role functionality
             if (_selectedEmployee == null)
             {
                 MessageBox.Show("Please select an employee from the grid first.",
@@ -248,12 +258,10 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
 
             try
             {
-             
                 EmployeeRole newRole = guna2ComboBox1.SelectedIndex == 0
                     ? EmployeeRole.Employee
                     : EmployeeRole.Manager;
 
-            
                 if (_selectedEmployee.Role == newRole)
                 {
                     MessageBox.Show("Employee already has this role.",
@@ -262,10 +270,12 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                     return;
                 }
 
+                string currentUserId = _services.CurrentUserId;
+
                 bool success = _employeeService.UpdateEmployeeRole(
                     _selectedEmployee.EmployeeId,
                     newRole,
-                    _currentEmployee.EmployeeId
+                    currentUserId
                 );
 
                 if (success)
@@ -279,7 +289,6 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                         MessageBoxIcon.Information
                     );
 
-               
                     panel1.Visible = false;
                     LoadEmployees();
                 }
@@ -296,6 +305,14 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             }
         }
 
+        /// <summary>
+        /// you get the current user ID from service locator
+        /// you must not deactivate yourself
+        /// and you must check if it alreasy inactive
+        /// and confirm deactivation
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void DeactivateEmployeeButton_Click(object sender, EventArgs e)
         {
             if (_selectedEmployee == null)
@@ -305,29 +322,30 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                 return;
             }
 
-            // Don't allow deactivating yourself
-            if (_selectedEmployee.EmployeeId == _currentEmployee?.EmployeeId)
+            string currentUserId = _services.CurrentUserId;
+
+            if (_selectedEmployee.EmployeeId == currentUserId)
             {
-                MessageBox.Show("You cannot deactivate your own account.",
+                MessageBox.Show("You cannot change your own activation status.",
                     "Invalid Action", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            // Check if already inactive
-            if (!_selectedEmployee.IsActive)
-            {
-                MessageBox.Show("This employee is already deactivated.",
-                    "Already Inactive", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
+            // Determine whether we are activating or deactivating
+           
+            bool isCurrentlyActive = _selectedEmployee.IsActive;
+            
+            string action = isCurrentlyActive ? "deactivate" : "activate";
+            string actionPast = isCurrentlyActive ? "deactivated" : "activated";
 
-            // Confirm deactivation
             var result = MessageBox.Show(
-                $"Are you sure you want to deactivate this employee?\n\n" +
+                $"Are you sure you want to {action} this employee?\n\n" +
                 $"Employee: {_selectedEmployee.FullName}\n" +
                 $"Email: {_selectedEmployee.Email}\n\n" +
-                $"They will not be able to login after deactivation.",
-                "Confirm Deactivation",
+                (isCurrentlyActive
+                    ? "They will not be able to login after deactivation."
+                    : "They will regain login access after activation."),
+                $"Confirm {char.ToUpper(action[0]) + action.Substring(1)}",
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Warning
             );
@@ -336,85 +354,80 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             {
                 try
                 {
-                    bool success = _employeeService.DeactivateEmployee(
-                        _selectedEmployee.EmployeeId,
-                        _currentEmployee.EmployeeId
-                    );
+                    bool success;
+
+                    if (isCurrentlyActive)
+                    {
+                        // Deactivate
+                        success = _employeeService.DeactivateEmployee(
+                            _selectedEmployee.EmployeeId, currentUserId);
+                    }
+                    else
+                    {
+                        // Activate
+                        success = _employeeService.ActivateEmployee(
+                            _selectedEmployee.EmployeeId, currentUserId);
+                    }
 
                     if (success)
                     {
                         MessageBox.Show(
-                            $"Employee deactivated successfully!\n\n" +
-                            $"{_selectedEmployee.FullName} can no longer login.",
+                            $"Employee {actionPast} successfully!\n\n" +
+                            $"{_selectedEmployee.FullName} has been {actionPast}.",
                             "Success",
                             MessageBoxButtons.OK,
                             MessageBoxIcon.Information
                         );
 
-                        LoadEmployees();
+                        LoadEmployees(); 
                         _selectedEmployee = null;
                     }
                     else
                     {
-                        MessageBox.Show("Failed to deactivate employee. You may not have permission.",
+                        MessageBox.Show($"Failed to {action} employee. You may not have permission.",
                             "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"Error deactivating employee: {ex.Message}",
+                    MessageBox.Show($"Error trying to {action} employee: {ex.Message}",
                         "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
 
-        private void EmployeeDataGridViiew_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            // Handle cell click if needed - SelectionChanged handles row selection
-            if (e.RowIndex >= 0)
-            {
-                var row = EmployeeDataGridViiew.Rows[e.RowIndex];
-                string employeeId = row.Cells["Employee ID"].Value.ToString();
-                _selectedEmployee = _employeeService.GetEmployeeById(employeeId);
-            }
-        }
+        
+        #region Irrelevant methods
+        private void EmployeeDataGridViiew_CellContentClick(object sender, DataGridViewCellEventArgs e) { }
+        private void guna2ComboBox1_SelectedIndexChanged(object sender, EventArgs e) { }
+        private void EmailTextEm_TextChanged(object sender, EventArgs e) { }
+        private void phonetxtEm_TextChanged(object sender, EventArgs e) { }
+        private void surnameTxtEm_TextChanged(object sender, EventArgs e) { }
+        private void NametextEm_TextChanged(object sender, EventArgs e) { }
+        private void FrmEmployees_Load_1(object sender, EventArgs e) { }
+        #endregion
 
-        private void guna2ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            // Optional: Handle role selection change if needed
-        }
+        #region Helper methods
 
-        private void EmailTextEm_TextChanged(object sender, EventArgs e)
+        private void ResetAddEmployeeMode()
         {
-            // Optional: Real-time email validation
+            HideInputFields();
+            ClearInputFields();
+            AddEmployeeButton.Text = "Add Employee";
+            ChangeRoleButton.Text = "Change Role";
+            _isAddingEmployee = false;
+            DeactivateEmployeeButton.Enabled = true;
         }
-
-        private void phonetxtEm_TextChanged(object sender, EventArgs e)
-        {
-            // Optional: Real-time phone validation
-        }
-
-        private void surnameTxtEm_TextChanged(object sender, EventArgs e)
-        {
-            // Optional: Real-time surname validation
-        }
-
-        private void NametextEm_TextChanged(object sender, EventArgs e)
-        {
-            // Optional: Real-time name validation
-        }
-
-        // Helper methods
         private void ShowInputFields()
         {
             NametextEm.Visible = true;
-            surnameTxtEm.Visible = true; // Surname
-            phonetxtEm.Visible = true; // Phone
-            EmailTextEm.Visible = true; // Email
-            Name.Visible = true;
+            surnameTxtEm.Visible = true;
+            phonetxtEm.Visible = true;
+            EmailTextEm.Visible = true;
+            NameL.Visible = true;
             Surname.Visible = true;
-            label1.Visible = true; // Cell label
-            label2.Visible = true; // Email label
+            label1.Visible = true;
+            label2.Visible = true;
         }
 
         private void HideInputFields()
@@ -423,7 +436,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             surnameTxtEm.Visible = false;
             phonetxtEm.Visible = false;
             EmailTextEm.Visible = false;
-            Name.Visible = false;
+            NameL.Visible = false;
             Surname.Visible = false;
             label1.Visible = false;
             label2.Visible = false;
@@ -449,10 +462,6 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                 return false;
             }
         }
-
-        private void FrmEmployees_Load_1(object sender, EventArgs e)
-        {
-
-        }
+        #endregion
     }
 }

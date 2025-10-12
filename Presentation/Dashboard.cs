@@ -15,6 +15,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
 
         private ServiceLocator _services;
         private FrmRooms _currentRoomsForm;
+       
 
         public Dashboard()
         {
@@ -37,17 +38,19 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
 
         private void SetupUserInterface()
         {
-            // Update welcome label with current user's name
+            // Update welcome label with logged in user 
             if (!string.IsNullOrEmpty(_services.CurrentUserName))
             {
                 WelcomLabel.Text = $"{_services.CurrentUserName.ToUpper()}";
+                WelcomLabel.TextAlign = ContentAlignment.MiddleCenter;
+
             }
             else
             {
                 WelcomLabel.Text = "USER";
             }
 
-            // Hide Employees button if user is not admin
+            // Hide Employees button if user is not admin/manager
             if (!_services.IsAdmin)
             {
                 EmployeesButton.Visible = false;
@@ -66,7 +69,9 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             UpdateNavigationPanel(HomeButton);
             lblTitle.Text = "HOME";
             LoadForm(new FrmHome());
-            SearchBox.ReadOnly = true; 
+            SearchBox.ReadOnly = true;
+            SearchBox.Visible = true;
+            SearchBox.PlaceholderText = "";
         }
 
         private void BookingButton_Click(object sender, EventArgs e)
@@ -74,6 +79,10 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             UpdateNavigationPanel(BookingButton);
             lblTitle.Text = "BOOKINGS";
             LoadForm(new FrmBookings());
+
+            SearchBox.Visible = true;
+            SearchBox.ReadOnly = false;
+            SearchBox.PlaceholderText = "Search Bookings...";
         }
 
         private void GuestButton_Click(object sender, EventArgs e)
@@ -81,6 +90,10 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             UpdateNavigationPanel(GuestButton);
             lblTitle.Text = "GUESTS";
             LoadForm(new FrmGuests());
+
+            SearchBox.ReadOnly = false;
+            SearchBox.Visible = true;
+            SearchBox.PlaceholderText = "Search Guests...";
         }
 
         private void ReportsButton_Click(object sender, EventArgs e)
@@ -88,6 +101,10 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             UpdateNavigationPanel(ReportsButton);
             lblTitle.Text = "REPORTS";
             LoadForm(new FrmReports());
+
+            SearchBox.Visible = true;
+            SearchBox.ReadOnly = true;
+            SearchBox.PlaceholderText = "";
         }
 
         private void RoomsButton_Click(object sender, EventArgs e)
@@ -97,16 +114,19 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             _currentRoomsForm = new FrmRooms();
             LoadForm(_currentRoomsForm);
 
-            // Enable search for rooms
+            SearchBox.ReadOnly = false;
             SearchBox.Visible = true;
-            SearchBox.PlaceholderText = "Search rooms...";
+            SearchBox.PlaceholderText = "Search Rooms...";
         }
 
         private void SettingsButton_Click(object sender, EventArgs e)
         {
             UpdateNavigationPanel(SettingsButton);
-            lblTitle.Text = "SETTINGS";
+            lblTitle.Text = "PROFILE";
             LoadForm(new FrmSettings());
+            SearchBox.Visible = true;
+            SearchBox.ReadOnly = true;
+            SearchBox.PlaceholderText = "";
         }
 
         private void LogoutButton_Click(object sender, EventArgs e)
@@ -190,6 +210,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
         #region Label Clicks
         private void WelcomLabel_Click(object sender, EventArgs e) { }
         private void lblTitle_Click(object sender, EventArgs e) { }
+        private void PnlFormLoader_Paint(object sender, PaintEventArgs e) { }
         #endregion
 
         #region Helper Methods
@@ -222,18 +243,14 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
         }
         #endregion
 
-        private void PnlFormLoader_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        // Add TextChanged event for SearchBox:
+        
+        
         private void SearchBox_TextChanged(object sender, EventArgs e)
         {
             if (_currentRoomsForm != null && lblTitle.Text == "ROOMS")
             {
                 _currentRoomsForm.SearchRooms(SearchBox.Text);
-            }
+            } 
         }
 
         

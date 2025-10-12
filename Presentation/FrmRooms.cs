@@ -17,7 +17,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             InitializeComponent();
             _services = ServiceLocator.Instance;
             InitializeDataGridView();
-            LoadAllRooms(); // Load all rooms by default
+            LoadAllRooms();
         }
 
         private void InitializeDataGridView()
@@ -64,7 +64,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             _allRoomsData = ConvertRoomsToDataTable(rooms);
             roomsDateview.DataSource = _allRoomsData;
 
-            // Color code rows
+     
             foreach (DataGridViewRow row in roomsDateview.Rows)
             {
                 bool isAvailable = Convert.ToBoolean(row.Cells["IsAvailable"].Value);
@@ -97,30 +97,29 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
 
         private void showAvailableRoomsButton_Click(object sender, EventArgs e)
         {
-            // Change Button to Guna2Button for all comparisons
+        
             var clickedButton = sender as Guna2Button;
 
             if (clickedButton == showAvailableRoomsButton)
             {
-                // Show only available rooms
+            
                 var availableRooms = _services.RoomRepository.GetAll()
                     .Where(r => r.IsAvailable).ToList();
                 roomsDateview.DataSource = ConvertRoomsToDataTable(availableRooms);
             }
             else if (clickedButton == ShowUnavailableRoomsButton)
             {
-                // Show only unavailable rooms
+       
                 var unavailableRooms = _services.RoomRepository.GetAll()
                     .Where(r => !r.IsAvailable).ToList();
                 roomsDateview.DataSource = ConvertRoomsToDataTable(unavailableRooms);
             }
             else if (clickedButton == ShowAllRoomsButton)
             {
-                // Show all rooms
+           
                 LoadAllRooms();
             }
 
-            // Color code the filtered results
             foreach (DataGridViewRow row in roomsDateview.Rows)
             {
                 bool isAvailable = Convert.ToBoolean(row.Cells["IsAvailable"].Value);
@@ -130,7 +129,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             }
         }
 
-        // Method to be called from Dashboard for search functionality
+     
         public void SearchRooms(string searchText)
         {
             if (string.IsNullOrWhiteSpace(searchText))
@@ -144,7 +143,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                 "Convert(RoomNumber, 'System.String') LIKE '%{0}%' OR Status LIKE '%{0}%'",
                 searchText.Replace("'", "''"));
 
-            // Highlight matching rows
+     
             foreach (DataGridViewRow row in roomsDateview.Rows)
             {
                 bool matches = row.Cells["RoomNumber"].Value.ToString().Contains(searchText) ||
@@ -166,7 +165,6 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
 
         private void FrmRooms_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'phumlaKamnandiDBDataSet.Room' table. You can move, or remove it, as needed.
             this.roomTableAdapter.Fill(this.phumlaKamnandiDBDataSet.Room);
 
         }

@@ -13,7 +13,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
     {
         private Guest _guest;
         private List<Booking> _bookings;
-        private DataGridView _bookingsGrid;
+     
 
         public BookingHistory()
         {
@@ -33,34 +33,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
         private void InitializeCustomComponents()
         {
             
-            _bookingsGrid = new DataGridView
-            {
-                Location = new Point(118, 310),
-                Size = new Size(740, 320),
-                BackgroundColor = Color.FromArgb(46, 51, 73),
-                BorderStyle = BorderStyle.None,
-                AutoGenerateColumns = false,
-                SelectionMode = DataGridViewSelectionMode.FullRowSelect,
-                MultiSelect = false,
-                ReadOnly = true,
-                AllowUserToAddRows = false,
-                AllowUserToDeleteRows = false,
-                RowHeadersVisible = false,
-                EnableHeadersVisualStyles = false
-            };
-
-            _bookingsGrid.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(24, 30, 54);
-            _bookingsGrid.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
-            _bookingsGrid.ColumnHeadersDefaultCellStyle.Font = new Font("Nirmala UI", 10, FontStyle.Bold);
-            _bookingsGrid.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.FromArgb(24, 30, 54);
-
-           
-            _bookingsGrid.DefaultCellStyle.BackColor = Color.FromArgb(46, 51, 73);
-            _bookingsGrid.DefaultCellStyle.ForeColor = Color.White;
-            _bookingsGrid.DefaultCellStyle.SelectionBackColor = Color.FromArgb(0, 126, 249);
-            _bookingsGrid.DefaultCellStyle.SelectionForeColor = Color.White;
-            _bookingsGrid.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(40, 45, 65);
-
+            
            
             _bookingsGrid.Columns.Add(new DataGridViewTextBoxColumn
             {

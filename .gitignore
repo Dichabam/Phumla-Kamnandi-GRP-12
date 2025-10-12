@@ -362,3 +362,6 @@ MigrationBackup/
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
 #/PhumlaKamnandiDB.mdf
+/Presentation/PasswordForm.cs
+/Presentation/PasswordForm.Designer.cs
+/Presentation/PasswordForm.resx

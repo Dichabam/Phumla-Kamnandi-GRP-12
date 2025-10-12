@@ -113,7 +113,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                 var guests = _services.GuestRepository.GetAll();
                 GuestDataView.DataSource = guests;
 
-                // Highlight guests not in good standing
+             
                 foreach (DataGridViewRow row in GuestDataView.Rows)
                 {
                     if (row.DataBoundItem is Guest guest)
@@ -135,7 +135,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
 
         private void ViewBookingHistoryButton_Click(object sender, EventArgs e)
         {
-            // Show email verification controls
+      
             enterEmailTextbox.Text = "Enter Guest Email";
             enterEmailTextbox.Visible = true;
             emailConfirmtextbox.Visible = true;
@@ -143,11 +143,12 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             ErrorLableVBH.Visible = false;
             emailConfirmtextbox.Clear();
             emailConfirmtextbox.Focus();
+
         }
 
         private void GuestStandingButton_Click(object sender, EventArgs e)
         {
-            // Show email verification controls with different label
+      
             enterEmailTextbox.Text = "Enter Guest Email";
             enterEmailTextbox.Visible = true;
             emailConfirmtextbox.Visible = true;
@@ -291,13 +292,13 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
 
         private void UpdateGuestButton_Click(object sender, EventArgs e)
         {
-            // Hide email verification controls if visible
+      
             if (enterEmailTextbox.Visible || emailConfirmtextbox.Visible || ConfirmButtonVBH.Visible)
             {
                 HideBookingHistoryControls();
             }
 
-            // Check if a guest is selected in the DataGridView
+         
             if (GuestDataView.SelectedRows.Count == 0)
             {
                 MessageBox.Show("Please select a guest from the list to update.",
@@ -305,7 +306,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                 return;
             }
 
-            // Get the selected guest
+          
             _selectedGuestForUpdate = GuestDataView.SelectedRows[0].DataBoundItem as Guest;
 
             if (_selectedGuestForUpdate == null)
@@ -315,23 +316,23 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                 return;
             }
 
-            // Show the update panel and populate with current data
+        
             ShowUpdatePanel(_selectedGuestForUpdate);
         }
 
         private void ShowUpdatePanel(Guest guest)
         {
-            // Populate textboxes with current guest data
+         
             NameTxtBox.Text = guest.FirstName;
             SurnameTxtbox.Text = guest.LastName;
             PhoneTxtbox.Text = guest.Phone;
             EmailTxtbox.Text = guest.Email;
             
 
-            // Show the panel
+        
             UpdatebuttonPanel.Visible = true;
 
-            // Disable other buttons while updating
+         
             AddGuestButton.Enabled = false;
             viewBookingHostoryButton.Enabled = false;
             GuestStandingButton.Enabled = false;
@@ -466,23 +467,23 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
 
         private void HideUpdatePanel()
         {
-            // Clear all textboxes
+           
             NameTxtBox.Clear();
             SurnameTxtbox.Clear();
             PhoneTxtbox.Clear();
             EmailTxtbox.Clear();
             
 
-            // Hide the panel
+      
             UpdatebuttonPanel.Visible = false;
 
-            // Re-enable other buttons
+       
             AddGuestButton.Enabled = true;
             viewBookingHostoryButton.Enabled = true;
             GuestStandingButton.Enabled = true;
             UpdateGuestButton.Enabled = true;
 
-            // Clear selected guest
+         
             _selectedGuestForUpdate = null;
         }
 
@@ -527,9 +528,9 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
 
         private void CreateButton_Click(object sender, EventArgs e)
         {
-            try
-            {
-                // Validate all fields
+            try 
+            { 
+            
                 if (string.IsNullOrWhiteSpace(IDNumTxtBox.Text))
                 {
                     MessageBox.Show("ID Number is required.", "Validation Error",
@@ -570,7 +571,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                     return;
                 }
 
-                // Validate email format
+            
                 if (!IsValidEmail(email.Text.Trim()))
                 {
                     MessageBox.Show("Invalid email format.", "Validation Error",
@@ -579,7 +580,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                     return;
                 }
 
-                // Check if guest with this email already exists
+      
                 var existingGuest = _services.GuestService.GetGuestByEmail(email.Text.Trim());
                 if (existingGuest != null)
                 {
@@ -589,7 +590,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                     return;
                 }
 
-                // Confirm creation
+      
                 DialogResult result = MessageBox.Show(
                     $"Create new guest:\n\n" +
                     $"Name: {Name.Text.Trim()} {surname.Text.Trim()}\n" +
@@ -606,13 +607,13 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                     return;
                 }
 
-                // Create the guest (address is ID Number for now)
+     
                 var newGuest = _services.GuestService.RegisterNewGuest(
                     Name.Text.Trim(),
                     surname.Text.Trim(),
                     email.Text.Trim(),
                     cell.Text.Trim(),
-                    IDNumTxtBox.Text.Trim() // Using ID as address
+                    IDNumTxtBox.Text.Trim() 
                 );
 
                 if (newGuest != null)
@@ -626,7 +627,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Information);
 
-                    // Hide the panel and refresh
+            
                     HideAddGuestPanel();
                     LoadAllGuests();
                 }
@@ -643,11 +644,8 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             }
         }
 
-        private void IDNumTxtBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
+        private void IDNumTxtBox_TextChanged(object sender, EventArgs e) { }
+        
         private void terminateButton1_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show(
@@ -681,9 +679,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             AddGuestButton.Enabled = true;
         }
 
-        private void AddGuestPanel_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
+        private void AddGuestPanel_Paint(object sender, PaintEventArgs e) { }
+        
     }
 }

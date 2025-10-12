@@ -15,7 +15,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
         private string _phone;
         private string _personalEmail;
         private bool _isPasswordReset;
-        private string _workEmail; // For password reset
+        private string _workEmail; 
       
 
        
@@ -85,10 +85,10 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
 
         private async Task HandleNewAccountCreation(string password)
         {
-            // DON'T hash the password here - let AdminCode handle it
+       
             SucessLabelPass.Text = "Password created successfully";
             SucessLabelPass.Visible = true;
-            await Task.Delay(1500); // Show for 1.5 seconds
+            await Task.Delay(1500);
             SucessLabelPass.Visible = false;
 
           
@@ -105,18 +105,17 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                 var employee = _services.EmployeeService.GetEmployeeByEmail(_workEmail);
                 if (employee != null)
                 {
-                    // Hash the password once and update directly
+               
                     string hashedPassword = HashPassword(newPassword);
                     employee.UpdatePassword(hashedPassword);
                     _services.EmployeeRepository.Update(employee);
 
-                    // Show success message
+                  
                     SucessLabelPass.Text = "Password updated successfully";
                     SucessLabelPass.Visible = true;
                     await Task.Delay(2000);
                     SucessLabelPass.Visible = false;
 
-                    // Close all forms except login
                     foreach (Form form in Application.OpenForms.Cast<Form>().ToList())
                     {
                         if (!(form is Login))
@@ -125,7 +124,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                         }
                     }
 
-                    // Return to login
+               
                     var loginForm = Application.OpenForms.OfType<Login>().FirstOrDefault();
                     if (loginForm != null)
                     {

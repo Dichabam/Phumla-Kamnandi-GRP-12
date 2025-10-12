@@ -36,7 +36,7 @@
             this.surnameTxtEm = new Guna.UI2.WinForms.Guna2TextBox();
             this.phonetxtEm = new Guna.UI2.WinForms.Guna2TextBox();
             this.EmailTextEm = new Guna.UI2.WinForms.Guna2TextBox();
-            this.Name = new System.Windows.Forms.Label();
+            this.NameL = new System.Windows.Forms.Label();
             this.Surname = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -71,7 +71,7 @@
             this.AddEmployeeButton.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.AddEmployeeButton.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AddEmployeeButton.ForeColor = System.Drawing.Color.White;
-            this.AddEmployeeButton.Location = new System.Drawing.Point(65, 323);
+            this.AddEmployeeButton.Location = new System.Drawing.Point(25, 323);
             this.AddEmployeeButton.Name = "AddEmployeeButton";
             this.AddEmployeeButton.Size = new System.Drawing.Size(180, 45);
             this.AddEmployeeButton.TabIndex = 1;
@@ -88,7 +88,7 @@
             this.ChangeRoleButton.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.ChangeRoleButton.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ChangeRoleButton.ForeColor = System.Drawing.Color.White;
-            this.ChangeRoleButton.Location = new System.Drawing.Point(398, 323);
+            this.ChangeRoleButton.Location = new System.Drawing.Point(394, 323);
             this.ChangeRoleButton.Name = "ChangeRoleButton";
             this.ChangeRoleButton.Size = new System.Drawing.Size(180, 45);
             this.ChangeRoleButton.TabIndex = 1;
@@ -201,16 +201,16 @@
             this.EmailTextEm.TabIndex = 2;
             this.EmailTextEm.TextChanged += new System.EventHandler(this.EmailTextEm_TextChanged);
             // 
-            // Name
+            // NameL
             // 
-            this.Name.AutoSize = true;
-            this.Name.Font = new System.Drawing.Font("Nirmala UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Name.ForeColor = System.Drawing.Color.White;
-            this.Name.Location = new System.Drawing.Point(61, 419);
-            this.Name.Name = "Name";
-            this.Name.Size = new System.Drawing.Size(57, 23);
-            this.Name.TabIndex = 3;
-            this.Name.Text = "Name";
+            this.NameL.AutoSize = true;
+            this.NameL.Font = new System.Drawing.Font("Nirmala UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NameL.ForeColor = System.Drawing.Color.White;
+            this.NameL.Location = new System.Drawing.Point(61, 419);
+            this.NameL.Name = "NameL";
+            this.NameL.Size = new System.Drawing.Size(57, 23);
+            this.NameL.TabIndex = 3;
+            this.NameL.Text = "Name";
             // 
             // Surname
             // 
@@ -249,7 +249,7 @@
             // 
             this.panel1.Controls.Add(this.guna2ComboBox1);
             this.panel1.Controls.Add(this.changerolebuttonconfirm);
-            this.panel1.Location = new System.Drawing.Point(24, 397);
+            this.panel1.Location = new System.Drawing.Point(25, 393);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(918, 264);
             this.panel1.TabIndex = 4;
@@ -262,7 +262,7 @@
             this.guna2ComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.guna2ComboBox1.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.guna2ComboBox1.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2ComboBox1.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2ComboBox1.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2ComboBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.guna2ComboBox1.ItemHeight = 30;
             this.guna2ComboBox1.Items.AddRange(new object[] {
@@ -301,7 +301,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.Surname);
-            this.Controls.Add(this.Name);
+            this.Controls.Add(this.NameL);
             this.Controls.Add(this.EmailTextEm);
             this.Controls.Add(this.phonetxtEm);
             this.Controls.Add(this.surnameTxtEm);
@@ -311,7 +311,7 @@
             this.Controls.Add(this.AddEmployeeButton);
             this.Controls.Add(this.EmployeeDataGridViiew);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name.Text = "FrmEmployees";
+            this.Name = "FrmEmployees";
             this.Text = "FrmEmployees";
             this.Load += new System.EventHandler(this.FrmEmployees_Load_1);
             ((System.ComponentModel.ISupportInitialize)(this.EmployeeDataGridViiew)).EndInit();
@@ -331,7 +331,7 @@
         private Guna.UI2.WinForms.Guna2TextBox surnameTxtEm;
         private Guna.UI2.WinForms.Guna2TextBox phonetxtEm;
         private Guna.UI2.WinForms.Guna2TextBox EmailTextEm;
-        private System.Windows.Forms.Label Name;
+        private System.Windows.Forms.Label NameL;
         private System.Windows.Forms.Label Surname;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
