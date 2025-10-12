@@ -1,4 +1,13 @@
-﻿using Guna.UI2.WinForms;
+﻿/*Semester Project - Group 12
+ * 
+ * -----------------Members--------------------------
+ * Dichaba Mofokeng, MFKDIC001
+ * Simon Baraka, LMDSIM001 
+ * Rearabilwe Kgokong, KGKREA001  
+ * Khumiso Motata, MTTKAG001 
+ */
+
+using Guna.UI2.WinForms;
 using Phumla_Kamnandi_GRP_12.Business.Entities;
 using Phumla_Kamnandi_GRP_12.Business.Enums;
 using System;
@@ -84,7 +93,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                 _allRoomsData = ConvertRoomsToDataTable(roomsWithBookingInfo);
                 roomsDateview.DataSource = _allRoomsData;
 
-                // Color code the rows based on status
+          
                 ColorCodeRows();
             }
             catch (Exception ex)
@@ -109,13 +118,13 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                     IsAvailable = room.IsAvailable
                 };
 
-                // Find if there's an active booking for this room today
+           
                 var activeBookings = _services.BookingRepository.GetActiveBookingsForDate(today);
                 var currentBooking = activeBookings.FirstOrDefault(b => b.RoomNumber == room.RoomNumber);
 
                 if (currentBooking != null)
                 {
-                    // Room is occupied
+                   
                     var guest = _services.GuestRepository.GetById(currentBooking.GuestId);
                     if (guest != null)
                     {
@@ -128,7 +137,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                 }
                 else
                 {
-                    // Check if room has upcoming bookings
+                  
                     var upcomingBookings = _services.BookingRepository.GetByDateRange(
                         today.AddDays(1),
                         today.AddDays(30)
@@ -142,7 +151,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                         roomInfo.CheckInDate = nextBooking.CheckInDate.ToString("yyyy-MM-dd");
                         roomInfo.CheckOutDate = nextBooking.CheckOutDate.ToString("yyyy-MM-dd");
                         roomInfo.Status = "Reserved";
-                        roomInfo.IsAvailable = true; // Available today but has future booking
+                        roomInfo.IsAvailable = true; 
                     }
                     else
                     {
@@ -169,7 +178,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             dt.Columns.Add("CheckInDate", typeof(string));
             dt.Columns.Add("CheckOutDate", typeof(string));
             dt.Columns.Add("Status", typeof(string));
-            dt.Columns.Add("IsAvailable", typeof(bool)); // Hidden column for filtering
+            dt.Columns.Add("IsAvailable", typeof(bool));
 
             foreach (var room in rooms)
             {
@@ -220,7 +229,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
 
             if (clickedButton == showAvailableRoomsButton)
             {
-                // Show only available rooms (not occupied today)
+              
                 var rooms = _services.RoomRepository.GetAll();
                 var roomsWithInfo = GetRoomsWithCurrentBookingInfo(rooms);
                 var availableRooms = roomsWithInfo.Where(r => r.Status == "Available").ToList();
@@ -228,7 +237,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             }
             else if (clickedButton == ShowUnavailableRoomsButton)
             {
-                // Show only occupied rooms
+             
                 var rooms = _services.RoomRepository.GetAll();
                 var roomsWithInfo = GetRoomsWithCurrentBookingInfo(rooms);
                 var occupiedRooms = roomsWithInfo.Where(r => r.Status == "Occupied").ToList();
@@ -236,7 +245,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             }
             else if (clickedButton == ShowAllRoomsButton)
             {
-                // Show all rooms
+       
                 LoadAllRooms();
             }
 
@@ -255,7 +264,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             {
                 var filteredView = _allRoomsData.DefaultView;
 
-                // Build filter string for multiple columns
+              
                 string filter = string.Format(
                     "Convert(RoomNumber, 'System.String') LIKE '%{0}%' OR " +
                     "Status LIKE '%{0}%' OR " +
@@ -264,7 +273,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
 
                 filteredView.RowFilter = filter;
 
-                // Highlight matching rows
+          
                 foreach (DataGridViewRow row in roomsDateview.Rows)
                 {
                     bool matches = false;
@@ -286,7 +295,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                     }
                     else
                     {
-                        // Restore original color based on status
+                  
                         string status = row.Cells["Status"].Value?.ToString();
                         switch (status)
                         {
@@ -321,11 +330,11 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
 
         private void FrmRooms_Load(object sender, EventArgs e)
         {
-            // Load rooms with real-time booking information
+       
             LoadAllRooms();
         }
 
-        // Helper class to store room information with booking details
+       
         private class RoomWithBookingInfo
         {
             public int RoomNumber { get; set; }
