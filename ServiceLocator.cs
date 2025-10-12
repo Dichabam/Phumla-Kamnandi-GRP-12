@@ -1,4 +1,13 @@
-﻿using Phumla_Kamnandi_GRP_12.Business.Entities;
+﻿/*Semester Project - Group 12
+ * 
+ * -----------------Members--------------------------
+ * Dichaba Mofokeng, MFKDIC001
+ * Simon Baraka, LMDSIM001 
+ * Rearabilwe Kgokong, KGKREA001  
+ * Khumiso Motata, MTTKAG001 
+ */
+
+using Phumla_Kamnandi_GRP_12.Business.Entities;
 using Phumla_Kamnandi_GRP_12.Business.Interfaces;
 using Phumla_Kamnandi_GRP_12.Business.Services;
 using Phumla_Kamnandi_GRP_12.Database;
@@ -15,20 +24,20 @@ namespace Phumla_Kamnandi_GRP_12
         private static ServiceLocator _instance;
         private static readonly object _lock = new object();
 
-        // Repos
+        
         public BookingRepositoryInterface BookingRepository { get; private set; }
         public GuestRepositoryInterface GuestRepository { get; private set; }
         public RoomRepositoryInterface RoomRepository { get; private set; }
         public EmployeeRepositoryInterface EmployeeRepository { get; private set; }
 
-        // Services
+   
         public BookingServiceInterface BookingService { get; private set; }
         public GuestServiceInterface GuestService { get; private set; }
         public PricingServiceInterface PricingService { get; private set; }
         public ReportingServiceInterface ReportingService { get; private set; }
         public EmployeeServiceInterface EmployeeService { get; private set; }
 
-        // Session management - stores currently logged in user
+     
         private string _currentUserEmail;
         private string _currentUserName;
         private string _currentUserId;
