@@ -29,7 +29,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
 
         private void FrmBookings_Load(object sender, EventArgs e)
         {
-            // Set minimum dates for date pickers
+            // Set minimum dates for date pickers - need to change 
             checkindp.MinDate = DateTime.Today;
             checkoutdp.MinDate = DateTime.Today.AddDays(1);
         }
@@ -78,8 +78,8 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                     DataTable dt = new DataTable();
                     adapter.Fill(dt);
 
-                    ShowdataGridView.ScrollBars = ScrollBars.Horizontal;
-                    ShowdataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
+                    ShowdataGridView.ScrollBars = ScrollBars.Both;
+                    
 
                     ShowdataGridView.DataSource = null;
                     ShowdataGridView.DataSource = dt;
@@ -103,7 +103,8 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                     if (ShowdataGridView.Columns.Contains("BookingDate"))
                         ShowdataGridView.Columns["BookingDate"].DefaultCellStyle.Format = "yyyy-MM-dd HH:mm";
 
-                    ShowdataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                    ShowdataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+                   
                 }
             }
             catch (Exception ex)
@@ -192,7 +193,6 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             creditTextbox.Clear();
             selectedBookingRef = null;
 
-            // Reset readonly states
             NameTextBox.ReadOnly = false;
             surnametextbox.ReadOnly = false;
             emailtextbox.ReadOnly = false;
@@ -227,13 +227,11 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             {
                 if (!ValidateInputs()) return;
 
-                // Check if fields are readonly (existing guest) or new guest
                 bool isExistingGuest = NameTextBox.ReadOnly;
                 Guest guest;
 
                 if (isExistingGuest)
                 {
-                    // Get existing guest by email
                     guest = _services.GuestService.GetGuestByEmail(emailtextbox.Text.Trim());
                     if (guest == null)
                     {
@@ -244,12 +242,11 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                 }
                 else
                 {
-                    // Check if guest exists
+
                     guest = _services.GuestService.GetGuestByEmail(emailtextbox.Text.Trim());
 
                     if (guest == null)
                     {
-                        // Create new guest
                         guest = _services.GuestService.RegisterNewGuest(
                             NameTextBox.Text.Trim(),
                             surnametextbox.Text.Trim(),
@@ -260,7 +257,6 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                     }
                 }
 
-                // Update credit card if provided
                 if (!string.IsNullOrEmpty(creditTextbox.Text.Trim()) && creditTextbox.Text.Trim().Length >= 4)
                 {
                     string lastFour = creditTextbox.Text.Trim();
@@ -286,7 +282,6 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
 
                 if (result.Success)
                 {
-                    // Automatically confirm booking with deposit if credit card provided
                     if (!string.IsNullOrEmpty(creditTextbox.Text.Trim()) && creditTextbox.Text.Trim().Length >= 4)
                     {
                         bool confirmed = _services.BookingService.ConfirmBookingWithDeposit(
@@ -297,7 +292,6 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
 
                         if (confirmed)
                         {
-                            // Update booking to store last 4 digits
                             var booking = _services.BookingService.GetBookingDetails(result.BookingReference);
                             if (booking != null)
                             {

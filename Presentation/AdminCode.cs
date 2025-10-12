@@ -10,17 +10,18 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
     {
         private ServiceLocator _services;
 
-        // For new account creation
+      
         private string _firstName;
         private string _lastName;
         private string _phone;
         private string _personalEmail;
         private string _password;
 
-        // For password reset
+    
         private string _workEmail;
         private bool _isPasswordReset;
 
+        #region Constructors
         public AdminCode(string firstName, string lastName, string phone, string personalEmail, string password)
         {
             InitializeComponent();
@@ -46,6 +47,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             InitializeForm();
         }
 
+        #endregion
         private void InitializeForm()
         {
             IncorrectLabel.Visible = false;
@@ -98,7 +100,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
 
         private void HandlePasswordReset()
         {
-            // Proceed to password reset form
+          
             PasswordForm passwordForm = new PasswordForm(_workEmail);
             passwordForm.FormClosed += (s, args) => this.Close();
             passwordForm.Show();
@@ -109,10 +111,10 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
         {
             try
             {
-                // Generate work email
+             
                 string workEmail = GenerateWorkEmail(_firstName, _lastName);
 
-                // Create employee account
+                
                 Employee newEmployee = _services.EmployeeService.RegisterEmployee(
                     _firstName,
                     _lastName,
@@ -165,10 +167,9 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
 
         private string GenerateWorkEmail(string firstName, string lastName)
         {
-            // Generate email in format: firstname.lastname@pkhotel.com
+
             string baseEmail = $"{firstName.ToLower()}.{lastName.ToLower()}@pkhotel.com";
 
-            // Check if email exists, if so add number suffix
             var existingEmployee = _services.EmployeeService.GetEmployeeByEmail(baseEmail);
             if (existingEmployee != null)
             {

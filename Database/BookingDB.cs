@@ -66,7 +66,7 @@ namespace Phumla_Kamnandi_GRP_12.Database
 
         public void Add(Booking booking)
         {
-            // inside Add(Booking booking)
+         
             using var cn = new SqlConnection(connectionString);
             var cmd = new SqlCommand(@"
             INSERT INTO Booking (

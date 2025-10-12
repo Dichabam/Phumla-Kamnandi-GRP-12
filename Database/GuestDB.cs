@@ -136,7 +136,7 @@ namespace Phumla_Kamnandi_GRP_12.Database
                 reader["Address"].ToString().Trim()
             );
 
-            // Use reflection to set the private GuestId property
+        
             var guestIdProperty = typeof(Guest).GetProperty("Id",
                 System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance);
 
@@ -145,7 +145,6 @@ namespace Phumla_Kamnandi_GRP_12.Database
                 guestIdProperty.SetValue(guest, reader["Id"].ToString().Trim());
             }
 
-            // Use reflection to set DateRegistered
             var dateProperty = typeof(Guest).GetProperty("DateRegistered",
                 System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance);
 

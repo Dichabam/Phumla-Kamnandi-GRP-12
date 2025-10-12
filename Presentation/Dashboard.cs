@@ -81,6 +81,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             LoadForm(new FrmBookings());
 
             SearchBox.Visible = true;
+            SearchBox.ReadOnly = false;
             SearchBox.PlaceholderText = "Search Bookings...";
         }
 
@@ -89,6 +90,8 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             UpdateNavigationPanel(GuestButton);
             lblTitle.Text = "GUESTS";
             LoadForm(new FrmGuests());
+
+            SearchBox.ReadOnly = false;
             SearchBox.Visible = true;
             SearchBox.PlaceholderText = "Search Guests...";
         }
@@ -111,7 +114,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             _currentRoomsForm = new FrmRooms();
             LoadForm(_currentRoomsForm);
 
-           
+            SearchBox.ReadOnly = false;
             SearchBox.Visible = true;
             SearchBox.PlaceholderText = "Search Rooms...";
         }
@@ -207,6 +210,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
         #region Label Clicks
         private void WelcomLabel_Click(object sender, EventArgs e) { }
         private void lblTitle_Click(object sender, EventArgs e) { }
+        private void PnlFormLoader_Paint(object sender, PaintEventArgs e) { }
         #endregion
 
         #region Helper Methods
@@ -239,12 +243,8 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
         }
         #endregion
 
-        private void PnlFormLoader_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        // Add TextChanged event for SearchBox:
+        
+        
         private void SearchBox_TextChanged(object sender, EventArgs e)
         {
             if (_currentRoomsForm != null && lblTitle.Text == "ROOMS")

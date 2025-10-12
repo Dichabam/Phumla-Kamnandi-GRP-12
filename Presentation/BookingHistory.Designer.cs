@@ -28,6 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.Namelabel = new System.Windows.Forms.Label();
             this.SurnameLabel = new System.Windows.Forms.Label();
             this.EmailLabel = new System.Windows.Forms.Label();
@@ -37,6 +40,8 @@
             this.guna2Separator1 = new Guna.UI2.WinForms.Guna2Separator();
             this.PhoneLabel = new System.Windows.Forms.Label();
             this.CloseButtonLogin = new Guna.UI2.WinForms.Guna2Button();
+            this._bookingsGrid = new Guna.UI2.WinForms.Guna2DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this._bookingsGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // Namelabel
@@ -140,12 +145,65 @@
             this.CloseButtonLogin.UseTransparentBackground = true;
             this.CloseButtonLogin.Click += new System.EventHandler(this.CloseButtonLogin_Click);
             // 
+            // _bookingsGrid
+            // 
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            this._bookingsGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this._bookingsGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this._bookingsGrid.ColumnHeadersHeight = 4;
+            this._bookingsGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this._bookingsGrid.DefaultCellStyle = dataGridViewCellStyle3;
+            this._bookingsGrid.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this._bookingsGrid.Location = new System.Drawing.Point(104, 332);
+            this._bookingsGrid.Name = "_bookingsGrid";
+            this._bookingsGrid.RowHeadersVisible = false;
+            this._bookingsGrid.RowHeadersWidth = 51;
+            this._bookingsGrid.RowTemplate.Height = 24;
+            this._bookingsGrid.Size = new System.Drawing.Size(754, 305);
+            this._bookingsGrid.TabIndex = 14;
+            this._bookingsGrid.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
+            this._bookingsGrid.ThemeStyle.AlternatingRowsStyle.Font = null;
+            this._bookingsGrid.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
+            this._bookingsGrid.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty;
+            this._bookingsGrid.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty;
+            this._bookingsGrid.ThemeStyle.BackColor = System.Drawing.Color.White;
+            this._bookingsGrid.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this._bookingsGrid.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            this._bookingsGrid.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this._bookingsGrid.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._bookingsGrid.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
+            this._bookingsGrid.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+            this._bookingsGrid.ThemeStyle.HeaderStyle.Height = 4;
+            this._bookingsGrid.ThemeStyle.ReadOnly = false;
+            this._bookingsGrid.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
+            this._bookingsGrid.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this._bookingsGrid.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this._bookingsGrid.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            this._bookingsGrid.ThemeStyle.RowsStyle.Height = 24;
+            this._bookingsGrid.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this._bookingsGrid.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            // 
             // BookingHistory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
             this.ClientSize = new System.Drawing.Size(936, 662);
+            this.Controls.Add(this._bookingsGrid);
             this.Controls.Add(this.CloseButtonLogin);
             this.Controls.Add(this.guna2Separator1);
             this.Controls.Add(this.guna2Separator2);
@@ -159,6 +217,7 @@
             this.Name = "BookingHistory";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "BookingHistory";
+            ((System.ComponentModel.ISupportInitialize)(this._bookingsGrid)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -175,5 +234,6 @@
         private Guna.UI2.WinForms.Guna2Separator guna2Separator1;
         private System.Windows.Forms.Label PhoneLabel;
         private Guna.UI2.WinForms.Guna2Button CloseButtonLogin;
+        private Guna.UI2.WinForms.Guna2DataGridView _bookingsGrid;
     }
 }
