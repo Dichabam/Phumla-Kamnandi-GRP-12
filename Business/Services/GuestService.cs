@@ -127,6 +127,8 @@ namespace Phumla_Kamnandi_GRP_12.Business.Services
             return guest.IsInGoodStanding;
         }
 
+        
+
 
     }
 }

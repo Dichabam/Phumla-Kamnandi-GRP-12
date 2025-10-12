@@ -26,7 +26,6 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
           
             LoadBookingsGrid();
         }
-
         private void FrmBookings_Load(object sender, EventArgs e)
         {
             // Set minimum dates for date pickers - need to change 
@@ -275,7 +274,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                     checkindp.Value.Date,
                     checkoutdp.Value.Date,
                     adults,
-                    children,
+                    children, 
                     singleOccupancy,
                     specialrequestTextbox.Text.Trim()
                 );
@@ -307,8 +306,16 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
 
                     string confirmationLetter = _services.BookingService.GenerateConfirmationLetter(result.BookingReference);
 
-                    MessageBox.Show(confirmationLetter, "Booking Confirmed!",
-                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    DialogResult letterResult = MessageBox.Show(
+                        confirmationLetter + "\n\nWould you like to save this confirmation letter?",
+                        "Booking Confirmed!",
+                        MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Information);
+
+                    if (letterResult == DialogResult.Yes)
+                    {
+                        SaveConfirmationLetter(confirmationLetter, result.BookingReference);
+                    }
 
                     LoadBookingsGrid();
                     HideAllInputFields();
@@ -411,8 +418,20 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
 
                 if (success)
                 {
-                    MessageBox.Show("Booking updated successfully!", "Success",
-                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    // Generate confirmation letter for updated booking
+                    string confirmationLetter = _services.BookingService.GenerateConfirmationLetter(selectedBookingRef);
+
+                    // Show confirmation with save option
+                    DialogResult result = MessageBox.Show(
+                        confirmationLetter + "\n\nWould you like to save this confirmation letter?",
+                        "Booking Updated Successfully!",
+                        MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Information);
+
+                    if (result == DialogResult.Yes)
+                    {
+                        SaveConfirmationLetter(confirmationLetter, selectedBookingRef);
+                    }
 
                     LoadBookingsGrid();
                     HideAllInputFields();
@@ -433,6 +452,32 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             catch (Exception ex)
             {
                 MessageBox.Show($"Error updating booking: {ex.Message}", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+       
+        private void SaveConfirmationLetter(string content, string bookingRef)
+        {
+            try
+            {
+                SaveFileDialog saveDialog = new SaveFileDialog
+                {
+                    Filter = "Text Files (*.txt)|*.txt|All Files (*.*)|*.*",
+                    DefaultExt = "txt",
+                    FileName = $"Booking_Confirmation_{bookingRef}_{DateTime.Now:yyyyMMdd_HHmmss}.txt"
+                };
+
+                if (saveDialog.ShowDialog() == DialogResult.OK)
+                {
+                    System.IO.File.WriteAllText(saveDialog.FileName, content);
+                    MessageBox.Show($"Confirmation letter saved successfully to:\n{saveDialog.FileName}",
+                        "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error saving confirmation letter: {ex.Message}", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }

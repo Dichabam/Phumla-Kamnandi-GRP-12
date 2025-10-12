@@ -100,15 +100,22 @@ namespace Phumla_Kamnandi_GRP_12.Database
         {
             using var cn = new SqlConnection(connectionString);
             var cmd = new SqlCommand(@"
-                UPDATE Guest SET FirstName = @first, LastName = @last, Email = @email, Phone = @phone, Address = @address, CreditCardNum = @card, IsInGoodStanding = @status
-                WHERE Id = @id", cn);
+        UPDATE Guest SET 
+            FirstName = @first, 
+            LastName = @last, 
+            Email = @email, 
+            Phone = @phone, 
+            Address = @address, 
+            CreditCardNum = @card, 
+            IsInGoodStanding = @status
+        WHERE Id = @id", cn);
 
             cmd.Parameters.AddWithValue("@id", guest.GuestId);
             cmd.Parameters.AddWithValue("@first", guest.FirstName);
             cmd.Parameters.AddWithValue("@last", guest.LastName);
-            cmd.Parameters.AddWithValue("@email", guest.Email);
-            cmd.Parameters.AddWithValue("@phone", guest.Phone);
-            cmd.Parameters.AddWithValue("@address", guest.Address);
+            cmd.Parameters.AddWithValue("@email", guest.Email ?? string.Empty);
+            cmd.Parameters.AddWithValue("@phone", guest.Phone ?? string.Empty);
+            cmd.Parameters.AddWithValue("@address", guest.Address ?? string.Empty);
             cmd.Parameters.AddWithValue("@card", guest.CreditCardLastFourDigits ?? string.Empty);
             cmd.Parameters.AddWithValue("@status", guest.IsInGoodStanding);
 

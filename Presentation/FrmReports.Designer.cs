@@ -42,7 +42,6 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             this.FromLabel = new System.Windows.Forms.Label();
             this.ToLabel = new System.Windows.Forms.Label();
             this.GenerateReportButton = new Guna.UI2.WinForms.Guna2Button();
-            this.ReportDataview = new System.Windows.Forms.DataGridView();
             this.phumlaKamnandiDBDataSetBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.phumlaKamnandiDBDataSet = new Phumla_Kamnandi_GRP_12.PhumlaKamnandiDBDataSet();
             this.phumlaKamnandiDBDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -51,7 +50,8 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             this.todayRB = new System.Windows.Forms.RadioButton();
             this.SpecificRB = new System.Windows.Forms.RadioButton();
             this.panel1 = new System.Windows.Forms.Panel();
-            ((System.ComponentModel.ISupportInitialize)(this.ReportDataview)).BeginInit();
+            this.ReportRichTextBox = new System.Windows.Forms.RichTextBox();
+            this.ClearButton = new Guna.UI2.WinForms.Guna2Button();
             ((System.ComponentModel.ISupportInitialize)(this.phumlaKamnandiDBDataSetBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.phumlaKamnandiDBDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.phumlaKamnandiDBDataSetBindingSource)).BeginInit();
@@ -198,21 +198,6 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             this.GenerateReportButton.Text = "Generate Report";
             this.GenerateReportButton.Click += new System.EventHandler(this.GenerateReportButton_Click);
             // 
-            // ReportDataview
-            // 
-            this.ReportDataview.AllowUserToAddRows = false;
-            this.ReportDataview.AllowUserToDeleteRows = false;
-            this.ReportDataview.AutoGenerateColumns = false;
-            this.ReportDataview.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.ReportDataview.DataSource = this.phumlaKamnandiDBDataSetBindingSource1;
-            this.ReportDataview.Location = new System.Drawing.Point(25, 367);
-            this.ReportDataview.Name = "ReportDataview";
-            this.ReportDataview.ReadOnly = true;
-            this.ReportDataview.RowHeadersWidth = 51;
-            this.ReportDataview.RowTemplate.Height = 24;
-            this.ReportDataview.Size = new System.Drawing.Size(903, 262);
-            this.ReportDataview.TabIndex = 12;
-            // 
             // phumlaKamnandiDBDataSetBindingSource1
             // 
             this.phumlaKamnandiDBDataSetBindingSource1.DataSource = this.phumlaKamnandiDBDataSet;
@@ -299,15 +284,41 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             this.panel1.Size = new System.Drawing.Size(827, 30);
             this.panel1.TabIndex = 15;
             // 
+            // ReportRichTextBox
+            // 
+            this.ReportRichTextBox.Location = new System.Drawing.Point(60, 392);
+            this.ReportRichTextBox.Name = "ReportRichTextBox";
+            this.ReportRichTextBox.Size = new System.Drawing.Size(837, 243);
+            this.ReportRichTextBox.TabIndex = 16;
+            this.ReportRichTextBox.Text = "";
+            // 
+            // ClearButton
+            // 
+            this.ClearButton.Animated = true;
+            this.ClearButton.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.ClearButton.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.ClearButton.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.ClearButton.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.ClearButton.FillColor = System.Drawing.Color.White;
+            this.ClearButton.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold);
+            this.ClearButton.ForeColor = System.Drawing.Color.Black;
+            this.ClearButton.Location = new System.Drawing.Point(803, 403);
+            this.ClearButton.Name = "ClearButton";
+            this.ClearButton.Size = new System.Drawing.Size(84, 37);
+            this.ClearButton.TabIndex = 11;
+            this.ClearButton.Text = "Clear";
+            this.ClearButton.Click += new System.EventHandler(this.ClearButton_Click);
+            // 
             // FrmReports
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
             this.ClientSize = new System.Drawing.Size(954, 709);
+            this.Controls.Add(this.ClearButton);
+            this.Controls.Add(this.ReportRichTextBox);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.saveButton);
-            this.Controls.Add(this.ReportDataview);
             this.Controls.Add(this.GenerateReportButton);
             this.Controls.Add(this.ToLabel);
             this.Controls.Add(this.FromLabel);
@@ -322,7 +333,6 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             this.Name = "FrmReports";
             this.Text = "FrmReports";
             this.Load += new System.EventHandler(this.FrmReports_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.ReportDataview)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.phumlaKamnandiDBDataSetBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.phumlaKamnandiDBDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.phumlaKamnandiDBDataSetBindingSource)).EndInit();
@@ -348,7 +358,6 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
         private System.Windows.Forms.Label FromLabel;
         private System.Windows.Forms.Label ToLabel;
         private Guna.UI2.WinForms.Guna2Button GenerateReportButton;
-        private System.Windows.Forms.DataGridView ReportDataview;
         private Guna.UI2.WinForms.Guna2Button saveButton;
         private System.Windows.Forms.BindingSource phumlaKamnandiDBDataSetBindingSource;
         private PhumlaKamnandiDBDataSet phumlaKamnandiDBDataSet;
@@ -357,5 +366,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
         private System.Windows.Forms.RadioButton SpecificRB;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.BindingSource phumlaKamnandiDBDataSetBindingSource1;
+        private System.Windows.Forms.RichTextBox ReportRichTextBox;
+        private Guna.UI2.WinForms.Guna2Button ClearButton;
     }
 }

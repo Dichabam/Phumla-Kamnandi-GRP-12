@@ -13,7 +13,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
     {
         private Guest _guest;
         private List<Booking> _bookings;
-     
+        private RichTextBox _bookingsRichTextBox;
 
         public BookingHistory()
         {
@@ -32,81 +32,27 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
 
         private void InitializeCustomComponents()
         {
-            
-            
-           
-            _bookingsGrid.Columns.Add(new DataGridViewTextBoxColumn
+            // Create and configure RichTextBox
+            _bookingsRichTextBox = new RichTextBox
             {
-                Name = "BookingReference",
-                HeaderText = "Reference",
-                DataPropertyName = "BookingReference",
-                Width = 130
-            });
+                Location = new Point(104, 332),
+                Size = new Size(754, 305),
+                ReadOnly = true,
+                BackColor = Color.White,
+                Font = new Font("Consolas", 9F, FontStyle.Regular),
+                ScrollBars = RichTextBoxScrollBars.Vertical
+            };
 
-            _bookingsGrid.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                Name = "CheckInDate",
-                HeaderText = "Check-In",
-                DataPropertyName = "CheckInDate",
-                Width = 100,
-                DefaultCellStyle = new DataGridViewCellStyle { Format = "dd/MM/yyyy" }
-            });
-
-            _bookingsGrid.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                Name = "CheckOutDate",
-                HeaderText = "Check-Out",
-                DataPropertyName = "CheckOutDate",
-                Width = 100,
-                DefaultCellStyle = new DataGridViewCellStyle { Format = "dd/MM/yyyy" }
-            });
-
-            _bookingsGrid.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                Name = "RoomNumber",
-                HeaderText = "Room",
-                DataPropertyName = "RoomNumber",
-                Width = 60
-            });
-
-            _bookingsGrid.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                Name = "TotalAmount",
-                HeaderText = "Total",
-                DataPropertyName = "TotalAmount",
-                Width = 100,
-                DefaultCellStyle = new DataGridViewCellStyle { Format = "C2" }
-            });
-
-            _bookingsGrid.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                Name = "Status",
-                HeaderText = "Status",
-                DataPropertyName = "Status",
-                Width = 100
-            });
-
-            _bookingsGrid.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                Name = "PaymentStatus",
-                HeaderText = "Payment",
-                DataPropertyName = "PaymentStatus",
-                Width = 100
-            });
-
-          
-            this.Controls.Add(_bookingsGrid);
+            this.Controls.Add(_bookingsRichTextBox);
         }
 
         private void LoadGuestInfo()
         {
-           
             Namelabel.Text = $"Name: {_guest.FirstName}";
             SurnameLabel.Text = $"Surname: {_guest.LastName}";
             EmailLabel.Text = $"Email: {_guest.Email}";
             PhoneLabel.Text = $"Phone: {_guest.Phone}";
 
-          
             Font labelFont = new Font("Nirmala UI", 10.2F, FontStyle.Bold);
             Namelabel.Font = labelFont;
             SurnameLabel.Font = labelFont;
@@ -119,7 +65,6 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             PhoneLabel.ForeColor = Color.White;
         }
 
-
         private void LoadBookingHistory()
         {
             if (_bookings == null || _bookings.Count == 0)
@@ -127,13 +72,11 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                 DetailsLabel.Text = "No bookings found for this guest";
                 DetailsLabel.Font = new Font("Nirmala UI", 12, FontStyle.Bold);
                 DetailsLabel.ForeColor = Color.Orange;
+                _bookingsRichTextBox.Text = "No booking history available.";
                 return;
             }
 
-            // Sort bookings
             var sortedBookings = _bookings.OrderByDescending(b => b.CheckInDate).ToList();
-
-            // Separate current and past bookings
             var currentBookings = sortedBookings
                 .Where(b => b.CheckOutDate >= DateTime.Today && b.Status != BookingStatus.Cancelled)
                 .ToList();
@@ -141,7 +84,6 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                 .Where(b => b.CheckOutDate < DateTime.Today || b.Status == BookingStatus.Cancelled)
                 .ToList();
 
-            // Get the most recent booking
             var lastBooking = sortedBookings.FirstOrDefault();
 
             // Build details text
@@ -158,7 +100,6 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                 details.AppendLine($"  Check-out: {lastBooking.CheckOutDate:yyyy-MM-dd}");
                 details.AppendLine($"  Status: {lastBooking.Status}");
 
-                // Payment status
                 string paymentStatus = lastBooking.PaymentStatus == PaymentStatus.Paid
                     ? "✓ Fully Paid"
                     : $"Deposit: {lastBooking.DepositPaid:C} / {lastBooking.DepositAmount:C}";
@@ -169,53 +110,96 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             DetailsLabel.Font = new Font("Nirmala UI", 9F, FontStyle.Regular);
             DetailsLabel.ForeColor = Color.White;
 
-            // Display all bookings in grid
-            _bookingsGrid.DataSource = sortedBookings;
+            // Display all bookings in RichTextBox
+            DisplayBookingsInRichTextBox(sortedBookings, currentBookings, pastBookings);
+        }
 
-            // Color code rows
-            foreach (DataGridViewRow row in _bookingsGrid.Rows)
+        private void DisplayBookingsInRichTextBox(List<Booking> allBookings, List<Booking> currentBookings, List<Booking> pastBookings)
+        {
+            _bookingsRichTextBox.Clear();
+            StringBuilder sb = new StringBuilder();
+
+            sb.AppendLine("═══════════════════════════════════════════════════════════════════════════");
+            sb.AppendLine("                           BOOKING HISTORY                                 ");
+            sb.AppendLine("═══════════════════════════════════════════════════════════════════════════");
+            sb.AppendLine();
+
+            if (currentBookings.Any())
             {
-                var booking = row.DataBoundItem as Booking;
-                if (booking != null)
+                sb.AppendLine("━━━ CURRENT BOOKINGS ━━━");
+                sb.AppendLine();
+                foreach (var booking in currentBookings)
                 {
-                    if (booking.Status == BookingStatus.Cancelled)
-                    {
-                        row.DefaultCellStyle.ForeColor = Color.LightGray;
-                        row.DefaultCellStyle.Font = new Font(_bookingsGrid.Font, FontStyle.Strikeout);
-                    }
-                    else if (booking.CheckInDate <= DateTime.Today && booking.CheckOutDate >= DateTime.Today)
-                    {
-                        // Current stay
-                        row.DefaultCellStyle.BackColor = Color.FromArgb(0, 100, 0);
-                        row.DefaultCellStyle.ForeColor = Color.White;
-                    }
-                    else if (booking.CheckInDate > DateTime.Today)
-                    {
-                        // Future booking
-                        row.DefaultCellStyle.BackColor = Color.FromArgb(0, 70, 140);
-                        row.DefaultCellStyle.ForeColor = Color.White;
-                    }
-                    else
-                    {
-                        // Past booking
-                        row.DefaultCellStyle.BackColor = Color.FromArgb(60, 60, 60);
-                        row.DefaultCellStyle.ForeColor = Color.LightGray;
-                    }
-
-                    // Highlight unpaid bookings
-                    if (booking.PaymentStatus != PaymentStatus.Paid)
-                    {
-                        row.Cells["PaymentStatus"].Style.BackColor = Color.Yellow;
-                        row.Cells["PaymentStatus"].Style.ForeColor = Color.Red;
-                    }
+                    AppendBookingDetails(sb, booking, "CURRENT");
                 }
             }
+
+            if (pastBookings.Any())
+            {
+                sb.AppendLine("━━━ PAST BOOKINGS ━━━");
+                sb.AppendLine();
+                foreach (var booking in pastBookings)
+                {
+                    AppendBookingDetails(sb, booking, "PAST");
+                }
+            }
+
+            _bookingsRichTextBox.Text = sb.ToString();
+
+            // Color code sections
+            ColorCodeBookings(currentBookings, pastBookings);
+        }
+
+        private void AppendBookingDetails(StringBuilder sb, Booking booking, string bookingType)
+        {
+            sb.AppendLine($"Reference: {booking.BookingReference}");
+            sb.AppendLine($"Check-in:  {booking.CheckInDate:yyyy-MM-dd}");
+            sb.AppendLine($"Check-out: {booking.CheckOutDate:yyyy-MM-dd}");
+            sb.AppendLine($"Room:      {booking.RoomNumber}");
+            sb.AppendLine($"Guests:    {booking.NumberOfAdults} Adults, {booking.NumberOfChildren} Children");
+            sb.AppendLine($"Total:     {booking.TotalAmount:C}");
+            sb.AppendLine($"Deposit:   {booking.DepositPaid:C} / {booking.DepositAmount:C}");
+            sb.AppendLine($"Status:    {booking.Status}");
+            sb.AppendLine($"Payment:   {booking.PaymentStatus}");
+
+            if (!string.IsNullOrEmpty(booking.SpecialRequests))
+            {
+                sb.AppendLine($"Notes:     {booking.SpecialRequests}");
+            }
+
+            sb.AppendLine("─────────────────────────────────────────────────────────────────────────");
+            sb.AppendLine();
+        }
+
+        private void ColorCodeBookings(List<Booking> currentBookings, List<Booking> pastBookings)
+        {
+            string text = _bookingsRichTextBox.Text;
+
+            // Find and color current bookings section
+            int currentIndex = text.IndexOf("━━━ CURRENT BOOKINGS ━━━");
+            if (currentIndex >= 0)
+            {
+                _bookingsRichTextBox.Select(currentIndex, "━━━ CURRENT BOOKINGS ━━━".Length);
+                _bookingsRichTextBox.SelectionColor = Color.Green;
+                _bookingsRichTextBox.SelectionFont = new Font(_bookingsRichTextBox.Font, FontStyle.Bold);
+            }
+
+            // Find and color past bookings section
+            int pastIndex = text.IndexOf("━━━ PAST BOOKINGS ━━━");
+            if (pastIndex >= 0)
+            {
+                _bookingsRichTextBox.Select(pastIndex, "━━━ PAST BOOKINGS ━━━".Length);
+                _bookingsRichTextBox.SelectionColor = Color.Gray;
+                _bookingsRichTextBox.SelectionFont = new Font(_bookingsRichTextBox.Font, FontStyle.Bold);
+            }
+
+            // Reset selection
+            _bookingsRichTextBox.Select(0, 0);
         }
 
         private void CloseButtonLogin_Click(object sender, EventArgs e)
         {
             this.Close();
-
         }
     }
 }
