@@ -82,6 +82,9 @@
             this.ShowdataGridView.Size = new System.Drawing.Size(844, 236);
             this.ShowdataGridView.TabIndex = 27;
             this.ShowdataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            //this.ShowdataGridView.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.ShowdataGridView_CellFormatting);
+            this.ShowdataGridView.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.ShowdataGridView_CellValueChanged);
+            this.ShowdataGridView.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.ShowdataGridView_DataError);
             // 
             // phumlaKamnandiDBDataSetBindingSource
             // 
