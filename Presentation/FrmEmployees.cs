@@ -52,7 +52,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                 string employeeId = row.Cells["Employee ID"].Value.ToString();
                 _selectedEmployee = _employeeService.GetEmployeeById(employeeId);
 
-                // 🔽 Update the button based on employee status
+
                 if (_selectedEmployee != null)
                 {
                     if (_selectedEmployee.IsActive)
@@ -379,7 +379,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                             MessageBoxIcon.Information
                         );
 
-                        LoadEmployees(); // refresh grid
+                        LoadEmployees(); 
                         _selectedEmployee = null;
                     }
                     else
@@ -396,15 +396,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             }
         }
 
-        private void ResetAddEmployeeMode()
-        {
-            HideInputFields();
-            ClearInputFields();
-            AddEmployeeButton.Text = "Add Employee";
-            ChangeRoleButton.Text = "Change Role";
-            _isAddingEmployee = false;
-            DeactivateEmployeeButton.Enabled = true;
-        }
+        
         #region Irrelevant methods
         private void EmployeeDataGridViiew_CellContentClick(object sender, DataGridViewCellEventArgs e) { }
         private void guna2ComboBox1_SelectedIndexChanged(object sender, EventArgs e) { }
@@ -416,6 +408,16 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
         #endregion
 
         #region Helper methods
+
+        private void ResetAddEmployeeMode()
+        {
+            HideInputFields();
+            ClearInputFields();
+            AddEmployeeButton.Text = "Add Employee";
+            ChangeRoleButton.Text = "Change Role";
+            _isAddingEmployee = false;
+            DeactivateEmployeeButton.Enabled = true;
+        }
         private void ShowInputFields()
         {
             NametextEm.Visible = true;

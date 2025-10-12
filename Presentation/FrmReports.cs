@@ -112,9 +112,9 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
         }
         private void GenerateOccupancyReport(DateTime startDate, DateTime endDate)
         {
-            ReportDataview.DataSource = null; // Clear grid early
+            ReportDataview.DataSource = null; 
 
-            // Cap extreme ranges to avoid freezing
+            
             if ((endDate - startDate).TotalDays > 1000)
             {
                 MessageBox.Show("Selected date range is too large. Please narrow it down to 2 years or less.", "Warning",
