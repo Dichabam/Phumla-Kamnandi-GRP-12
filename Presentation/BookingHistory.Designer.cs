@@ -38,6 +38,8 @@
             this.PhoneLabel = new System.Windows.Forms.Label();
             this.CloseButtonLogin = new Guna.UI2.WinForms.Guna2Button();
             this.richTxtBox = new System.Windows.Forms.RichTextBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // Namelabel
@@ -143,11 +145,21 @@
             // 
             // richTxtBox
             // 
-            this.richTxtBox.Location = new System.Drawing.Point(93, 325);
+            this.richTxtBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.richTxtBox.Location = new System.Drawing.Point(0, 0);
             this.richTxtBox.Name = "richTxtBox";
-            this.richTxtBox.Size = new System.Drawing.Size(765, 306);
+            this.richTxtBox.ReadOnly = true;
+            this.richTxtBox.Size = new System.Drawing.Size(836, 292);
             this.richTxtBox.TabIndex = 14;
             this.richTxtBox.Text = "";
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.richTxtBox);
+            this.panel1.Location = new System.Drawing.Point(67, 358);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(836, 292);
+            this.panel1.TabIndex = 15;
             // 
             // BookingHistory
             // 
@@ -155,7 +167,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
             this.ClientSize = new System.Drawing.Size(936, 662);
-            this.Controls.Add(this.richTxtBox);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.CloseButtonLogin);
             this.Controls.Add(this.guna2Separator1);
             this.Controls.Add(this.guna2Separator2);
@@ -169,6 +181,7 @@
             this.Name = "BookingHistory";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "BookingHistory";
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -186,5 +199,6 @@
         private System.Windows.Forms.Label PhoneLabel;
         private Guna.UI2.WinForms.Guna2Button CloseButtonLogin;
         private System.Windows.Forms.RichTextBox richTxtBox;
+        private System.Windows.Forms.Panel panel1;
     }
 }

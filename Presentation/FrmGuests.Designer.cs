@@ -39,7 +39,6 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             this.emailConfirmtextbox = new Guna.UI2.WinForms.Guna2TextBox();
             this.enterEmailTextbox = new System.Windows.Forms.Label();
             this.ConfirmButtonVBH = new Guna.UI2.WinForms.Guna2Button();
-            this.ErrorLableVBH = new System.Windows.Forms.Label();
             this.viewBookingHostoryButton = new Guna.UI2.WinForms.Guna2Button();
             this.PhoneTxtbox = new Guna.UI2.WinForms.Guna2TextBox();
             this.NameTxtBox = new Guna.UI2.WinForms.Guna2TextBox();
@@ -58,11 +57,14 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             this.AddGuestPanel = new System.Windows.Forms.Panel();
             this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             this.Createbutton = new Guna.UI2.WinForms.Guna2Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.address = new System.Windows.Forms.Label();
             this.nummaek = new System.Windows.Forms.Label();
             this.CreateNewGuestLabel = new System.Windows.Forms.Label();
             this.Srunamemake = new System.Windows.Forms.Label();
             this.IDNumberLabel = new System.Windows.Forms.Label();
             this.mailmake = new System.Windows.Forms.Label();
+            this.AddressTxtbox = new Guna.UI2.WinForms.Guna2TextBox();
             this.Namemake = new System.Windows.Forms.Label();
             this.IDNumTxtBox = new Guna.UI2.WinForms.Guna2TextBox();
             this.cell = new Guna.UI2.WinForms.Guna2TextBox();
@@ -72,9 +74,6 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             this.GuestStandingButton = new Guna.UI2.WinForms.Guna2Button();
             this.AddGuestButton = new Guna.UI2.WinForms.Guna2Button();
             this.UpdateGuestButton = new Guna.UI2.WinForms.Guna2Button();
-            this.address = new System.Windows.Forms.Label();
-            this.AddressTxtbox = new Guna.UI2.WinForms.Guna2TextBox();
-            this.label7 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.GuestDataView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.phumlaKamnandiDBDataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.phumlaKamnandiDBDataSet)).BeginInit();
@@ -166,17 +165,6 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             this.ConfirmButtonVBH.TabIndex = 26;
             this.ConfirmButtonVBH.Text = "Confirm";
             this.ConfirmButtonVBH.Click += new System.EventHandler(this.ConfirmButtonVBH_Click);
-            // 
-            // ErrorLableVBH
-            // 
-            this.ErrorLableVBH.AutoSize = true;
-            this.ErrorLableVBH.Font = new System.Drawing.Font("Nirmala UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ErrorLableVBH.ForeColor = System.Drawing.Color.Red;
-            this.ErrorLableVBH.Location = new System.Drawing.Point(241, 518);
-            this.ErrorLableVBH.Name = "ErrorLableVBH";
-            this.ErrorLableVBH.Size = new System.Drawing.Size(140, 23);
-            this.ErrorLableVBH.TabIndex = 28;
-            this.ErrorLableVBH.Text = "Guest not found";
             // 
             // viewBookingHostoryButton
             // 
@@ -302,7 +290,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             this.UpdatebuttonPanel.Controls.Add(this.EmailTxtbox);
             this.UpdatebuttonPanel.Controls.Add(this.SurnameTxtbox);
             this.UpdatebuttonPanel.Controls.Add(this.NameTxtBox);
-            this.UpdatebuttonPanel.Location = new System.Drawing.Point(40, 409);
+            this.UpdatebuttonPanel.Location = new System.Drawing.Point(46, 409);
             this.UpdatebuttonPanel.Name = "UpdatebuttonPanel";
             this.UpdatebuttonPanel.Size = new System.Drawing.Size(890, 288);
             this.UpdatebuttonPanel.TabIndex = 29;
@@ -447,7 +435,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             this.AddGuestPanel.Controls.Add(this.email);
             this.AddGuestPanel.Controls.Add(this.surname);
             this.AddGuestPanel.Controls.Add(this.Name);
-            this.AddGuestPanel.Location = new System.Drawing.Point(40, 406);
+            this.AddGuestPanel.Location = new System.Drawing.Point(46, 406);
             this.AddGuestPanel.Name = "AddGuestPanel";
             this.AddGuestPanel.Size = new System.Drawing.Size(890, 288);
             this.AddGuestPanel.TabIndex = 29;
@@ -487,6 +475,28 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             this.Createbutton.TabIndex = 29;
             this.Createbutton.Text = "Create Guest";
             this.Createbutton.Click += new System.EventHandler(this.CreateButton_Click);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Nirmala UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.White;
+            this.label7.Location = new System.Drawing.Point(19, 423);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(35, 23);
+            this.label7.TabIndex = 28;
+            this.label7.Text = "cell";
+            // 
+            // address
+            // 
+            this.address.AutoSize = true;
+            this.address.Font = new System.Drawing.Font("Nirmala UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.address.ForeColor = System.Drawing.Color.White;
+            this.address.Location = new System.Drawing.Point(3, 234);
+            this.address.Name = "address";
+            this.address.Size = new System.Drawing.Size(70, 23);
+            this.address.TabIndex = 28;
+            this.address.Text = "Address";
             // 
             // nummaek
             // 
@@ -542,6 +552,29 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             this.mailmake.Size = new System.Drawing.Size(51, 23);
             this.mailmake.TabIndex = 28;
             this.mailmake.Text = "Email";
+            // 
+            // AddressTxtbox
+            // 
+            this.AddressTxtbox.AutoRoundedCorners = true;
+            this.AddressTxtbox.BorderColor = System.Drawing.Color.SlateGray;
+            this.AddressTxtbox.BorderThickness = 2;
+            this.AddressTxtbox.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.AddressTxtbox.DefaultText = "";
+            this.AddressTxtbox.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.AddressTxtbox.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.AddressTxtbox.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.AddressTxtbox.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.AddressTxtbox.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.AddressTxtbox.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.AddressTxtbox.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.AddressTxtbox.Location = new System.Drawing.Point(160, 225);
+            this.AddressTxtbox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.AddressTxtbox.Name = "AddressTxtbox";
+            this.AddressTxtbox.PlaceholderText = "";
+            this.AddressTxtbox.SelectedText = "";
+            this.AddressTxtbox.Size = new System.Drawing.Size(391, 32);
+            this.AddressTxtbox.TabIndex = 27;
+            this.AddressTxtbox.TextChanged += new System.EventHandler(this.IDNumTxtBox_TextChanged);
             // 
             // Namemake
             // 
@@ -723,51 +756,6 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             this.UpdateGuestButton.Text = "Update Guest";
             this.UpdateGuestButton.Click += new System.EventHandler(this.UpdateGuestButton_Click);
             // 
-            // address
-            // 
-            this.address.AutoSize = true;
-            this.address.Font = new System.Drawing.Font("Nirmala UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.address.ForeColor = System.Drawing.Color.White;
-            this.address.Location = new System.Drawing.Point(3, 234);
-            this.address.Name = "address";
-            this.address.Size = new System.Drawing.Size(70, 23);
-            this.address.TabIndex = 28;
-            this.address.Text = "Address";
-            // 
-            // AddressTxtbox
-            // 
-            this.AddressTxtbox.AutoRoundedCorners = true;
-            this.AddressTxtbox.BorderColor = System.Drawing.Color.SlateGray;
-            this.AddressTxtbox.BorderThickness = 2;
-            this.AddressTxtbox.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.AddressTxtbox.DefaultText = "";
-            this.AddressTxtbox.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.AddressTxtbox.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.AddressTxtbox.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.AddressTxtbox.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.AddressTxtbox.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.AddressTxtbox.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.AddressTxtbox.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.AddressTxtbox.Location = new System.Drawing.Point(160, 225);
-            this.AddressTxtbox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.AddressTxtbox.Name = "AddressTxtbox";
-            this.AddressTxtbox.PlaceholderText = "";
-            this.AddressTxtbox.SelectedText = "";
-            this.AddressTxtbox.Size = new System.Drawing.Size(391, 32);
-            this.AddressTxtbox.TabIndex = 27;
-            this.AddressTxtbox.TextChanged += new System.EventHandler(this.IDNumTxtBox_TextChanged);
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Nirmala UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(19, 423);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(35, 23);
-            this.label7.TabIndex = 28;
-            this.label7.Text = "cell";
-            // 
             // FrmGuests
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -784,9 +772,8 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             this.Controls.Add(this.GuestDataView);
             this.Controls.Add(this.emailConfirmtextbox);
             this.Controls.Add(this.enterEmailTextbox);
-            this.Controls.Add(this.ErrorLableVBH);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-           
+            
             this.Text = "FrmGuests";
             ((System.ComponentModel.ISupportInitialize)(this.GuestDataView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.phumlaKamnandiDBDataSetBindingSource)).EndInit();
@@ -813,7 +800,6 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
         private Guna.UI2.WinForms.Guna2TextBox emailConfirmtextbox;
         private System.Windows.Forms.Label enterEmailTextbox;
         private Guna.UI2.WinForms.Guna2Button ConfirmButtonVBH;
-        private System.Windows.Forms.Label ErrorLableVBH;
         private BindingSource phumlaKamnandiDBDataSetBindingSource1;
         private Guna.UI2.WinForms.Guna2TextBox PhoneTxtbox;
         private Guna.UI2.WinForms.Guna2TextBox NameTxtBox;

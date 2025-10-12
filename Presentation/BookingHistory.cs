@@ -13,7 +13,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
     {
         private Guest _guest;
         private List<Booking> _bookings;
-        private RichTextBox _bookingsRichTextBox;
+       
 
         public BookingHistory()
         {
@@ -32,18 +32,8 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
 
         private void InitializeCustomComponents()
         {
-            // Create and configure RichTextBox
-            _bookingsRichTextBox = new RichTextBox
-            {
-                Location = new Point(104, 332),
-                Size = new Size(754, 305),
-                ReadOnly = true,
-                BackColor = Color.White,
-                Font = new Font("Consolas", 9F, FontStyle.Regular),
-                ScrollBars = RichTextBoxScrollBars.Vertical
-            };
-
-            this.Controls.Add(_bookingsRichTextBox);
+           
+            
         }
 
         private void LoadGuestInfo()
@@ -72,7 +62,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                 DetailsLabel.Text = "No bookings found for this guest";
                 DetailsLabel.Font = new Font("Nirmala UI", 12, FontStyle.Bold);
                 DetailsLabel.ForeColor = Color.Orange;
-                _bookingsRichTextBox.Text = "No booking history available.";
+                richTxtBox.Text = "No booking history available.";
                 return;
             }
 
@@ -86,37 +76,25 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
 
             var lastBooking = sortedBookings.FirstOrDefault();
 
-            // Build details text
-            StringBuilder details = new StringBuilder();
-            details.AppendLine($"Total Bookings: {_bookings.Count}");
-            details.AppendLine($"Current: {currentBookings.Count} | Past: {pastBookings.Count}");
+           
+            
 
             if (lastBooking != null)
             {
-                details.AppendLine();
-                details.AppendLine("Last Booking:");
-                details.AppendLine($"  Reference: {lastBooking.BookingReference}");
-                details.AppendLine($"  Check-in: {lastBooking.CheckInDate:yyyy-MM-dd}");
-                details.AppendLine($"  Check-out: {lastBooking.CheckOutDate:yyyy-MM-dd}");
-                details.AppendLine($"  Status: {lastBooking.Status}");
-
-                string paymentStatus = lastBooking.PaymentStatus == PaymentStatus.Paid
-                    ? "✓ Fully Paid"
-                    : $"Deposit: {lastBooking.DepositPaid:C} / {lastBooking.DepositAmount:C}";
-                details.AppendLine($"  Payment: {paymentStatus}");
+                DetailsLabel.Text = "";
+                DetailsLabel.Font = new Font("Nirmala UI", 9F, FontStyle.Regular);
+                DetailsLabel.ForeColor = Color.White;
             }
 
-            DetailsLabel.Text = details.ToString();
-            DetailsLabel.Font = new Font("Nirmala UI", 9F, FontStyle.Regular);
-            DetailsLabel.ForeColor = Color.White;
+            
 
-            // Display all bookings in RichTextBox
+           
             DisplayBookingsInRichTextBox(sortedBookings, currentBookings, pastBookings);
         }
 
         private void DisplayBookingsInRichTextBox(List<Booking> allBookings, List<Booking> currentBookings, List<Booking> pastBookings)
         {
-            _bookingsRichTextBox.Clear();
+            richTxtBox.Clear();
             StringBuilder sb = new StringBuilder();
 
             sb.AppendLine("═══════════════════════════════════════════════════════════════════════════");
@@ -144,9 +122,9 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                 }
             }
 
-            _bookingsRichTextBox.Text = sb.ToString();
+            richTxtBox.Text = sb.ToString();
 
-            // Color code sections
+          
             ColorCodeBookings(currentBookings, pastBookings);
         }
 
@@ -173,28 +151,26 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
 
         private void ColorCodeBookings(List<Booking> currentBookings, List<Booking> pastBookings)
         {
-            string text = _bookingsRichTextBox.Text;
+            string text = richTxtBox.Text;
 
-            // Find and color current bookings section
+    
             int currentIndex = text.IndexOf("━━━ CURRENT BOOKINGS ━━━");
             if (currentIndex >= 0)
             {
-                _bookingsRichTextBox.Select(currentIndex, "━━━ CURRENT BOOKINGS ━━━".Length);
-                _bookingsRichTextBox.SelectionColor = Color.Green;
-                _bookingsRichTextBox.SelectionFont = new Font(_bookingsRichTextBox.Font, FontStyle.Bold);
+                richTxtBox.Select(currentIndex, "━━━ CURRENT BOOKINGS ━━━".Length);
+                richTxtBox.SelectionColor = Color.Green;
+                richTxtBox.SelectionFont = new Font(richTxtBox.Font, FontStyle.Bold);
             }
 
-            // Find and color past bookings section
             int pastIndex = text.IndexOf("━━━ PAST BOOKINGS ━━━");
             if (pastIndex >= 0)
             {
-                _bookingsRichTextBox.Select(pastIndex, "━━━ PAST BOOKINGS ━━━".Length);
-                _bookingsRichTextBox.SelectionColor = Color.Gray;
-                _bookingsRichTextBox.SelectionFont = new Font(_bookingsRichTextBox.Font, FontStyle.Bold);
+                richTxtBox.Select(pastIndex, "━━━ PAST BOOKINGS ━━━".Length);
+                richTxtBox.SelectionColor = Color.Gray;
+                richTxtBox.SelectionFont = new Font(richTxtBox.Font, FontStyle.Bold);
             }
 
-            // Reset selection
-            _bookingsRichTextBox.Select(0, 0);
+            richTxtBox.Select(0, 0);
         }
 
         private void CloseButtonLogin_Click(object sender, EventArgs e)

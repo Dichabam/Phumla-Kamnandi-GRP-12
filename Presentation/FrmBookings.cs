@@ -430,10 +430,10 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
 
                 if (success)
                 {
-                    // Generate confirmation letter for updated booking
+                   
                     string confirmationLetter = _services.BookingService.GenerateConfirmationLetter(selectedBookingRef);
 
-                    // Show confirmation with save option
+                   
                     DialogResult result = MessageBox.Show(
                         confirmationLetter + "\n\nWould you like to save this confirmation letter?",
                         "Booking Updated Successfully!",
@@ -454,6 +454,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                     UpdatebookingButton.FillColor = Color.FromArgb(0, 126, 249);
                     CancelBookingButton.Text = "CANCEL";
                     CancelBookingButton.FillColor = Color.FromArgb(0, 126, 249);
+                    MakeBookingButton.Enabled = false;
                 }
                 else
                 {
