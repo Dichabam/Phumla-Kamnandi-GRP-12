@@ -50,8 +50,8 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             DatePickerEnd.Visible = showDatePickers;
         }
 
-        
 
+        
         private void GenerateReportButton_Click(object sender, EventArgs e)
         {
             
@@ -66,7 +66,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             DateTime startDate, endDate;
             if (AlltimeRB.Checked)
             {
-                startDate = new DateTime(1753, 1, 1);
+                startDate = new DateTime(2023, 5, 1);
                 endDate = DateTime.Today;
             }
             else if (todayRB.Checked)
@@ -111,6 +111,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        #region report generation
         private void GenerateOccupancyReport(DateTime startDate, DateTime endDate)
         {
             ReportRichTextBox.Clear();
@@ -265,6 +266,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                 }
             });
         }
+        #endregion
         private void saveButton_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(_lastGeneratedReport))
