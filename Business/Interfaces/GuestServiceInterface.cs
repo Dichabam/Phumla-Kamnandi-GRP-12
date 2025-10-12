@@ -14,7 +14,7 @@ namespace Phumla_Kamnandi_GRP_12.Business.Interfaces
 {
     public interface GuestServiceInterface
     {
-        Guest RegisterNewGuest(string firstName, string lastName, string email, string phone, string address);
+        Guest RegisterNewGuest(string firstName, string lastName, string email, string phone, string address, string idNum);
         Guest GetGuestById(string guestId);
         Guest GetGuestByEmail(string email);
         bool UpdateGuestCreditCard(string guestId, string lastFourDigits);

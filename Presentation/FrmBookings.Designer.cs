@@ -77,7 +77,6 @@
             this.ShowdataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ShowdataGridView.Location = new System.Drawing.Point(53, 6);
             this.ShowdataGridView.Name = "ShowdataGridView";
-            this.ShowdataGridView.ReadOnly = true;
             this.ShowdataGridView.RowHeadersWidth = 51;
             this.ShowdataGridView.RowTemplate.Height = 24;
             this.ShowdataGridView.Size = new System.Drawing.Size(844, 236);

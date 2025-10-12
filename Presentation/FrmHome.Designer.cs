@@ -37,7 +37,7 @@
             this.guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(this.components);
             this.panel2 = new System.Windows.Forms.Panel();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.currentOccupancy = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.CurrentOccupancyLabel = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -55,12 +55,12 @@
             this.phumlaKamnandiDBDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel5 = new System.Windows.Forms.Panel();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.label6 = new System.Windows.Forms.Label();
+            this.deplabel = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.DepaturesLabel = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.label8 = new System.Windows.Forms.Label();
+            this.depoOver = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.depositsOverdue = new System.Windows.Forms.Label();
             this.makeBookingButton = new Guna.UI2.WinForms.Guna2Button();
@@ -147,7 +147,7 @@
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(42)))), ((int)(((byte)(64)))));
             this.panel2.Controls.Add(this.pictureBox6);
-            this.panel2.Controls.Add(this.label1);
+            this.panel2.Controls.Add(this.currentOccupancy);
             this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.CurrentOccupancyLabel);
             this.panel2.Location = new System.Drawing.Point(301, 12);
@@ -165,16 +165,16 @@
             this.pictureBox6.TabIndex = 1;
             this.pictureBox6.TabStop = false;
             // 
-            // label1
+            // currentOccupancy
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Nirmala UI", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
-            this.label1.Location = new System.Drawing.Point(12, 61);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(87, 45);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "12%";
+            this.currentOccupancy.AutoSize = true;
+            this.currentOccupancy.Font = new System.Drawing.Font("Nirmala UI", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.currentOccupancy.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
+            this.currentOccupancy.Location = new System.Drawing.Point(12, 61);
+            this.currentOccupancy.Name = "currentOccupancy";
+            this.currentOccupancy.Size = new System.Drawing.Size(87, 45);
+            this.currentOccupancy.TabIndex = 0;
+            this.currentOccupancy.Text = "12%";
             // 
             // label3
             // 
@@ -335,7 +335,7 @@
             // 
             this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(42)))), ((int)(((byte)(64)))));
             this.panel5.Controls.Add(this.pictureBox4);
-            this.panel5.Controls.Add(this.label6);
+            this.panel5.Controls.Add(this.deplabel);
             this.panel5.Controls.Add(this.label7);
             this.panel5.Controls.Add(this.DepaturesLabel);
             this.panel5.Location = new System.Drawing.Point(478, 210);
@@ -353,16 +353,16 @@
             this.pictureBox4.TabIndex = 1;
             this.pictureBox4.TabStop = false;
             // 
-            // label6
+            // deplabel
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Nirmala UI", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
-            this.label6.Location = new System.Drawing.Point(21, 58);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(39, 45);
-            this.label6.TabIndex = 0;
-            this.label6.Text = "5";
+            this.deplabel.AutoSize = true;
+            this.deplabel.Font = new System.Drawing.Font("Nirmala UI", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.deplabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
+            this.deplabel.Location = new System.Drawing.Point(21, 58);
+            this.deplabel.Name = "deplabel";
+            this.deplabel.Size = new System.Drawing.Size(39, 45);
+            this.deplabel.TabIndex = 0;
+            this.deplabel.Text = "5";
             // 
             // label7
             // 
@@ -390,7 +390,7 @@
             // 
             this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(42)))), ((int)(((byte)(64)))));
             this.panel6.Controls.Add(this.pictureBox5);
-            this.panel6.Controls.Add(this.label8);
+            this.panel6.Controls.Add(this.depoOver);
             this.panel6.Controls.Add(this.label9);
             this.panel6.Controls.Add(this.depositsOverdue);
             this.panel6.Location = new System.Drawing.Point(12, 383);
@@ -408,16 +408,16 @@
             this.pictureBox5.TabIndex = 1;
             this.pictureBox5.TabStop = false;
             // 
-            // label8
+            // depoOver
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Nirmala UI", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.Color.Red;
-            this.label8.Location = new System.Drawing.Point(21, 58);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(39, 45);
-            this.label8.TabIndex = 0;
-            this.label8.Text = "2";
+            this.depoOver.AutoSize = true;
+            this.depoOver.Font = new System.Drawing.Font("Nirmala UI", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.depoOver.ForeColor = System.Drawing.Color.Red;
+            this.depoOver.Location = new System.Drawing.Point(21, 58);
+            this.depoOver.Name = "depoOver";
+            this.depoOver.Size = new System.Drawing.Size(39, 45);
+            this.depoOver.TabIndex = 0;
+            this.depoOver.Text = "2";
             // 
             // label9
             // 
@@ -544,7 +544,7 @@
         private Guna.UI2.WinForms.Guna2BorderlessForm guna2BorderlessForm1;
         private System.Windows.Forms.Label AmountBookings;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label currentOccupancy;
         private System.Windows.Forms.Label CurrentOccupancyLabel;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.BindingSource phumlaKamnandiDBDataSetBindingSource;
@@ -556,7 +556,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label desLabel1;
         private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label deplabel;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label DepaturesLabel;
         private System.Windows.Forms.Label ArrivalsTopday;
@@ -564,7 +564,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label depoOver;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label depositsOverdue;
         private System.Windows.Forms.PictureBox pictureBox1;

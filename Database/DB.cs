@@ -1,4 +1,13 @@
-﻿using Phumla_Kamnandi_GRP_12.Properties;
+﻿/*Semester Project - Group 12
+ * 
+ * -----------------Members--------------------------
+ * Dichaba Mofokeng, MFKDIC001
+ * Simon Baraka, LMDSIM001 
+ * Rearabilwe Kgokong, KGKREA001  
+ * Khumiso Motata, MTTKAG001 
+ */
+
+using Phumla_Kamnandi_GRP_12.Properties;
 using System;
 using System.Collections.Generic;
 using System.Data;

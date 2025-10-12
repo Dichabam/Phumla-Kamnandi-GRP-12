@@ -1,4 +1,13 @@
-﻿using Phumla_Kamnandi_GRP_12.Properties;
+﻿/*Semester Project - Group 12
+ * 
+ * -----------------Members--------------------------
+ * Dichaba Mofokeng, MFKDIC001
+ * Simon Baraka, LMDSIM001 
+ * Rearabilwe Kgokong, KGKREA001  
+ * Khumiso Motata, MTTKAG001 
+ */
+
+using Phumla_Kamnandi_GRP_12.Properties;
 using Phumla_Kamnandi_GRP_12.Business.Entities;
 using System;
 using System.Data;
@@ -83,24 +92,62 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                     ShowdataGridView.DataSource = null;
                     ShowdataGridView.DataSource = dt;
                     ShowdataGridView.Refresh();
+
                     
-                    
+
                     if (ShowdataGridView.Columns.Contains("GuestId"))
                         ShowdataGridView.Columns["GuestId"].Visible = false;
-
-                   
                     if (ShowdataGridView.Columns.Contains("TotalAmount"))
                         ShowdataGridView.Columns["TotalAmount"].DefaultCellStyle.Format = "C2";
                     if (ShowdataGridView.Columns.Contains("DepositAmount"))
                         ShowdataGridView.Columns["DepositAmount"].DefaultCellStyle.Format = "C2";
                     if (ShowdataGridView.Columns.Contains("DepositPaid"))
+                    {
                         ShowdataGridView.Columns["DepositPaid"].DefaultCellStyle.Format = "C2";
+                        ShowdataGridView.Columns["DepositPaid"].ReadOnly = false;
+                    }
                     if (ShowdataGridView.Columns.Contains("CheckInDate"))
                         ShowdataGridView.Columns["CheckInDate"].DefaultCellStyle.Format = "yyyy-MM-dd";
                     if (ShowdataGridView.Columns.Contains("CheckOutDate"))
                         ShowdataGridView.Columns["CheckOutDate"].DefaultCellStyle.Format = "yyyy-MM-dd";
                     if (ShowdataGridView.Columns.Contains("BookingDate"))
                         ShowdataGridView.Columns["BookingDate"].DefaultCellStyle.Format = "yyyy-MM-dd HH:mm";
+                    
+                    if (ShowdataGridView.Columns.Contains("Status")) {
+                        var statusColumn = new DataGridViewComboBoxColumn();
+                        statusColumn.Name = "Status";
+                        statusColumn.HeaderText = "Status";
+                        statusColumn.DataPropertyName = "Status"; 
+                        statusColumn.Items.AddRange("Unconfirmed", "Confirmed", "Cancelled", "Completed", "NoShow");
+
+                        int colIndex = ShowdataGridView.Columns["Status"].Index;
+                        ShowdataGridView.Columns.Remove("Status");
+                        ShowdataGridView.Columns.Insert(colIndex, statusColumn);
+                    }
+                     
+                    if (ShowdataGridView.Columns.Contains("PaymentStatus"))
+                    {
+                        var paymentColumn = new DataGridViewComboBoxColumn();
+                        paymentColumn.Name = "PaymentStatus";
+                        paymentColumn.HeaderText = "Payment Status";
+                        paymentColumn.DataPropertyName = "PaymentStatus";
+                        paymentColumn.Items.AddRange("Pending", "Paid", "Refunded", "Failed");
+
+                        int colIndex = ShowdataGridView.Columns["PaymentStatus"].Index;
+                        ShowdataGridView.Columns.Remove("PaymentStatus");
+                        ShowdataGridView.Columns.Insert(colIndex, paymentColumn);
+                    }
+
+                    foreach (DataGridViewColumn col in ShowdataGridView.Columns)
+                    {
+                        if (col.Name != "Status" && col.Name != "PaymentStatus" && col.Name != "DepositPaid")
+                            col.ReadOnly = true;
+                        else
+                            col.ReadOnly = false;
+                    }
+
+
+
 
                     ShowdataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
                    
@@ -241,7 +288,6 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                 }
                 else
                 {
-
                     guest = _services.GuestService.GetGuestByEmail(emailtextbox.Text.Trim());
 
                     if (guest == null)
@@ -251,7 +297,8 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                             surnametextbox.Text.Trim(),
                             emailtextbox.Text.Trim(),
                             phonetextbox.Text.Trim(),
-                            addresstextbox.Text.Trim()
+                            addresstextbox.Text.Trim(),
+                            guna2TextBox1.Text.Trim()
                         );
                     }
                 }
@@ -274,25 +321,37 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                     checkindp.Value.Date,
                     checkoutdp.Value.Date,
                     adults,
-                    children, 
+                    children,
                     singleOccupancy,
                     specialrequestTextbox.Text.Trim()
                 );
 
                 if (result.Success)
                 {
-                    if (!string.IsNullOrEmpty(creditTextbox.Text.Trim()) && creditTextbox.Text.Trim().Length >= 4)
-                    {
-                        bool confirmed = _services.BookingService.ConfirmBookingWithDeposit(
-                            result.BookingReference,
-                            result.DepositRequired,
-                            creditTextbox.Text.Trim()
-                        );
+                    // Get the booking to find which room was assigned
+                    var booking = _services.BookingService.GetBookingDetails(result.BookingReference);
 
-                        if (confirmed)
+                    if (booking != null)
+                    {
+                        // Update room availability
+                        var room = _services.RoomRepository.GetByNumber(booking.RoomNumber);
+                        if (room != null)
                         {
-                            var booking = _services.BookingService.GetBookingDetails(result.BookingReference);
-                            if (booking != null)
+                            // Note: Room availability is date-based, not a simple on/off
+                            // The system already handles this through the booking dates
+                            // No need to change room.IsAvailable here
+                        }
+
+                        // Handle credit card and deposit
+                        if (!string.IsNullOrEmpty(creditTextbox.Text.Trim()) && creditTextbox.Text.Trim().Length >= 4)
+                        {
+                            bool confirmed = _services.BookingService.ConfirmBookingWithDeposit(
+                                result.BookingReference,
+                                result.DepositRequired,
+                                creditTextbox.Text.Trim()
+                            );
+
+                            if (confirmed)
                             {
                                 string lastFour = creditTextbox.Text.Trim();
                                 if (lastFour.Length > 4)
@@ -418,10 +477,10 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
 
                 if (success)
                 {
-                    // Generate confirmation letter for updated booking
+                   
                     string confirmationLetter = _services.BookingService.GenerateConfirmationLetter(selectedBookingRef);
 
-                    // Show confirmation with save option
+                   
                     DialogResult result = MessageBox.Show(
                         confirmationLetter + "\n\nWould you like to save this confirmation letter?",
                         "Booking Updated Successfully!",
@@ -442,6 +501,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                     UpdatebookingButton.FillColor = Color.FromArgb(0, 126, 249);
                     CancelBookingButton.Text = "CANCEL";
                     CancelBookingButton.FillColor = Color.FromArgb(0, 126, 249);
+                    MakeBookingButton.Enabled = false;
                 }
                 else
                 {
@@ -683,7 +743,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             surnametextbox.Text = guest.LastName;
             emailtextbox.Text = guest.Email;
             phonetextbox.Text = guest.Phone;
-            addresstextbox.Text = guest.Address;
+            guna2TextBox1.Text = guest.GuestId;
 
             // Disable guest info fields
             NameTextBox.ReadOnly = true;

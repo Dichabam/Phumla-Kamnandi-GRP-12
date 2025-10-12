@@ -1,4 +1,13 @@
-﻿using System;
+﻿/*Semester Project - Group 12
+ * 
+ * -----------------Members--------------------------
+ * Dichaba Mofokeng, MFKDIC001
+ * Simon Baraka, LMDSIM001 
+ * Rearabilwe Kgokong, KGKREA001  
+ * Khumiso Motata, MTTKAG001 
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -65,9 +74,9 @@ namespace Phumla_Kamnandi_GRP_12.Database
                 Email,
                 Phone,
                 Address,
-                CreditCardNum,
                 DateRegistered,
-                IsInGoodStanding
+                IsInGoodStanding,
+                IdNum
             )
             VALUES (
                 @id,
@@ -76,9 +85,9 @@ namespace Phumla_Kamnandi_GRP_12.Database
                 @email,
                 @phone,
                 @address,
-                @card,
                 @date,
-                @status
+                @status,
+                @idnum
             )", cn);
 
             cmd.Parameters.AddWithValue("@id", guest.GuestId);
@@ -87,28 +96,27 @@ namespace Phumla_Kamnandi_GRP_12.Database
             cmd.Parameters.AddWithValue("@email", guest.Email ?? string.Empty);
             cmd.Parameters.AddWithValue("@phone", guest.Phone ?? string.Empty);
             cmd.Parameters.AddWithValue("@address", guest.Address ?? string.Empty);
-            cmd.Parameters.AddWithValue("@card", guest.CreditCardLastFourDigits ?? string.Empty);
             cmd.Parameters.AddWithValue("@date", guest.DateRegistered);
             cmd.Parameters.AddWithValue("@status", guest.IsInGoodStanding);
+            cmd.Parameters.AddWithValue("@idnum", guest.IdNum ?? string.Empty);
 
             cn.Open();
             cmd.ExecuteNonQuery();
-
         }
 
         public void Update(Guest guest)
         {
             using var cn = new SqlConnection(connectionString);
             var cmd = new SqlCommand(@"
-        UPDATE Guest SET 
-            FirstName = @first, 
-            LastName = @last, 
-            Email = @email, 
-            Phone = @phone, 
-            Address = @address, 
-            CreditCardNum = @card, 
-            IsInGoodStanding = @status
-        WHERE Id = @id", cn);
+                UPDATE Guest SET 
+                    FirstName = @first, 
+                    LastName = @last, 
+                    Email = @email, 
+                    Phone = @phone, 
+                    Address = @address, 
+                    IsInGoodStanding = @status,
+                    IdNum = @idnum
+                WHERE Id = @id", cn);
 
             cmd.Parameters.AddWithValue("@id", guest.GuestId);
             cmd.Parameters.AddWithValue("@first", guest.FirstName);
@@ -116,8 +124,8 @@ namespace Phumla_Kamnandi_GRP_12.Database
             cmd.Parameters.AddWithValue("@email", guest.Email ?? string.Empty);
             cmd.Parameters.AddWithValue("@phone", guest.Phone ?? string.Empty);
             cmd.Parameters.AddWithValue("@address", guest.Address ?? string.Empty);
-            cmd.Parameters.AddWithValue("@card", guest.CreditCardLastFourDigits ?? string.Empty);
             cmd.Parameters.AddWithValue("@status", guest.IsInGoodStanding);
+            cmd.Parameters.AddWithValue("@idnum", guest.IdNum ?? string.Empty);
 
             cn.Open();
             cmd.ExecuteNonQuery();
@@ -140,11 +148,12 @@ namespace Phumla_Kamnandi_GRP_12.Database
                 reader["LastName"].ToString().Trim(),
                 reader["Email"].ToString().Trim(),
                 reader["Phone"].ToString().Trim(),
-                reader["Address"].ToString().Trim()
+                reader["Address"].ToString().Trim(),
+                reader["IdNum"] != DBNull.Value ? reader["IdNum"].ToString().Trim() : string.Empty
             );
 
-        
-            var guestIdProperty = typeof(Guest).GetProperty("Id",
+            // Set GuestId using reflection (since it has a private setter)
+            var guestIdProperty = typeof(Guest).GetProperty("GuestId",
                 System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance);
 
             if (guestIdProperty != null && guestIdProperty.CanWrite)
@@ -152,6 +161,7 @@ namespace Phumla_Kamnandi_GRP_12.Database
                 guestIdProperty.SetValue(guest, reader["Id"].ToString().Trim());
             }
 
+            // Set DateRegistered using reflection (since it has a private setter)
             var dateProperty = typeof(Guest).GetProperty("DateRegistered",
                 System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance);
 
@@ -161,15 +171,6 @@ namespace Phumla_Kamnandi_GRP_12.Database
             }
 
             guest.IsInGoodStanding = Convert.ToBoolean(reader["IsInGoodStanding"]);
-
-            if (reader["CreditCardNum"] != DBNull.Value)
-            {
-                string cardDigits = reader["CreditCardNum"].ToString().Trim();
-                if (!string.IsNullOrEmpty(cardDigits))
-                {
-                    guest.UpdateCreditCard(cardDigits);
-                }
-            }
 
             return guest;
         }

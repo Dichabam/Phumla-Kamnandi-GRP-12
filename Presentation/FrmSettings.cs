@@ -1,4 +1,13 @@
-﻿using Guna.UI2.WinForms;
+﻿/*Semester Project - Group 12
+ * 
+ * -----------------Members--------------------------
+ * Dichaba Mofokeng, MFKDIC001
+ * Simon Baraka, LMDSIM001 
+ * Rearabilwe Kgokong, KGKREA001  
+ * Khumiso Motata, MTTKAG001 
+ */
+
+using Guna.UI2.WinForms;
 using Phumla_Kamnandi_GRP_12.Business.Entities;
 using Phumla_Kamnandi_GRP_12.Business.Interfaces;
 using Phumla_Kamnandi_GRP_12.Business.Services;
@@ -100,7 +109,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             NametextEm.ReadOnly = readOnly;
             surnameTextBox.ReadOnly = readOnly;
             PhonetextBoxEm.ReadOnly = readOnly;
-            EmailTxtBoxEm.ReadOnly = readOnly;
+            EmailTxtBoxEm.ReadOnly = true;
 
            
             Color fillColor = readOnly ? Color.FromArgb(240, 240, 240) : Color.White;
@@ -255,20 +264,10 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
         {
             if (Errorsuccessmessage != null)
             {
-                Errorsuccessmessage.Text = message;
-                Errorsuccessmessage.ForeColor = isSuccess ? Color.Green : Color.Red;
-                Errorsuccessmessage.Visible = true;
+                string caption = isSuccess ? "Success" : "Error";
+                MessageBoxIcon icon = isSuccess ? MessageBoxIcon.Information : MessageBoxIcon.Error;
 
-
-                Timer timer = new Timer();
-                timer.Interval = 5000;
-                timer.Tick += (s, e) =>
-                {
-                    Errorsuccessmessage.Visible = false;
-                    timer.Stop();
-                    timer.Dispose();
-                };
-                timer.Start();
+                MessageBox.Show(message, caption, MessageBoxButtons.OK, icon);
             }
         }
 

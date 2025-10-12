@@ -1,4 +1,13 @@
-﻿using System;
+﻿/*Semester Project - Group 12
+ * 
+ * -----------------Members--------------------------
+ * Dichaba Mofokeng, MFKDIC001
+ * Simon Baraka, LMDSIM001 
+ * Rearabilwe Kgokong, KGKREA001  
+ * Khumiso Motata, MTTKAG001 
+ */
+
+using System;
 using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
@@ -17,14 +26,13 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
         private FrmRooms _currentRoomsForm;
         private FrmGuests _currentGuestsForm;
         private FrmBookings _currentBookingsForm;
-
+        private Form _currentForm; 
 
         public Dashboard()
         {
             InitializeComponent();
             _services = ServiceLocator.Instance;
             Region = System.Drawing.Region.FromHrgn(CreateRountRectRgn(0, 0, Width, Height, 25, 25));
-
 
             SetupUserInterface();
 
@@ -40,19 +48,16 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
 
         private void SetupUserInterface()
         {
-            // Update welcome label with logged in user 
             if (!string.IsNullOrEmpty(_services.CurrentUserName))
             {
                 WelcomLabel.Text = $"{_services.CurrentUserName.ToUpper()}";
                 WelcomLabel.TextAlign = ContentAlignment.MiddleCenter;
-
             }
             else
             {
                 WelcomLabel.Text = "USER";
             }
 
-            // Hide Employees button if user is not admin/manager
             if (!_services.IsAdmin)
             {
                 EmployeesButton.Visible = false;
@@ -74,28 +79,33 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             SearchBox.ReadOnly = true;
             SearchBox.Visible = true;
             SearchBox.PlaceholderText = "";
+            SearchBox.Clear();
         }
 
         private void BookingButton_Click(object sender, EventArgs e)
         {
             UpdateNavigationPanel(BookingButton);
             lblTitle.Text = "BOOKINGS";
-            LoadForm(new FrmBookings());
+            _currentBookingsForm = new FrmBookings();
+            LoadForm(_currentBookingsForm);
 
             SearchBox.Visible = true;
             SearchBox.ReadOnly = false;
             SearchBox.PlaceholderText = "Search Bookings...";
+            SearchBox.Clear();
         }
 
         private void GuestButton_Click(object sender, EventArgs e)
         {
             UpdateNavigationPanel(GuestButton);
             lblTitle.Text = "GUESTS";
-            LoadForm(new FrmGuests());
+            _currentGuestsForm = new FrmGuests();
+            LoadForm(_currentGuestsForm);
 
             SearchBox.ReadOnly = false;
             SearchBox.Visible = true;
             SearchBox.PlaceholderText = "Search Guests...";
+            SearchBox.Clear();
         }
 
         private void ReportsButton_Click(object sender, EventArgs e)
@@ -107,6 +117,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             SearchBox.Visible = true;
             SearchBox.ReadOnly = true;
             SearchBox.PlaceholderText = "";
+            SearchBox.Clear();
         }
 
         private void RoomsButton_Click(object sender, EventArgs e)
@@ -119,6 +130,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             SearchBox.ReadOnly = false;
             SearchBox.Visible = true;
             SearchBox.PlaceholderText = "Search Rooms...";
+            SearchBox.Clear();
         }
 
         private void SettingsButton_Click(object sender, EventArgs e)
@@ -129,25 +141,22 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             SearchBox.Visible = true;
             SearchBox.ReadOnly = true;
             SearchBox.PlaceholderText = "";
+            SearchBox.Clear();
         }
 
         private void LogoutButton_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show(
-             "Are you sure you want to logout?",
-             "Confirm Logout",
-             MessageBoxButtons.YesNo,
-             MessageBoxIcon.Question);
+                "Are you sure you want to logout?",
+                "Confirm Logout",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
 
             if (result == DialogResult.Yes)
             {
                 _services.ClearSession();
-
-
                 Login loginForm = new Login();
                 loginForm.Show();
-
-
                 this.Hide();
             }
         }
@@ -164,6 +173,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             UpdateNavigationPanel(EmployeesButton);
             lblTitle.Text = "EMPLOYEES";
             LoadForm(new FrmEmployees());
+            SearchBox.Clear();
         }
 
         private void exitButton_Click(object sender, EventArgs e)
@@ -225,6 +235,9 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             form.FormBorderStyle = FormBorderStyle.None;
             this.PnlFormLoader.Controls.Add(form);
             form.Show();
+
+      
+            _currentForm = form;
         }
 
         private void UpdateNavigationPanel(Button button)
@@ -245,29 +258,23 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
         }
         #endregion
 
-
-
         private void SearchBox_TextChanged(object sender, EventArgs e)
         {
             string searchText = SearchBox.Text.Trim();
 
-            if (_currentRoomsForm != null && lblTitle.Text == "ROOMS")
+      
+            if (lblTitle.Text == "ROOMS" && _currentRoomsForm != null)
             {
                 _currentRoomsForm.SearchRooms(searchText);
             }
-            else if (_currentBookingsForm != null && lblTitle.Text == "BOOKINGS")
+            else if (lblTitle.Text == "BOOKINGS" && _currentBookingsForm != null)
             {
                 _currentBookingsForm.SearchBookings(searchText);
             }
-            else if (_currentGuestsForm != null && lblTitle.Text == "GUESTS")
+            else if (lblTitle.Text == "GUESTS" && _currentGuestsForm != null)
             {
                 _currentGuestsForm.SearchGuests(searchText);
             }
-
-
-
         }
     }
-
-
 }

@@ -1,4 +1,13 @@
-﻿using System;
+﻿/*Semester Project - Group 12
+ * 
+ * -----------------Members--------------------------
+ * Dichaba Mofokeng, MFKDIC001
+ * Simon Baraka, LMDSIM001 
+ * Rearabilwe Kgokong, KGKREA001  
+ * Khumiso Motata, MTTKAG001 
+ */
+
+using System;
 using System.Data;
 using System.IO;
 using System.Linq;
@@ -333,7 +342,8 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
 
         private void ClearButton_Click(object sender, EventArgs e)
         {
-            
+            ReportRichTextBox.Clear();
+            _lastGeneratedReport = string.Empty;
         }
     }
 }

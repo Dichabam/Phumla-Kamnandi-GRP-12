@@ -22,7 +22,9 @@ namespace Phumla_Kamnandi_GRP_12.Business.Entities
         public DateTime DateRegistered { get; private set; }
         public bool IsInGoodStanding { get; set; }
 
-        public Guest(string firstName, string lastName, string email, string phone, string address)
+        public string IdNum { get; set; }
+
+        public Guest(string firstName, string lastName, string email, string phone, string address, string idNum)
         {
             // Generate unique ID for new guest
             GuestId = Guid.NewGuid().ToString("N").Substring(0, 8).ToUpper();
@@ -32,7 +34,8 @@ namespace Phumla_Kamnandi_GRP_12.Business.Entities
             Phone = phone;
             Address = address;
             DateRegistered = DateTime.Now;
-            IsInGoodStanding = true;    
+            IsInGoodStanding = true;
+            IdNum = idNum;
         }
 
         public string FullName => $"{FirstName} {LastName}";
@@ -49,20 +52,21 @@ namespace Phumla_Kamnandi_GRP_12.Business.Entities
             if (!string.IsNullOrEmpty(address)) Address = address;
         }
 
+
         public void UpdateName(string firstName, string lastName)
         {
-            if (!string.IsNullOrEmpty(firstName))
+            
+            var firstNameProp = typeof(Guest).GetProperty("FirstName");
+            var lastNameProp = typeof(Guest).GetProperty("LastName");
+
+            if (!string.IsNullOrEmpty(firstName) && firstNameProp != null)
             {
-                var firstNameField = typeof(Guest).GetField("<FirstName>k__BackingField",
-                    System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic);
-                firstNameField?.SetValue(this, firstName);
+                firstNameProp.SetValue(this, firstName);
             }
 
-            if (!string.IsNullOrEmpty(lastName))
+            if (!string.IsNullOrEmpty(lastName) && lastNameProp != null)
             {
-                var lastNameField = typeof(Guest).GetField("<LastName>k__BackingField",
-                    System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic);
-                lastNameField?.SetValue(this, lastName);
+                lastNameProp.SetValue(this, lastName);
             }
         }
     }
