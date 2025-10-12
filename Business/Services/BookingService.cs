@@ -31,22 +31,10 @@ namespace Phumla_Kamnandi_GRP_12.Business.Services
             _pricingService = pricingService;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="guestId"></param>
-        /// <param name="checkIn"></param>
-        /// <param name="checkOut"></param>
-        /// <param name="adults"></param>
-        /// <param name="children"></param>
-        /// <param name="singleOccupancy"></param>
-        /// <param name="specialRequests"></param>
-        /// <returns></returns>
         public BookingResult MakeBooking(string guestId, DateTime checkIn, DateTime checkOut,
             int adults, int children, bool singleOccupancy, string specialRequests = null)
         {
-         // IDEA: 
-            // 1: Validate guest exists and is in good standing
+         
             var guest = _guestRepository.GetById(guestId);
             if (guest == null)
                 return new BookingResult { Success = false, Message = "Guest not found" };
@@ -54,14 +42,14 @@ namespace Phumla_Kamnandi_GRP_12.Business.Services
             if (!guest.IsInGoodStanding)
                 return new BookingResult { Success = false, Message = "Guest account has outstanding issues" };
 
-            // 2: Validate dates according to business rules
+        
             if (checkIn >= checkOut)
                 return new BookingResult { Success = false, Message = "Check-out must be after check-in" };
 
             if (checkIn < DateTime.Today)
                 return new BookingResult { Success = false, Message = "Cannot book dates in the past" };
 
-            // 3: Validate occupancy (max 4 people per room as per regulations)
+          
             int totalGuests = adults + children;
             if (totalGuests > 4)
                 return new BookingResult { Success = false, Message = "Maximum 4 guests per room" };
@@ -69,22 +57,25 @@ namespace Phumla_Kamnandi_GRP_12.Business.Services
             if (adults == 0)
                 return new BookingResult { Success = false, Message = "At least one adult required" };
 
-            // 4: Check room availability and find available room
+
             var availableRoom = FindAvailableRoom(checkIn, checkOut);
             if (availableRoom == null)
                 return new BookingResult { Success = false, Message = "No rooms available for selected dates" };
 
-            // 5: Create booking with generated reference number
+      
             var booking = new Booking(guestId, checkIn, checkOut, adults, children, singleOccupancy);
             booking.RoomNumber = availableRoom.RoomNumber;
             booking.SpecialRequests = specialRequests;
 
-            // 6: Calculate total amount based on pricing rules
+
             decimal totalAmount = _pricingService.CalculateTotalAmount(checkIn, checkOut, adults, 0, children, singleOccupancy);
             booking.SetTotalAmount(totalAmount);
 
-            // 7: Save booking to repository
+   
             _bookingRepository.Add(booking);
+
+
+            UpdateRoomAvailability(availableRoom.RoomNumber, checkIn, checkOut);
 
             return new BookingResult
             {
@@ -96,80 +87,75 @@ namespace Phumla_Kamnandi_GRP_12.Business.Services
             };
         }
 
-        /// <summary>
-        /// the idea is when you change booking, the system must try to find try to look for an available room
-        /// and check if the room is available for the "changed" dates and 
-        /// </summary>
-        /// <param name="bookingRef"></param>
-        /// <param name="newCheckIn"></param>
-        /// <param name="newCheckOut"></param>
-        /// <returns></returns>
         public bool ChangeBooking(string bookingRef, DateTime newCheckIn, DateTime newCheckOut)
         {
             var booking = _bookingRepository.GetByReference(bookingRef);
             if (booking == null || booking.Status == BookingStatus.Cancelled)
                 return false;
 
-            // Validate new dates
             if (newCheckIn >= newCheckOut || newCheckIn < DateTime.Today)
                 return false;
 
-            // Check if current room is available for new dates
+            int oldRoomNumber = booking.RoomNumber;
+            DateTime oldCheckIn = booking.CheckInDate;
+            DateTime oldCheckOut = booking.CheckOutDate;
+
+          
             bool currentRoomAvailable = _bookingRepository.RoomAvailableForDates(
                 booking.RoomNumber, newCheckIn, newCheckOut, bookingRef);
 
             if (!currentRoomAvailable)
             {
-                // Try to find alternative room for new dates
                 var newRoom = FindAvailableRoom(newCheckIn, newCheckOut);
                 if (newRoom == null) return false;
                 booking.RoomNumber = newRoom.RoomNumber;
             }
 
-            // Update booking with new dates
             booking.UpdateDates(newCheckIn, newCheckOut);
 
-            // Recalculate pricing for new dates
+      
             decimal newAmount = _pricingService.CalculateTotalAmount(newCheckIn, newCheckOut,
                 booking.NumberOfAdults, 0, booking.NumberOfChildren, booking.IsSingleOccupancy);
             booking.SetTotalAmount(newAmount);
 
-            // Handle deposit adjustment if amount changed
             if (booking.Status == BookingStatus.Confirmed && newAmount != booking.TotalAmount)
             {
-                // May need additional deposit if new amount is higher
                 decimal newDepositRequired = newAmount * 0.10m;
                 if (newDepositRequired > booking.DepositPaid)
                 {
-                    booking.Status = BookingStatus.Unconfirmed; // Requires additional payment
+                    booking.Status = BookingStatus.Unconfirmed;
                 }
             }
 
             _bookingRepository.Update(booking);
+
+        
+            UpdateRoomAvailability(oldRoomNumber, oldCheckIn, oldCheckOut);
+            UpdateRoomAvailability(booking.RoomNumber, newCheckIn, newCheckOut);
+
             return true;
         }
 
-        /// <summary>
-        /// remove every instance of the booking in the database 
-        /// </summary>
-        /// <param name="bookingRef"></param>
-        /// <returns></returns>
         public bool CancelBooking(string bookingRef)
         {
             var booking = _bookingRepository.GetByReference(bookingRef);
             if (booking == null || booking.Status == BookingStatus.Cancelled)
                 return false;
 
+         
+            int roomNumber = booking.RoomNumber;
+            DateTime checkIn = booking.CheckInDate;
+            DateTime checkOut = booking.CheckOutDate;
+
             booking.CancelBooking();
             _bookingRepository.Update(booking);
+
+       
+            UpdateRoomAvailability(roomNumber, checkIn, checkOut);
+
             return true;
         }
 
-        /// <summary>
-        /// for searching purposes 
-        /// </summary>
-        /// <param name="bookingRef"></param>
-        /// <returns></returns>
         public Booking GetBookingDetails(string bookingRef)
         {
             return _bookingRepository.GetByReference(bookingRef);
@@ -197,38 +183,36 @@ namespace Phumla_Kamnandi_GRP_12.Business.Services
             return availableRooms.FirstOrDefault();
         }
 
-        // Simulate payment verification 
-
         public bool ConfirmBookingWithDeposit(string bookingRef, decimal depositAmount, string creditCardNumber = null)
         {
             var booking = _bookingRepository.GetByReference(bookingRef);
             if (booking == null)
                 return false;
 
-            // Check if deposit is sufficient (minimum 10% of total)
             if (depositAmount < booking.DepositAmount)
                 return false;
 
-            // Store credit card details if provided
             if (!string.IsNullOrEmpty(creditCardNumber) && creditCardNumber.Length >= 4)
             {
                 var guest = _guestRepository.GetById(booking.GuestId);
                 if (guest != null)
                 {
-                    // Store last 4 digits only for security
                     string lastFourDigits = creditCardNumber.Substring(creditCardNumber.Length - 4);
                     guest.UpdateCreditCard(lastFourDigits);
                     _guestRepository.Update(guest);
                 }
             }
 
-            // Simulate payment verification 
             bool paymentVerified = SimulatePaymentVerification(creditCardNumber, depositAmount);
 
             if (paymentVerified)
             {
                 booking.ConfirmBooking(depositAmount);
                 _bookingRepository.Update(booking);
+
+         
+                UpdateRoomAvailability(booking.RoomNumber, booking.CheckInDate, booking.CheckOutDate);
+
                 return true;
             }
 
@@ -280,12 +264,35 @@ namespace Phumla_Kamnandi_GRP_12.Business.Services
         }
 
         /// <summary>
-        /// Assumes all payments are authorised
-        /// for deposits whithout credit card, accept if amount is valid
+        /// Updates room availability based on current bookings
+        /// This method checks if a room should be marked as available or unavailable
+        /// based on active bookings for today
         /// </summary>
-        /// <param name="creditCardNumber"></param>
-        /// <param name="amount"></param>
-        /// <returns></returns>
+        private void UpdateRoomAvailability(int roomNumber, DateTime checkIn, DateTime checkOut)
+        {
+            try
+            {
+                var room = _roomRepository.GetByNumber(roomNumber);
+                if (room == null) return;
+
+                DateTime today = DateTime.Today;
+
+           
+                var activeBookingsToday = _bookingRepository.GetActiveBookingsForDate(today)
+                    .Where(b => b.RoomNumber == roomNumber).ToList();
+
+         
+                room.IsAvailable = !activeBookingsToday.Any();
+
+                _roomRepository.Update(room);
+            }
+            catch (Exception ex)
+            {
+    
+                System.Diagnostics.Debug.WriteLine($"Error updating room availability: {ex.Message}");
+            }
+        }
+
         private bool SimulatePaymentVerification(string creditCardNumber, decimal amount)
         {
             if (amount <= 0)
@@ -299,7 +306,5 @@ namespace Phumla_Kamnandi_GRP_12.Business.Services
 
             return true;
         }
-
-
     }
 }
