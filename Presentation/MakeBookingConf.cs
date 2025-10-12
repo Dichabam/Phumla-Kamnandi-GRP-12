@@ -15,10 +15,10 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             _bookingsForm = bookingsForm;
             _services = ServiceLocator.Instance;
 
-            // Hide error label by default
+   
             IDNotFoundLabel.Visible = false;
 
-            // Wire up events
+        
             guna2Button1.Click += ConfirmButton_Click;
             IDNumberTextBox.TextChanged += IDNumberTextBox_TextChanged_Handler;
         }
@@ -36,7 +36,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
 
             try
             {
-                // Search for guest by ID (stored in Address field)
+            
                 var allGuests = _services.GuestRepository.GetAll();
                 Guest foundGuest = null;
 
@@ -57,7 +57,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                     return;
                 }
 
-                // Guest found - proceed with booking
+           
                 this.Close();
                 _bookingsForm.StartExistingGuestBooking(foundGuest);
             }

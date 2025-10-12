@@ -30,7 +30,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             var employeeRepo = new EmployeeDB();
             _employeeService = new EmployeeService(employeeRepo);
 
-            // Initialize form on load
+        
             this.Load += FrmSettings_Load;
         }
 
@@ -322,6 +322,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
         }
         #endregion
 
+        #region view password buttons
         private void viewPasswordButton_Click(object sender, EventArgs e)
         {
             if (currentPasswordTextBox.UseSystemPasswordChar)
@@ -363,5 +364,6 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                 viewPasswordButton3.Image = Properties.Resources.visibility_50dp_000000_FILL0_wght400_GRAD0_opsz48;
             }
         }
+        #endregion
     }
 }
