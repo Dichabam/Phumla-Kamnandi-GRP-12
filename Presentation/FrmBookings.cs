@@ -743,7 +743,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             surnametextbox.Text = guest.LastName;
             emailtextbox.Text = guest.Email;
             phonetextbox.Text = guest.Phone;
-            guna2TextBox1.Text = guest.GuestId;
+            guna2TextBox1.Text = guest.IdNum;
 
             // Disable guest info fields
             NameTextBox.ReadOnly = true;

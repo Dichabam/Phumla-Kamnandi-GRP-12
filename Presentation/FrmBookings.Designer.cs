@@ -136,7 +136,7 @@
             this.SpecialRequestlabel.AutoSize = true;
             this.SpecialRequestlabel.Font = new System.Drawing.Font("Nirmala UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SpecialRequestlabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.SpecialRequestlabel.Location = new System.Drawing.Point(50, 545);
+            this.SpecialRequestlabel.Location = new System.Drawing.Point(36, 545);
             this.SpecialRequestlabel.Name = "SpecialRequestlabel";
             this.SpecialRequestlabel.Size = new System.Drawing.Size(104, 17);
             this.SpecialRequestlabel.TabIndex = 60;
@@ -158,7 +158,7 @@
             this.Occupancylabel.AutoSize = true;
             this.Occupancylabel.Font = new System.Drawing.Font("Nirmala UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Occupancylabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.Occupancylabel.Location = new System.Drawing.Point(629, 504);
+            this.Occupancylabel.Location = new System.Drawing.Point(629, 488);
             this.Occupancylabel.Name = "Occupancylabel";
             this.Occupancylabel.Size = new System.Drawing.Size(122, 17);
             this.Occupancylabel.TabIndex = 65;
@@ -191,7 +191,7 @@
             this.CreditCardlabel.AutoSize = true;
             this.CreditCardlabel.Font = new System.Drawing.Font("Nirmala UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CreditCardlabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.CreditCardlabel.Location = new System.Drawing.Point(438, 545);
+            this.CreditCardlabel.Location = new System.Drawing.Point(415, 545);
             this.CreditCardlabel.Name = "CreditCardlabel";
             this.CreditCardlabel.Size = new System.Drawing.Size(125, 17);
             this.CreditCardlabel.TabIndex = 61;
@@ -222,7 +222,7 @@
             this.YesNoComboBox.Items.AddRange(new object[] {
             "Yes",
             "No"});
-            this.YesNoComboBox.Location = new System.Drawing.Point(757, 488);
+            this.YesNoComboBox.Location = new System.Drawing.Point(774, 485);
             this.YesNoComboBox.Name = "YesNoComboBox";
             this.YesNoComboBox.Size = new System.Drawing.Size(140, 36);
             this.YesNoComboBox.TabIndex = 70;
@@ -387,7 +387,7 @@
             this.specialrequestTextbox.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.specialrequestTextbox.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.specialrequestTextbox.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.specialrequestTextbox.Location = new System.Drawing.Point(181, 545);
+            this.specialrequestTextbox.Location = new System.Drawing.Point(146, 545);
             this.specialrequestTextbox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.specialrequestTextbox.Name = "specialrequestTextbox";
             this.specialrequestTextbox.PlaceholderText = "";
@@ -433,7 +433,7 @@
             this.checkoutlabel.AutoSize = true;
             this.checkoutlabel.Font = new System.Drawing.Font("Nirmala UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkoutlabel.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.checkoutlabel.Location = new System.Drawing.Point(449, 614);
+            this.checkoutlabel.Location = new System.Drawing.Point(501, 614);
             this.checkoutlabel.Name = "checkoutlabel";
             this.checkoutlabel.Size = new System.Drawing.Size(104, 17);
             this.checkoutlabel.TabIndex = 60;
@@ -444,7 +444,7 @@
             this.checkindp.Checked = true;
             this.checkindp.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.checkindp.Format = System.Windows.Forms.DateTimePickerFormat.Long;
-            this.checkindp.Location = new System.Drawing.Point(135, 604);
+            this.checkindp.Location = new System.Drawing.Point(145, 604);
             this.checkindp.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.checkindp.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.checkindp.Name = "checkindp";
@@ -458,7 +458,7 @@
             this.checkoutdp.Checked = true;
             this.checkoutdp.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.checkoutdp.Format = System.Windows.Forms.DateTimePickerFormat.Long;
-            this.checkoutdp.Location = new System.Drawing.Point(569, 604);
+            this.checkoutdp.Location = new System.Drawing.Point(632, 604);
             this.checkoutdp.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.checkoutdp.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.checkoutdp.Name = "checkoutdp";
@@ -474,7 +474,7 @@
             this.SubmitButton.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.SubmitButton.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.SubmitButton.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.SubmitButton.FillColor = System.Drawing.Color.Lime;
+            this.SubmitButton.FillColor = System.Drawing.Color.ForestGreen;
             this.SubmitButton.Font = new System.Drawing.Font("Nirmala UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SubmitButton.ForeColor = System.Drawing.Color.White;
             this.SubmitButton.Image = global::Phumla_Kamnandi_GRP_12.Properties.Resources.man_4_50dp_FFFFFF_FILL0_wght400_GRAD0_opsz48;

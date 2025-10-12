@@ -9,6 +9,8 @@
  * __________________________________________________
  * 
  * This is our implementation of the Booking System of Phumla Kamnandi
+ * 
+ *  use this in CMD if mdf file gives you problems : "sqllocaldb stop "MSSQLLocalDB"
  */
 
 using System;
