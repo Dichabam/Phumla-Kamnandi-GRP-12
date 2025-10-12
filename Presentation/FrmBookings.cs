@@ -83,24 +83,62 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                     ShowdataGridView.DataSource = null;
                     ShowdataGridView.DataSource = dt;
                     ShowdataGridView.Refresh();
+
                     
-                    
+
                     if (ShowdataGridView.Columns.Contains("GuestId"))
                         ShowdataGridView.Columns["GuestId"].Visible = false;
-
-                   
                     if (ShowdataGridView.Columns.Contains("TotalAmount"))
                         ShowdataGridView.Columns["TotalAmount"].DefaultCellStyle.Format = "C2";
                     if (ShowdataGridView.Columns.Contains("DepositAmount"))
                         ShowdataGridView.Columns["DepositAmount"].DefaultCellStyle.Format = "C2";
                     if (ShowdataGridView.Columns.Contains("DepositPaid"))
+                    {
                         ShowdataGridView.Columns["DepositPaid"].DefaultCellStyle.Format = "C2";
+                        ShowdataGridView.Columns["DepositPaid"].ReadOnly = false;
+                    }
                     if (ShowdataGridView.Columns.Contains("CheckInDate"))
                         ShowdataGridView.Columns["CheckInDate"].DefaultCellStyle.Format = "yyyy-MM-dd";
                     if (ShowdataGridView.Columns.Contains("CheckOutDate"))
                         ShowdataGridView.Columns["CheckOutDate"].DefaultCellStyle.Format = "yyyy-MM-dd";
                     if (ShowdataGridView.Columns.Contains("BookingDate"))
                         ShowdataGridView.Columns["BookingDate"].DefaultCellStyle.Format = "yyyy-MM-dd HH:mm";
+                    
+                    if (ShowdataGridView.Columns.Contains("Status")) {
+                        var statusColumn = new DataGridViewComboBoxColumn();
+                        statusColumn.Name = "Status";
+                        statusColumn.HeaderText = "Status";
+                        statusColumn.DataPropertyName = "Status"; 
+                        statusColumn.Items.AddRange("Unconfirmed", "Confirmed", "Cancelled", "Completed", "NoShow");
+
+                        int colIndex = ShowdataGridView.Columns["Status"].Index;
+                        ShowdataGridView.Columns.Remove("Status");
+                        ShowdataGridView.Columns.Insert(colIndex, statusColumn);
+                    }
+                     
+                    if (ShowdataGridView.Columns.Contains("PaymentStatus"))
+                    {
+                        var paymentColumn = new DataGridViewComboBoxColumn();
+                        paymentColumn.Name = "PaymentStatus";
+                        paymentColumn.HeaderText = "Payment Status";
+                        paymentColumn.DataPropertyName = "PaymentStatus";
+                        paymentColumn.Items.AddRange("Pending", "Paid", "Refunded", "Failed");
+
+                        int colIndex = ShowdataGridView.Columns["PaymentStatus"].Index;
+                        ShowdataGridView.Columns.Remove("PaymentStatus");
+                        ShowdataGridView.Columns.Insert(colIndex, paymentColumn);
+                    }
+
+                    foreach (DataGridViewColumn col in ShowdataGridView.Columns)
+                    {
+                        if (col.Name != "Status" && col.Name != "PaymentStatus" && col.Name != "DepositPaid")
+                            col.ReadOnly = true;
+                        else
+                            col.ReadOnly = false;
+                    }
+
+
+
 
                     ShowdataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
                    
