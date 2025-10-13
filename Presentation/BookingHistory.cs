@@ -68,7 +68,8 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             if (_bookings == null || _bookings.Count == 0)
             {
                 DetailsLabel.Text = "No bookings found for this guest";
-                DetailsLabel.Font = new Font("Nirmala UI", 12, FontStyle.Bold);
+                DetailsLabel.Font = new Font("Nirmala UI", 18, FontStyle.Bold);
+                DetailsLabel.TextAlign = ContentAlignment.MiddleCenter;
                 DetailsLabel.ForeColor = Color.Orange;
                 richTxtBox.Text = "No booking history available.";
                 return;
@@ -89,9 +90,9 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
 
             if (lastBooking != null)
             {
-                DetailsLabel.Text = "";
-                DetailsLabel.Font = new Font("Nirmala UI", 9F, FontStyle.Regular);
-                DetailsLabel.ForeColor = Color.White;
+                DetailsLabel.Text = "Booking(s) Found!";
+                DetailsLabel.Font = new Font("Nirmala UI", 18, FontStyle.Bold);
+                DetailsLabel.ForeColor = Color.LimeGreen;
             }
 
             
