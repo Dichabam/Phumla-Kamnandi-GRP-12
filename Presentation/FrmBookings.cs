@@ -383,6 +383,14 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                     singleOccupancy,
                     specialrequestTextbox.Text.Trim()
                 );
+                var make_guest = guest = _services.GuestService.RegisterNewGuest(
+                            NameTextBox.Text.Trim(),
+                            surnametextbox.Text.Trim(),
+                            emailtextbox.Text.Trim(),
+                            phonetextbox.Text.Trim(),
+                            addresstextbox.Text.Trim(),
+                            guna2TextBox1.Text.Trim()
+                        );
 
                 if (result.Success)
                 {
@@ -417,6 +425,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
 
                                 booking.SetCreditCardInfo(lastFour);
                                 _services.BookingRepository.Update(booking);
+                                _services.GuestRepository.Update(make_guest);
                             }
                         }
                     }

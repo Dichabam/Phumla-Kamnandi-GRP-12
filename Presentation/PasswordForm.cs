@@ -128,7 +128,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                     {
                         if (!(form is Login))
                         {
-                            form.Close();
+                            this.Close();
                         }
                     }
 
