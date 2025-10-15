@@ -45,8 +45,9 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             LoadForm(new FrmHome());
             SearchBox.TextChanged += SearchBox_TextChanged;
             SearchBox.ReadOnly = true;
-            SearchBox.Visible = true;
+            //SearchBox.Visible = true;
             SearchBox.PlaceholderText = "";
+            SearchBox.Visible = false;
             SearchBox.Clear();
         }
 
@@ -81,7 +82,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             lblTitle.Text = "HOME";
             LoadForm(new FrmHome());
             SearchBox.ReadOnly = true;
-            SearchBox.Visible = true;
+            SearchBox.Visible = false;
             SearchBox.PlaceholderText = "";
             SearchBox.Clear();
         }
@@ -118,7 +119,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             lblTitle.Text = "REPORTS";
             LoadForm(new FrmReports());
 
-            SearchBox.Visible = true;
+            SearchBox.Visible = false;
             SearchBox.ReadOnly = true;
             SearchBox.PlaceholderText = "";
             SearchBox.Clear();
@@ -142,7 +143,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             UpdateNavigationPanel(SettingsButton);
             lblTitle.Text = "PROFILE";
             LoadForm(new FrmSettings());
-            SearchBox.Visible = true;
+            SearchBox.Visible = false;
             SearchBox.ReadOnly = true;
             SearchBox.PlaceholderText = "";
             SearchBox.Clear();

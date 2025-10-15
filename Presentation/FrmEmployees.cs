@@ -15,6 +15,7 @@ using Phumla_Kamnandi_GRP_12.Database;
 using System;
 using System.Data;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace Phumla_Kamnandi_GRP_12.Presentation
@@ -472,5 +473,62 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             }
         }
         #endregion
+
+        public void SearchEmployees(string searchText)
+        {
+            if (string.IsNullOrWhiteSpace(searchText))
+            {
+                LoadEmployees();
+                return;
+            }
+
+            try
+            {
+                var allEmp = _services.EmployeeRepository.GetAll();
+                var filteredGuests = allEmp.Where(g =>
+                    (g.FirstName?.ToLower().Contains(searchText.ToLower()) ?? false) ||
+                    (g.LastName?.ToLower().Contains(searchText.ToLower()) ?? false) ||
+                    (g.Email?.ToLower().Contains(searchText.ToLower()) ?? false) ||
+                    (g.Phone?.Contains(searchText) ?? false) ||
+                    (g.EmployeeId?.ToLower().Contains(searchText.ToLower()) ?? false)
+                ).ToList();
+
+                EmployeeDataGridViiew.DataSource = filteredGuests;
+
+
+                foreach (DataGridViewRow row in EmployeeDataGridViiew.Rows)
+                {
+                    if (row.DataBoundItem is Guest guest)
+                    {
+                        bool matchFound = false;
+                        foreach (DataGridViewCell cell in row.Cells)
+                        {
+                            if (cell.Value != null && cell.Value.ToString().ToLower().Contains(searchText.ToLower()))
+                            {
+                                matchFound = true;
+                                break;
+                            }
+                        }
+
+                        if (matchFound)
+                        {
+                            row.DefaultCellStyle.BackColor = Color.LightYellow;
+                        }
+                        
+                        else
+                        {
+                            row.DefaultCellStyle.BackColor = Color.White;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Search error: {ex.Message}", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
+
+
 }

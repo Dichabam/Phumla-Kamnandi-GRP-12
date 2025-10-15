@@ -7,13 +7,19 @@
  * Khumiso Motata, MTTKAG001 
  */
 
-using Phumla_Kamnandi_GRP_12.Properties;
+using PdfSharp.Drawing;
+using PdfSharp.Drawing.Layout;
+using PdfSharp.Fonts;
+using PdfSharp.Pdf;
 using Phumla_Kamnandi_GRP_12.Business.Entities;
+using Phumla_Kamnandi_GRP_12.Properties;
 using System;
 using System.Data;
 using System.Data.SqlClient;
-using System.Windows.Forms;
 using System.Drawing;
+using System.IO;
+using System.Windows.Forms;
+
 
 namespace Phumla_Kamnandi_GRP_12.Presentation
 {
@@ -24,6 +30,8 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
         private bool isInMakeBookingMode = false;
         private bool isInUpdateMode = false;
         private string selectedBookingRef = null;
+
+
 
         public FrmBookings()
         {
@@ -586,25 +594,83 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
        
         private void SaveConfirmationLetter(string content, string bookingRef)
         {
+            //modified by chat
+            GlobalFontSettings.FontResolver = new ResourceFontResolver();
+
             try
             {
                 SaveFileDialog saveDialog = new SaveFileDialog
                 {
-                    Filter = "Text Files (*.txt)|*.txt|All Files (*.*)|*.*",
-                    DefaultExt = "txt",
-                    FileName = $"Booking_Confirmation_{bookingRef}_{DateTime.Now:yyyyMMdd_HHmmss}.txt"
+                    Filter = "PDF Files (*.pdf)|*.pdf|All Files (*.*)|*.*",
+                    DefaultExt = "pdf",
+                    FileName = $"Booking_Confirmation_{bookingRef}_{DateTime.Now:yyyyMMdd_HHmmss}.pdf"
                 };
 
                 if (saveDialog.ShowDialog() == DialogResult.OK)
                 {
-                    System.IO.File.WriteAllText(saveDialog.FileName, content);
-                    MessageBox.Show($"Confirmation letter saved successfully to:\n{saveDialog.FileName}",
+                    PdfDocument document = new PdfDocument();
+                    document.Info.Title = "Phumla Kamnandi - Booking Confirmation Letter";
+
+                    PdfPage page = document.AddPage();
+                    XGraphics gfx = XGraphics.FromPdfPage(page);
+
+                    // --- Fonts ---
+                    XFont titleFont = new XFont("CMU Bright Roman", 20, XFontStyleEx.Bold);
+                    XFont normalFont = new XFont("CMU Bright Roman", 12, XFontStyleEx.Regular);
+                    XFont footerFont = new XFont("CMU Bright Roman", 9, XFontStyleEx.Regular);
+
+                    double pageWidth = page.Width;
+                    double yPoint = 40;
+
+                    // --- Logo centered ---
+                    using (MemoryStream ms = new MemoryStream())
+                    {
+                        Properties.Resources.PHUMLA_KAMNANDI.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
+                        ms.Position = 0;
+
+                        XImage logo = XImage.FromStream(ms);
+                        double logoWidth = 120;
+                        double logoHeight = 60;
+                        double logoX = (pageWidth - logoWidth) / 2; // center horizontally
+                        gfx.DrawImage(logo, logoX, yPoint, logoWidth, logoHeight);
+                    }
+
+                    yPoint += 80; // space below logo
+
+                    // --- Title centered ---
+                    gfx.DrawString("Booking Confirmation Letter", titleFont, XBrushes.DarkBlue,
+                        new XRect(0, yPoint, pageWidth, 30), XStringFormats.TopCenter);
+                    yPoint += 35;
+
+                    // --- Horizontal line ---
+                    gfx.DrawLine(XPens.Gray, 40, yPoint, pageWidth - 40, yPoint);
+                    yPoint += 20;
+
+                    // --- Reference number ---
+                    gfx.DrawString($"Booking Reference: {bookingRef}", normalFont, XBrushes.Black,
+                        new XRect(40, yPoint, pageWidth - 80, 20), XStringFormats.TopLeft);
+                    yPoint += 30;
+
+                    // --- Content (wrap text) ---
+                    XTextFormatter tf = new XTextFormatter(gfx);
+                    XRect textArea = new XRect(40, yPoint, pageWidth - 80, page.Height - yPoint - 60);
+                    tf.Alignment = XParagraphAlignment.Left;
+                    tf.DrawString(content, normalFont, XBrushes.Black, textArea, XStringFormats.TopLeft);
+
+                    // --- Footer with timestamp ---
+                    gfx.DrawString($"Generated on {DateTime.Now:yyyy-MM-dd HH:mm}", footerFont, XBrushes.Gray,
+                        new XRect(0, page.Height - 30, pageWidth, 20), XStringFormats.Center);
+
+                    // --- Save PDF ---
+                    document.Save(saveDialog.FileName);
+
+                    MessageBox.Show($"PDF saved successfully at:\n{saveDialog.FileName}",
                         "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error saving confirmation letter: {ex.Message}", "Error",
+                MessageBox.Show($"Error saving PDF: {ex.Message}", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
