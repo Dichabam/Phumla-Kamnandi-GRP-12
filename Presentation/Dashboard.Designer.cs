@@ -34,11 +34,8 @@
             this.Separator1 = new Guna.UI2.WinForms.Guna2Separator();
             this.Separator2 = new Guna.UI2.WinForms.Guna2Separator();
             this.WelcomLabel = new System.Windows.Forms.Label();
+            this.CompanyLogo = new System.Windows.Forms.PictureBox();
             this.SidePanelDSHB = new System.Windows.Forms.Panel();
-            this.lblTitle = new System.Windows.Forms.Label();
-            this.SearchBox = new Guna.UI2.WinForms.Guna2TextBox();
-            this.PnlFormLoader = new System.Windows.Forms.Panel();
-            this.exitButton = new Guna.UI2.WinForms.Guna2CircleButton();
             this.LogoutButton = new Guna.UI2.WinForms.Guna2Button();
             this.SettingsButton = new System.Windows.Forms.Button();
             this.EmployeesButton = new System.Windows.Forms.Button();
@@ -47,10 +44,13 @@
             this.GuestButton = new System.Windows.Forms.Button();
             this.BookingButton = new System.Windows.Forms.Button();
             this.HomeButton = new System.Windows.Forms.Button();
-            this.CompanyLogo = new System.Windows.Forms.PictureBox();
+            this.lblTitle = new System.Windows.Forms.Label();
+            this.SearchBox = new Guna.UI2.WinForms.Guna2TextBox();
+            this.PnlFormLoader = new System.Windows.Forms.Panel();
+            this.exitButton = new Guna.UI2.WinForms.Guna2CircleButton();
             this.SidePanel2.SuspendLayout();
-            this.SidePanelDSHB.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CompanyLogo)).BeginInit();
+            this.SidePanelDSHB.SuspendLayout();
             this.SuspendLayout();
             // 
             // PnlNav
@@ -94,12 +94,23 @@
             this.WelcomLabel.AutoSize = true;
             this.WelcomLabel.Font = new System.Drawing.Font("Nirmala UI", 8.25F, System.Drawing.FontStyle.Bold);
             this.WelcomLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
-            this.WelcomLabel.Location = new System.Drawing.Point(66, 163);
+            this.WelcomLabel.Location = new System.Drawing.Point(50, 163);
             this.WelcomLabel.Name = "WelcomLabel";
-            this.WelcomLabel.Size = new System.Drawing.Size(172, 19);
+            this.WelcomLabel.Size = new System.Drawing.Size(55, 19);
             this.WelcomLabel.TabIndex = 1;
-            this.WelcomLabel.Text = "WELCOME BACK, USER 1";
+            this.WelcomLabel.Text = "USER 1";
             this.WelcomLabel.Click += new System.EventHandler(this.WelcomLabel_Click);
+            // 
+            // CompanyLogo
+            // 
+            this.CompanyLogo.Dock = System.Windows.Forms.DockStyle.Top;
+            this.CompanyLogo.Image = global::Phumla_Kamnandi_GRP_12.Properties.Resources.PHUMLA_KAMNANDI_Photoroom;
+            this.CompanyLogo.Location = new System.Drawing.Point(0, 0);
+            this.CompanyLogo.Name = "CompanyLogo";
+            this.CompanyLogo.Size = new System.Drawing.Size(297, 198);
+            this.CompanyLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.CompanyLogo.TabIndex = 0;
+            this.CompanyLogo.TabStop = false;
             // 
             // SidePanelDSHB
             // 
@@ -119,69 +130,6 @@
             this.SidePanelDSHB.Name = "SidePanelDSHB";
             this.SidePanelDSHB.Size = new System.Drawing.Size(297, 777);
             this.SidePanelDSHB.TabIndex = 0;
-            // 
-            // lblTitle
-            // 
-            this.lblTitle.AutoSize = true;
-            this.lblTitle.Font = new System.Drawing.Font("Nirmala UI", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitle.ForeColor = System.Drawing.Color.DarkGray;
-            this.lblTitle.Location = new System.Drawing.Point(353, 17);
-            this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(120, 45);
-            this.lblTitle.TabIndex = 13;
-            this.lblTitle.Text = "HOME";
-            this.lblTitle.Click += new System.EventHandler(this.lblTitle_Click);
-            // 
-            // SearchBox
-            // 
-            this.SearchBox.Animated = true;
-            this.SearchBox.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.SearchBox.DefaultText = "";
-            this.SearchBox.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.SearchBox.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.SearchBox.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.SearchBox.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.SearchBox.FillColor = System.Drawing.Color.SlateGray;
-            this.SearchBox.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.SearchBox.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.SearchBox.ForeColor = System.Drawing.Color.White;
-            this.SearchBox.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.SearchBox.Location = new System.Drawing.Point(720, 17);
-            this.SearchBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.SearchBox.Name = "SearchBox";
-            this.SearchBox.PlaceholderForeColor = System.Drawing.Color.White;
-            this.SearchBox.PlaceholderText = "Search";
-            this.SearchBox.SelectedText = "";
-            this.SearchBox.Size = new System.Drawing.Size(421, 44);
-            this.SearchBox.TabIndex = 14;
-            // 
-            // PnlFormLoader
-            // 
-            this.PnlFormLoader.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.PnlFormLoader.Location = new System.Drawing.Point(297, 68);
-            this.PnlFormLoader.Name = "PnlFormLoader";
-            this.PnlFormLoader.Size = new System.Drawing.Size(954, 709);
-            this.PnlFormLoader.TabIndex = 16;
-            this.PnlFormLoader.Paint += new System.Windows.Forms.PaintEventHandler(this.PnlFormLoader_Paint);
-            // 
-            // exitButton
-            // 
-            this.exitButton.Animated = true;
-            this.exitButton.BorderColor = System.Drawing.Color.White;
-            this.exitButton.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.exitButton.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.exitButton.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.exitButton.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.exitButton.FillColor = System.Drawing.Color.Transparent;
-            this.exitButton.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.exitButton.ForeColor = System.Drawing.Color.DarkGray;
-            this.exitButton.Image = global::Phumla_Kamnandi_GRP_12.Properties.Resources.close_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24;
-            this.exitButton.Location = new System.Drawing.Point(1164, 12);
-            this.exitButton.Name = "exitButton";
-            this.exitButton.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            this.exitButton.Size = new System.Drawing.Size(75, 49);
-            this.exitButton.TabIndex = 15;
-            this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
             // 
             // LogoutButton
             // 
@@ -338,16 +286,68 @@
             this.HomeButton.Click += new System.EventHandler(this.HomeButton_Click);
             this.HomeButton.Leave += new System.EventHandler(this.HomeButton_Leave);
             // 
-            // CompanyLogo
+            // lblTitle
             // 
-            this.CompanyLogo.Dock = System.Windows.Forms.DockStyle.Top;
-            this.CompanyLogo.Image = global::Phumla_Kamnandi_GRP_12.Properties.Resources.PHUMLA_KAMNANDI_Photoroom;
-            this.CompanyLogo.Location = new System.Drawing.Point(0, 0);
-            this.CompanyLogo.Name = "CompanyLogo";
-            this.CompanyLogo.Size = new System.Drawing.Size(297, 198);
-            this.CompanyLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.CompanyLogo.TabIndex = 0;
-            this.CompanyLogo.TabStop = false;
+            this.lblTitle.AutoSize = true;
+            this.lblTitle.Font = new System.Drawing.Font("Nirmala UI", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitle.ForeColor = System.Drawing.Color.DarkGray;
+            this.lblTitle.Location = new System.Drawing.Point(353, 17);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(120, 45);
+            this.lblTitle.TabIndex = 13;
+            this.lblTitle.Text = "HOME";
+            this.lblTitle.Click += new System.EventHandler(this.lblTitle_Click);
+            // 
+            // SearchBox
+            // 
+            this.SearchBox.Animated = true;
+            this.SearchBox.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.SearchBox.DefaultText = "";
+            this.SearchBox.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.SearchBox.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.SearchBox.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.SearchBox.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.SearchBox.FillColor = System.Drawing.Color.SlateGray;
+            this.SearchBox.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.SearchBox.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.SearchBox.ForeColor = System.Drawing.Color.White;
+            this.SearchBox.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.SearchBox.Location = new System.Drawing.Point(720, 17);
+            this.SearchBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.SearchBox.Name = "SearchBox";
+            this.SearchBox.PlaceholderForeColor = System.Drawing.Color.White;
+            this.SearchBox.PlaceholderText = "Search";
+            this.SearchBox.SelectedText = "";
+            this.SearchBox.Size = new System.Drawing.Size(421, 44);
+            this.SearchBox.TabIndex = 14;
+            // 
+            // PnlFormLoader
+            // 
+            this.PnlFormLoader.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.PnlFormLoader.Location = new System.Drawing.Point(297, 68);
+            this.PnlFormLoader.Name = "PnlFormLoader";
+            this.PnlFormLoader.Size = new System.Drawing.Size(954, 709);
+            this.PnlFormLoader.TabIndex = 16;
+            this.PnlFormLoader.Paint += new System.Windows.Forms.PaintEventHandler(this.PnlFormLoader_Paint);
+            // 
+            // exitButton
+            // 
+            this.exitButton.Animated = true;
+            this.exitButton.BorderColor = System.Drawing.Color.White;
+            this.exitButton.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.exitButton.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.exitButton.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.exitButton.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.exitButton.FillColor = System.Drawing.Color.Transparent;
+            this.exitButton.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.exitButton.ForeColor = System.Drawing.Color.DarkGray;
+            this.exitButton.Image = global::Phumla_Kamnandi_GRP_12.Properties.Resources.close_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24;
+            this.exitButton.Location = new System.Drawing.Point(1164, 12);
+            this.exitButton.Name = "exitButton";
+            this.exitButton.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            this.exitButton.Size = new System.Drawing.Size(75, 49);
+            this.exitButton.TabIndex = 15;
+            this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
             // 
             // Dashboard
             // 
@@ -368,8 +368,8 @@
             this.Text = "-";
             this.SidePanel2.ResumeLayout(false);
             this.SidePanel2.PerformLayout();
-            this.SidePanelDSHB.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.CompanyLogo)).EndInit();
+            this.SidePanelDSHB.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 

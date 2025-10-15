@@ -26,6 +26,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
         private FrmRooms _currentRoomsForm;
         private FrmGuests _currentGuestsForm;
         private FrmBookings _currentBookingsForm;
+        private FrmEmployees _currentEmployeeForm;
         private Form _currentForm; 
 
         public Dashboard()
@@ -177,7 +178,11 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
 
             UpdateNavigationPanel(EmployeesButton);
             lblTitle.Text = "EMPLOYEES";
+            _currentEmployeeForm = new FrmEmployees();
             LoadForm(new FrmEmployees());
+            SearchBox.Visible = true;
+            SearchBox.ReadOnly = false;
+            SearchBox.PlaceholderText = "Search Employees...";
             SearchBox.Clear();
         }
 
@@ -279,6 +284,9 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             else if (lblTitle.Text == "GUESTS" && _currentGuestsForm != null)
             {
                 _currentGuestsForm.SearchGuests(searchText);
+            } else if (lblTitle.Text == "EMPLOYEES" && _currentGuestsForm != null)
+            {
+                _currentEmployeeForm.SearchEmployees(searchText);
             }
         }
     }
