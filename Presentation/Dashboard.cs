@@ -44,6 +44,10 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             lblTitle.Text = "HOME";
             LoadForm(new FrmHome());
             SearchBox.TextChanged += SearchBox_TextChanged;
+            SearchBox.ReadOnly = true;
+            SearchBox.Visible = true;
+            SearchBox.PlaceholderText = "";
+            SearchBox.Clear();
         }
 
         private void SetupUserInterface()

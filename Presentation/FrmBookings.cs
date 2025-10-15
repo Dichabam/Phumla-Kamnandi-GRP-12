@@ -642,6 +642,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                 emailtextbox.Text = guest.Email;
                 phonetextbox.Text = guest.Phone;
                 addresstextbox.Text = guest.Address;
+                guna2TextBox1.Text = guest.IdNum;
                 checkindp.Value = booking.CheckInDate;
                 checkoutdp.Value = booking.CheckOutDate;
                 adultstextbox.Text = booking.NumberOfAdults.ToString();
