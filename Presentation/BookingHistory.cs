@@ -69,7 +69,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             {
                 DetailsLabel.Text = "No bookings found for this guest";
                 DetailsLabel.Font = new Font("Nirmala UI", 18, FontStyle.Bold);
-                DetailsLabel.TextAlign = ContentAlignment.MiddleCenter;
+             
                 DetailsLabel.ForeColor = Color.Orange;
                 richTxtBox.Text = "No booking history available.";
                 return;
@@ -93,6 +93,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                 DetailsLabel.Text = "Booking(s) Found!";
                 DetailsLabel.Font = new Font("Nirmala UI", 18, FontStyle.Bold);
                 DetailsLabel.ForeColor = Color.LimeGreen;
+                
             }
 
             

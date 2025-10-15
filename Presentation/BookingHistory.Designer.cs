@@ -97,10 +97,13 @@
             // 
             // DetailsLabel
             // 
+            this.DetailsLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.DetailsLabel.AutoSize = true;
             this.DetailsLabel.Font = new System.Drawing.Font("Nirmala UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DetailsLabel.ForeColor = System.Drawing.Color.White;
-            this.DetailsLabel.Location = new System.Drawing.Point(319, 10);
+            this.DetailsLabel.Location = new System.Drawing.Point(86, 10);
             this.DetailsLabel.Name = "DetailsLabel";
             this.DetailsLabel.Size = new System.Drawing.Size(115, 41);
             this.DetailsLabel.TabIndex = 0;
@@ -167,9 +170,9 @@
             // panel2
             // 
             this.panel2.Controls.Add(this.DetailsLabel);
-            this.panel2.Location = new System.Drawing.Point(93, 265);
+            this.panel2.Location = new System.Drawing.Point(0, 265);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(765, 64);
+            this.panel2.Size = new System.Drawing.Size(937, 64);
             this.panel2.TabIndex = 16;
             // 
             // BookingHistory

@@ -127,12 +127,13 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                
                 _isEditMode = true;
                 EditUpdateButton.Text = "Update";
+                EditUpdateButton.FillColor = Color.ForestGreen;
                 SetTextBoxesReadOnly(false);
                 ShowMessage("You can now edit your details.", true);
             }
             else
             {
-              
+                EditUpdateButton.FillColor = Color.FromArgb(94, 148, 255);
                 UpdateUserDetails();
                 SetTextBoxesReadOnly(true);
             }
