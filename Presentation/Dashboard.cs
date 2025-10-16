@@ -180,9 +180,9 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             lblTitle.Text = "EMPLOYEES";
             _currentEmployeeForm = new FrmEmployees();
             LoadForm(new FrmEmployees());
-            SearchBox.Visible = true;
-            SearchBox.ReadOnly = false;
-            SearchBox.PlaceholderText = "Search Employees...";
+            SearchBox.Visible = false;
+            //SearchBox.ReadOnly = false;
+            //SearchBox.PlaceholderText = "Search Employees...";
             SearchBox.Clear();
         }
 
@@ -288,6 +288,11 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             {
                 _currentEmployeeForm.SearchEmployees(searchText);
             }
+        }
+
+        private void CompanyLogo_Click(object sender, EventArgs e)
+        {
+            this.Refresh();
         }
     }
 }

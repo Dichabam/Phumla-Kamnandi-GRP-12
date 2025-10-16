@@ -110,6 +110,7 @@
             this.SubmitButton.TabIndex = 3;
             this.SubmitButton.Text = "SUBMIT";
             this.SubmitButton.Click += new System.EventHandler(this.SubmitButton_Click);
+            this.SubmitButton.KeyDown += new System.Windows.Forms.KeyEventHandler(this.submitButton_KeyDown);
             // 
             // forgotpasswordLink
             // 
@@ -147,7 +148,6 @@
             this.logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.logo.TabIndex = 0;
             this.logo.TabStop = false;
-            
             // 
             // LoginLabel
             // 

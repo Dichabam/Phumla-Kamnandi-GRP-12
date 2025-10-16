@@ -26,6 +26,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
         private Employee _selectedEmployee;
         private bool _isAddingEmployee = false;
         private ServiceLocator _services;
+        private BindingSource _employeeBindingSource;
 
         public FrmEmployees()
         {
@@ -50,7 +51,8 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
 
             // Add selection change event
             EmployeeDataGridViiew.SelectionChanged += EmployeeDataGridViiew_SelectionChanged;
-
+            
+            EmployeeDataGridViiew.DataSource = _services.EmployeeRepository.GetAll();
             LoadEmployees();
         }
 
@@ -476,58 +478,32 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
 
         public void SearchEmployees(string searchText)
         {
-            if (string.IsNullOrWhiteSpace(searchText))
-            {
-                LoadEmployees();
+            if (EmployeeDataGridViiew.DataSource == null)
                 return;
-            }
 
-            try
+            searchText = searchText?.Trim().ToLower() ?? string.Empty;
+
+            foreach (DataGridViewRow row in EmployeeDataGridViiew.Rows)
             {
-                var allEmp = _services.EmployeeRepository.GetAll();
-                var filteredGuests = allEmp.Where(g =>
-                    (g.FirstName?.ToLower().Contains(searchText.ToLower()) ?? false) ||
-                    (g.LastName?.ToLower().Contains(searchText.ToLower()) ?? false) ||
-                    (g.Email?.ToLower().Contains(searchText.ToLower()) ?? false) ||
-                    (g.Phone?.Contains(searchText) ?? false) ||
-                    (g.EmployeeId?.ToLower().Contains(searchText.ToLower()) ?? false)
-                ).ToList();
-
-                EmployeeDataGridViiew.DataSource = filteredGuests;
-
-
-                foreach (DataGridViewRow row in EmployeeDataGridViiew.Rows)
+                if (row.DataBoundItem is Employee emp)
                 {
-                    if (row.DataBoundItem is Guest guest)
-                    {
-                        bool matchFound = false;
-                        foreach (DataGridViewCell cell in row.Cells)
-                        {
-                            if (cell.Value != null && cell.Value.ToString().ToLower().Contains(searchText.ToLower()))
-                            {
-                                matchFound = true;
-                                break;
-                            }
-                        }
+                    bool matchFound =
+                        (!string.IsNullOrEmpty(emp.FirstName) && emp.FirstName.ToLower().Contains(searchText)) ||
+                        (!string.IsNullOrEmpty(emp.LastName) && emp.LastName.ToLower().Contains(searchText)) ||
+                        (!string.IsNullOrEmpty(emp.Email) && emp.Email.ToLower().Contains(searchText)) ||
+                        (!string.IsNullOrEmpty(emp.Phone) && emp.Phone.ToLower().Contains(searchText)) ||
+                        (!string.IsNullOrEmpty(emp.EmployeeId) && emp.EmployeeId.ToLower().Contains(searchText));
 
-                        if (matchFound)
-                        {
-                            row.DefaultCellStyle.BackColor = Color.LightYellow;
-                        }
-                        
-                        else
-                        {
-                            row.DefaultCellStyle.BackColor = Color.White;
-                        }
-                    }
+                    // Show/hide row
+                    row.Visible = string.IsNullOrEmpty(searchText) || matchFound;
+
+                    // Highlight matching rows
+                    row.DefaultCellStyle.BackColor = matchFound ? Color.LightYellow : Color.White;
                 }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Search error: {ex.Message}", "Error",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
         }
+
+
     }
 
 

@@ -111,6 +111,7 @@
             this.CompanyLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.CompanyLogo.TabIndex = 0;
             this.CompanyLogo.TabStop = false;
+            this.CompanyLogo.Click += new System.EventHandler(this.CompanyLogo_Click);
             // 
             // SidePanelDSHB
             // 

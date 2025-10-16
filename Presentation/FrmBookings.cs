@@ -14,6 +14,7 @@ using PdfSharp.Pdf;
 using Phumla_Kamnandi_GRP_12.Business.Entities;
 using Phumla_Kamnandi_GRP_12.Properties;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
@@ -797,51 +798,64 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
 
         public void SearchBookings(string searchText)
         {
-            if (string.IsNullOrWhiteSpace(searchText))
-            {
-                LoadBookingsGrid();
-                return;
-            }
-
             try
             {
-                DataTable dt = (DataTable)ShowdataGridView.DataSource;
-                if (dt != null)
+                if (!(ShowdataGridView.DataSource is DataTable dt))
+                    return;
+
+                // If search box is empty, reset grid and highlights
+                if (string.IsNullOrWhiteSpace(searchText))
                 {
-                    string filter = $"BookingReference LIKE '%{searchText}%'";
-
-                    if (dt.Columns.Contains("GuestName"))
-                        filter += $" OR GuestName LIKE '%{searchText}%'";
-                    if (dt.Columns.Contains("GuestEmail"))
-                        filter += $" OR GuestEmail LIKE '%{searchText}%'";
-                    if (dt.Columns.Contains("Status"))
-                        filter += $" OR Status LIKE '%{searchText}%'";
-                    if (dt.Columns.Contains("RoomNumber"))
-                        filter += $" OR CONVERT(RoomNumber, 'System.String') LIKE '%{searchText}%'";
-
-                    dt.DefaultView.RowFilter = filter;
-
+                    dt.DefaultView.RowFilter = string.Empty;
                     foreach (DataGridViewRow row in ShowdataGridView.Rows)
                     {
-                        bool matchFound = false;
-                        foreach (DataGridViewCell cell in row.Cells)
-                        {
-                            if (cell.Value != null && cell.Value.ToString().ToLower().Contains(searchText.ToLower()))
-                            {
-                                matchFound = true;
-                                break;
-                            }
-                        }
-                        row.DefaultCellStyle.BackColor = matchFound ? Color.LightYellow : Color.White;
+                        row.DefaultCellStyle.BackColor = Color.White;
                     }
+                    return;
+                }
+
+                // Apply filter for GuestName and GuestEmail
+                string filter = string.Empty;
+                if (dt.Columns.Contains("GuestName"))
+                    filter = $"GuestName LIKE '%{searchText}%'";
+                if (dt.Columns.Contains("GuestEmail"))
+                {
+                    if (!string.IsNullOrEmpty(filter))
+                        filter += " OR ";
+                    filter += $"GuestEmail LIKE '%{searchText}%'";
+                }
+                dt.DefaultView.RowFilter = filter;
+
+                // Highlight matching rows (only check GuestName and GuestEmail)
+                foreach (DataGridViewRow row in ShowdataGridView.Rows)
+                {
+                    bool matchFound = false;
+
+                    if (dt.Columns.Contains("GuestName") &&
+                        row.Cells["GuestName"].Value != null &&
+                        row.Cells["GuestName"].Value.ToString().IndexOf(searchText, StringComparison.OrdinalIgnoreCase) >= 0)
+                    {
+                        matchFound = true;
+                    }
+
+                    if (!matchFound && dt.Columns.Contains("GuestEmail") &&
+                        row.Cells["GuestEmail"].Value != null &&
+                        row.Cells["GuestEmail"].Value.ToString().IndexOf(searchText, StringComparison.OrdinalIgnoreCase) >= 0)
+                    {
+                        matchFound = true;
+                    }
+
+                    row.DefaultCellStyle.BackColor = matchFound ? Color.LightYellow : Color.White;
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Search error: {ex.Message}", "Error",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Search error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+
+
 
         #region irrelevant things
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e) { }
