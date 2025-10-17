@@ -514,6 +514,12 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                 return false;
             }
 
+            if (!IsValidEmail(emailtextbox.Text.Trim()))
+            {
+                MessageBox.Show("Enter Valid Email", "Validation Error");
+                return false;
+            }
+
             return true;
         }
 
@@ -557,18 +563,15 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                     if (result == DialogResult.Yes)
                     {
                         SaveConfirmationLetter(confirmationLetter, selectedBookingRef);
+                        
                     }
 
                     LoadBookingsGrid();
                     HideAllInputFields();
                     ClearAllFields();
                     isInUpdateMode = false;
+                    MakeBookingButton.Enabled = true;
 
-                    UpdatebookingButton.Text = "UPDATE BOOKING";
-                    UpdatebookingButton.FillColor = Color.FromArgb(0, 126, 249);
-                    CancelBookingButton.Text = "CANCEL";
-                    CancelBookingButton.FillColor = Color.FromArgb(0, 126, 249);
-                    MakeBookingButton.Enabled = false;
                 }
                 else
                 {
@@ -655,12 +658,15 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                 isInUpdateMode = true;
                 isInMakeBookingMode = false;
 
+
                 SubmitButton.Text = "Save Changes";
                 SubmitButton.FillColor = Color.Green;
                 UpdatebookingButton.Text = "SAVE";
                 UpdatebookingButton.FillColor = Color.Green;
                 CancelBookingButton.Text = "CANCEL EDIT";
                 CancelBookingButton.FillColor = Color.Red;
+                MakeBookingButton.Enabled = false;
+
             }
             catch (Exception ex)
             {
@@ -829,6 +835,17 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             checkindp.Focus();
         }
 
-
+        private bool IsValidEmail(string email)
+        {
+            try
+            {
+                var addr = new System.Net.Mail.MailAddress(email);
+                return addr.Address == email;
+            }
+            catch
+            {
+                return false;
+            }
+        }
     }
 }
