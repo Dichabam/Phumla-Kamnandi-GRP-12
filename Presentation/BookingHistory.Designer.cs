@@ -39,7 +39,9 @@
             this.CloseButtonLogin = new Guna.UI2.WinForms.Guna2Button();
             this.richTxtBox = new System.Windows.Forms.RichTextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // Namelabel
@@ -95,12 +97,15 @@
             // 
             // DetailsLabel
             // 
+            this.DetailsLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.DetailsLabel.AutoSize = true;
-            this.DetailsLabel.Font = new System.Drawing.Font("Nirmala UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DetailsLabel.Font = new System.Drawing.Font("Nirmala UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DetailsLabel.ForeColor = System.Drawing.Color.White;
-            this.DetailsLabel.Location = new System.Drawing.Point(118, 278);
+            this.DetailsLabel.Location = new System.Drawing.Point(86, 10);
             this.DetailsLabel.Name = "DetailsLabel";
-            this.DetailsLabel.Size = new System.Drawing.Size(65, 23);
+            this.DetailsLabel.Size = new System.Drawing.Size(115, 41);
             this.DetailsLabel.TabIndex = 0;
             this.DetailsLabel.Text = "Details";
             // 
@@ -145,6 +150,7 @@
             // 
             // richTxtBox
             // 
+            this.richTxtBox.BackColor = System.Drawing.Color.White;
             this.richTxtBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.richTxtBox.Location = new System.Drawing.Point(0, 0);
             this.richTxtBox.Name = "richTxtBox";
@@ -161,18 +167,26 @@
             this.panel1.Size = new System.Drawing.Size(836, 292);
             this.panel1.TabIndex = 15;
             // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.DetailsLabel);
+            this.panel2.Location = new System.Drawing.Point(0, 265);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(937, 64);
+            this.panel2.TabIndex = 16;
+            // 
             // BookingHistory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
             this.ClientSize = new System.Drawing.Size(936, 662);
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.CloseButtonLogin);
             this.Controls.Add(this.guna2Separator1);
             this.Controls.Add(this.guna2Separator2);
             this.Controls.Add(this.GuestHistoryLabel);
-            this.Controls.Add(this.DetailsLabel);
             this.Controls.Add(this.PhoneLabel);
             this.Controls.Add(this.EmailLabel);
             this.Controls.Add(this.SurnameLabel);
@@ -182,6 +196,8 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "BookingHistory";
             this.panel1.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -200,5 +216,6 @@
         private Guna.UI2.WinForms.Guna2Button CloseButtonLogin;
         private System.Windows.Forms.RichTextBox richTxtBox;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel2;
     }
 }

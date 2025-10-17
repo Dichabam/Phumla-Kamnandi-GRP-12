@@ -51,7 +51,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
 
                 foreach (var guest in allGuests)
                 {
-                    if (guest.Address != null && guest.Address.Trim() == idNumber)
+                    if (guest.IdNum != null && guest.IdNum.Trim() == idNumber)
                     {
                         foundGuest = guest;
                         break;

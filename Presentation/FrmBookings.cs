@@ -7,13 +7,20 @@
  * Khumiso Motata, MTTKAG001 
  */
 
-using Phumla_Kamnandi_GRP_12.Properties;
+using PdfSharp.Drawing;
+using PdfSharp.Drawing.Layout;
+using PdfSharp.Fonts;
+using PdfSharp.Pdf;
 using Phumla_Kamnandi_GRP_12.Business.Entities;
+using Phumla_Kamnandi_GRP_12.Properties;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Windows.Forms;
 using System.Drawing;
+using System.IO;
+using System.Windows.Forms;
+
 
 namespace Phumla_Kamnandi_GRP_12.Presentation
 {
@@ -24,6 +31,8 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
         private bool isInMakeBookingMode = false;
         private bool isInUpdateMode = false;
         private string selectedBookingRef = null;
+
+
 
         public FrmBookings()
         {
@@ -37,7 +46,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
         }
         private void FrmBookings_Load(object sender, EventArgs e)
         {
-            // Set minimum dates for date pickers - need to change 
+           
             checkindp.MinDate = DateTime.Today;
             checkoutdp.MinDate = DateTime.Today.AddDays(1);
         }
@@ -49,54 +58,39 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                 using (var connection = new SqlConnection(connectionString))
                 {
                     string query = @"
-                    SELECT 
-                        b.BookingReference,
-                        b.GuestId,
-                        g.FirstName + ' ' + g.LastName AS GuestName,
-                        g.Email AS GuestEmail,
-                        b.CheckInDate,
-                        b.CheckOutDate,
-                        b.RoomNumber,
-                        b.NumberOfAdults,
-                        b.NumberOfChildren,
-                        b.TotalAmount,
-                        b.DepositAmount,
-                        b.DepositPaid,
-                        CASE b.Status 
-                            WHEN 0 THEN 'Unconfirmed'
-                            WHEN 1 THEN 'Confirmed'
-                            WHEN 2 THEN 'Cancelled'
-                            WHEN 3 THEN 'Completed'
-                            WHEN 4 THEN 'NoShow'
-                        END AS Status,
-                        CASE b.PaymentStatus
-                            WHEN 0 THEN 'Pending'
-                            WHEN 1 THEN 'Paid'
-                            WHEN 2 THEN 'Refunded'
-                            WHEN 3 THEN 'Failed'
-                        END AS PaymentStatus,
-                        b.BookingDate,
-                        b.IsSingleOccupancy,
-                        b.SpecialRequests
-                    FROM Booking b
-                    INNER JOIN Guest g ON b.GuestId = g.Id
-                    ORDER BY b.BookingDate DESC";
+                SELECT 
+                    b.BookingReference,
+                    b.GuestId,
+                    g.FirstName + ' ' + g.LastName AS GuestName,
+                    g.Email AS GuestEmail,
+                    b.CheckInDate,
+                    b.CheckOutDate,
+                    b.RoomNumber,
+                    b.NumberOfAdults,
+                    b.NumberOfChildren,
+                    b.TotalAmount,
+                    b.DepositAmount,
+                    b.DepositPaid,
+                    b.Status,
+                    b.PaymentStatus,
+                    b.BookingDate,
+                    b.IsSingleOccupancy,
+                    b.SpecialRequests
+                FROM Booking b
+                INNER JOIN Guest g ON b.GuestId = g.Id
+                ORDER BY b.BookingDate DESC";
 
                     SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
                     DataTable dt = new DataTable();
                     adapter.Fill(dt);
 
-                    ShowdataGridView.ScrollBars = ScrollBars.Both;
-                    
-
-                    ShowdataGridView.DataSource = null;
                     ShowdataGridView.DataSource = dt;
-                    ShowdataGridView.Refresh();
 
-                    
-
+                
                     if (ShowdataGridView.Columns.Contains("GuestId"))
                         ShowdataGridView.Columns["GuestId"].Visible = false;
+
+                
                     if (ShowdataGridView.Columns.Contains("TotalAmount"))
                         ShowdataGridView.Columns["TotalAmount"].DefaultCellStyle.Format = "C2";
                     if (ShowdataGridView.Columns.Contains("DepositAmount"))
@@ -106,37 +100,14 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                         ShowdataGridView.Columns["DepositPaid"].DefaultCellStyle.Format = "C2";
                         ShowdataGridView.Columns["DepositPaid"].ReadOnly = false;
                     }
+
+              
                     if (ShowdataGridView.Columns.Contains("CheckInDate"))
                         ShowdataGridView.Columns["CheckInDate"].DefaultCellStyle.Format = "yyyy-MM-dd";
                     if (ShowdataGridView.Columns.Contains("CheckOutDate"))
                         ShowdataGridView.Columns["CheckOutDate"].DefaultCellStyle.Format = "yyyy-MM-dd";
                     if (ShowdataGridView.Columns.Contains("BookingDate"))
                         ShowdataGridView.Columns["BookingDate"].DefaultCellStyle.Format = "yyyy-MM-dd HH:mm";
-                    
-                    if (ShowdataGridView.Columns.Contains("Status")) {
-                        var statusColumn = new DataGridViewComboBoxColumn();
-                        statusColumn.Name = "Status";
-                        statusColumn.HeaderText = "Status";
-                        statusColumn.DataPropertyName = "Status"; 
-                        statusColumn.Items.AddRange("Unconfirmed", "Confirmed", "Cancelled", "Completed", "NoShow");
-
-                        int colIndex = ShowdataGridView.Columns["Status"].Index;
-                        ShowdataGridView.Columns.Remove("Status");
-                        ShowdataGridView.Columns.Insert(colIndex, statusColumn);
-                    }
-                     
-                    if (ShowdataGridView.Columns.Contains("PaymentStatus"))
-                    {
-                        var paymentColumn = new DataGridViewComboBoxColumn();
-                        paymentColumn.Name = "PaymentStatus";
-                        paymentColumn.HeaderText = "Payment Status";
-                        paymentColumn.DataPropertyName = "PaymentStatus";
-                        paymentColumn.Items.AddRange("Pending", "Paid", "Refunded", "Failed");
-
-                        int colIndex = ShowdataGridView.Columns["PaymentStatus"].Index;
-                        ShowdataGridView.Columns.Remove("PaymentStatus");
-                        ShowdataGridView.Columns.Insert(colIndex, paymentColumn);
-                    }
 
                     foreach (DataGridViewColumn col in ShowdataGridView.Columns)
                     {
@@ -146,11 +117,68 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                             col.ReadOnly = false;
                     }
 
+                  
+                    var statusMapping = new DataTable();
+                    statusMapping.Columns.Add("Id", typeof(int));
+                    statusMapping.Columns.Add("Name", typeof(string));
+                    statusMapping.Rows.Add(0, "Unconfirmed");
+                    statusMapping.Rows.Add(1, "Confirmed");
+                    statusMapping.Rows.Add(2, "Cancelled");
+                    statusMapping.Rows.Add(3, "Completed");
+                    statusMapping.Rows.Add(4, "NoShow");
 
+                    var paymentMapping = new DataTable();
+                    paymentMapping.Columns.Add("Id", typeof(int));
+                    paymentMapping.Columns.Add("Name", typeof(string));
+                    paymentMapping.Rows.Add(0, "Pending");
+                    paymentMapping.Rows.Add(1, "Paid");
+                    paymentMapping.Rows.Add(2, "Refunded");
+                    paymentMapping.Rows.Add(3, "Failed");
 
+                  
+                    if (ShowdataGridView.Columns.Contains("Status"))
+                    {
+                        var statusColumn = new DataGridViewComboBoxColumn
+                        {
+                            Name = "Status",
+                            HeaderText = "Status",
+                            DataPropertyName = "Status",
+                            ValueMember = "Id",
+                            DisplayMember = "Name",
+                            DataSource = statusMapping,
+                            DisplayStyle = DataGridViewComboBoxDisplayStyle.DropDownButton
+                        };
+                        int idx = ShowdataGridView.Columns["Status"].Index;
+                        ShowdataGridView.Columns.Remove("Status");
+                        ShowdataGridView.Columns.Insert(idx, statusColumn);
+                    }
+
+                   
+                    if (ShowdataGridView.Columns.Contains("PaymentStatus"))
+                    {
+                        var paymentColumn = new DataGridViewComboBoxColumn
+                        {
+                            Name = "PaymentStatus",
+                            HeaderText = "Payment Status",
+                            DataPropertyName = "PaymentStatus",
+                            ValueMember = "Id",
+                            DisplayMember = "Name",
+                            DataSource = paymentMapping,
+                            DisplayStyle = DataGridViewComboBoxDisplayStyle.DropDownButton
+                        };
+                        int idx = ShowdataGridView.Columns["PaymentStatus"].Index;
+                        ShowdataGridView.Columns.Remove("PaymentStatus");
+                        ShowdataGridView.Columns.Insert(idx, paymentColumn);
+                    }
 
                     ShowdataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-                   
+
+                    ShowdataGridView.CellValueChanged -= ShowdataGridView_CellValueChanged;
+                    ShowdataGridView.CellValueChanged += ShowdataGridView_CellValueChanged;
+
+                 
+                    ShowdataGridView.DataError -= ShowdataGridView_DataError;
+                    ShowdataGridView.DataError += ShowdataGridView_DataError;
                 }
             }
             catch (Exception ex)
@@ -159,6 +187,45 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+       
+        private void ShowdataGridView_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0) return;
+
+            var row = ShowdataGridView.Rows[e.RowIndex];
+            string bookingRef = row.Cells["BookingReference"].Value.ToString();
+            decimal depositPaid = row.Cells["DepositPaid"].Value != DBNull.Value
+                ? Convert.ToDecimal(row.Cells["DepositPaid"].Value)
+                : 0;
+            int status = row.Cells["Status"].Value != null ? Convert.ToInt32(row.Cells["Status"].Value) : 0;
+            int paymentStatus = row.Cells["PaymentStatus"].Value != null ? Convert.ToInt32(row.Cells["PaymentStatus"].Value) : 0;
+
+            using (var connection = new SqlConnection(connectionString))
+            {
+                string updateQuery = @"
+            UPDATE Booking
+            SET DepositPaid=@DepositPaid, Status=@Status, PaymentStatus=@PaymentStatus
+            WHERE BookingReference=@BookingReference";
+
+                SqlCommand cmd = new SqlCommand(updateQuery, connection);
+                cmd.Parameters.AddWithValue("@DepositPaid", depositPaid);
+                cmd.Parameters.AddWithValue("@Status", status);
+                cmd.Parameters.AddWithValue("@PaymentStatus", paymentStatus);
+                cmd.Parameters.AddWithValue("@BookingReference", bookingRef);
+
+                connection.Open();
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+       
+        private void ShowdataGridView_DataError(object sender, DataGridViewDataErrorEventArgs e)
+        {
+            e.ThrowException = false;
+        }
+
+
         #region showing and hiding of fields
         private void HideAllInputFields()
         {
@@ -325,6 +392,14 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                     singleOccupancy,
                     specialrequestTextbox.Text.Trim()
                 );
+                var make_guest = guest = _services.GuestService.RegisterNewGuest(
+                            NameTextBox.Text.Trim(),
+                            surnametextbox.Text.Trim(),
+                            emailtextbox.Text.Trim(),
+                            phonetextbox.Text.Trim(),
+                            addresstextbox.Text.Trim(),
+                            guna2TextBox1.Text.Trim()
+                        );
 
                 if (result.Success)
                 {
@@ -359,6 +434,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
 
                                 booking.SetCreditCardInfo(lastFour);
                                 _services.BookingRepository.Update(booking);
+                                _services.GuestRepository.Update(make_guest);
                             }
                         }
                     }
@@ -519,25 +595,83 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
        
         private void SaveConfirmationLetter(string content, string bookingRef)
         {
+            //modified by chat
+            GlobalFontSettings.FontResolver = new ResourceFontResolver();
+
             try
             {
                 SaveFileDialog saveDialog = new SaveFileDialog
                 {
-                    Filter = "Text Files (*.txt)|*.txt|All Files (*.*)|*.*",
-                    DefaultExt = "txt",
-                    FileName = $"Booking_Confirmation_{bookingRef}_{DateTime.Now:yyyyMMdd_HHmmss}.txt"
+                    Filter = "PDF Files (*.pdf)|*.pdf|All Files (*.*)|*.*",
+                    DefaultExt = "pdf",
+                    FileName = $"Booking_Confirmation_{bookingRef}_{DateTime.Now:yyyyMMdd_HHmmss}.pdf"
                 };
 
                 if (saveDialog.ShowDialog() == DialogResult.OK)
                 {
-                    System.IO.File.WriteAllText(saveDialog.FileName, content);
-                    MessageBox.Show($"Confirmation letter saved successfully to:\n{saveDialog.FileName}",
+                    PdfDocument document = new PdfDocument();
+                    document.Info.Title = "Phumla Kamnandi - Booking Confirmation Letter";
+
+                    PdfPage page = document.AddPage();
+                    XGraphics gfx = XGraphics.FromPdfPage(page);
+
+                    // --- Fonts ---
+                    XFont titleFont = new XFont("CMU Bright Roman", 20, XFontStyleEx.Bold);
+                    XFont normalFont = new XFont("CMU Bright Roman", 12, XFontStyleEx.Regular);
+                    XFont footerFont = new XFont("CMU Bright Roman", 9, XFontStyleEx.Regular);
+
+                    double pageWidth = page.Width;
+                    double yPoint = 40;
+
+                    // --- Logo centered ---
+                    using (MemoryStream ms = new MemoryStream())
+                    {
+                        Properties.Resources.PHUMLA_KAMNANDI.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
+                        ms.Position = 0;
+
+                        XImage logo = XImage.FromStream(ms);
+                        double logoWidth = 120;
+                        double logoHeight = 60;
+                        double logoX = (pageWidth - logoWidth) / 2; // center horizontally
+                        gfx.DrawImage(logo, logoX, yPoint, logoWidth, logoHeight);
+                    }
+
+                    yPoint += 80; // space below logo
+
+                    // --- Title centered ---
+                    gfx.DrawString("Booking Confirmation Letter", titleFont, XBrushes.DarkBlue,
+                        new XRect(0, yPoint, pageWidth, 30), XStringFormats.TopCenter);
+                    yPoint += 35;
+
+                    // --- Horizontal line ---
+                    gfx.DrawLine(XPens.Gray, 40, yPoint, pageWidth - 40, yPoint);
+                    yPoint += 20;
+
+                    // --- Reference number ---
+                    gfx.DrawString($"Booking Reference: {bookingRef}", normalFont, XBrushes.Black,
+                        new XRect(40, yPoint, pageWidth - 80, 20), XStringFormats.TopLeft);
+                    yPoint += 30;
+
+                    // --- Content (wrap text) ---
+                    XTextFormatter tf = new XTextFormatter(gfx);
+                    XRect textArea = new XRect(40, yPoint, pageWidth - 80, page.Height - yPoint - 60);
+                    tf.Alignment = XParagraphAlignment.Left;
+                    tf.DrawString(content, normalFont, XBrushes.Black, textArea, XStringFormats.TopLeft);
+
+                    // --- Footer with timestamp ---
+                    gfx.DrawString($"Generated on {DateTime.Now:yyyy-MM-dd HH:mm}", footerFont, XBrushes.Gray,
+                        new XRect(0, page.Height - 30, pageWidth, 20), XStringFormats.Center);
+
+                    // --- Save PDF ---
+                    document.Save(saveDialog.FileName);
+
+                    MessageBox.Show($"PDF saved successfully at:\n{saveDialog.FileName}",
                         "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error saving confirmation letter: {ex.Message}", "Error",
+                MessageBox.Show($"Error saving PDF: {ex.Message}", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -575,6 +709,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                 emailtextbox.Text = guest.Email;
                 phonetextbox.Text = guest.Phone;
                 addresstextbox.Text = guest.Address;
+                guna2TextBox1.Text = guest.IdNum;
                 checkindp.Value = booking.CheckInDate;
                 checkoutdp.Value = booking.CheckOutDate;
                 adultstextbox.Text = booking.NumberOfAdults.ToString();
@@ -663,51 +798,64 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
 
         public void SearchBookings(string searchText)
         {
-            if (string.IsNullOrWhiteSpace(searchText))
-            {
-                LoadBookingsGrid();
-                return;
-            }
-
             try
             {
-                DataTable dt = (DataTable)ShowdataGridView.DataSource;
-                if (dt != null)
+                if (!(ShowdataGridView.DataSource is DataTable dt))
+                    return;
+
+                // If search box is empty, reset grid and highlights
+                if (string.IsNullOrWhiteSpace(searchText))
                 {
-                    string filter = $"BookingReference LIKE '%{searchText}%'";
-
-                    if (dt.Columns.Contains("GuestName"))
-                        filter += $" OR GuestName LIKE '%{searchText}%'";
-                    if (dt.Columns.Contains("GuestEmail"))
-                        filter += $" OR GuestEmail LIKE '%{searchText}%'";
-                    if (dt.Columns.Contains("Status"))
-                        filter += $" OR Status LIKE '%{searchText}%'";
-                    if (dt.Columns.Contains("RoomNumber"))
-                        filter += $" OR CONVERT(RoomNumber, 'System.String') LIKE '%{searchText}%'";
-
-                    dt.DefaultView.RowFilter = filter;
-
+                    dt.DefaultView.RowFilter = string.Empty;
                     foreach (DataGridViewRow row in ShowdataGridView.Rows)
                     {
-                        bool matchFound = false;
-                        foreach (DataGridViewCell cell in row.Cells)
-                        {
-                            if (cell.Value != null && cell.Value.ToString().ToLower().Contains(searchText.ToLower()))
-                            {
-                                matchFound = true;
-                                break;
-                            }
-                        }
-                        row.DefaultCellStyle.BackColor = matchFound ? Color.LightYellow : Color.White;
+                        row.DefaultCellStyle.BackColor = Color.White;
                     }
+                    return;
+                }
+
+                // Apply filter for GuestName and GuestEmail
+                string filter = string.Empty;
+                if (dt.Columns.Contains("GuestName"))
+                    filter = $"GuestName LIKE '%{searchText}%'";
+                if (dt.Columns.Contains("GuestEmail"))
+                {
+                    if (!string.IsNullOrEmpty(filter))
+                        filter += " OR ";
+                    filter += $"GuestEmail LIKE '%{searchText}%'";
+                }
+                dt.DefaultView.RowFilter = filter;
+
+                // Highlight matching rows (only check GuestName and GuestEmail)
+                foreach (DataGridViewRow row in ShowdataGridView.Rows)
+                {
+                    bool matchFound = false;
+
+                    if (dt.Columns.Contains("GuestName") &&
+                        row.Cells["GuestName"].Value != null &&
+                        row.Cells["GuestName"].Value.ToString().IndexOf(searchText, StringComparison.OrdinalIgnoreCase) >= 0)
+                    {
+                        matchFound = true;
+                    }
+
+                    if (!matchFound && dt.Columns.Contains("GuestEmail") &&
+                        row.Cells["GuestEmail"].Value != null &&
+                        row.Cells["GuestEmail"].Value.ToString().IndexOf(searchText, StringComparison.OrdinalIgnoreCase) >= 0)
+                    {
+                        matchFound = true;
+                    }
+
+                    row.DefaultCellStyle.BackColor = matchFound ? Color.LightYellow : Color.White;
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Search error: {ex.Message}", "Error",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Search error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+
+
 
         #region irrelevant things
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e) { }
@@ -743,7 +891,8 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             surnametextbox.Text = guest.LastName;
             emailtextbox.Text = guest.Email;
             phonetextbox.Text = guest.Phone;
-            guna2TextBox1.Text = guest.GuestId;
+            guna2TextBox1.Text = guest.IdNum;
+            addresstextbox.Text = guest.Address;
 
             // Disable guest info fields
             NameTextBox.ReadOnly = true;

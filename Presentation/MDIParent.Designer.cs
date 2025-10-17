@@ -33,6 +33,7 @@
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.guna2GradientPanel1 = new Guna.UI2.WinForms.Guna2GradientPanel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.RestWell = new System.Windows.Forms.Label();
             this.guna2GradientPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -40,6 +41,7 @@
             // guna2GradientPanel1
             // 
             this.guna2GradientPanel1.BackColor = System.Drawing.Color.DarkViolet;
+            this.guna2GradientPanel1.Controls.Add(this.RestWell);
             this.guna2GradientPanel1.Controls.Add(this.pictureBox1);
             this.guna2GradientPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.guna2GradientPanel1.FillColor = System.Drawing.Color.BlueViolet;
@@ -62,6 +64,18 @@
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
+            // RestWell
+            // 
+            this.RestWell.AutoSize = true;
+            this.RestWell.BackColor = System.Drawing.Color.Transparent;
+            this.RestWell.Font = new System.Drawing.Font("Century Gothic", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RestWell.ForeColor = System.Drawing.Color.White;
+            this.RestWell.Location = new System.Drawing.Point(331, 426);
+            this.RestWell.Name = "RestWell";
+            this.RestWell.Size = new System.Drawing.Size(163, 40);
+            this.RestWell.TabIndex = 1;
+            this.RestWell.Text = "Rest Well";
+            // 
             // MDIParent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -77,6 +91,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MDIParent";
             this.guna2GradientPanel1.ResumeLayout(false);
+            this.guna2GradientPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
@@ -85,6 +100,7 @@
         private System.Windows.Forms.ToolTip toolTip;
         private Guna.UI2.WinForms.Guna2GradientPanel guna2GradientPanel1;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label RestWell;
     }
 }
 

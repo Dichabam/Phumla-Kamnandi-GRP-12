@@ -228,12 +228,7 @@ namespace Phumla_Kamnandi_GRP_12.Business.Services
             if (guest == null) return "Guest information not found";
 
             return $@"
-            ═════════════════════════════════════════════════════
-                PHUMLA KAMNANDI HOTELS - BOOKING CONFIRMATION
-            ═════════════════════════════════════════════════════
-
-            Booking Reference: {booking.BookingReference}
-
+        
             Guest Information:
                 Name: {guest.FullName}
                 Email: {guest.Email}
@@ -257,9 +252,8 @@ namespace Phumla_Kamnandi_GRP_12.Business.Services
 
             Special Requests: {(string.IsNullOrEmpty(booking.SpecialRequests) ? "None" : booking.SpecialRequests)}
 
-            ═════════════════════════════════════════════════════
             Thank you for choosing Phumla Kamnandi Hotels!
-            ═════════════════════════════════════════════════════
+           
             ";
         }
 

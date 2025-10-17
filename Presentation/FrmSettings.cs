@@ -127,12 +127,13 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                
                 _isEditMode = true;
                 EditUpdateButton.Text = "Update";
+                EditUpdateButton.FillColor = Color.ForestGreen;
                 SetTextBoxesReadOnly(false);
                 ShowMessage("You can now edit your details.", true);
             }
             else
             {
-              
+                EditUpdateButton.FillColor = Color.FromArgb(94, 148, 255);
                 UpdateUserDetails();
                 SetTextBoxesReadOnly(true);
             }
@@ -169,7 +170,9 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                 if (success)
                 {
 
-                    _currentEmployee.UpdateContactInfo(
+                    _currentEmployee.UpdateName(
+                        NametextEm.Text.Trim(),
+                        surnameTextBox.Text.Trim(),
                         EmailTxtBoxEm.Text.Trim(),
                         PhonetextBoxEm.Text.Trim()
                     );
@@ -177,7 +180,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
 
                     var employeeRepo = new EmployeeDB();
                     employeeRepo.Update(_currentEmployee);
-
+                    
 
                     ShowMessage("Details updated successfully!", true);
 

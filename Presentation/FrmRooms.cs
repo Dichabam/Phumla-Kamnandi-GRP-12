@@ -103,8 +103,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             }
         }
 
-        private System.Collections.Generic.List<RoomWithBookingInfo> GetRoomsWithCurrentBookingInfo(
-            System.Collections.Generic.List<Room> rooms)
+        private System.Collections.Generic.List<RoomWithBookingInfo> GetRoomsWithCurrentBookingInfo( System.Collections.Generic.List<Room> rooms)
         {
             var roomsWithInfo = new System.Collections.Generic.List<RoomWithBookingInfo>();
             DateTime today = DateTime.Today;
