@@ -51,6 +51,14 @@ namespace Phumla_Kamnandi_GRP_12.Business.Entities
             if (!string.IsNullOrEmpty(phone)) Phone = phone;
         }
 
+        public void UpdateName(string name, string surname, string email, string phone)
+        {
+            if (!string.IsNullOrEmpty(email)) Email = email;
+            if (!string.IsNullOrEmpty(phone)) Phone = phone;
+            if (!string.IsNullOrEmpty(name)) FirstName = name;
+            if (!string.IsNullOrEmpty(surname)) LastName = surname;
+        }
+
         public void UpdateRole(EmployeeRole newRole)
         {
             Role = newRole;

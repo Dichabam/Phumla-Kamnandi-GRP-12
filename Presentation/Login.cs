@@ -22,6 +22,8 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             ErrorLoginLabel.Visible = false;
             _services = ServiceLocator.Instance;
             PasswordTextbox.UseSystemPasswordChar = true;
+
+            
         }
 
         private void Email_TextChanged(object sender, EventArgs e)
@@ -143,6 +145,15 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             }
         }
 
+        private void submitButton_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                SubmitButton.Focus();
 
+                e.SuppressKeyPress = true;
+                SubmitButton.PerformClick();
+            }
+        }
     }
 }
