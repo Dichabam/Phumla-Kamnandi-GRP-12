@@ -15,7 +15,6 @@ using Phumla_Kamnandi_GRP_12.Database;
 using System;
 using System.Data;
 using System.Drawing;
-using System.Linq;
 using System.Windows.Forms;
 
 namespace Phumla_Kamnandi_GRP_12.Presentation
@@ -26,7 +25,6 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
         private Employee _selectedEmployee;
         private bool _isAddingEmployee = false;
         private ServiceLocator _services;
-        private BindingSource _employeeBindingSource;
 
         public FrmEmployees()
         {
@@ -51,8 +49,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
 
             // Add selection change event
             EmployeeDataGridViiew.SelectionChanged += EmployeeDataGridViiew_SelectionChanged;
-            
-            EmployeeDataGridViiew.DataSource = _services.EmployeeRepository.GetAll();
+
             LoadEmployees();
         }
 
@@ -475,36 +472,5 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
             }
         }
         #endregion
-
-        public void SearchEmployees(string searchText)
-        {
-            if (EmployeeDataGridViiew.DataSource == null)
-                return;
-
-            searchText = searchText?.Trim().ToLower() ?? string.Empty;
-
-            foreach (DataGridViewRow row in EmployeeDataGridViiew.Rows)
-            {
-                if (row.DataBoundItem is Employee emp)
-                {
-                    bool matchFound =
-                        (!string.IsNullOrEmpty(emp.FirstName) && emp.FirstName.ToLower().Contains(searchText)) ||
-                        (!string.IsNullOrEmpty(emp.LastName) && emp.LastName.ToLower().Contains(searchText)) ||
-                        (!string.IsNullOrEmpty(emp.Email) && emp.Email.ToLower().Contains(searchText)) ||
-                        (!string.IsNullOrEmpty(emp.Phone) && emp.Phone.ToLower().Contains(searchText)) ||
-                        (!string.IsNullOrEmpty(emp.EmployeeId) && emp.EmployeeId.ToLower().Contains(searchText));
-
-                    // Show/hide row
-                    row.Visible = string.IsNullOrEmpty(searchText) || matchFound;
-
-                    // Highlight matching rows
-                    row.DefaultCellStyle.BackColor = matchFound ? Color.LightYellow : Color.White;
-                }
-            }
-        }
-
-
     }
-
-
 }

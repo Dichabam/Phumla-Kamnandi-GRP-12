@@ -7,10 +7,6 @@
  * Khumiso Motata, MTTKAG001 
  */
 
-using PdfSharp.Drawing;
-using PdfSharp.Drawing.Layout;
-using PdfSharp.Fonts;
-using PdfSharp.Pdf;
 using System;
 using System.Data;
 using System.IO;
@@ -147,7 +143,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                 StringBuilder reportText = new StringBuilder();
 
                 reportText.AppendLine("═══════════════════════════════════════════════════════════════════════");
-                reportText.AppendLine("OCCUPANCY REPORT                                                       ");
+                reportText.AppendLine("                        OCCUPANCY REPORT                               ");
                 reportText.AppendLine("═══════════════════════════════════════════════════════════════════════");
                 reportText.AppendLine();
                 reportText.AppendLine($"Period: {startDate:yyyy-MM-dd} to {endDate:yyyy-MM-dd}");
@@ -191,7 +187,11 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                     {
                         ReportRichTextBox.Text = _lastGeneratedReport;
 
-                        MessageBox.Show($"Occupancy Report Generated\n\n","Report Generated", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show($"Occupancy Report Generated\n\n" +
+                            $"Period: {startDate:yyyy-MM-dd} to {endDate:yyyy-MM-dd}\n" +
+                            $"Average Occupancy: {report.AverageOccupancy:F2}%\n" +
+                            $"Total Room Nights: {report.TotalRoomNights}",
+                            "Report Generated", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     });
                 }
                 catch (Exception ex)
@@ -235,7 +235,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                     StringBuilder reportText = new StringBuilder();
 
                     reportText.AppendLine("═══════════════════════════════════════════════════════════════════════");
-                    reportText.AppendLine("REVENUE REPORT                                                         ");
+                    reportText.AppendLine("                         REVENUE REPORT                                ");
                     reportText.AppendLine("═══════════════════════════════════════════════════════════════════════");
                     reportText.AppendLine();
                     reportText.AppendLine($"Report Period:              {startDate:yyyy-MM-dd} to {endDate:yyyy-MM-dd}");
@@ -258,7 +258,11 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                     {
                         ReportRichTextBox.Text = _lastGeneratedReport;
 
-                        MessageBox.Show($"Revenue Report Generated\n\n","Report Generated", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show($"Revenue Report Generated\n\n" +
+                            $"Total Bookings: {report.TotalBookings}\n" +
+                            $"Total Revenue: {report.TotalRevenue:C2}\n" +
+                            $"Average Booking: {report.AverageBookingValue:C2}",
+                            "Report Generated", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     });
                 }
                 catch (Exception ex)
@@ -283,68 +287,25 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
 
             SaveFileDialog saveDialog = new SaveFileDialog
             {
-                Filter = "PDF Files (*.pdf)|*.pdf|All Files (*.*)|*.*",
-                DefaultExt = "pdf",
-                FileName = $"Report_{DateTime.Now:yyyyMMdd_HHmmss}.pdf"
+                Filter = "Text Files (*.txt)|*.txt|All Files (*.*)|*.*",
+                DefaultExt = "txt",
+                FileName = $"Report_{DateTime.Now:yyyyMMdd_HHmmss}.txt"
             };
 
-            if (saveDialog.ShowDialog() != DialogResult.OK) return;
-
-            try
+            if (saveDialog.ShowDialog() == DialogResult.OK)
             {
-                // made by chat
-                GlobalFontSettings.FontResolver = new ResourceFontResolver();
-
-                PdfDocument document = new PdfDocument();
-                document.Info.Title = "Generated Report";
-
-                PdfPage page = document.AddPage();
-                XGraphics gfx = XGraphics.FromPdfPage(page);
-                double pageWidth = page.Width;
-                double yPoint = 40;
-
-                // --- Logo ---
-                using (MemoryStream ms = new MemoryStream())
+                try
                 {
-                    Properties.Resources.PHUMLA_KAMNANDI.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
-                    ms.Position = 0;
-                    XImage logo = XImage.FromStream(ms);
-                    double logoWidth = 120;
-                    double logoHeight = 60;
-                    gfx.DrawImage(logo, (pageWidth - logoWidth) / 2, yPoint, logoWidth, logoHeight);
+                    File.WriteAllText(saveDialog.FileName, _lastGeneratedReport);
+
+                    MessageBox.Show($"Report saved successfully to:\n{saveDialog.FileName}",
+                        "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-                yPoint += 80;
-
-                // --- Fonts ---
-                XFont titleFont = new XFont("CMU Bright Roman", 20, XFontStyleEx.Bold);
-                XFont normalFont = new XFont("CMU Bright Roman", 12, XFontStyleEx.Regular);
-                XFont footerFont = new XFont("CMU Bright Roman", 9, XFontStyleEx.Regular);
-
-                // --- Determine Report Title from RichTextBox ---
-                string firstLine = _lastGeneratedReport.Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries).FirstOrDefault() ?? "Report";
-                gfx.DrawString(firstLine, titleFont, XBrushes.DarkBlue, new XRect(0, yPoint, pageWidth, 30), XStringFormats.TopCenter);
-                yPoint += 40;
-
-                gfx.DrawLine(XPens.Gray, 40, yPoint, pageWidth - 40, yPoint);
-                yPoint += 20;
-
-                // --- Draw report content ---
-                XTextFormatter tf = new XTextFormatter(gfx);
-                XRect textArea = new XRect(40, yPoint, pageWidth - 80, page.Height - yPoint - 40);
-                tf.Alignment = XParagraphAlignment.Left;
-                tf.DrawString(_lastGeneratedReport, normalFont, XBrushes.Black, textArea, XStringFormats.TopLeft);
-
-                // --- Footer ---
-                gfx.DrawString($"Generated by Hotel Management System on {DateTime.Now:yyyy-MM-dd HH:mm}", footerFont, XBrushes.Gray,
-                    new XRect(0, page.Height - 30, pageWidth, 20), XStringFormats.Center);
-
-                document.Save(saveDialog.FileName);
-
-                MessageBox.Show($"Report PDF saved successfully to:\n{saveDialog.FileName}", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error saving report: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error saving report: {ex.Message}", "Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 

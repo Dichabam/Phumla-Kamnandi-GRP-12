@@ -170,9 +170,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                 if (success)
                 {
 
-                    _currentEmployee.UpdateName(
-                        NametextEm.Text.Trim(),
-                        surnameTextBox.Text.Trim(),
+                    _currentEmployee.UpdateContactInfo(
                         EmailTxtBoxEm.Text.Trim(),
                         PhonetextBoxEm.Text.Trim()
                     );
@@ -180,7 +178,7 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
 
                     var employeeRepo = new EmployeeDB();
                     employeeRepo.Update(_currentEmployee);
-                    
+
 
                     ShowMessage("Details updated successfully!", true);
 
