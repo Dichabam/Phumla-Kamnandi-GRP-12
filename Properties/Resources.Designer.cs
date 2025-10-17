@@ -161,16 +161,6 @@ namespace Phumla_Kamnandi_GRP_12.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        internal static byte[] cmunbmr {
-            get {
-                object obj = ResourceManager.GetObject("cmunbmr", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap credit_card_gear_75dp_EA3323_FILL0_wght400_GRAD0_opsz48 {
@@ -386,16 +376,6 @@ namespace Phumla_Kamnandi_GRP_12.Properties {
         internal static System.Drawing.Bitmap person_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz241 {
             get {
                 object obj = ResourceManager.GetObject("person_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz241", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap PHUMLA_KAMNANDI {
-            get {
-                object obj = ResourceManager.GetObject("PHUMLA KAMNANDI", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

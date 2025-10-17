@@ -82,6 +82,7 @@
             this.ShowdataGridView.Size = new System.Drawing.Size(844, 236);
             this.ShowdataGridView.TabIndex = 27;
             this.ShowdataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            //this.ShowdataGridView.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.ShowdataGridView_CellFormatting);
             this.ShowdataGridView.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.ShowdataGridView_CellValueChanged);
             this.ShowdataGridView.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.ShowdataGridView_DataError);
             // 
@@ -371,7 +372,7 @@
             this.childrentextbox.Location = new System.Drawing.Point(483, 488);
             this.childrentextbox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.childrentextbox.Name = "childrentextbox";
-            this.childrentextbox.PlaceholderText = "optional";
+            this.childrentextbox.PlaceholderText = "";
             this.childrentextbox.SelectedText = "";
             this.childrentextbox.Size = new System.Drawing.Size(104, 33);
             this.childrentextbox.TabIndex = 71;
@@ -392,7 +393,7 @@
             this.specialrequestTextbox.Location = new System.Drawing.Point(146, 545);
             this.specialrequestTextbox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.specialrequestTextbox.Name = "specialrequestTextbox";
-            this.specialrequestTextbox.PlaceholderText = "optional";
+            this.specialrequestTextbox.PlaceholderText = "";
             this.specialrequestTextbox.SelectedText = "";
             this.specialrequestTextbox.Size = new System.Drawing.Size(241, 33);
             this.specialrequestTextbox.TabIndex = 71;
@@ -413,7 +414,7 @@
             this.creditTextbox.Location = new System.Drawing.Point(569, 545);
             this.creditTextbox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.creditTextbox.Name = "creditTextbox";
-            this.creditTextbox.PlaceholderText = "subject to type of booking";
+            this.creditTextbox.PlaceholderText = "";
             this.creditTextbox.SelectedText = "";
             this.creditTextbox.Size = new System.Drawing.Size(362, 33);
             this.creditTextbox.TabIndex = 71;

@@ -610,7 +610,16 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                     return;
                 }
 
-      
+                var IdGuest = _services.GuestService.ValidateID(IDNumTxtBox.Text.Trim());
+                if (!IdGuest)
+                {
+                    MessageBox.Show("ID Number does not exist", "ID Incorrect",
+                       MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    email.Focus();
+                    return;
+                }
+
+
                 DialogResult result = MessageBox.Show(
                     $"Create new guest:\n\n" +
                     $"Name: {Name.Text.Trim()} {surname.Text.Trim()}\n" +

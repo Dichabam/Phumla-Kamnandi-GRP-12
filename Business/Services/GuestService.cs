@@ -127,8 +127,50 @@ namespace Phumla_Kamnandi_GRP_12.Business.Services
             return guest.IsInGoodStanding;
         }
 
-        
+        public bool ValidateID(string idNumber)
+        {
+            if (string.IsNullOrWhiteSpace(idNumber)) return false;
 
+            idNumber = new string(idNumber.Where(char.IsDigit).ToArray());
+            if (idNumber.Length != 13) return false;
+            if (!idNumber.All(char.IsDigit)) return false;
 
+            string dobPart = idNumber.Substring(0, 6);
+            int yy = int.Parse(dobPart.Substring(0, 2));
+            int mm = int.Parse(dobPart.Substring(2, 2));
+            int dd = int.Parse(dobPart.Substring(4, 2));
+
+            bool validDate = false;
+            foreach (int century in new[] { 1900, 2000 })
+            {
+                try
+                {
+                    DateTime dob = new DateTime(century + yy, mm, dd);
+                    if (dob <= DateTime.Today) { validDate = true; break; }
+                }
+                catch { /* ignore invalid dates */ }
+            }
+            if (!validDate) return false;
+
+          
+            int sum = 0;
+            bool doubleDigit = false;
+
+            for (int i = idNumber.Length - 1; i >= 0; i--)
+            {
+                int digit = idNumber[i] - '0';
+                if (doubleDigit)
+                {
+                    digit *= 2;
+                    if (digit > 9) digit -= 9;
+                }
+                sum += digit;
+                doubleDigit = !doubleDigit;
+            }
+
+            return sum % 10 == 0;
+        }
     }
+
+
 }

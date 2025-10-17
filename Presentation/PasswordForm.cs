@@ -10,10 +10,8 @@ using System;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Text.RegularExpressions;
 
 namespace Phumla_Kamnandi_GRP_12.Presentation
 {
@@ -192,16 +190,6 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 ConfirmPasswordTextbox.Clear();
                 ConfirmPasswordTextbox.Focus();
-                return false;
-            }
-
-            string pattern = @"^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$";
-
-            if (!Regex.IsMatch(NewPasswordTextbox.Text, pattern))
-            {
-                MessageBox.Show("Password must contain at least one uppercase letter, one number, and one special character.",
-                    "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                NewPasswordTextbox.Focus();
                 return false;
             }
 
