@@ -77,7 +77,7 @@ The **Phumla Kamnandi Hotel Management System** allows hotel staff to efficientl
 
 ---
 *Semester Project - Information Systems*
-*.Received 82% for the project*
+*.Received 82% for the practical*
 
 
 
