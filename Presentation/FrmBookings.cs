@@ -748,19 +748,27 @@ namespace Phumla_Kamnandi_GRP_12.Presentation
                 DataTable dt = (DataTable)ShowdataGridView.DataSource;
                 if (dt != null)
                 {
-                    string filter = $"BookingReference LIKE '%{searchText}%'";
+                  
+                    string safeSearch = searchText.Replace("'", "''");
+
+                    string filter = $"BookingReference LIKE '%{safeSearch}%'";
 
                     if (dt.Columns.Contains("GuestName"))
-                        filter += $" OR GuestName LIKE '%{searchText}%'";
+                        filter += $" OR GuestName LIKE '%{safeSearch}%'";
                     if (dt.Columns.Contains("GuestEmail"))
-                        filter += $" OR GuestEmail LIKE '%{searchText}%'";
+                        filter += $" OR GuestEmail LIKE '%{safeSearch}%'";
+
+                  
                     if (dt.Columns.Contains("Status"))
-                        filter += $" OR Status LIKE '%{searchText}%'";
+                        filter += $" OR CONVERT(Status, 'System.String') LIKE '%{safeSearch}%'";
+
+                 
                     if (dt.Columns.Contains("RoomNumber"))
-                        filter += $" OR CONVERT(RoomNumber, 'System.String') LIKE '%{searchText}%'";
+                        filter += $" OR CONVERT(RoomNumber, 'System.String') LIKE '%{safeSearch}%'";
 
                     dt.DefaultView.RowFilter = filter;
 
+                  
                     foreach (DataGridViewRow row in ShowdataGridView.Rows)
                     {
                         bool matchFound = false;
